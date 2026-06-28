@@ -1,0 +1,93 @@
+# ----------------------------------------------------------------------------
+# .gitignore  (clean public-release version)
+# ----------------------------------------------------------------------------
+
+# --- Python caches & bytecode ---
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- Model weights / large binaries (trained from scratch, regenerable) ---
+*.pt
+*.pth
+*.ckpt
+offscreen/*.pt
+world_saves/
+
+# --- Run logs / captured stdout-stderr ---
+*.log
+*_stderr.txt
+*_stdout.txt
+*.out
+
+# --- LaTeX / paper build artifacts (in case a paper/ dir is ever vendored) ---
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+build/**/*.pdf
+paper/build/
+
+# --- Secrets — NEVER commit ---
+.env
+.env.*
+*.key
+*.pem
+*credentials*
+*secret*.json
+
+# --- OS / editor cruft ---
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+.idea/
+.vscode/
+
+# ----------------------------------------------------------------------------
+# Stray shell-mishap files (accidental redirects / unquoted env expansions
+# that landed as zero-byte files in the repo root). These should never be
+# tracked. Listing the observed offenders plus a defensive glob.
+# ----------------------------------------------------------------------------
+/0
+/0.0
+/0.51
+/0.631
+/0.65
+/1
+/1)
+/2
+/10
+/2MB
+/A_VALS)
+/B
+/CTM
+/The
+/a
+/if
+/not
+/low
+/joint
+/drift
+/distill
+/gradual
+/claim_ok
+/cu.CU_MAX_AGE
+/cu.CU_LATE_SUCCESS_MIN
+/cu.*

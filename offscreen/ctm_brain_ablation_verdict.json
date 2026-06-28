@@ -1,0 +1,384 @@
+{
+ "kind": "ctm_brain_ablation_gen0_v1",
+ "block": "powered",
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5
+ ],
+ "ci_degenerate": false,
+ "results": {
+  "ctm": {
+   "brain": "ctm",
+   "n_params": {
+    "scout": 13432,
+    "forager": 13400
+   },
+   "open_success": {
+    "mean": 0.9042,
+    "ci": [
+     0.8524,
+     0.9581
+    ]
+   },
+   "message_decode": {
+    "mean": 0.6806,
+    "ci": [
+     0.655,
+     0.7093
+    ]
+   },
+   "internal_decode": {
+    "mean": 0.6829,
+    "ci": [
+     0.654,
+     0.7105
+    ]
+   },
+   "scramble_success": 0.0542,
+   "rows": [
+    {
+     "success": {
+      "open": 0.8092,
+      "mute": 0.0573,
+      "scramble": 0.112,
+      "no_content": 0.0508
+     },
+     "message_decode": 0.6374,
+     "internal_decode": 0.6302
+    },
+    {
+     "success": {
+      "open": 0.8613,
+      "mute": 0.0605,
+      "scramble": 0.0,
+      "no_content": 0.0697
+     },
+     "message_decode": 0.6576,
+     "internal_decode": 0.6706
+    },
+    {
+     "success": {
+      "open": 1.0,
+      "mute": 0.0658,
+      "scramble": 0.0762,
+      "no_content": 0.0508
+     },
+     "message_decode": 0.7227,
+     "internal_decode": 0.7305
+    },
+    {
+     "success": {
+      "open": 0.8743,
+      "mute": 0.069,
+      "scramble": 0.0671,
+      "no_content": 0.0586
+     },
+     "message_decode": 0.6556,
+     "internal_decode": 0.651
+    },
+    {
+     "success": {
+      "open": 1.0,
+      "mute": 0.0579,
+      "scramble": 0.0697,
+      "no_content": 0.0605
+     },
+     "message_decode": 0.7324,
+     "internal_decode": 0.7337
+    },
+    {
+     "success": {
+      "open": 0.8802,
+      "mute": 0.0664,
+      "scramble": 0.0,
+      "no_content": 0.0651
+     },
+     "message_decode": 0.6777,
+     "internal_decode": 0.6816
+    }
+   ]
+  },
+  "mlp_dim": {
+   "brain": "mlp_dim",
+   "n_params": {
+    "scout": 1216,
+    "forager": 1304
+   },
+   "open_success": {
+    "mean": 0.7882,
+    "ci": [
+     0.6683,
+     0.8934
+    ]
+   },
+   "message_decode": {
+    "mean": 0.6248,
+    "ci": [
+     0.5711,
+     0.6825
+    ]
+   },
+   "internal_decode": {
+    "mean": 0.6306,
+    "ci": [
+     0.5755,
+     0.6902
+    ]
+   },
+   "scramble_success": 0.0528,
+   "rows": [
+    {
+     "success": {
+      "open": 0.6934,
+      "mute": 0.069,
+      "scramble": 0.0677,
+      "no_content": 0.0677
+     },
+     "message_decode": 0.5671,
+     "internal_decode": 0.5703
+    },
+    {
+     "success": {
+      "open": 1.0,
+      "mute": 0.0592,
+      "scramble": 0.0592,
+      "no_content": 0.0579
+     },
+     "message_decode": 0.7266,
+     "internal_decode": 0.7389
+    },
+    {
+     "success": {
+      "open": 0.6797,
+      "mute": 0.0618,
+      "scramble": 0.0592,
+      "no_content": 0.0605
+     },
+     "message_decode": 0.5618,
+     "internal_decode": 0.5755
+    },
+    {
+     "success": {
+      "open": 0.6055,
+      "mute": 0.0651,
+      "scramble": 0.0,
+      "no_content": 0.0677
+     },
+     "message_decode": 0.5449,
+     "internal_decode": 0.5443
+    },
+    {
+     "success": {
+      "open": 0.9297,
+      "mute": 0.0553,
+      "scramble": 0.1309,
+      "no_content": 0.0553
+     },
+     "message_decode": 0.6966,
+     "internal_decode": 0.7064
+    },
+    {
+     "success": {
+      "open": 0.821,
+      "mute": 0.0651,
+      "scramble": 0.0,
+      "no_content": 0.056
+     },
+     "message_decode": 0.6517,
+     "internal_decode": 0.6484
+    }
+   ]
+  },
+  "mlp": {
+   "brain": "mlp",
+   "n_params": {
+    "scout": 5776,
+    "forager": 6024
+   },
+   "open_success": {
+    "mean": 0.9018,
+    "ci": [
+     0.8547,
+     0.9574
+    ]
+   },
+   "message_decode": {
+    "mean": 0.6843,
+    "ci": [
+     0.661,
+     0.7098
+    ]
+   },
+   "internal_decode": {
+    "mean": 0.686,
+    "ci": [
+     0.6632,
+     0.7081
+    ]
+   },
+   "scramble_success": 0.0812,
+   "rows": [
+    {
+     "success": {
+      "open": 0.9375,
+      "mute": 0.0605,
+      "scramble": 0.0632,
+      "no_content": 0.0547
+     },
+     "message_decode": 0.7005,
+     "internal_decode": 0.7064
+    },
+    {
+     "success": {
+      "open": 0.8776,
+      "mute": 0.0534,
+      "scramble": 0.0482,
+      "no_content": 0.0697
+     },
+     "message_decode": 0.6673,
+     "internal_decode": 0.6686
+    },
+    {
+     "success": {
+      "open": 0.929,
+      "mute": 0.0677,
+      "scramble": 0.2051,
+      "no_content": 0.0495
+     },
+     "message_decode": 0.6953,
+     "internal_decode": 0.7012
+    },
+    {
+     "success": {
+      "open": 1.0,
+      "mute": 0.0664,
+      "scramble": 0.1706,
+      "no_content": 0.069
+     },
+     "message_decode": 0.7318,
+     "internal_decode": 0.724
+    },
+    {
+     "success": {
+      "open": 0.7975,
+      "mute": 0.0697,
+      "scramble": 0.0,
+      "no_content": 0.0605
+     },
+     "message_decode": 0.6361,
+     "internal_decode": 0.6354
+    },
+    {
+     "success": {
+      "open": 0.8691,
+      "mute": 0.0645,
+      "scramble": 0.0,
+      "no_content": 0.0645
+     },
+     "message_decode": 0.6745,
+     "internal_decode": 0.6803
+    }
+   ]
+  },
+  "mlp_over": {
+   "brain": "mlp_over",
+   "n_params": {
+    "scout": 72208,
+    "forager": 73224
+   },
+   "open_success": {
+    "mean": 0.9486,
+    "ci": [
+     0.9156,
+     0.9798
+    ]
+   },
+   "message_decode": {
+    "mean": 0.7014,
+    "ci": [
+     0.6806,
+     0.7211
+    ]
+   },
+   "internal_decode": {
+    "mean": 0.7091,
+    "ci": [
+     0.6936,
+     0.7244
+    ]
+   },
+   "scramble_success": 0.0371,
+   "rows": [
+    {
+     "success": {
+      "open": 1.0,
+      "mute": 0.0632,
+      "scramble": 0.0,
+      "no_content": 0.069
+     },
+     "message_decode": 0.7311,
+     "internal_decode": 0.7344
+    },
+    {
+     "success": {
+      "open": 0.9362,
+      "mute": 0.056,
+      "scramble": 0.0,
+      "no_content": 0.0579
+     },
+     "message_decode": 0.6855,
+     "internal_decode": 0.7057
+    },
+    {
+     "success": {
+      "open": 0.9505,
+      "mute": 0.0599,
+      "scramble": 0.0,
+      "no_content": 0.0605
+     },
+     "message_decode": 0.6999,
+     "internal_decode": 0.7051
+    },
+    {
+     "success": {
+      "open": 0.9284,
+      "mute": 0.0612,
+      "scramble": 0.1107,
+      "no_content": 0.0573
+     },
+     "message_decode": 0.6901,
+     "internal_decode": 0.694
+    },
+    {
+     "success": {
+      "open": 1.0,
+      "mute": 0.0566,
+      "scramble": 0.112,
+      "no_content": 0.0592
+     },
+     "message_decode": 0.7324,
+     "internal_decode": 0.7337
+    },
+    {
+     "success": {
+      "open": 0.8763,
+      "mute": 0.0592,
+      "scramble": 0.0,
+      "no_content": 0.0638
+     },
+     "message_decode": 0.6693,
+     "internal_decode": 0.6816
+    }
+   ]
+  }
+ },
+ "verdict": "CTM_NOT_NEEDED_HERE",
+ "honest_claim": "gen-0 dyad CTM-vs-MLP on identical pair-forage protocol; tests whether CTM's value (capacity and/or readout readability) replicates against a plain MLP, not just the GRU DELIB used. Society-level sync-survival is a separate run.",
+ "wall_seconds": 237.5,
+ "verdict_note": "Capacity-controlled. CTM(13.4k params) internal-readability 0.683 sits ON the MLP capacity curve: mlp 6k->0.686, mlp_over 73k->0.709, mlp_dim 1.3k->0.631. No CTM readability edge vs an equal-or-larger MLP. CAVEAT: internal_decode is a WEAK metric (acc-chance), NOT the DELIB battery (tick-shuffle+permutation+dim-matched+Holm); this does NOT refute DELIB vs GRU, it fails to reproduce a CTM edge vs MLP on a basic capacity-controlled metric, gen-0 dyad only.",
+ "verdict_corrected_from": "CTM_READABILITY_EDGE"
+}

@@ -1,0 +1,6 @@
+# Python >= 3.10 (uses dataclasses + from __future__ import annotations heavily)
+numpy
+torch
+pyyaml
+pytest
+matplotlib   # only needed to regenerate the paper figure (make_fig_rtc.py)

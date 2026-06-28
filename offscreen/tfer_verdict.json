@@ -1,0 +1,3758 @@
+{
+  "kind": "stage_b1_tfer",
+  "frozen": {
+    "TFER_VERSION": "Typed-Field-Encirclement-Rendezvous-v1",
+    "TFER_FREEZE_DATE": "2026-06-22",
+    "TFER_STATUS": "PENDING-POWERED-RUN",
+    "TFER_MAP_WIDTH": 50,
+    "TFER_MAP_HEIGHT": 50,
+    "TFER_GROUP_K": 2,
+    "TFER_CAPTURE_RADIUS": 1,
+    "TFER_HUNT_GAIN": 14.0,
+    "TFER_SOLO_GAIN": 1.0,
+    "TFER_DEATH_FRAC": 0.5,
+    "TFER_N_TYPES": 3,
+    "TFER_MARKERS_PER_TYPE": 4,
+    "TFER_N_MARKERS": 12,
+    "TFER_N_MOVERS": 2,
+    "TFER_ROUND_TICKS": 8,
+    "TFER_EPISODES_PER_GEN": 36,
+    "TFER_N_GENERATIONS": 3,
+    "TFER_SENSE_RADIUS": 5,
+    "TFER_SECTORS": 8,
+    "TFER_SECTORS_MIN": 2,
+    "TFER_MARKER_DENSITY": 0.0048,
+    "TFER_PILOT_SEEDS": [
+      100,
+      101
+    ],
+    "TFER_N_SEEDS": 6,
+    "TFER_SELECTION_RISE_MIN": 0.1,
+    "TFER_SHARED_VS_SOLO_MIN": 0.1,
+    "TFER_EFFECT_MIN": 0.2,
+    "TFER_RESIDUAL_MAX": 0.1,
+    "TFER_MIN_INSTANCES": 24,
+    "TFER_ARMS": [
+      "A1_solo_baseline",
+      "A2_fitness",
+      "A5_random",
+      "A_mute",
+      "A_scramble_per_agent",
+      "C_fixed_type",
+      "C_follow_caller",
+      "C_nospace_abstract",
+      "C_parallel"
+    ],
+    "TFER_DECISION": {
+      "SUCCESS_GROWN_LANGUAGE_DRIVES_EMBODIED_COOPERATION": "A2_fitness clears the embodied TFER task and beats mute, per-agent scramble, and fixed-type controls by the frozen COOP_MUTE_COLLAPSE_MIN margin with paired CIs excluding zero; C_follow_caller fails; C_nospace differs from open so 2D is load-bearing; C_parallel differs from open so the angular sector lock is not a decorative scoring flourish; and A2 beats A5 by the frozen selection margin.",
+      "SPACE_IS_DECORATIVE": "C_nospace_abstract matches the open embodied arm within the frozen margin: decode alone explains the result, so the 2D movement/perception substrate is decorative.",
+      "COOPERATION_NOT_ENCIRCLEMENT": "C_parallel matches the open angular-sector arm within the frozen margin: mere co-location explains the result, so the encirclement claim is withheld.",
+      "CHANNEL_NOT_LOAD_BEARING": "Mute, per-agent scramble, or fixed-type controls do not collapse toward the chance floor by the frozen margin; the grown language is not carrying the cooperative type strongly enough.",
+      "FOLLOW_SHORTCUT_EXISTS": "C_follow_caller succeeds above floor. The caller beacon shortcut survived, so the design is rejected before any positive claim.",
+      "TFER_NO_COOPERATION": "The open embodied arm remains at the floor even with a grown type channel. This is an honest substrate/null result, not a relabeled success.",
+      "UNDERPOWERED": "Fewer than TFER_MIN_INSTANCES paired seed-arm instances are available for the frozen CIs, or a seed was dropped/duplicated.",
+      "HARD_REJECT": "A redline failed: motion read hidden target coordinates, marker truth leaked outside the resolver, the caller was not caged/off-marker, movers perceived each other as a shortcut, or the run used borrowed/pretrained weights."
+    }
+  },
+  "pilot": {
+    "seeds": [
+      100,
+      101
+    ],
+    "rows": [
+      {
+        "seed": 100,
+        "grown_type_mii_cross": 0.8059764309764315,
+        "grown_type_mii_self": 0.8379629629629631,
+        "arms": {
+          "A1_solo_baseline": {
+            "arm": "A1_solo_baseline",
+            "seed": 100,
+            "per_gen_joint_encircle_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_type_recovery_rate": [
+              1.0,
+              1.0,
+              1.0,
+              0.9583333333333334
+            ],
+            "per_gen_energy_total": [
+              72.0,
+              72.0,
+              72.0,
+              72.0
+            ],
+            "final_joint_encircle_rate": 0.0,
+            "post_gen0_joint_encircle_rate": 0.0,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9953703703703702,
+              "cross": 0.9886363636363643,
+              "mii": 0.9932346723044405,
+              "min_offdiag": 0.9166666666666666,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A2_fitness": {
+            "arm": "A2_fitness",
+            "seed": 100,
+            "per_gen_joint_encircle_rate": [
+              1.0,
+              1.0,
+              1.0,
+              0.9722222222222222
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              1.0,
+              1.0,
+              1.0,
+              0.9861111111111112
+            ],
+            "per_gen_type_recovery_rate": [
+              1.0,
+              1.0,
+              1.0,
+              0.9861111111111112
+            ],
+            "per_gen_energy_total": [
+              504.0,
+              504.0,
+              504.0,
+              492.0
+            ],
+            "final_joint_encircle_rate": 0.9722222222222222,
+            "post_gen0_joint_encircle_rate": 0.9907407407407408,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9861111111111112,
+              "cross": 0.9861111111111113,
+              "mii": 1.0000000000000002,
+              "min_offdiag": 0.9444444444444444,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A5_random": {
+            "arm": "A5_random",
+            "seed": 100,
+            "per_gen_joint_encircle_rate": [
+              1.0,
+              1.0,
+              1.0,
+              0.9444444444444444
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              1.0,
+              1.0,
+              1.0,
+              0.9583333333333334
+            ],
+            "per_gen_type_recovery_rate": [
+              1.0,
+              1.0,
+              1.0,
+              0.9583333333333334
+            ],
+            "per_gen_energy_total": [
+              504.0,
+              504.0,
+              504.0,
+              480.0
+            ],
+            "final_joint_encircle_rate": 0.9444444444444444,
+            "post_gen0_joint_encircle_rate": 0.9814814814814815,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9953703703703702,
+              "cross": 0.9886363636363643,
+              "mii": 0.9932346723044405,
+              "min_offdiag": 0.9166666666666666,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A_mute": {
+            "arm": "A_mute",
+            "seed": 100,
+            "per_gen_joint_encircle_rate": [
+              0.4166666666666667,
+              0.3888888888888889,
+              0.4444444444444444,
+              0.4444444444444444
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.4166666666666667,
+              0.3888888888888889,
+              0.4444444444444444,
+              0.4444444444444444
+            ],
+            "per_gen_type_recovery_rate": [
+              0.4166666666666667,
+              0.3888888888888889,
+              0.4444444444444444,
+              0.4444444444444444
+            ],
+            "per_gen_energy_total": [
+              252.0,
+              240.0,
+              264.0,
+              264.0
+            ],
+            "final_joint_encircle_rate": 0.4444444444444444,
+            "post_gen0_joint_encircle_rate": 0.4259259259259259,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9953703703703703,
+              "cross": 0.9903198653198654,
+              "mii": 0.9949260042283299,
+              "min_offdiag": 0.9166666666666666,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A_scramble_per_agent": {
+            "arm": "A_scramble_per_agent",
+            "seed": 100,
+            "per_gen_joint_encircle_rate": [
+              0.2777777777777778,
+              0.3888888888888889,
+              0.3055555555555556,
+              0.3888888888888889
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.4166666666666667,
+              0.5,
+              0.4166666666666667,
+              0.5
+            ],
+            "per_gen_type_recovery_rate": [
+              0.3055555555555556,
+              0.375,
+              0.3194444444444444,
+              0.3611111111111111
+            ],
+            "per_gen_energy_total": [
+              192.0,
+              240.0,
+              204.0,
+              240.0
+            ],
+            "final_joint_encircle_rate": 0.3888888888888889,
+            "post_gen0_joint_encircle_rate": 0.3611111111111111,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9814814814814815,
+              "cross": 0.9848484848484849,
+              "mii": 1.0034305317324186,
+              "min_offdiag": 0.9444444444444444,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_fixed_type": {
+            "arm": "C_fixed_type",
+            "seed": 100,
+            "per_gen_joint_encircle_rate": [
+              0.3333333333333333,
+              0.3888888888888889,
+              0.3055555555555556,
+              0.3611111111111111
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.3333333333333333,
+              0.3888888888888889,
+              0.3055555555555556,
+              0.3611111111111111
+            ],
+            "per_gen_type_recovery_rate": [
+              0.3333333333333333,
+              0.3888888888888889,
+              0.3055555555555556,
+              0.3611111111111111
+            ],
+            "per_gen_energy_total": [
+              216.0,
+              240.0,
+              204.0,
+              228.0
+            ],
+            "final_joint_encircle_rate": 0.3611111111111111,
+            "post_gen0_joint_encircle_rate": 0.35185185185185186,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 1.0,
+              "cross": 1.0,
+              "mii": 1.0,
+              "min_offdiag": 1.0,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_follow_caller": {
+            "arm": "C_follow_caller",
+            "seed": 100,
+            "per_gen_joint_encircle_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_type_recovery_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_energy_total": [
+              72.0,
+              72.0,
+              72.0,
+              72.0
+            ],
+            "final_joint_encircle_rate": 0.0,
+            "post_gen0_joint_encircle_rate": 0.0,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9861111111111112,
+              "cross": 0.9861111111111113,
+              "mii": 1.0000000000000002,
+              "min_offdiag": 0.9444444444444444,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_nospace_abstract": {
+            "arm": "C_nospace_abstract",
+            "seed": 100,
+            "per_gen_joint_encircle_rate": [
+              1.0,
+              1.0,
+              1.0,
+              0.9722222222222222
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              1.0,
+              1.0,
+              1.0,
+              0.9722222222222222
+            ],
+            "per_gen_type_recovery_rate": [
+              1.0,
+              1.0,
+              1.0,
+              0.9861111111111112
+            ],
+            "per_gen_energy_total": [
+              504.0,
+              504.0,
+              504.0,
+              492.0
+            ],
+            "final_joint_encircle_rate": 0.9722222222222222,
+            "post_gen0_joint_encircle_rate": 0.9907407407407408,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9861111111111112,
+              "cross": 0.9861111111111113,
+              "mii": 1.0000000000000002,
+              "min_offdiag": 0.9444444444444444,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_parallel": {
+            "arm": "C_parallel",
+            "seed": 100,
+            "per_gen_joint_encircle_rate": [
+              1.0,
+              1.0,
+              1.0,
+              0.9722222222222222
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              1.0,
+              1.0,
+              1.0,
+              0.9861111111111112
+            ],
+            "per_gen_type_recovery_rate": [
+              1.0,
+              1.0,
+              1.0,
+              0.9861111111111112
+            ],
+            "per_gen_energy_total": [
+              504.0,
+              504.0,
+              504.0,
+              492.0
+            ],
+            "final_joint_encircle_rate": 0.9722222222222222,
+            "post_gen0_joint_encircle_rate": 0.9907407407407408,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9861111111111112,
+              "cross": 0.9861111111111113,
+              "mii": 1.0000000000000002,
+              "min_offdiag": 0.9444444444444444,
+              "chance": 0.3333333333333333
+            }
+          }
+        }
+      },
+      {
+        "seed": 101,
+        "grown_type_mii_cross": 0.8501683501683506,
+        "grown_type_mii_self": 0.875,
+        "arms": {
+          "A1_solo_baseline": {
+            "arm": "A1_solo_baseline",
+            "seed": 101,
+            "per_gen_joint_encircle_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_type_recovery_rate": [
+              0.9722222222222222,
+              0.9722222222222222,
+              0.8472222222222222,
+              0.8888888888888888
+            ],
+            "per_gen_energy_total": [
+              72.0,
+              72.0,
+              72.0,
+              72.0
+            ],
+            "final_joint_encircle_rate": 0.0,
+            "post_gen0_joint_encircle_rate": 0.0,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9722222222222222,
+              "cross": 0.9349747474747481,
+              "mii": 0.9616883116883123,
+              "min_offdiag": 0.6388888888888888,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A2_fitness": {
+            "arm": "A2_fitness",
+            "seed": 101,
+            "per_gen_joint_encircle_rate": [
+              0.9444444444444444,
+              0.9722222222222222,
+              0.9444444444444444,
+              0.9166666666666666
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.9722222222222222,
+              0.9722222222222222,
+              0.9583333333333334,
+              0.9444444444444444
+            ],
+            "per_gen_type_recovery_rate": [
+              0.9722222222222222,
+              0.9722222222222222,
+              0.9583333333333334,
+              0.9444444444444444
+            ],
+            "per_gen_energy_total": [
+              480.0,
+              492.0,
+              480.0,
+              468.0
+            ],
+            "final_joint_encircle_rate": 0.9166666666666666,
+            "post_gen0_joint_encircle_rate": 0.9444444444444443,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9953703703703703,
+              "cross": 0.9330808080808078,
+              "mii": 0.9374207188160675,
+              "min_offdiag": 0.6666666666666666,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A5_random": {
+            "arm": "A5_random",
+            "seed": 101,
+            "per_gen_joint_encircle_rate": [
+              0.9444444444444444,
+              0.9722222222222222,
+              0.8333333333333334,
+              0.8888888888888888
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.9722222222222222,
+              0.9722222222222222,
+              0.8472222222222222,
+              0.9027777777777778
+            ],
+            "per_gen_type_recovery_rate": [
+              0.9722222222222222,
+              0.9722222222222222,
+              0.8472222222222222,
+              0.8888888888888888
+            ],
+            "per_gen_energy_total": [
+              480.0,
+              492.0,
+              432.0,
+              456.0
+            ],
+            "final_joint_encircle_rate": 0.8888888888888888,
+            "post_gen0_joint_encircle_rate": 0.8981481481481483,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9722222222222222,
+              "cross": 0.9349747474747481,
+              "mii": 0.9616883116883123,
+              "min_offdiag": 0.6388888888888888,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A_mute": {
+            "arm": "A_mute",
+            "seed": 101,
+            "per_gen_joint_encircle_rate": [
+              0.3888888888888889,
+              0.19444444444444445,
+              0.3333333333333333,
+              0.4444444444444444
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.3888888888888889,
+              0.19444444444444445,
+              0.3333333333333333,
+              0.4444444444444444
+            ],
+            "per_gen_type_recovery_rate": [
+              0.3888888888888889,
+              0.19444444444444445,
+              0.3333333333333333,
+              0.4444444444444444
+            ],
+            "per_gen_energy_total": [
+              240.0,
+              156.0,
+              216.0,
+              264.0
+            ],
+            "final_joint_encircle_rate": 0.4444444444444444,
+            "post_gen0_joint_encircle_rate": 0.32407407407407407,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9953703703703702,
+              "cross": 0.9930555555555558,
+              "mii": 0.9976744186046516,
+              "min_offdiag": 0.9444444444444444,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A_scramble_per_agent": {
+            "arm": "A_scramble_per_agent",
+            "seed": 101,
+            "per_gen_joint_encircle_rate": [
+              0.4722222222222222,
+              0.3611111111111111,
+              0.16666666666666666,
+              0.3055555555555556
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.5555555555555556,
+              0.5277777777777778,
+              0.2916666666666667,
+              0.4166666666666667
+            ],
+            "per_gen_type_recovery_rate": [
+              0.3611111111111111,
+              0.3888888888888889,
+              0.2361111111111111,
+              0.2916666666666667
+            ],
+            "per_gen_energy_total": [
+              276.0,
+              228.0,
+              144.0,
+              204.0
+            ],
+            "final_joint_encircle_rate": 0.3055555555555556,
+            "post_gen0_joint_encircle_rate": 0.2777777777777778,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9791666666666666,
+              "cross": 0.9198232323232322,
+              "mii": 0.9393939393939392,
+              "min_offdiag": 0.7222222222222222,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_fixed_type": {
+            "arm": "C_fixed_type",
+            "seed": 101,
+            "per_gen_joint_encircle_rate": [
+              0.3055555555555556,
+              0.4166666666666667,
+              0.3611111111111111,
+              0.2777777777777778
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.3055555555555556,
+              0.4166666666666667,
+              0.3611111111111111,
+              0.2777777777777778
+            ],
+            "per_gen_type_recovery_rate": [
+              0.3055555555555556,
+              0.4166666666666667,
+              0.3611111111111111,
+              0.2777777777777778
+            ],
+            "per_gen_energy_total": [
+              204.0,
+              252.0,
+              228.0,
+              192.0
+            ],
+            "final_joint_encircle_rate": 0.2777777777777778,
+            "post_gen0_joint_encircle_rate": 0.35185185185185186,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9884259259259259,
+              "cross": 0.9469696969696968,
+              "mii": 0.9580583351075153,
+              "min_offdiag": 0.6666666666666666,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_follow_caller": {
+            "arm": "C_follow_caller",
+            "seed": 101,
+            "per_gen_joint_encircle_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_type_recovery_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_energy_total": [
+              72.0,
+              72.0,
+              72.0,
+              72.0
+            ],
+            "final_joint_encircle_rate": 0.0,
+            "post_gen0_joint_encircle_rate": 0.0,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9791666666666665,
+              "cross": 0.9400252525252525,
+              "mii": 0.960025789813024,
+              "min_offdiag": 0.7222222222222222,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_nospace_abstract": {
+            "arm": "C_nospace_abstract",
+            "seed": 101,
+            "per_gen_joint_encircle_rate": [
+              0.9444444444444444,
+              0.9722222222222222,
+              0.9444444444444444,
+              0.9166666666666666
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.9444444444444444,
+              0.9722222222222222,
+              0.9444444444444444,
+              0.9166666666666666
+            ],
+            "per_gen_type_recovery_rate": [
+              0.9722222222222222,
+              0.9722222222222222,
+              0.9583333333333334,
+              0.9444444444444444
+            ],
+            "per_gen_energy_total": [
+              480.0,
+              492.0,
+              480.0,
+              468.0
+            ],
+            "final_joint_encircle_rate": 0.9166666666666666,
+            "post_gen0_joint_encircle_rate": 0.9444444444444443,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9953703703703703,
+              "cross": 0.9330808080808078,
+              "mii": 0.9374207188160675,
+              "min_offdiag": 0.6666666666666666,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_parallel": {
+            "arm": "C_parallel",
+            "seed": 101,
+            "per_gen_joint_encircle_rate": [
+              0.9444444444444444,
+              0.9722222222222222,
+              0.9444444444444444,
+              0.9166666666666666
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.9722222222222222,
+              0.9722222222222222,
+              0.9583333333333334,
+              0.9444444444444444
+            ],
+            "per_gen_type_recovery_rate": [
+              0.9722222222222222,
+              0.9722222222222222,
+              0.9583333333333334,
+              0.9444444444444444
+            ],
+            "per_gen_energy_total": [
+              480.0,
+              492.0,
+              480.0,
+              468.0
+            ],
+            "final_joint_encircle_rate": 0.9166666666666666,
+            "post_gen0_joint_encircle_rate": 0.9444444444444443,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9953703703703703,
+              "cross": 0.9330808080808078,
+              "mii": 0.9374207188160675,
+              "min_offdiag": 0.6666666666666666,
+              "chance": 0.3333333333333333
+            }
+          }
+        }
+      }
+    ],
+    "summary": {
+      "by_arm": {
+        "A1_solo_baseline": {
+          "mean_post_gen0_joint_encircle_rate": 0.0,
+          "sd_post_gen0_joint_encircle_rate": 0.0,
+          "per_seed_post_gen0_joint_encircle_rate": [
+            0.0,
+            0.0
+          ],
+          "mean_final_joint_encircle_rate": 0.0,
+          "per_seed_final_joint_encircle_rate": [
+            0.0,
+            0.0
+          ],
+          "mean_final_correct_type_arrival_rate": 0.0,
+          "mean_final_type_recovery_rate": 0.9236111111111112
+        },
+        "A2_fitness": {
+          "mean_post_gen0_joint_encircle_rate": 0.9675925925925926,
+          "sd_post_gen0_joint_encircle_rate": 0.02314814814814825,
+          "per_seed_post_gen0_joint_encircle_rate": [
+            0.9907407407407408,
+            0.9444444444444443
+          ],
+          "mean_final_joint_encircle_rate": 0.9444444444444444,
+          "per_seed_final_joint_encircle_rate": [
+            0.9722222222222222,
+            0.9166666666666666
+          ],
+          "mean_final_correct_type_arrival_rate": 0.9652777777777778,
+          "mean_final_type_recovery_rate": 0.9652777777777778
+        },
+        "A5_random": {
+          "mean_post_gen0_joint_encircle_rate": 0.9398148148148149,
+          "sd_post_gen0_joint_encircle_rate": 0.04166666666666663,
+          "per_seed_post_gen0_joint_encircle_rate": [
+            0.9814814814814815,
+            0.8981481481481483
+          ],
+          "mean_final_joint_encircle_rate": 0.9166666666666666,
+          "per_seed_final_joint_encircle_rate": [
+            0.9444444444444444,
+            0.8888888888888888
+          ],
+          "mean_final_correct_type_arrival_rate": 0.9305555555555556,
+          "mean_final_type_recovery_rate": 0.9236111111111112
+        },
+        "A_mute": {
+          "mean_post_gen0_joint_encircle_rate": 0.375,
+          "sd_post_gen0_joint_encircle_rate": 0.0509259259259259,
+          "per_seed_post_gen0_joint_encircle_rate": [
+            0.4259259259259259,
+            0.32407407407407407
+          ],
+          "mean_final_joint_encircle_rate": 0.4444444444444444,
+          "per_seed_final_joint_encircle_rate": [
+            0.4444444444444444,
+            0.4444444444444444
+          ],
+          "mean_final_correct_type_arrival_rate": 0.4444444444444444,
+          "mean_final_type_recovery_rate": 0.4444444444444444
+        },
+        "A_scramble_per_agent": {
+          "mean_post_gen0_joint_encircle_rate": 0.3194444444444444,
+          "sd_post_gen0_joint_encircle_rate": 0.04166666666666666,
+          "per_seed_post_gen0_joint_encircle_rate": [
+            0.3611111111111111,
+            0.2777777777777778
+          ],
+          "mean_final_joint_encircle_rate": 0.3472222222222222,
+          "per_seed_final_joint_encircle_rate": [
+            0.3888888888888889,
+            0.3055555555555556
+          ],
+          "mean_final_correct_type_arrival_rate": 0.45833333333333337,
+          "mean_final_type_recovery_rate": 0.3263888888888889
+        },
+        "C_fixed_type": {
+          "mean_post_gen0_joint_encircle_rate": 0.35185185185185186,
+          "sd_post_gen0_joint_encircle_rate": 0.0,
+          "per_seed_post_gen0_joint_encircle_rate": [
+            0.35185185185185186,
+            0.35185185185185186
+          ],
+          "mean_final_joint_encircle_rate": 0.3194444444444444,
+          "per_seed_final_joint_encircle_rate": [
+            0.3611111111111111,
+            0.2777777777777778
+          ],
+          "mean_final_correct_type_arrival_rate": 0.3194444444444444,
+          "mean_final_type_recovery_rate": 0.3194444444444444
+        },
+        "C_follow_caller": {
+          "mean_post_gen0_joint_encircle_rate": 0.0,
+          "sd_post_gen0_joint_encircle_rate": 0.0,
+          "per_seed_post_gen0_joint_encircle_rate": [
+            0.0,
+            0.0
+          ],
+          "mean_final_joint_encircle_rate": 0.0,
+          "per_seed_final_joint_encircle_rate": [
+            0.0,
+            0.0
+          ],
+          "mean_final_correct_type_arrival_rate": 0.0,
+          "mean_final_type_recovery_rate": 0.0
+        },
+        "C_nospace_abstract": {
+          "mean_post_gen0_joint_encircle_rate": 0.9675925925925926,
+          "sd_post_gen0_joint_encircle_rate": 0.02314814814814825,
+          "per_seed_post_gen0_joint_encircle_rate": [
+            0.9907407407407408,
+            0.9444444444444443
+          ],
+          "mean_final_joint_encircle_rate": 0.9444444444444444,
+          "per_seed_final_joint_encircle_rate": [
+            0.9722222222222222,
+            0.9166666666666666
+          ],
+          "mean_final_correct_type_arrival_rate": 0.9444444444444444,
+          "mean_final_type_recovery_rate": 0.9652777777777778
+        },
+        "C_parallel": {
+          "mean_post_gen0_joint_encircle_rate": 0.9675925925925926,
+          "sd_post_gen0_joint_encircle_rate": 0.02314814814814825,
+          "per_seed_post_gen0_joint_encircle_rate": [
+            0.9907407407407408,
+            0.9444444444444443
+          ],
+          "mean_final_joint_encircle_rate": 0.9444444444444444,
+          "per_seed_final_joint_encircle_rate": [
+            0.9722222222222222,
+            0.9166666666666666
+          ],
+          "mean_final_correct_type_arrival_rate": 0.9652777777777778,
+          "mean_final_type_recovery_rate": 0.9652777777777778
+        }
+      },
+      "comparisons": {
+        "A2_fitness_minus_A_mute": {
+          "mean": 0.5925925925925926,
+          "ci95": [
+            0.5648148148148149,
+            0.6203703703703702
+          ],
+          "per_seed": [
+            0.5648148148148149,
+            0.6203703703703702
+          ]
+        },
+        "A2_fitness_minus_A_scramble_per_agent": {
+          "mean": 0.6481481481481481,
+          "ci95": [
+            0.6296296296296298,
+            0.6666666666666665
+          ],
+          "per_seed": [
+            0.6296296296296298,
+            0.6666666666666665
+          ]
+        },
+        "A2_fitness_minus_C_fixed_type": {
+          "mean": 0.6157407407407407,
+          "ci95": [
+            0.5925925925925924,
+            0.638888888888889
+          ],
+          "per_seed": [
+            0.638888888888889,
+            0.5925925925925924
+          ]
+        },
+        "A2_fitness_minus_C_follow_caller": {
+          "mean": 0.9675925925925926,
+          "ci95": [
+            0.9444444444444443,
+            0.9907407407407408
+          ],
+          "per_seed": [
+            0.9907407407407408,
+            0.9444444444444443
+          ]
+        },
+        "A2_fitness_minus_C_nospace_abstract": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "per_seed": [
+            0.0,
+            0.0
+          ]
+        },
+        "A2_fitness_minus_C_parallel": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "per_seed": [
+            0.0,
+            0.0
+          ]
+        },
+        "A2_fitness_minus_A5_random": {
+          "mean": 0.02777777777777768,
+          "ci95": [
+            0.0092592592592593,
+            0.04629629629629606
+          ],
+          "per_seed": [
+            0.0092592592592593,
+            0.04629629629629606
+          ]
+        },
+        "A2_fitness_minus_A1_solo_baseline": {
+          "mean": 0.9675925925925926,
+          "ci95": [
+            0.9444444444444443,
+            0.9907407407407408
+          ],
+          "per_seed": [
+            0.9907407407407408,
+            0.9444444444444443
+          ]
+        }
+      },
+      "type_mii": {
+        "per_seed_cross": [
+          0.8059764309764315,
+          0.8501683501683506
+        ],
+        "mean_cross": 0.828072390572391,
+        "per_seed_self": [
+          0.8379629629629631,
+          0.875
+        ],
+        "mean_self": 0.8564814814814816
+      },
+      "n_instances": 72,
+      "verdict": "CHANNEL_NOT_LOAD_BEARING",
+      "decision_text": "Mute, per-agent scramble, or fixed-type controls do not collapse toward the chance floor by the frozen margin; the grown language is not carrying the cooperative type strongly enough."
+    }
+  },
+  "powered": {
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "rows": [
+      {
+        "seed": 0,
+        "grown_type_mii_cross": 0.7337962962962963,
+        "grown_type_mii_self": 0.7777777777777778,
+        "arms": {
+          "A1_solo_baseline": {
+            "arm": "A1_solo_baseline",
+            "seed": 0,
+            "per_gen_joint_encircle_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_type_recovery_rate": [
+              0.8333333333333334,
+              0.9027777777777778,
+              0.9444444444444444,
+              0.9722222222222222
+            ],
+            "per_gen_energy_total": [
+              72.0,
+              72.0,
+              72.0,
+              72.0
+            ],
+            "final_joint_encircle_rate": 0.0,
+            "post_gen0_joint_encircle_rate": 0.0,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.7893518518518517,
+              "cross": 0.7712542087542088,
+              "mii": 0.9770727805918423,
+              "min_offdiag": 0.6388888888888888,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A2_fitness": {
+            "arm": "A2_fitness",
+            "seed": 0,
+            "per_gen_joint_encircle_rate": [
+              0.7777777777777778,
+              0.8888888888888888,
+              0.9444444444444444,
+              0.8611111111111112
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.8472222222222222,
+              0.9027777777777778,
+              0.9444444444444444,
+              0.9166666666666666
+            ],
+            "per_gen_type_recovery_rate": [
+              0.8333333333333334,
+              0.875,
+              0.9305555555555556,
+              0.9166666666666666
+            ],
+            "per_gen_energy_total": [
+              408.0,
+              456.0,
+              480.0,
+              444.0
+            ],
+            "final_joint_encircle_rate": 0.8611111111111112,
+            "post_gen0_joint_encircle_rate": 0.8981481481481483,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.8217592592592592,
+              "cross": 0.8038720538720537,
+              "mii": 0.9782330345710627,
+              "min_offdiag": 0.5833333333333334,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A5_random": {
+            "arm": "A5_random",
+            "seed": 0,
+            "per_gen_joint_encircle_rate": [
+              0.7777777777777778,
+              0.9166666666666666,
+              0.9444444444444444,
+              0.9722222222222222
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.8472222222222222,
+              0.9305555555555556,
+              0.9444444444444444,
+              0.9722222222222222
+            ],
+            "per_gen_type_recovery_rate": [
+              0.8333333333333334,
+              0.9027777777777778,
+              0.9444444444444444,
+              0.9722222222222222
+            ],
+            "per_gen_energy_total": [
+              408.0,
+              468.0,
+              480.0,
+              492.0
+            ],
+            "final_joint_encircle_rate": 0.9722222222222222,
+            "post_gen0_joint_encircle_rate": 0.9444444444444445,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.7893518518518517,
+              "cross": 0.7712542087542088,
+              "mii": 0.9770727805918423,
+              "min_offdiag": 0.6388888888888888,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A_mute": {
+            "arm": "A_mute",
+            "seed": 0,
+            "per_gen_joint_encircle_rate": [
+              0.3888888888888889,
+              0.2777777777777778,
+              0.25,
+              0.3055555555555556
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.4305555555555556,
+              0.2777777777777778,
+              0.2777777777777778,
+              0.3194444444444444
+            ],
+            "per_gen_type_recovery_rate": [
+              0.4166666666666667,
+              0.2777777777777778,
+              0.2361111111111111,
+              0.2777777777777778
+            ],
+            "per_gen_energy_total": [
+              240.0,
+              192.0,
+              180.0,
+              204.0
+            ],
+            "final_joint_encircle_rate": 0.3055555555555556,
+            "post_gen0_joint_encircle_rate": 0.2777777777777778,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.8564814814814814,
+              "cross": 0.8034511784511782,
+              "mii": 0.9380835380835378,
+              "min_offdiag": 0.6388888888888888,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A_scramble_per_agent": {
+            "arm": "A_scramble_per_agent",
+            "seed": 0,
+            "per_gen_joint_encircle_rate": [
+              0.2777777777777778,
+              0.3055555555555556,
+              0.3333333333333333,
+              0.25
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.4166666666666667,
+              0.4166666666666667,
+              0.4444444444444444,
+              0.4027777777777778
+            ],
+            "per_gen_type_recovery_rate": [
+              0.3055555555555556,
+              0.3333333333333333,
+              0.3194444444444444,
+              0.3333333333333333
+            ],
+            "per_gen_energy_total": [
+              192.0,
+              204.0,
+              216.0,
+              180.0
+            ],
+            "final_joint_encircle_rate": 0.25,
+            "post_gen0_joint_encircle_rate": 0.2962962962962963,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.8287037037037037,
+              "cross": 0.7948232323232336,
+              "mii": 0.9591163026917232,
+              "min_offdiag": 0.5833333333333334,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_fixed_type": {
+            "arm": "C_fixed_type",
+            "seed": 0,
+            "per_gen_joint_encircle_rate": [
+              0.3611111111111111,
+              0.3333333333333333,
+              0.4166666666666667,
+              0.4166666666666667
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.3611111111111111,
+              0.3333333333333333,
+              0.4166666666666667,
+              0.4166666666666667
+            ],
+            "per_gen_type_recovery_rate": [
+              0.3611111111111111,
+              0.3333333333333333,
+              0.4166666666666667,
+              0.4166666666666667
+            ],
+            "per_gen_energy_total": [
+              228.0,
+              216.0,
+              252.0,
+              252.0
+            ],
+            "final_joint_encircle_rate": 0.4166666666666667,
+            "post_gen0_joint_encircle_rate": 0.3888888888888889,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.7824074074074074,
+              "cross": 0.7485269360269359,
+              "mii": 0.956697149004841,
+              "min_offdiag": 0.6111111111111112,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_follow_caller": {
+            "arm": "C_follow_caller",
+            "seed": 0,
+            "per_gen_joint_encircle_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_type_recovery_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_energy_total": [
+              72.0,
+              72.0,
+              72.0,
+              72.0
+            ],
+            "final_joint_encircle_rate": 0.0,
+            "post_gen0_joint_encircle_rate": 0.0,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.8773148148148148,
+              "cross": 0.8463804713804716,
+              "mii": 0.9647397457423845,
+              "min_offdiag": 0.6944444444444444,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_nospace_abstract": {
+            "arm": "C_nospace_abstract",
+            "seed": 0,
+            "per_gen_joint_encircle_rate": [
+              0.75,
+              0.9166666666666666,
+              0.8055555555555556,
+              0.8611111111111112
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.75,
+              0.9166666666666666,
+              0.8055555555555556,
+              0.8611111111111112
+            ],
+            "per_gen_type_recovery_rate": [
+              0.8333333333333334,
+              0.9444444444444444,
+              0.8611111111111112,
+              0.9166666666666666
+            ],
+            "per_gen_energy_total": [
+              396.0,
+              468.0,
+              420.0,
+              444.0
+            ],
+            "final_joint_encircle_rate": 0.8611111111111112,
+            "post_gen0_joint_encircle_rate": 0.8611111111111112,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.8009259259259259,
+              "cross": 0.7767255892255891,
+              "mii": 0.9697845507094061,
+              "min_offdiag": 0.5833333333333334,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_parallel": {
+            "arm": "C_parallel",
+            "seed": 0,
+            "per_gen_joint_encircle_rate": [
+              0.7777777777777778,
+              0.8888888888888888,
+              0.9444444444444444,
+              0.8611111111111112
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.8472222222222222,
+              0.9027777777777778,
+              0.9444444444444444,
+              0.9166666666666666
+            ],
+            "per_gen_type_recovery_rate": [
+              0.8333333333333334,
+              0.875,
+              0.9305555555555556,
+              0.9166666666666666
+            ],
+            "per_gen_energy_total": [
+              408.0,
+              456.0,
+              480.0,
+              444.0
+            ],
+            "final_joint_encircle_rate": 0.8611111111111112,
+            "post_gen0_joint_encircle_rate": 0.8981481481481483,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.8217592592592592,
+              "cross": 0.8038720538720537,
+              "mii": 0.9782330345710627,
+              "min_offdiag": 0.5833333333333334,
+              "chance": 0.3333333333333333
+            }
+          }
+        }
+      },
+      {
+        "seed": 1,
+        "grown_type_mii_cross": 0.8348063973063977,
+        "grown_type_mii_self": 0.8495370370370371,
+        "arms": {
+          "A1_solo_baseline": {
+            "arm": "A1_solo_baseline",
+            "seed": 1,
+            "per_gen_joint_encircle_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_type_recovery_rate": [
+              0.9722222222222222,
+              0.9722222222222222,
+              1.0,
+              1.0
+            ],
+            "per_gen_energy_total": [
+              72.0,
+              72.0,
+              72.0,
+              72.0
+            ],
+            "final_joint_encircle_rate": 0.0,
+            "post_gen0_joint_encircle_rate": 0.0,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 1.0,
+              "cross": 1.0,
+              "mii": 1.0,
+              "min_offdiag": 1.0,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A2_fitness": {
+            "arm": "A2_fitness",
+            "seed": 1,
+            "per_gen_joint_encircle_rate": [
+              0.9444444444444444,
+              0.9722222222222222,
+              1.0,
+              0.9444444444444444
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.9722222222222222,
+              0.9861111111111112,
+              1.0,
+              0.9722222222222222
+            ],
+            "per_gen_type_recovery_rate": [
+              0.9722222222222222,
+              0.9861111111111112,
+              1.0,
+              0.9722222222222222
+            ],
+            "per_gen_energy_total": [
+              480.0,
+              492.0,
+              504.0,
+              480.0
+            ],
+            "final_joint_encircle_rate": 0.9444444444444444,
+            "post_gen0_joint_encircle_rate": 0.9722222222222223,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9930555555555555,
+              "cross": 0.9930555555555556,
+              "mii": 1.0000000000000002,
+              "min_offdiag": 0.9444444444444444,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A5_random": {
+            "arm": "A5_random",
+            "seed": 1,
+            "per_gen_joint_encircle_rate": [
+              0.9444444444444444,
+              0.9444444444444444,
+              1.0,
+              1.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.9722222222222222,
+              0.9722222222222222,
+              1.0,
+              1.0
+            ],
+            "per_gen_type_recovery_rate": [
+              0.9722222222222222,
+              0.9722222222222222,
+              1.0,
+              1.0
+            ],
+            "per_gen_energy_total": [
+              480.0,
+              480.0,
+              504.0,
+              504.0
+            ],
+            "final_joint_encircle_rate": 1.0,
+            "post_gen0_joint_encircle_rate": 0.9814814814814815,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 1.0,
+              "cross": 1.0,
+              "mii": 1.0,
+              "min_offdiag": 1.0,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A_mute": {
+            "arm": "A_mute",
+            "seed": 1,
+            "per_gen_joint_encircle_rate": [
+              0.1388888888888889,
+              0.16666666666666666,
+              0.16666666666666666,
+              0.16666666666666666
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.3472222222222222,
+              0.2638888888888889,
+              0.3194444444444444,
+              0.4027777777777778
+            ],
+            "per_gen_type_recovery_rate": [
+              0.3333333333333333,
+              0.20833333333333334,
+              0.25,
+              0.3194444444444444
+            ],
+            "per_gen_energy_total": [
+              132.0,
+              144.0,
+              144.0,
+              144.0
+            ],
+            "final_joint_encircle_rate": 0.16666666666666666,
+            "post_gen0_joint_encircle_rate": 0.16666666666666666,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9884259259259259,
+              "cross": 0.9837962962962961,
+              "mii": 0.9953161592505853,
+              "min_offdiag": 0.8888888888888888,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A_scramble_per_agent": {
+            "arm": "A_scramble_per_agent",
+            "seed": 1,
+            "per_gen_joint_encircle_rate": [
+              0.3611111111111111,
+              0.25,
+              0.4166666666666667,
+              0.4444444444444444
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.5,
+              0.375,
+              0.5277777777777778,
+              0.5972222222222222
+            ],
+            "per_gen_type_recovery_rate": [
+              0.3472222222222222,
+              0.2916666666666667,
+              0.375,
+              0.4305555555555556
+            ],
+            "per_gen_energy_total": [
+              228.0,
+              180.0,
+              252.0,
+              264.0
+            ],
+            "final_joint_encircle_rate": 0.4444444444444444,
+            "post_gen0_joint_encircle_rate": 0.3703703703703704,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9837962962962963,
+              "cross": 0.9793771043771043,
+              "mii": 0.9955080213903743,
+              "min_offdiag": 0.8888888888888888,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_fixed_type": {
+            "arm": "C_fixed_type",
+            "seed": 1,
+            "per_gen_joint_encircle_rate": [
+              0.3888888888888889,
+              0.4444444444444444,
+              0.25,
+              0.3888888888888889
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.3888888888888889,
+              0.4444444444444444,
+              0.25,
+              0.3888888888888889
+            ],
+            "per_gen_type_recovery_rate": [
+              0.3888888888888889,
+              0.4444444444444444,
+              0.25,
+              0.3888888888888889
+            ],
+            "per_gen_energy_total": [
+              240.0,
+              264.0,
+              180.0,
+              240.0
+            ],
+            "final_joint_encircle_rate": 0.3888888888888889,
+            "post_gen0_joint_encircle_rate": 0.3611111111111111,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9976851851851851,
+              "cross": 0.9976851851851852,
+              "mii": 1.0000000000000002,
+              "min_offdiag": 0.9722222222222222,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_follow_caller": {
+            "arm": "C_follow_caller",
+            "seed": 1,
+            "per_gen_joint_encircle_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_type_recovery_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_energy_total": [
+              72.0,
+              72.0,
+              72.0,
+              72.0
+            ],
+            "final_joint_encircle_rate": 0.0,
+            "post_gen0_joint_encircle_rate": 0.0,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9814814814814814,
+              "cross": 0.9814814814814816,
+              "mii": 1.0000000000000002,
+              "min_offdiag": 0.8888888888888888,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_nospace_abstract": {
+            "arm": "C_nospace_abstract",
+            "seed": 1,
+            "per_gen_joint_encircle_rate": [
+              0.9444444444444444,
+              0.9722222222222222,
+              1.0,
+              0.9444444444444444
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.9444444444444444,
+              0.9722222222222222,
+              1.0,
+              0.9444444444444444
+            ],
+            "per_gen_type_recovery_rate": [
+              0.9722222222222222,
+              0.9861111111111112,
+              1.0,
+              0.9722222222222222
+            ],
+            "per_gen_energy_total": [
+              480.0,
+              492.0,
+              504.0,
+              480.0
+            ],
+            "final_joint_encircle_rate": 0.9444444444444444,
+            "post_gen0_joint_encircle_rate": 0.9722222222222223,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9930555555555555,
+              "cross": 0.9930555555555556,
+              "mii": 1.0000000000000002,
+              "min_offdiag": 0.9444444444444444,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_parallel": {
+            "arm": "C_parallel",
+            "seed": 1,
+            "per_gen_joint_encircle_rate": [
+              0.9444444444444444,
+              0.9722222222222222,
+              1.0,
+              0.9444444444444444
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.9722222222222222,
+              0.9861111111111112,
+              1.0,
+              0.9722222222222222
+            ],
+            "per_gen_type_recovery_rate": [
+              0.9722222222222222,
+              0.9861111111111112,
+              1.0,
+              0.9722222222222222
+            ],
+            "per_gen_energy_total": [
+              480.0,
+              492.0,
+              504.0,
+              480.0
+            ],
+            "final_joint_encircle_rate": 0.9444444444444444,
+            "post_gen0_joint_encircle_rate": 0.9722222222222223,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9930555555555555,
+              "cross": 0.9930555555555556,
+              "mii": 1.0000000000000002,
+              "min_offdiag": 0.9444444444444444,
+              "chance": 0.3333333333333333
+            }
+          }
+        }
+      },
+      {
+        "seed": 2,
+        "grown_type_mii_cross": 0.8594276094276088,
+        "grown_type_mii_self": 0.8680555555555555,
+        "arms": {
+          "A1_solo_baseline": {
+            "arm": "A1_solo_baseline",
+            "seed": 2,
+            "per_gen_joint_encircle_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_type_recovery_rate": [
+              1.0,
+              0.9722222222222222,
+              1.0,
+              0.9861111111111112
+            ],
+            "per_gen_energy_total": [
+              72.0,
+              72.0,
+              72.0,
+              72.0
+            ],
+            "final_joint_encircle_rate": 0.0,
+            "post_gen0_joint_encircle_rate": 0.0,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9814814814814815,
+              "cross": 0.9755892255892256,
+              "mii": 0.9939965694682675,
+              "min_offdiag": 0.8611111111111112,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A2_fitness": {
+            "arm": "A2_fitness",
+            "seed": 2,
+            "per_gen_joint_encircle_rate": [
+              1.0,
+              0.9722222222222222,
+              0.9722222222222222,
+              1.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              1.0,
+              0.9861111111111112,
+              0.9861111111111112,
+              1.0
+            ],
+            "per_gen_type_recovery_rate": [
+              1.0,
+              0.9722222222222222,
+              0.9722222222222222,
+              1.0
+            ],
+            "per_gen_energy_total": [
+              504.0,
+              492.0,
+              492.0,
+              504.0
+            ],
+            "final_joint_encircle_rate": 1.0,
+            "post_gen0_joint_encircle_rate": 0.9814814814814815,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9884259259259257,
+              "cross": 0.9884259259259264,
+              "mii": 1.0000000000000007,
+              "min_offdiag": 0.9444444444444444,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A5_random": {
+            "arm": "A5_random",
+            "seed": 2,
+            "per_gen_joint_encircle_rate": [
+              1.0,
+              0.9722222222222222,
+              1.0,
+              0.9722222222222222
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              1.0,
+              0.9861111111111112,
+              1.0,
+              0.9861111111111112
+            ],
+            "per_gen_type_recovery_rate": [
+              1.0,
+              0.9722222222222222,
+              1.0,
+              0.9861111111111112
+            ],
+            "per_gen_energy_total": [
+              504.0,
+              492.0,
+              504.0,
+              492.0
+            ],
+            "final_joint_encircle_rate": 0.9722222222222222,
+            "post_gen0_joint_encircle_rate": 0.9814814814814815,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9814814814814815,
+              "cross": 0.9755892255892256,
+              "mii": 0.9939965694682675,
+              "min_offdiag": 0.8611111111111112,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A_mute": {
+            "arm": "A_mute",
+            "seed": 2,
+            "per_gen_joint_encircle_rate": [
+              0.25,
+              0.4166666666666667,
+              0.3055555555555556,
+              0.3055555555555556
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.3055555555555556,
+              0.4166666666666667,
+              0.3055555555555556,
+              0.3055555555555556
+            ],
+            "per_gen_type_recovery_rate": [
+              0.3055555555555556,
+              0.4166666666666667,
+              0.3055555555555556,
+              0.3055555555555556
+            ],
+            "per_gen_energy_total": [
+              180.0,
+              252.0,
+              204.0,
+              204.0
+            ],
+            "final_joint_encircle_rate": 0.3055555555555556,
+            "post_gen0_joint_encircle_rate": 0.3425925925925926,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9861111111111112,
+              "cross": 0.9861111111111113,
+              "mii": 1.0000000000000002,
+              "min_offdiag": 0.9444444444444444,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A_scramble_per_agent": {
+            "arm": "A_scramble_per_agent",
+            "seed": 2,
+            "per_gen_joint_encircle_rate": [
+              0.3333333333333333,
+              0.3888888888888889,
+              0.4166666666666667,
+              0.3611111111111111
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.4861111111111111,
+              0.4722222222222222,
+              0.5555555555555556,
+              0.4722222222222222
+            ],
+            "per_gen_type_recovery_rate": [
+              0.3472222222222222,
+              0.3333333333333333,
+              0.4166666666666667,
+              0.3055555555555556
+            ],
+            "per_gen_energy_total": [
+              216.0,
+              240.0,
+              252.0,
+              228.0
+            ],
+            "final_joint_encircle_rate": 0.3611111111111111,
+            "post_gen0_joint_encircle_rate": 0.3888888888888889,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9768518518518517,
+              "cross": 0.976851851851852,
+              "mii": 1.0000000000000002,
+              "min_offdiag": 0.8888888888888888,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_fixed_type": {
+            "arm": "C_fixed_type",
+            "seed": 2,
+            "per_gen_joint_encircle_rate": [
+              0.3333333333333333,
+              0.25,
+              0.3055555555555556,
+              0.3333333333333333
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.3333333333333333,
+              0.25,
+              0.3055555555555556,
+              0.3333333333333333
+            ],
+            "per_gen_type_recovery_rate": [
+              0.3333333333333333,
+              0.25,
+              0.3055555555555556,
+              0.3333333333333333
+            ],
+            "per_gen_energy_total": [
+              216.0,
+              180.0,
+              204.0,
+              216.0
+            ],
+            "final_joint_encircle_rate": 0.3333333333333333,
+            "post_gen0_joint_encircle_rate": 0.2962962962962963,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9953703703703703,
+              "cross": 0.9953703703703701,
+              "mii": 0.9999999999999998,
+              "min_offdiag": 0.9444444444444444,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_follow_caller": {
+            "arm": "C_follow_caller",
+            "seed": 2,
+            "per_gen_joint_encircle_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_type_recovery_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_energy_total": [
+              72.0,
+              72.0,
+              72.0,
+              72.0
+            ],
+            "final_joint_encircle_rate": 0.0,
+            "post_gen0_joint_encircle_rate": 0.0,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9884259259259259,
+              "cross": 0.9835858585858587,
+              "mii": 0.9951032573983395,
+              "min_offdiag": 0.8888888888888888,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_nospace_abstract": {
+            "arm": "C_nospace_abstract",
+            "seed": 2,
+            "per_gen_joint_encircle_rate": [
+              1.0,
+              0.9444444444444444,
+              0.9722222222222222,
+              1.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              1.0,
+              0.9444444444444444,
+              0.9722222222222222,
+              1.0
+            ],
+            "per_gen_type_recovery_rate": [
+              1.0,
+              0.9722222222222222,
+              0.9861111111111112,
+              1.0
+            ],
+            "per_gen_energy_total": [
+              504.0,
+              480.0,
+              492.0,
+              504.0
+            ],
+            "final_joint_encircle_rate": 1.0,
+            "post_gen0_joint_encircle_rate": 0.9722222222222222,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.986111111111111,
+              "cross": 0.9861111111111108,
+              "mii": 0.9999999999999998,
+              "min_offdiag": 0.9444444444444444,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_parallel": {
+            "arm": "C_parallel",
+            "seed": 2,
+            "per_gen_joint_encircle_rate": [
+              1.0,
+              0.9722222222222222,
+              0.9722222222222222,
+              1.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              1.0,
+              0.9861111111111112,
+              0.9861111111111112,
+              1.0
+            ],
+            "per_gen_type_recovery_rate": [
+              1.0,
+              0.9722222222222222,
+              0.9722222222222222,
+              1.0
+            ],
+            "per_gen_energy_total": [
+              504.0,
+              492.0,
+              492.0,
+              504.0
+            ],
+            "final_joint_encircle_rate": 1.0,
+            "post_gen0_joint_encircle_rate": 0.9814814814814815,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9884259259259257,
+              "cross": 0.9884259259259264,
+              "mii": 1.0000000000000007,
+              "min_offdiag": 0.9444444444444444,
+              "chance": 0.3333333333333333
+            }
+          }
+        }
+      },
+      {
+        "seed": 3,
+        "grown_type_mii_cross": 0.9114057239057237,
+        "grown_type_mii_self": 0.9166666666666665,
+        "arms": {
+          "A1_solo_baseline": {
+            "arm": "A1_solo_baseline",
+            "seed": 3,
+            "per_gen_joint_encircle_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_type_recovery_rate": [
+              0.9166666666666666,
+              0.9583333333333334,
+              0.9583333333333334,
+              0.9722222222222222
+            ],
+            "per_gen_energy_total": [
+              72.0,
+              72.0,
+              72.0,
+              72.0
+            ],
+            "final_joint_encircle_rate": 0.0,
+            "post_gen0_joint_encircle_rate": 0.0,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9814814814814814,
+              "cross": 0.9814814814814823,
+              "mii": 1.0000000000000009,
+              "min_offdiag": 0.8888888888888888,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A2_fitness": {
+            "arm": "A2_fitness",
+            "seed": 3,
+            "per_gen_joint_encircle_rate": [
+              0.9166666666666666,
+              0.9444444444444444,
+              0.9722222222222222,
+              1.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.9305555555555556,
+              0.9722222222222222,
+              0.9861111111111112,
+              1.0
+            ],
+            "per_gen_type_recovery_rate": [
+              0.9166666666666666,
+              0.9583333333333334,
+              0.9861111111111112,
+              1.0
+            ],
+            "per_gen_energy_total": [
+              468.0,
+              480.0,
+              492.0,
+              504.0
+            ],
+            "final_joint_encircle_rate": 1.0,
+            "post_gen0_joint_encircle_rate": 0.9722222222222222,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9976851851851851,
+              "cross": 0.9976851851851855,
+              "mii": 1.0000000000000004,
+              "min_offdiag": 0.9722222222222222,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A5_random": {
+            "arm": "A5_random",
+            "seed": 3,
+            "per_gen_joint_encircle_rate": [
+              0.9166666666666666,
+              0.9166666666666666,
+              0.9722222222222222,
+              0.9444444444444444
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.9305555555555556,
+              0.9583333333333334,
+              0.9861111111111112,
+              0.9722222222222222
+            ],
+            "per_gen_type_recovery_rate": [
+              0.9166666666666666,
+              0.9583333333333334,
+              0.9583333333333334,
+              0.9722222222222222
+            ],
+            "per_gen_energy_total": [
+              468.0,
+              468.0,
+              492.0,
+              480.0
+            ],
+            "final_joint_encircle_rate": 0.9444444444444444,
+            "post_gen0_joint_encircle_rate": 0.9444444444444443,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9814814814814814,
+              "cross": 0.9814814814814823,
+              "mii": 1.0000000000000009,
+              "min_offdiag": 0.8888888888888888,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A_mute": {
+            "arm": "A_mute",
+            "seed": 3,
+            "per_gen_joint_encircle_rate": [
+              0.3055555555555556,
+              0.2777777777777778,
+              0.3055555555555556,
+              0.3888888888888889
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.3055555555555556,
+              0.2777777777777778,
+              0.3055555555555556,
+              0.3888888888888889
+            ],
+            "per_gen_type_recovery_rate": [
+              0.3055555555555556,
+              0.2777777777777778,
+              0.3055555555555556,
+              0.3888888888888889
+            ],
+            "per_gen_energy_total": [
+              204.0,
+              192.0,
+              204.0,
+              240.0
+            ],
+            "final_joint_encircle_rate": 0.3888888888888889,
+            "post_gen0_joint_encircle_rate": 0.3240740740740741,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9884259259259259,
+              "cross": 0.9884259259259266,
+              "mii": 1.0000000000000007,
+              "min_offdiag": 0.9444444444444444,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A_scramble_per_agent": {
+            "arm": "A_scramble_per_agent",
+            "seed": 3,
+            "per_gen_joint_encircle_rate": [
+              0.5277777777777778,
+              0.3055555555555556,
+              0.3611111111111111,
+              0.3611111111111111
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.6111111111111112,
+              0.4166666666666667,
+              0.4444444444444444,
+              0.5
+            ],
+            "per_gen_type_recovery_rate": [
+              0.4027777777777778,
+              0.3194444444444444,
+              0.2916666666666667,
+              0.3472222222222222
+            ],
+            "per_gen_energy_total": [
+              300.0,
+              204.0,
+              228.0,
+              228.0
+            ],
+            "final_joint_encircle_rate": 0.3611111111111111,
+            "post_gen0_joint_encircle_rate": 0.3425925925925926,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9675925925925926,
+              "cross": 0.9654882154882154,
+              "mii": 0.9978251413658111,
+              "min_offdiag": 0.8333333333333334,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_fixed_type": {
+            "arm": "C_fixed_type",
+            "seed": 3,
+            "per_gen_joint_encircle_rate": [
+              0.3333333333333333,
+              0.4166666666666667,
+              0.4166666666666667,
+              0.4444444444444444
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.3333333333333333,
+              0.4166666666666667,
+              0.4166666666666667,
+              0.4444444444444444
+            ],
+            "per_gen_type_recovery_rate": [
+              0.3333333333333333,
+              0.4166666666666667,
+              0.4166666666666667,
+              0.4444444444444444
+            ],
+            "per_gen_energy_total": [
+              216.0,
+              252.0,
+              252.0,
+              264.0
+            ],
+            "final_joint_encircle_rate": 0.4444444444444444,
+            "post_gen0_joint_encircle_rate": 0.4259259259259259,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9976851851851851,
+              "cross": 0.9976851851851852,
+              "mii": 1.0000000000000002,
+              "min_offdiag": 0.9722222222222222,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_follow_caller": {
+            "arm": "C_follow_caller",
+            "seed": 3,
+            "per_gen_joint_encircle_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_type_recovery_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_energy_total": [
+              72.0,
+              72.0,
+              72.0,
+              72.0
+            ],
+            "final_joint_encircle_rate": 0.0,
+            "post_gen0_joint_encircle_rate": 0.0,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.972222222222222,
+              "cross": 0.9722222222222233,
+              "mii": 1.0000000000000013,
+              "min_offdiag": 0.9166666666666666,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_nospace_abstract": {
+            "arm": "C_nospace_abstract",
+            "seed": 3,
+            "per_gen_joint_encircle_rate": [
+              0.8888888888888888,
+              0.9166666666666666,
+              0.9722222222222222,
+              1.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.8888888888888888,
+              0.9166666666666666,
+              0.9722222222222222,
+              1.0
+            ],
+            "per_gen_type_recovery_rate": [
+              0.9166666666666666,
+              0.9583333333333334,
+              0.9861111111111112,
+              1.0
+            ],
+            "per_gen_energy_total": [
+              456.0,
+              468.0,
+              492.0,
+              504.0
+            ],
+            "final_joint_encircle_rate": 1.0,
+            "post_gen0_joint_encircle_rate": 0.9629629629629629,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9976851851851851,
+              "cross": 0.9976851851851855,
+              "mii": 1.0000000000000004,
+              "min_offdiag": 0.9722222222222222,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_parallel": {
+            "arm": "C_parallel",
+            "seed": 3,
+            "per_gen_joint_encircle_rate": [
+              0.9166666666666666,
+              0.9444444444444444,
+              0.9722222222222222,
+              1.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.9305555555555556,
+              0.9722222222222222,
+              0.9861111111111112,
+              1.0
+            ],
+            "per_gen_type_recovery_rate": [
+              0.9166666666666666,
+              0.9583333333333334,
+              0.9861111111111112,
+              1.0
+            ],
+            "per_gen_energy_total": [
+              468.0,
+              480.0,
+              492.0,
+              504.0
+            ],
+            "final_joint_encircle_rate": 1.0,
+            "post_gen0_joint_encircle_rate": 0.9722222222222222,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9976851851851851,
+              "cross": 0.9976851851851855,
+              "mii": 1.0000000000000004,
+              "min_offdiag": 0.9722222222222222,
+              "chance": 0.3333333333333333
+            }
+          }
+        }
+      },
+      {
+        "seed": 4,
+        "grown_type_mii_cross": 0.8657407407407407,
+        "grown_type_mii_self": 0.8796296296296297,
+        "arms": {
+          "A1_solo_baseline": {
+            "arm": "A1_solo_baseline",
+            "seed": 4,
+            "per_gen_joint_encircle_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_type_recovery_rate": [
+              0.9722222222222222,
+              0.9583333333333334,
+              0.9861111111111112,
+              0.9861111111111112
+            ],
+            "per_gen_energy_total": [
+              72.0,
+              72.0,
+              72.0,
+              72.0
+            ],
+            "final_joint_encircle_rate": 0.0,
+            "post_gen0_joint_encircle_rate": 0.0,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9745370370370371,
+              "cross": 0.9745370370370372,
+              "mii": 1.0000000000000002,
+              "min_offdiag": 0.9166666666666666,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A2_fitness": {
+            "arm": "A2_fitness",
+            "seed": 4,
+            "per_gen_joint_encircle_rate": [
+              0.9444444444444444,
+              0.9722222222222222,
+              0.8888888888888888,
+              1.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.9722222222222222,
+              0.9861111111111112,
+              0.9166666666666666,
+              1.0
+            ],
+            "per_gen_type_recovery_rate": [
+              0.9722222222222222,
+              0.9722222222222222,
+              0.9027777777777778,
+              1.0
+            ],
+            "per_gen_energy_total": [
+              480.0,
+              492.0,
+              456.0,
+              504.0
+            ],
+            "final_joint_encircle_rate": 1.0,
+            "post_gen0_joint_encircle_rate": 0.9537037037037037,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9629629629629629,
+              "cross": 0.958754208754209,
+              "mii": 0.995629370629371,
+              "min_offdiag": 0.75,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A5_random": {
+            "arm": "A5_random",
+            "seed": 4,
+            "per_gen_joint_encircle_rate": [
+              0.9444444444444444,
+              0.9444444444444444,
+              0.9722222222222222,
+              0.9722222222222222
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.9722222222222222,
+              0.9583333333333334,
+              0.9861111111111112,
+              0.9861111111111112
+            ],
+            "per_gen_type_recovery_rate": [
+              0.9722222222222222,
+              0.9583333333333334,
+              0.9861111111111112,
+              0.9861111111111112
+            ],
+            "per_gen_energy_total": [
+              480.0,
+              480.0,
+              492.0,
+              492.0
+            ],
+            "final_joint_encircle_rate": 0.9722222222222222,
+            "post_gen0_joint_encircle_rate": 0.9629629629629629,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9745370370370371,
+              "cross": 0.9745370370370372,
+              "mii": 1.0000000000000002,
+              "min_offdiag": 0.9166666666666666,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A_mute": {
+            "arm": "A_mute",
+            "seed": 4,
+            "per_gen_joint_encircle_rate": [
+              0.2777777777777778,
+              0.3333333333333333,
+              0.4166666666666667,
+              0.3333333333333333
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.2777777777777778,
+              0.3333333333333333,
+              0.4166666666666667,
+              0.3333333333333333
+            ],
+            "per_gen_type_recovery_rate": [
+              0.2777777777777778,
+              0.3333333333333333,
+              0.4166666666666667,
+              0.3333333333333333
+            ],
+            "per_gen_energy_total": [
+              192.0,
+              216.0,
+              252.0,
+              216.0
+            ],
+            "final_joint_encircle_rate": 0.3333333333333333,
+            "post_gen0_joint_encircle_rate": 0.3611111111111111,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9699074074074074,
+              "cross": 0.9699074074074078,
+              "mii": 1.0000000000000004,
+              "min_offdiag": 0.9166666666666666,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A_scramble_per_agent": {
+            "arm": "A_scramble_per_agent",
+            "seed": 4,
+            "per_gen_joint_encircle_rate": [
+              0.3333333333333333,
+              0.3055555555555556,
+              0.4444444444444444,
+              0.3055555555555556
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.4583333333333333,
+              0.4166666666666667,
+              0.5555555555555556,
+              0.4166666666666667
+            ],
+            "per_gen_type_recovery_rate": [
+              0.3611111111111111,
+              0.2916666666666667,
+              0.3888888888888889,
+              0.2916666666666667
+            ],
+            "per_gen_energy_total": [
+              216.0,
+              204.0,
+              264.0,
+              204.0
+            ],
+            "final_joint_encircle_rate": 0.3055555555555556,
+            "post_gen0_joint_encircle_rate": 0.35185185185185186,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9675925925925926,
+              "cross": 0.9629629629629637,
+              "mii": 0.9952153110047854,
+              "min_offdiag": 0.8611111111111112,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_fixed_type": {
+            "arm": "C_fixed_type",
+            "seed": 4,
+            "per_gen_joint_encircle_rate": [
+              0.2777777777777778,
+              0.3333333333333333,
+              0.4166666666666667,
+              0.3333333333333333
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.2777777777777778,
+              0.3333333333333333,
+              0.4166666666666667,
+              0.3333333333333333
+            ],
+            "per_gen_type_recovery_rate": [
+              0.2777777777777778,
+              0.3333333333333333,
+              0.4166666666666667,
+              0.3333333333333333
+            ],
+            "per_gen_energy_total": [
+              192.0,
+              216.0,
+              252.0,
+              216.0
+            ],
+            "final_joint_encircle_rate": 0.3333333333333333,
+            "post_gen0_joint_encircle_rate": 0.3611111111111111,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9699074074074074,
+              "cross": 0.9699074074074078,
+              "mii": 1.0000000000000004,
+              "min_offdiag": 0.9166666666666666,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_follow_caller": {
+            "arm": "C_follow_caller",
+            "seed": 4,
+            "per_gen_joint_encircle_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_type_recovery_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_energy_total": [
+              72.0,
+              72.0,
+              72.0,
+              72.0
+            ],
+            "final_joint_encircle_rate": 0.0,
+            "post_gen0_joint_encircle_rate": 0.0,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9768518518518517,
+              "cross": 0.9730639730639739,
+              "mii": 0.9961223610512719,
+              "min_offdiag": 0.8888888888888888,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_nospace_abstract": {
+            "arm": "C_nospace_abstract",
+            "seed": 4,
+            "per_gen_joint_encircle_rate": [
+              0.9444444444444444,
+              0.9444444444444444,
+              0.8611111111111112,
+              0.9722222222222222
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.9444444444444444,
+              0.9444444444444444,
+              0.8611111111111112,
+              0.9722222222222222
+            ],
+            "per_gen_type_recovery_rate": [
+              0.9722222222222222,
+              0.9722222222222222,
+              0.9027777777777778,
+              0.9861111111111112
+            ],
+            "per_gen_energy_total": [
+              480.0,
+              480.0,
+              444.0,
+              492.0
+            ],
+            "final_joint_encircle_rate": 0.9722222222222222,
+            "post_gen0_joint_encircle_rate": 0.9259259259259259,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9537037037037037,
+              "cross": 0.949284511784512,
+              "mii": 0.9953662842012359,
+              "min_offdiag": 0.75,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_parallel": {
+            "arm": "C_parallel",
+            "seed": 4,
+            "per_gen_joint_encircle_rate": [
+              0.9444444444444444,
+              0.9722222222222222,
+              0.8888888888888888,
+              1.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.9722222222222222,
+              0.9861111111111112,
+              0.9166666666666666,
+              1.0
+            ],
+            "per_gen_type_recovery_rate": [
+              0.9722222222222222,
+              0.9722222222222222,
+              0.9027777777777778,
+              1.0
+            ],
+            "per_gen_energy_total": [
+              480.0,
+              492.0,
+              456.0,
+              504.0
+            ],
+            "final_joint_encircle_rate": 1.0,
+            "post_gen0_joint_encircle_rate": 0.9537037037037037,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9629629629629629,
+              "cross": 0.958754208754209,
+              "mii": 0.995629370629371,
+              "min_offdiag": 0.75,
+              "chance": 0.3333333333333333
+            }
+          }
+        }
+      },
+      {
+        "seed": 5,
+        "grown_type_mii_cross": 0.9217171717171727,
+        "grown_type_mii_self": 0.923611111111111,
+        "arms": {
+          "A1_solo_baseline": {
+            "arm": "A1_solo_baseline",
+            "seed": 5,
+            "per_gen_joint_encircle_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_type_recovery_rate": [
+              1.0,
+              0.9861111111111112,
+              1.0,
+              1.0
+            ],
+            "per_gen_energy_total": [
+              72.0,
+              72.0,
+              72.0,
+              72.0
+            ],
+            "final_joint_encircle_rate": 0.0,
+            "post_gen0_joint_encircle_rate": 0.0,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 1.0,
+              "cross": 1.0,
+              "mii": 1.0,
+              "min_offdiag": 1.0,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A2_fitness": {
+            "arm": "A2_fitness",
+            "seed": 5,
+            "per_gen_joint_encircle_rate": [
+              1.0,
+              1.0,
+              1.0,
+              0.9722222222222222
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              1.0,
+              1.0,
+              1.0,
+              0.9861111111111112
+            ],
+            "per_gen_type_recovery_rate": [
+              1.0,
+              1.0,
+              1.0,
+              0.9861111111111112
+            ],
+            "per_gen_energy_total": [
+              504.0,
+              504.0,
+              504.0,
+              492.0
+            ],
+            "final_joint_encircle_rate": 0.9722222222222222,
+            "post_gen0_joint_encircle_rate": 0.9907407407407408,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9976851851851851,
+              "cross": 0.9976851851851852,
+              "mii": 1.0000000000000002,
+              "min_offdiag": 0.9722222222222222,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A5_random": {
+            "arm": "A5_random",
+            "seed": 5,
+            "per_gen_joint_encircle_rate": [
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "per_gen_type_recovery_rate": [
+              1.0,
+              0.9861111111111112,
+              1.0,
+              1.0
+            ],
+            "per_gen_energy_total": [
+              504.0,
+              504.0,
+              504.0,
+              504.0
+            ],
+            "final_joint_encircle_rate": 1.0,
+            "post_gen0_joint_encircle_rate": 1.0,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 1.0,
+              "cross": 1.0,
+              "mii": 1.0,
+              "min_offdiag": 1.0,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A_mute": {
+            "arm": "A_mute",
+            "seed": 5,
+            "per_gen_joint_encircle_rate": [
+              0.3055555555555556,
+              0.25,
+              0.3333333333333333,
+              0.3888888888888889
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.4722222222222222,
+              0.4305555555555556,
+              0.4027777777777778,
+              0.4722222222222222
+            ],
+            "per_gen_type_recovery_rate": [
+              0.3888888888888889,
+              0.3611111111111111,
+              0.3055555555555556,
+              0.3611111111111111
+            ],
+            "per_gen_energy_total": [
+              204.0,
+              180.0,
+              216.0,
+              240.0
+            ],
+            "final_joint_encircle_rate": 0.3888888888888889,
+            "post_gen0_joint_encircle_rate": 0.324074074074074,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 1.0,
+              "cross": 1.0,
+              "mii": 1.0,
+              "min_offdiag": 1.0,
+              "chance": 0.3333333333333333
+            }
+          },
+          "A_scramble_per_agent": {
+            "arm": "A_scramble_per_agent",
+            "seed": 5,
+            "per_gen_joint_encircle_rate": [
+              0.3611111111111111,
+              0.2222222222222222,
+              0.4444444444444444,
+              0.3333333333333333
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.5138888888888888,
+              0.3194444444444444,
+              0.5555555555555556,
+              0.5138888888888888
+            ],
+            "per_gen_type_recovery_rate": [
+              0.3611111111111111,
+              0.25,
+              0.4027777777777778,
+              0.3888888888888889
+            ],
+            "per_gen_energy_total": [
+              228.0,
+              168.0,
+              264.0,
+              216.0
+            ],
+            "final_joint_encircle_rate": 0.3333333333333333,
+            "post_gen0_joint_encircle_rate": 0.3333333333333333,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9976851851851851,
+              "cross": 0.9976851851851852,
+              "mii": 1.0000000000000002,
+              "min_offdiag": 0.9722222222222222,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_fixed_type": {
+            "arm": "C_fixed_type",
+            "seed": 5,
+            "per_gen_joint_encircle_rate": [
+              0.4444444444444444,
+              0.3611111111111111,
+              0.25,
+              0.4444444444444444
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.4444444444444444,
+              0.3611111111111111,
+              0.25,
+              0.4444444444444444
+            ],
+            "per_gen_type_recovery_rate": [
+              0.4444444444444444,
+              0.3611111111111111,
+              0.25,
+              0.4444444444444444
+            ],
+            "per_gen_energy_total": [
+              264.0,
+              228.0,
+              180.0,
+              264.0
+            ],
+            "final_joint_encircle_rate": 0.4444444444444444,
+            "post_gen0_joint_encircle_rate": 0.35185185185185186,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 1.0,
+              "cross": 1.0,
+              "mii": 1.0,
+              "min_offdiag": 1.0,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_follow_caller": {
+            "arm": "C_follow_caller",
+            "seed": 5,
+            "per_gen_joint_encircle_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_type_recovery_rate": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_gen_energy_total": [
+              72.0,
+              72.0,
+              72.0,
+              72.0
+            ],
+            "final_joint_encircle_rate": 0.0,
+            "post_gen0_joint_encircle_rate": 0.0,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9976851851851851,
+              "cross": 0.9976851851851852,
+              "mii": 1.0000000000000002,
+              "min_offdiag": 0.9722222222222222,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_nospace_abstract": {
+            "arm": "C_nospace_abstract",
+            "seed": 5,
+            "per_gen_joint_encircle_rate": [
+              1.0,
+              1.0,
+              1.0,
+              0.9722222222222222
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              1.0,
+              1.0,
+              1.0,
+              0.9722222222222222
+            ],
+            "per_gen_type_recovery_rate": [
+              1.0,
+              1.0,
+              1.0,
+              0.9861111111111112
+            ],
+            "per_gen_energy_total": [
+              504.0,
+              504.0,
+              504.0,
+              492.0
+            ],
+            "final_joint_encircle_rate": 0.9722222222222222,
+            "post_gen0_joint_encircle_rate": 0.9907407407407408,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9976851851851851,
+              "cross": 0.9976851851851852,
+              "mii": 1.0000000000000002,
+              "min_offdiag": 0.9722222222222222,
+              "chance": 0.3333333333333333
+            }
+          },
+          "C_parallel": {
+            "arm": "C_parallel",
+            "seed": 5,
+            "per_gen_joint_encircle_rate": [
+              1.0,
+              1.0,
+              1.0,
+              0.9722222222222222
+            ],
+            "per_gen_correct_type_arrival_rate": [
+              1.0,
+              1.0,
+              1.0,
+              0.9861111111111112
+            ],
+            "per_gen_type_recovery_rate": [
+              1.0,
+              1.0,
+              1.0,
+              0.9861111111111112
+            ],
+            "per_gen_energy_total": [
+              504.0,
+              504.0,
+              504.0,
+              492.0
+            ],
+            "final_joint_encircle_rate": 0.9722222222222222,
+            "post_gen0_joint_encircle_rate": 0.9907407407407408,
+            "deaths_per_gen": [
+              6,
+              6,
+              6
+            ],
+            "type_mii": {
+              "self": 0.9976851851851851,
+              "cross": 0.9976851851851852,
+              "mii": 1.0000000000000002,
+              "min_offdiag": 0.9722222222222222,
+              "chance": 0.3333333333333333
+            }
+          }
+        }
+      }
+    ],
+    "summary": {
+      "by_arm": {
+        "A1_solo_baseline": {
+          "mean_post_gen0_joint_encircle_rate": 0.0,
+          "sd_post_gen0_joint_encircle_rate": 0.0,
+          "per_seed_post_gen0_joint_encircle_rate": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mean_final_joint_encircle_rate": 0.0,
+          "per_seed_final_joint_encircle_rate": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mean_final_correct_type_arrival_rate": 0.0,
+          "mean_final_type_recovery_rate": 0.9861111111111112
+        },
+        "A2_fitness": {
+          "mean_post_gen0_joint_encircle_rate": 0.9614197530864198,
+          "sd_post_gen0_joint_encircle_rate": 0.03043685636314199,
+          "per_seed_post_gen0_joint_encircle_rate": [
+            0.8981481481481483,
+            0.9722222222222223,
+            0.9814814814814815,
+            0.9722222222222222,
+            0.9537037037037037,
+            0.9907407407407408
+          ],
+          "mean_final_joint_encircle_rate": 0.962962962962963,
+          "per_seed_final_joint_encircle_rate": [
+            0.8611111111111112,
+            0.9444444444444444,
+            1.0,
+            1.0,
+            1.0,
+            0.9722222222222222
+          ],
+          "mean_final_correct_type_arrival_rate": 0.9791666666666666,
+          "mean_final_type_recovery_rate": 0.9791666666666666
+        },
+        "A5_random": {
+          "mean_post_gen0_joint_encircle_rate": 0.9691358024691358,
+          "sd_post_gen0_joint_encircle_rate": 0.02047299253305804,
+          "per_seed_post_gen0_joint_encircle_rate": [
+            0.9444444444444445,
+            0.9814814814814815,
+            0.9814814814814815,
+            0.9444444444444443,
+            0.9629629629629629,
+            1.0
+          ],
+          "mean_final_joint_encircle_rate": 0.9768518518518519,
+          "per_seed_final_joint_encircle_rate": [
+            0.9722222222222222,
+            1.0,
+            0.9722222222222222,
+            0.9444444444444444,
+            0.9722222222222222,
+            1.0
+          ],
+          "mean_final_correct_type_arrival_rate": 0.9861111111111112,
+          "mean_final_type_recovery_rate": 0.9861111111111112
+        },
+        "A_mute": {
+          "mean_post_gen0_joint_encircle_rate": 0.2993827160493827,
+          "sd_post_gen0_joint_encircle_rate": 0.06452020049495949,
+          "per_seed_post_gen0_joint_encircle_rate": [
+            0.2777777777777778,
+            0.16666666666666666,
+            0.3425925925925926,
+            0.3240740740740741,
+            0.3611111111111111,
+            0.324074074074074
+          ],
+          "mean_final_joint_encircle_rate": 0.3148148148148148,
+          "per_seed_final_joint_encircle_rate": [
+            0.3055555555555556,
+            0.16666666666666666,
+            0.3055555555555556,
+            0.3888888888888889,
+            0.3333333333333333,
+            0.3888888888888889
+          ],
+          "mean_final_correct_type_arrival_rate": 0.37037037037037035,
+          "mean_final_type_recovery_rate": 0.3310185185185185
+        },
+        "A_scramble_per_agent": {
+          "mean_post_gen0_joint_encircle_rate": 0.3472222222222222,
+          "sd_post_gen0_joint_encircle_rate": 0.029158092018041964,
+          "per_seed_post_gen0_joint_encircle_rate": [
+            0.2962962962962963,
+            0.3703703703703704,
+            0.3888888888888889,
+            0.3425925925925926,
+            0.35185185185185186,
+            0.3333333333333333
+          ],
+          "mean_final_joint_encircle_rate": 0.34259259259259256,
+          "per_seed_final_joint_encircle_rate": [
+            0.25,
+            0.4444444444444444,
+            0.3611111111111111,
+            0.3611111111111111,
+            0.3055555555555556,
+            0.3333333333333333
+          ],
+          "mean_final_correct_type_arrival_rate": 0.4837962962962963,
+          "mean_final_type_recovery_rate": 0.34953703703703703
+        },
+        "C_fixed_type": {
+          "mean_post_gen0_joint_encircle_rate": 0.36419753086419754,
+          "sd_post_gen0_joint_encircle_rate": 0.03916227635941209,
+          "per_seed_post_gen0_joint_encircle_rate": [
+            0.3888888888888889,
+            0.3611111111111111,
+            0.2962962962962963,
+            0.4259259259259259,
+            0.3611111111111111,
+            0.35185185185185186
+          ],
+          "mean_final_joint_encircle_rate": 0.3935185185185185,
+          "per_seed_final_joint_encircle_rate": [
+            0.4166666666666667,
+            0.3888888888888889,
+            0.3333333333333333,
+            0.4444444444444444,
+            0.3333333333333333,
+            0.4444444444444444
+          ],
+          "mean_final_correct_type_arrival_rate": 0.3935185185185185,
+          "mean_final_type_recovery_rate": 0.3935185185185185
+        },
+        "C_follow_caller": {
+          "mean_post_gen0_joint_encircle_rate": 0.0,
+          "sd_post_gen0_joint_encircle_rate": 0.0,
+          "per_seed_post_gen0_joint_encircle_rate": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mean_final_joint_encircle_rate": 0.0,
+          "per_seed_final_joint_encircle_rate": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mean_final_correct_type_arrival_rate": 0.0,
+          "mean_final_type_recovery_rate": 0.0
+        },
+        "C_nospace_abstract": {
+          "mean_post_gen0_joint_encircle_rate": 0.9475308641975309,
+          "sd_post_gen0_joint_encircle_rate": 0.04331996557906852,
+          "per_seed_post_gen0_joint_encircle_rate": [
+            0.8611111111111112,
+            0.9722222222222223,
+            0.9722222222222222,
+            0.9629629629629629,
+            0.9259259259259259,
+            0.9907407407407408
+          ],
+          "mean_final_joint_encircle_rate": 0.9583333333333334,
+          "per_seed_final_joint_encircle_rate": [
+            0.8611111111111112,
+            0.9444444444444444,
+            1.0,
+            1.0,
+            0.9722222222222222,
+            0.9722222222222222
+          ],
+          "mean_final_correct_type_arrival_rate": 0.9583333333333334,
+          "mean_final_type_recovery_rate": 0.9768518518518519
+        },
+        "C_parallel": {
+          "mean_post_gen0_joint_encircle_rate": 0.9614197530864198,
+          "sd_post_gen0_joint_encircle_rate": 0.03043685636314199,
+          "per_seed_post_gen0_joint_encircle_rate": [
+            0.8981481481481483,
+            0.9722222222222223,
+            0.9814814814814815,
+            0.9722222222222222,
+            0.9537037037037037,
+            0.9907407407407408
+          ],
+          "mean_final_joint_encircle_rate": 0.962962962962963,
+          "per_seed_final_joint_encircle_rate": [
+            0.8611111111111112,
+            0.9444444444444444,
+            1.0,
+            1.0,
+            1.0,
+            0.9722222222222222
+          ],
+          "mean_final_correct_type_arrival_rate": 0.9791666666666666,
+          "mean_final_type_recovery_rate": 0.9791666666666666
+        }
+      },
+      "comparisons": {
+        "A2_fitness_minus_A_mute": {
+          "mean": 0.6620370370370371,
+          "ci95": [
+            0.6188271604938271,
+            0.7222222222222223
+          ],
+          "per_seed": [
+            0.6203703703703705,
+            0.8055555555555557,
+            0.6388888888888888,
+            0.6481481481481481,
+            0.5925925925925926,
+            0.6666666666666667
+          ]
+        },
+        "A2_fitness_minus_A_scramble_per_agent": {
+          "mean": 0.6141975308641976,
+          "ci95": [
+            0.5987654320987654,
+            0.6342592592592592
+          ],
+          "per_seed": [
+            0.601851851851852,
+            0.6018518518518519,
+            0.5925925925925926,
+            0.6296296296296295,
+            0.6018518518518519,
+            0.6574074074074074
+          ]
+        },
+        "A2_fitness_minus_C_fixed_type": {
+          "mean": 0.5972222222222222,
+          "ci95": [
+            0.5493827160493827,
+            0.6419753086419754
+          ],
+          "per_seed": [
+            0.5092592592592593,
+            0.6111111111111112,
+            0.6851851851851852,
+            0.5462962962962963,
+            0.5925925925925926,
+            0.638888888888889
+          ]
+        },
+        "A2_fitness_minus_C_follow_caller": {
+          "mean": 0.9614197530864198,
+          "ci95": [
+            0.9320987654320989,
+            0.9814814814814815
+          ],
+          "per_seed": [
+            0.8981481481481483,
+            0.9722222222222223,
+            0.9814814814814815,
+            0.9722222222222222,
+            0.9537037037037037,
+            0.9907407407407408
+          ]
+        },
+        "A2_fitness_minus_C_nospace_abstract": {
+          "mean": 0.013888888888888914,
+          "ci95": [
+            0.0030864197530864335,
+            0.02623456790123461
+          ],
+          "per_seed": [
+            0.03703703703703709,
+            0.0,
+            0.0092592592592593,
+            0.0092592592592593,
+            0.02777777777777779,
+            0.0
+          ]
+        },
+        "A2_fitness_minus_C_parallel": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "per_seed": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "A2_fitness_minus_A5_random": {
+          "mean": -0.007716049382715991,
+          "ci95": [
+            -0.026234567901234535,
+            0.009259259259259356
+          ],
+          "per_seed": [
+            -0.04629629629629628,
+            -0.00925925925925919,
+            0.0,
+            0.0277777777777779,
+            -0.00925925925925919,
+            -0.00925925925925919
+          ]
+        },
+        "A2_fitness_minus_A1_solo_baseline": {
+          "mean": 0.9614197530864198,
+          "ci95": [
+            0.9320987654320989,
+            0.9814814814814815
+          ],
+          "per_seed": [
+            0.8981481481481483,
+            0.9722222222222223,
+            0.9814814814814815,
+            0.9722222222222222,
+            0.9537037037037037,
+            0.9907407407407408
+          ]
+        }
+      },
+      "type_mii": {
+        "per_seed_cross": [
+          0.7337962962962963,
+          0.8348063973063977,
+          0.8594276094276088,
+          0.9114057239057237,
+          0.8657407407407407,
+          0.9217171717171727
+        ],
+        "mean_cross": 0.8544823232323233,
+        "per_seed_self": [
+          0.7777777777777778,
+          0.8495370370370371,
+          0.8680555555555555,
+          0.9166666666666665,
+          0.8796296296296297,
+          0.923611111111111
+        ],
+        "mean_self": 0.8692129629629629
+      },
+      "n_instances": 216,
+      "verdict": "CHANNEL_NOT_LOAD_BEARING",
+      "decision_text": "Mute, per-agent scramble, or fixed-type controls do not collapse toward the chance floor by the frozen margin; the grown language is not carrying the cooperative type strongly enough."
+    }
+  },
+  "honest_note": "TFER uses grown in-memory FactoredSpeaker/FactoredListener populations; movers receive only the decoded type plus their own local typed-field bearings, and true marker coordinates/sectors are scored in resolve_tfer_lock. Verdict names are the preregistered ladder, not post-hoc relabels."
+}

@@ -1,0 +1,183 @@
+{
+  "kind": "wall5_reservoir_control",
+  "per_seed": [
+    {
+      "seed": 0,
+      "n_test_lineages": 45,
+      "n_lineages": 136,
+      "comp_1": {
+        "input_int": 0.6529,
+        "input_onehot": 0.873,
+        "reservoir": 0.8667,
+        "trained": 0.7261,
+        "stored_input": 0.6529,
+        "selfcheck_input_match": 0.0
+      },
+      "comp_2": {
+        "input_int": 0.7317,
+        "input_onehot": 0.6988,
+        "reservoir": 0.907,
+        "trained": 0.7728,
+        "stored_input": 0.7317,
+        "selfcheck_input_match": -0.0
+      }
+    },
+    {
+      "seed": 1,
+      "n_test_lineages": 45,
+      "n_lineages": 136,
+      "comp_1": {
+        "input_int": 0.5293,
+        "input_onehot": 0.5824,
+        "reservoir": 0.9138,
+        "trained": 0.5949,
+        "stored_input": 0.5293,
+        "selfcheck_input_match": 0.0
+      },
+      "comp_2": {
+        "input_int": 0.5906,
+        "input_onehot": 0.7773,
+        "reservoir": 0.8336,
+        "trained": 0.6426,
+        "stored_input": 0.5906,
+        "selfcheck_input_match": -0.0
+      }
+    },
+    {
+      "seed": 2,
+      "n_test_lineages": 45,
+      "n_lineages": 136,
+      "comp_1": {
+        "input_int": 0.61,
+        "input_onehot": 0.7507,
+        "reservoir": 0.8679,
+        "trained": 0.7266,
+        "stored_input": 0.61,
+        "selfcheck_input_match": -0.0
+      },
+      "comp_2": {
+        "input_int": 0.7025,
+        "input_onehot": 0.8564,
+        "reservoir": 0.8684,
+        "trained": 0.766,
+        "stored_input": 0.7025,
+        "selfcheck_input_match": 0.0
+      }
+    },
+    {
+      "seed": 3,
+      "n_test_lineages": 45,
+      "n_lineages": 136,
+      "comp_1": {
+        "input_int": 0.7087,
+        "input_onehot": 0.8362,
+        "reservoir": 0.9162,
+        "trained": 0.9032,
+        "stored_input": 0.7087,
+        "selfcheck_input_match": 0.0
+      },
+      "comp_2": {
+        "input_int": 0.7087,
+        "input_onehot": 0.8362,
+        "reservoir": 0.9162,
+        "trained": 0.9032,
+        "stored_input": 0.7087,
+        "selfcheck_input_match": 0.0
+      }
+    },
+    {
+      "seed": 4,
+      "n_test_lineages": 45,
+      "n_lineages": 136,
+      "comp_1": {
+        "input_int": 0.728,
+        "input_onehot": 0.7959,
+        "reservoir": 0.8911,
+        "trained": 0.7725,
+        "stored_input": 0.728,
+        "selfcheck_input_match": -0.0
+      },
+      "comp_2": {
+        "input_int": 0.7861,
+        "input_onehot": 0.8623,
+        "reservoir": 0.9253,
+        "trained": 0.8511,
+        "stored_input": 0.7861,
+        "selfcheck_input_match": -0.0
+      }
+    },
+    {
+      "seed": 5,
+      "n_test_lineages": 45,
+      "n_lineages": 136,
+      "comp_1": {
+        "input_int": 0.6964,
+        "input_onehot": 0.6885,
+        "reservoir": 0.9228,
+        "trained": 0.8562,
+        "stored_input": 0.6964,
+        "selfcheck_input_match": -0.0
+      },
+      "comp_2": {
+        "input_int": 0.683,
+        "input_onehot": 0.8462,
+        "reservoir": 0.9135,
+        "trained": 0.8606,
+        "stored_input": 0.683,
+        "selfcheck_input_match": -0.0
+      }
+    }
+  ],
+  "aggregate": {
+    "comp_1": {
+      "trained_minus_reservoir_mean_ci": [
+        -0.1332,
+        -0.2419,
+        -0.0244
+      ],
+      "trained_minus_onehotinput_mean_ci": [
+        0.0088,
+        -0.1013,
+        0.1189
+      ],
+      "orig_value_added_vs_intinput_mean_ci": [
+        0.109,
+        0.0473,
+        0.1707
+      ],
+      "per_seed_trained_minus_reservoir": [
+        -0.1406,
+        -0.3189,
+        -0.1413,
+        -0.013,
+        -0.1186,
+        -0.0666
+      ]
+    },
+    "comp_2": {
+      "trained_minus_reservoir_mean_ci": [
+        -0.0946,
+        -0.1606,
+        -0.0287
+      ],
+      "trained_minus_onehotinput_mean_ci": [
+        -0.0135,
+        -0.102,
+        0.075
+      ],
+      "orig_value_added_vs_intinput_mean_ci": [
+        0.0989,
+        0.0273,
+        0.1706
+      ],
+      "per_seed_trained_minus_reservoir": [
+        -0.1342,
+        -0.191,
+        -0.1024,
+        -0.013,
+        -0.0742,
+        -0.0529
+      ]
+    }
+  }
+}
