@@ -1,0 +1,309 @@
+{
+  "kind": "rtc_g1c_spatial",
+  "seeds": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "prereg": {
+    "RTC_SENSOR_SIGMA": 0.3,
+    "SP_STEPS": 360,
+    "SP_POSTS": 12,
+    "SP_DIST_COST": 0.3,
+    "SP_MARGIN": 0.1,
+    "SP_CHAN_EPOCHS": 500
+  },
+  "channel_roundtrip": [
+    0.8112,
+    0.9408,
+    0.8736,
+    0.8112
+  ],
+  "channel_roundtrip_mean": 0.8592,
+  "summary": {
+    "fusion": {
+      "alive": 0.25,
+      "age": 259.75,
+      "eat_rate": 0.1206,
+      "tox_rate": 0.1446,
+      "rest_rate": 0.7349,
+      "alive_ci": [
+        0.0,
+        0.75
+      ]
+    },
+    "mute": {
+      "alive": 0.25,
+      "age": 219.5,
+      "eat_rate": 0.1024,
+      "tox_rate": 0.1616,
+      "rest_rate": 0.7359,
+      "alive_ci": [
+        0.0,
+        0.75
+      ]
+    },
+    "scramble": {
+      "alive": 0.75,
+      "age": 314.25,
+      "eat_rate": 0.2611,
+      "tox_rate": 0.1138,
+      "rest_rate": 0.6251,
+      "alive_ci": [
+        0.25,
+        1.0
+      ]
+    },
+    "misroute": {
+      "alive": 0.5,
+      "age": 306.25,
+      "eat_rate": 0.2615,
+      "tox_rate": 0.0992,
+      "rest_rate": 0.6393,
+      "alive_ci": [
+        0.0,
+        1.0
+      ]
+    },
+    "body_follow": {
+      "alive": 0.5,
+      "age": 331.25,
+      "eat_rate": 0.2888,
+      "tox_rate": 0.0865,
+      "rest_rate": 0.6247,
+      "alive_ci": [
+        0.0,
+        1.0
+      ]
+    }
+  },
+  "deltas": {
+    "fusion_minus_mute": [
+      -0.75,
+      0.75
+    ],
+    "fusion_minus_scramble": [
+      -1.0,
+      0.5
+    ],
+    "fusion_minus_misroute": [
+      -0.75,
+      0.0
+    ],
+    "fusion_minus_body_follow": [
+      -0.75,
+      0.0
+    ]
+  },
+  "gates": {
+    "channel_accurate": true,
+    "fusion_survives": false,
+    "fusion_beats_scramble": false,
+    "fusion_beats_misroute": false,
+    "fusion_beats_mute": false
+  },
+  "verdict": "RTC_G1C_INCONCLUSIVE",
+  "rows": [
+    {
+      "seed": 0,
+      "arm": "fusion",
+      "alive": 0.0,
+      "age": 232,
+      "final_energy": 0.0,
+      "eat_rate": 0.0948,
+      "tox_rate": 0.125,
+      "rest_rate": 0.7802
+    },
+    {
+      "seed": 0,
+      "arm": "mute",
+      "alive": 0.0,
+      "age": 161,
+      "final_energy": 0.0,
+      "eat_rate": 0.0062,
+      "tox_rate": 0.1925,
+      "rest_rate": 0.8012
+    },
+    {
+      "seed": 0,
+      "arm": "scramble",
+      "alive": 1.0,
+      "age": 360,
+      "final_energy": 18.639,
+      "eat_rate": 0.2806,
+      "tox_rate": 0.1139,
+      "rest_rate": 0.6056
+    },
+    {
+      "seed": 0,
+      "arm": "misroute",
+      "alive": 0.0,
+      "age": 177,
+      "final_energy": 0.0,
+      "eat_rate": 0.0,
+      "tox_rate": 0.1469,
+      "rest_rate": 0.8531
+    },
+    {
+      "seed": 0,
+      "arm": "body_follow",
+      "alive": 0.0,
+      "age": 318,
+      "final_energy": 0.0,
+      "eat_rate": 0.1415,
+      "tox_rate": 0.0692,
+      "rest_rate": 0.7893
+    },
+    {
+      "seed": 1,
+      "arm": "fusion",
+      "alive": 0.0,
+      "age": 160,
+      "final_energy": 0.0,
+      "eat_rate": 0.0,
+      "tox_rate": 0.1938,
+      "rest_rate": 0.8063
+    },
+    {
+      "seed": 1,
+      "arm": "mute",
+      "alive": 0.0,
+      "age": 166,
+      "final_energy": 0.0,
+      "eat_rate": 0.0,
+      "tox_rate": 0.1747,
+      "rest_rate": 0.8253
+    },
+    {
+      "seed": 1,
+      "arm": "scramble",
+      "alive": 1.0,
+      "age": 360,
+      "final_energy": 8.348,
+      "eat_rate": 0.1833,
+      "tox_rate": 0.1139,
+      "rest_rate": 0.7028
+    },
+    {
+      "seed": 1,
+      "arm": "misroute",
+      "alive": 0.0,
+      "age": 328,
+      "final_energy": 0.0,
+      "eat_rate": 0.1433,
+      "tox_rate": 0.0915,
+      "rest_rate": 0.7652
+    },
+    {
+      "seed": 1,
+      "arm": "body_follow",
+      "alive": 0.0,
+      "age": 287,
+      "final_energy": 0.0,
+      "eat_rate": 0.1498,
+      "tox_rate": 0.1045,
+      "rest_rate": 0.7456
+    },
+    {
+      "seed": 2,
+      "arm": "fusion",
+      "alive": 0.0,
+      "age": 287,
+      "final_energy": 0.0,
+      "eat_rate": 0.2265,
+      "tox_rate": 0.1289,
+      "rest_rate": 0.6446
+    },
+    {
+      "seed": 2,
+      "arm": "mute",
+      "alive": 1.0,
+      "age": 360,
+      "final_energy": 119.638,
+      "eat_rate": 0.325,
+      "tox_rate": 0.1222,
+      "rest_rate": 0.5528
+    },
+    {
+      "seed": 2,
+      "arm": "scramble",
+      "alive": 1.0,
+      "age": 360,
+      "final_energy": 300.439,
+      "eat_rate": 0.5806,
+      "tox_rate": 0.0806,
+      "rest_rate": 0.3389
+    },
+    {
+      "seed": 2,
+      "arm": "misroute",
+      "alive": 1.0,
+      "age": 360,
+      "final_energy": 256.8,
+      "eat_rate": 0.5472,
+      "tox_rate": 0.0583,
+      "rest_rate": 0.3944
+    },
+    {
+      "seed": 2,
+      "arm": "body_follow",
+      "alive": 1.0,
+      "age": 360,
+      "final_energy": 136.451,
+      "eat_rate": 0.3889,
+      "tox_rate": 0.1083,
+      "rest_rate": 0.5028
+    },
+    {
+      "seed": 3,
+      "arm": "fusion",
+      "alive": 1.0,
+      "age": 360,
+      "final_energy": 12.571,
+      "eat_rate": 0.1611,
+      "tox_rate": 0.1306,
+      "rest_rate": 0.7083
+    },
+    {
+      "seed": 3,
+      "arm": "mute",
+      "alive": 0.0,
+      "age": 191,
+      "final_energy": 0.0,
+      "eat_rate": 0.0785,
+      "tox_rate": 0.1571,
+      "rest_rate": 0.7644
+    },
+    {
+      "seed": 3,
+      "arm": "scramble",
+      "alive": 0.0,
+      "age": 177,
+      "final_energy": 0.0,
+      "eat_rate": 0.0,
+      "tox_rate": 0.1469,
+      "rest_rate": 0.8531
+    },
+    {
+      "seed": 3,
+      "arm": "misroute",
+      "alive": 1.0,
+      "age": 360,
+      "final_energy": 66.582,
+      "eat_rate": 0.3556,
+      "tox_rate": 0.1,
+      "rest_rate": 0.5444
+    },
+    {
+      "seed": 3,
+      "arm": "body_follow",
+      "alive": 1.0,
+      "age": 360,
+      "final_energy": 142.218,
+      "eat_rate": 0.475,
+      "tox_rate": 0.0639,
+      "rest_rate": 0.4611
+    }
+  ]
+}

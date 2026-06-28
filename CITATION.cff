@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this software or refer to these results, please cite the ALIFE 2026 Late-Breaking Abstract below."
+title: "Grown Grounded Language: Growing a Shared, Decodable, Grounded Language from Scratch (and Five Walls It Hits)"
+type: software
+authors:
+  - family-names: "Yang"
+    given-names: "Chunxuan"
+    affiliation: "Sogang University"
+repository-code: "https://github.com/yangchunxuan/grown-grounded-language"
+license: MIT
+keywords:
+  - artificial life
+  - emergent communication
+  - grounded language
+  - multi-agent reinforcement learning
+  - world models
+  - negative results
+preferred-citation:
+  type: conference-paper
+  title: "Grown Grounded Language: Growing a Shared, Decodable, Grounded Language from Scratch (and Five Walls It Hits)"
+  authors:
+    - family-names: "Yang"
+      given-names: "Chunxuan"
+      affiliation: "Sogang University"
+  collection-title: "Proceedings of the 2026 Conference on Artificial Life (ALIFE 2026), Late-Breaking Abstracts"
+  year: 2026
+  notes: "Late-Breaking Abstract. Paper text licensed CC-BY 4.0."

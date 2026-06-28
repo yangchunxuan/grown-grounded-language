@@ -1,0 +1,755 @@
+{
+  "kind": "ctm_delib_v2",
+  "frozen": {
+    "DELIB_VERSION": "CTM-DELIB-v2",
+    "DELIB_FREEZE_DATE": "2026-06-24",
+    "DELIB_STATUS": "FROZEN_PRE_RUN",
+    "DELIB_DEVICE": "auto",
+    "DELIB_N_ITEMS": 12,
+    "DELIB_K_TRAIN": 4,
+    "DELIB_K_MAX": 8,
+    "DELIB_TICKS": 8,
+    "DELIB_HELDOUT_K": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "DELIB_TRAIN_K": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "DELIB_TOKEN_DIM": 14,
+    "DELIB_HIDDEN": 48,
+    "DELIB_SYNC_PAIRS": 24,
+    "DELIB_MEMORY_LENGTH": 3,
+    "DELIB_NLM_HIDDEN": 12,
+    "DELIB_BOTTLENECK": 6,
+    "DELIB_PROBE_DIM": 24,
+    "DELIB_N_SEEDS": 6,
+    "DELIB_PILOT_SEEDS": 2,
+    "DELIB_BATCH": 64,
+    "DELIB_TRAIN_STEPS": 90,
+    "DELIB_MLP_STEPS": 80,
+    "DELIB_PROBE_STEPS": 80,
+    "DELIB_EVAL_N": 384,
+    "DELIB_PILOT_EVAL_N": 192,
+    "DELIB_LR": 0.003,
+    "DELIB_PROBE_LR": 0.025,
+    "DELIB_CHANCE_ACC": 0.08333333333333333,
+    "DELIB_TRAIN_ACC_MIN": 0.82,
+    "DELIB_DEEP_ABOVE_CHANCE_MIN": 0.1,
+    "DELIB_MLP_DEEP_FAIL_MAX": 0.35,
+    "DELIB_FREEZE_MAX_GAIN": 0.05,
+    "DELIB_HOP_MONO_MIN": 0.7,
+    "DELIB_READABILITY_MARGIN": 0.03,
+    "DELIB_HALTING_SLOPE_LO": 0.8,
+    "DELIB_HALTING_SLOPE_HI": 1.2,
+    "DELIB_ALPHA": 0.05,
+    "DELIB_BOOTSTRAP_REPS": 600,
+    "DELIB_COMPUTE_MAX_SECONDS": 900.0,
+    "DELIB_DECISION": {
+      "CTM_READABILITY_WINS": "CTM learns and extrapolates, freeze-input gate passes, hop trajectory is monotone/halting-aligned, and CTM sync readability beats dim-matched GRU hidden plus temporal and permutation nulls with Holm-corrected CI support.",
+      "GRU_MATCHES_CTM": "CTM learns/extrapolates but sync readability does not cleanly beat the dimension-matched GRU hidden probe and null controls.",
+      "PARTIAL": "some CTM readability edge exists but at least one positive control/gate fails",
+      "NO_LEARNING": "supervised CTM does not learn the train-depth task",
+      "HARD_REJECT": "random-init/redline failure, MLP solves held-out deep-k, or freeze-input accumulation gate trips",
+      "UNDERPOWERED": "fewer than DELIB_N_SEEDS completed powered seeds"
+    },
+    "DELIB_DECISION_RULE": "Train depths are k in DELIB_TRAIN_K and test depths are strictly deeper DELIB_HELDOUT_K. A depth-cropped overparameterized MLP must fail held-out deep-k. CTM/GRU run one continuous rollout to DELIB_TICKS with per-tick readouts under the same bottleneck. Headline evidence is linear hop probing from answer-logit residualized representations, not final answer accuracy."
+  },
+  "pilot": {
+    "seeds": [
+      0,
+      1
+    ],
+    "rows": [
+      {
+        "seed": 0,
+        "ctm_train_acc": 1.0,
+        "ctm_train_last_acc": 0.0989583358168602,
+        "ctm_deep_acc": 1.0,
+        "ctm_deep_last_acc": 0.375,
+        "gru_deep_acc": 0.2291666716337204,
+        "gru_deep_last_acc": 0.1041666716337204,
+        "mlp_deep_acc": 0.0,
+        "ctm_probe": {
+          "label": "CTM_SYNC",
+          "hop_probe_acc": 0.3541666865348816,
+          "temporal_shuffle_acc": 0.12890625,
+          "permutation_acc": 0.14453125,
+          "hop_monotonicity": 0.71875,
+          "halting_slope": 1.0,
+          "readability_score": 0.4635416805744171
+        },
+        "gru_probe": {
+          "label": "DIM_MATCHED_GRU_HIDDEN",
+          "hop_probe_acc": 0.25,
+          "temporal_shuffle_acc": 0.1927083432674408,
+          "permutation_acc": 0.2278645932674408,
+          "hop_monotonicity": 0.8526785969734192,
+          "halting_slope": 1.0,
+          "readability_score": 0.4308035790920257
+        },
+        "freeze_gate": {
+          "max_accuracy_gain_after_freeze": 0.0,
+          "passes": true,
+          "probe_context": "CTM_SYNC"
+        }
+      },
+      {
+        "seed": 1,
+        "ctm_train_acc": 1.0,
+        "ctm_train_last_acc": 0.125,
+        "ctm_deep_acc": 0.9947916865348816,
+        "ctm_deep_last_acc": 0.3697916865348816,
+        "gru_deep_acc": 0.3541666865348816,
+        "gru_deep_last_acc": 0.0885416716337204,
+        "mlp_deep_acc": 0.0,
+        "ctm_probe": {
+          "label": "CTM_SYNC",
+          "hop_probe_acc": 0.3541666865348816,
+          "temporal_shuffle_acc": 0.1614583432674408,
+          "permutation_acc": 0.1875,
+          "hop_monotonicity": 0.7351190447807312,
+          "halting_slope": 1.0,
+          "readability_score": 0.4684523940086365
+        },
+        "gru_probe": {
+          "label": "DIM_MATCHED_GRU_HIDDEN",
+          "hop_probe_acc": 0.3072916865348816,
+          "temporal_shuffle_acc": 0.2122395932674408,
+          "permutation_acc": 0.2174479216337204,
+          "hop_monotonicity": 0.8586309552192688,
+          "halting_slope": 1.0,
+          "readability_score": 0.4726934671401977
+        },
+        "freeze_gate": {
+          "max_accuracy_gain_after_freeze": 0.0,
+          "passes": true,
+          "probe_context": "CTM_SYNC"
+        }
+      }
+    ],
+    "summary": {
+      "seeds": 2,
+      "ctm_train_acc": {
+        "mean": 1.0,
+        "ci95_bca": [
+          1.0,
+          1.0
+        ],
+        "per_seed": [
+          1.0,
+          1.0
+        ]
+      },
+      "ctm_train_last_acc": {
+        "mean": 0.1119791679084301,
+        "ci95_bca": [
+          0.0989583358168602,
+          0.125
+        ],
+        "per_seed": [
+          0.0989583358168602,
+          0.125
+        ]
+      },
+      "ctm_deep_acc": {
+        "mean": 0.9973958432674408,
+        "ci95_bca": [
+          0.9947916865348816,
+          1.0
+        ],
+        "per_seed": [
+          1.0,
+          0.9947916865348816
+        ]
+      },
+      "ctm_deep_last_acc": {
+        "mean": 0.3723958432674408,
+        "ci95_bca": [
+          0.3697916865348816,
+          0.375
+        ],
+        "per_seed": [
+          0.375,
+          0.3697916865348816
+        ]
+      },
+      "gru_deep_acc": {
+        "mean": 0.291666679084301,
+        "ci95_bca": [
+          0.2291666716337204,
+          0.3541666865348816
+        ],
+        "per_seed": [
+          0.2291666716337204,
+          0.3541666865348816
+        ]
+      },
+      "gru_deep_last_acc": {
+        "mean": 0.0963541716337204,
+        "ci95_bca": [
+          0.0885416716337204,
+          0.1041666716337204
+        ],
+        "per_seed": [
+          0.1041666716337204,
+          0.0885416716337204
+        ]
+      },
+      "mlp_deep_acc": {
+        "mean": 0.0,
+        "ci95_bca": [
+          0.0,
+          0.0
+        ],
+        "per_seed": [
+          0.0,
+          0.0
+        ]
+      },
+      "ctm_hop_probe_acc": {
+        "mean": 0.3541666865348816,
+        "ci95_bca": [
+          0.3541666865348816,
+          0.3541666865348816
+        ],
+        "per_seed": [
+          0.3541666865348816,
+          0.3541666865348816
+        ]
+      },
+      "gru_hop_probe_acc": {
+        "mean": 0.2786458432674408,
+        "ci95_bca": [
+          0.25,
+          0.3072916865348816
+        ],
+        "per_seed": [
+          0.25,
+          0.3072916865348816
+        ]
+      },
+      "ctm_hop_monotonicity": {
+        "mean": 0.7269345223903656,
+        "ci95_bca": [
+          0.71875,
+          0.7351190447807312
+        ],
+        "per_seed": [
+          0.71875,
+          0.7351190447807312
+        ]
+      },
+      "ctm_halting_slope": {
+        "mean": 1.0,
+        "ci95_bca": [
+          1.0,
+          1.0
+        ],
+        "per_seed": [
+          1.0,
+          1.0
+        ]
+      },
+      "freeze_max_gain": {
+        "mean": 0.0,
+        "ci95_bca": [
+          0.0,
+          0.0
+        ],
+        "per_seed": [
+          0.0,
+          0.0
+        ]
+      },
+      "comparisons": {
+        "ctm_minus_gru_readability": {
+          "mean": 0.014248514175415061,
+          "ci95_bca": [
+            -0.004241073131561246,
+            0.03273810148239137
+          ],
+          "per_seed": [
+            0.03273810148239137,
+            -0.004241073131561246
+          ]
+        },
+        "ctm_minus_temporal_null": {
+          "mean": 0.2089843899011612,
+          "ci95_bca": [
+            0.1927083432674408,
+            0.2252604365348816
+          ],
+          "per_seed": [
+            0.2252604365348816,
+            0.1927083432674408
+          ]
+        },
+        "ctm_minus_permutation_null": {
+          "mean": 0.1881510615348816,
+          "ci95_bca": [
+            0.1666666865348816,
+            0.2096354365348816
+          ],
+          "per_seed": [
+            0.2096354365348816,
+            0.1666666865348816
+          ]
+        }
+      },
+      "holm_pass": false,
+      "wall_seconds": 36.019272999999885,
+      "verdict": "PARTIAL",
+      "decision_text": "some CTM readability edge exists but at least one positive control/gate fails"
+    }
+  },
+  "powered": {
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "rows": [
+      {
+        "seed": 0,
+        "ctm_train_acc": 1.0,
+        "ctm_train_last_acc": 0.0859375,
+        "ctm_deep_acc": 1.0,
+        "ctm_deep_last_acc": 0.3567708432674408,
+        "gru_deep_acc": 0.8984375,
+        "gru_deep_last_acc": 0.2473958432674408,
+        "mlp_deep_acc": 0.0,
+        "ctm_probe": {
+          "label": "CTM_SYNC",
+          "hop_probe_acc": 0.3704427182674408,
+          "temporal_shuffle_acc": 0.1126302108168602,
+          "permutation_acc": 0.1705729216337204,
+          "hop_monotonicity": 0.7507440447807312,
+          "halting_slope": 1.0,
+          "readability_score": 0.4845331162214279
+        },
+        "gru_probe": {
+          "label": "DIM_MATCHED_GRU_HIDDEN",
+          "hop_probe_acc": 0.2799479365348816,
+          "temporal_shuffle_acc": 0.2220052182674408,
+          "permutation_acc": 0.189453125,
+          "hop_monotonicity": 0.730654776096344,
+          "halting_slope": 1.0,
+          "readability_score": 0.4151599884033203
+        },
+        "freeze_gate": {
+          "max_accuracy_gain_after_freeze": 0.0,
+          "passes": true,
+          "probe_context": "CTM_SYNC"
+        }
+      },
+      {
+        "seed": 1,
+        "ctm_train_acc": 1.0,
+        "ctm_train_last_acc": 0.0885416716337204,
+        "ctm_deep_acc": 1.0,
+        "ctm_deep_last_acc": 0.390625,
+        "gru_deep_acc": 1.0,
+        "gru_deep_last_acc": 0.2890625,
+        "mlp_deep_acc": 0.0,
+        "ctm_probe": {
+          "label": "CTM_SYNC",
+          "hop_probe_acc": 0.3385416865348816,
+          "temporal_shuffle_acc": 0.1744791716337204,
+          "permutation_acc": 0.1725260466337204,
+          "hop_monotonicity": 0.7447916865348816,
+          "halting_slope": 1.0,
+          "readability_score": 0.46041668653488155
+        },
+        "gru_probe": {
+          "label": "DIM_MATCHED_GRU_HIDDEN",
+          "hop_probe_acc": 0.2578125,
+          "temporal_shuffle_acc": 0.21484375,
+          "permutation_acc": 0.1959635466337204,
+          "hop_monotonicity": 0.7686011791229248,
+          "halting_slope": 1.0,
+          "readability_score": 0.4110491037368774
+        },
+        "freeze_gate": {
+          "max_accuracy_gain_after_freeze": 0.0,
+          "passes": true,
+          "probe_context": "CTM_SYNC"
+        }
+      },
+      {
+        "seed": 2,
+        "ctm_train_acc": 1.0,
+        "ctm_train_last_acc": 0.0807291716337204,
+        "ctm_deep_acc": 1.0,
+        "ctm_deep_last_acc": 0.3802083432674408,
+        "gru_deep_acc": 0.9322916865348816,
+        "gru_deep_last_acc": 0.2786458432674408,
+        "mlp_deep_acc": 0.0,
+        "ctm_probe": {
+          "label": "CTM_SYNC",
+          "hop_probe_acc": 0.3424479365348816,
+          "temporal_shuffle_acc": 0.1471354216337204,
+          "permutation_acc": 0.1536458432674408,
+          "hop_monotonicity": 0.7485119104385376,
+          "halting_slope": 1.0,
+          "readability_score": 0.46426712870597836
+        },
+        "gru_probe": {
+          "label": "DIM_MATCHED_GRU_HIDDEN",
+          "hop_probe_acc": 0.2864583432674408,
+          "temporal_shuffle_acc": 0.2200520932674408,
+          "permutation_acc": 0.197265625,
+          "hop_monotonicity": 0.746279776096344,
+          "halting_slope": 1.0,
+          "readability_score": 0.42440477311611174
+        },
+        "freeze_gate": {
+          "max_accuracy_gain_after_freeze": 0.0,
+          "passes": true,
+          "probe_context": "CTM_SYNC"
+        }
+      },
+      {
+        "seed": 3,
+        "ctm_train_acc": 1.0,
+        "ctm_train_last_acc": 0.1067708358168602,
+        "ctm_deep_acc": 1.0,
+        "ctm_deep_last_acc": 0.328125,
+        "gru_deep_acc": 0.9973958730697632,
+        "gru_deep_last_acc": 0.3151041865348816,
+        "mlp_deep_acc": 0.0,
+        "ctm_probe": {
+          "label": "CTM_SYNC",
+          "hop_probe_acc": 0.3346354365348816,
+          "temporal_shuffle_acc": 0.1569010466337204,
+          "permutation_acc": 0.15625,
+          "hop_monotonicity": 0.7433035969734192,
+          "halting_slope": 1.0,
+          "readability_score": 0.4572358846664428
+        },
+        "gru_probe": {
+          "label": "DIM_MATCHED_GRU_HIDDEN",
+          "hop_probe_acc": 0.2779948115348816,
+          "temporal_shuffle_acc": 0.201171875,
+          "permutation_acc": 0.19921875,
+          "hop_monotonicity": 0.734375,
+          "halting_slope": 1.0,
+          "readability_score": 0.41490886807441707
+        },
+        "freeze_gate": {
+          "max_accuracy_gain_after_freeze": 0.0,
+          "passes": true,
+          "probe_context": "CTM_SYNC"
+        }
+      },
+      {
+        "seed": 4,
+        "ctm_train_acc": 1.0,
+        "ctm_train_last_acc": 0.0703125,
+        "ctm_deep_acc": 1.0,
+        "ctm_deep_last_acc": 0.3385416865348816,
+        "gru_deep_acc": 0.9921875,
+        "gru_deep_last_acc": 0.2630208432674408,
+        "mlp_deep_acc": 0.0,
+        "ctm_probe": {
+          "label": "CTM_SYNC",
+          "hop_probe_acc": 0.3216145932674408,
+          "temporal_shuffle_acc": 0.1549479216337204,
+          "permutation_acc": 0.1725260466337204,
+          "hop_monotonicity": 0.7313988208770752,
+          "halting_slope": 1.0,
+          "readability_score": 0.44454986155033105
+        },
+        "gru_probe": {
+          "label": "DIM_MATCHED_GRU_HIDDEN",
+          "hop_probe_acc": 0.2942708432674408,
+          "temporal_shuffle_acc": 0.1725260466337204,
+          "permutation_acc": 0.1673177182674408,
+          "hop_monotonicity": 0.7194940447807312,
+          "halting_slope": 1.0,
+          "readability_score": 0.4218378037214279
+        },
+        "freeze_gate": {
+          "max_accuracy_gain_after_freeze": 0.0,
+          "passes": true,
+          "probe_context": "CTM_SYNC"
+        }
+      },
+      {
+        "seed": 5,
+        "ctm_train_acc": 1.0,
+        "ctm_train_last_acc": 0.0989583358168602,
+        "ctm_deep_acc": 1.0,
+        "ctm_deep_last_acc": 0.296875,
+        "gru_deep_acc": 1.0,
+        "gru_deep_last_acc": 0.28125,
+        "mlp_deep_acc": 0.0,
+        "ctm_probe": {
+          "label": "CTM_SYNC",
+          "hop_probe_acc": 0.37890625,
+          "temporal_shuffle_acc": 0.1575520932674408,
+          "permutation_acc": 0.1666666716337204,
+          "hop_monotonicity": 0.7559524178504944,
+          "halting_slope": 1.0,
+          "readability_score": 0.49202010035514826
+        },
+        "gru_probe": {
+          "label": "DIM_MATCHED_GRU_HIDDEN",
+          "hop_probe_acc": 0.2591145932674408,
+          "temporal_shuffle_acc": 0.1627604216337204,
+          "permutation_acc": 0.1751302182674408,
+          "hop_monotonicity": 0.6726190447807312,
+          "halting_slope": 1.0,
+          "readability_score": 0.3831659287214279
+        },
+        "freeze_gate": {
+          "max_accuracy_gain_after_freeze": 0.0,
+          "passes": true,
+          "probe_context": "CTM_SYNC"
+        }
+      }
+    ],
+    "summary": {
+      "seeds": 6,
+      "ctm_train_acc": {
+        "mean": 1.0,
+        "ci95_bca": [
+          1.0,
+          1.0
+        ],
+        "per_seed": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "ctm_train_last_acc": {
+        "mean": 0.08854166915019353,
+        "ci95_bca": [
+          0.07899305721124013,
+          0.09809028108914693
+        ],
+        "per_seed": [
+          0.0859375,
+          0.0885416716337204,
+          0.0807291716337204,
+          0.1067708358168602,
+          0.0703125,
+          0.0989583358168602
+        ]
+      },
+      "ctm_deep_acc": {
+        "mean": 1.0,
+        "ci95_bca": [
+          1.0,
+          1.0
+        ],
+        "per_seed": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "ctm_deep_last_acc": {
+        "mean": 0.3485243121782939,
+        "ci95_bca": [
+          0.3229166716337204,
+          0.3710937549670537
+        ],
+        "per_seed": [
+          0.3567708432674408,
+          0.390625,
+          0.3802083432674408,
+          0.328125,
+          0.3385416865348816,
+          0.296875
+        ]
+      },
+      "gru_deep_acc": {
+        "mean": 0.9700520932674408,
+        "ci95_bca": [
+          0.9318576455116272,
+          0.9973958532015482
+        ],
+        "per_seed": [
+          0.8984375,
+          1.0,
+          0.9322916865348816,
+          0.9973958730697632,
+          0.9921875,
+          1.0
+        ]
+      },
+      "gru_deep_last_acc": {
+        "mean": 0.279079869389534,
+        "ci95_bca": [
+          0.2608507027228673,
+          0.2960069576899211
+        ],
+        "per_seed": [
+          0.2473958432674408,
+          0.2890625,
+          0.2786458432674408,
+          0.3151041865348816,
+          0.2630208432674408,
+          0.28125
+        ]
+      },
+      "mlp_deep_acc": {
+        "mean": 0.0,
+        "ci95_bca": [
+          0.0,
+          0.0
+        ],
+        "per_seed": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "ctm_hop_probe_acc": {
+        "mean": 0.3477647701899211,
+        "ci95_bca": [
+          0.3328993221124013,
+          0.3633897652228673
+        ],
+        "per_seed": [
+          0.3704427182674408,
+          0.3385416865348816,
+          0.3424479365348816,
+          0.3346354365348816,
+          0.3216145932674408,
+          0.37890625
+        ]
+      },
+      "gru_hop_probe_acc": {
+        "mean": 0.2759331713120143,
+        "ci95_bca": [
+          0.265407994389534,
+          0.2862413326899211
+        ],
+        "per_seed": [
+          0.2799479365348816,
+          0.2578125,
+          0.2864583432674408,
+          0.2779948115348816,
+          0.2942708432674408,
+          0.2591145932674408
+        ]
+      },
+      "ctm_hop_monotonicity": {
+        "mean": 0.7457837462425232,
+        "ci95_bca": [
+          0.73908731341362,
+          0.7517361342906952
+        ],
+        "per_seed": [
+          0.7507440447807312,
+          0.7447916865348816,
+          0.7485119104385376,
+          0.7433035969734192,
+          0.7313988208770752,
+          0.7559524178504944
+        ]
+      },
+      "ctm_halting_slope": {
+        "mean": 1.0,
+        "ci95_bca": [
+          1.0,
+          1.0
+        ],
+        "per_seed": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "freeze_max_gain": {
+        "mean": 0.0,
+        "ci95_bca": [
+          0.0,
+          0.0
+        ],
+        "per_seed": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "comparisons": {
+        "ctm_minus_gru_readability": {
+          "mean": 0.05541605204343794,
+          "ci95_bca": [
+            0.03496714333693185,
+            0.08009827931722004
+          ],
+          "per_seed": [
+            0.06937312781810762,
+            0.04936758279800413,
+            0.039862355589866616,
+            0.04232701659202576,
+            0.022712057828903176,
+            0.10885417163372035
+          ]
+        },
+        "ctm_minus_temporal_null": {
+          "mean": 0.1971571259200573,
+          "ci95_bca": [
+            0.17198352018992105,
+            0.2261284776031971
+          ],
+          "per_seed": [
+            0.2578125074505806,
+            0.1640625149011612,
+            0.1953125149011612,
+            0.1777343899011612,
+            0.1666666716337204,
+            0.2213541567325592
+          ]
+        },
+        "ctm_minus_permutation_null": {
+          "mean": 0.182400181889534,
+          "ci95_bca": [
+            0.16514757772286734,
+            0.19856771330038706
+          ],
+          "per_seed": [
+            0.1998697966337204,
+            0.1660156399011612,
+            0.1888020932674408,
+            0.1783854365348816,
+            0.1490885466337204,
+            0.2122395783662796
+          ]
+        }
+      },
+      "holm_pass": true,
+      "wall_seconds": 166.1375261000012,
+      "verdict": "CTM_READABILITY_WINS",
+      "decision_text": "CTM learns and extrapolates, freeze-input gate passes, hop trajectory is monotone/halting-aligned, and CTM sync readability beats dim-matched GRU hidden plus temporal and permutation nulls with Holm-corrected CI support."
+    }
+  }
+}

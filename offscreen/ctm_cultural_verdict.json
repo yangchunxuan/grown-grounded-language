@@ -1,0 +1,3910 @@
+{
+ "kind": "ctm_cultural_transmission_v1",
+ "block": "powered",
+ "frozen": {
+  "CU_VERSION": "CTM-CULTURAL-TRANSMISSION-v1",
+  "CU_FREEZE_DATE": "2026-06-26",
+  "CU_TRAIN_STEPS": 180,
+  "CU_PILOT_TRAIN_STEPS": 90,
+  "CU_STEPS": 400,
+  "CU_PILOT_STEPS": 240,
+  "CU_N_SEEDS": 6,
+  "CU_PILOT_SEEDS": 2,
+  "CU_N_INIT": 12,
+  "CU_MAX_AGENTS": 40,
+  "CU_MAX_AGE": 60,
+  "CU_ENERGY_INIT": 35.0,
+  "CU_ENERGY_MAX": 100.0,
+  "CU_METABOLISM": 0.45,
+  "CU_SUCCESS_GAIN": 10.0,
+  "CU_FAIL_COST": 3.0,
+  "CU_REPRO_THRESHOLD": 55.0,
+  "CU_REPRO_COST": 24.0,
+  "CU_TEACHER_MIN_REPRO": 1,
+  "CU_JUV_TUPLES": 256,
+  "CU_JUV_STEPS": 50,
+  "CU_JUV_BATCH": 128,
+  "CU_JUV_LR": 0.01,
+  "CU_WORLD_PROBE": 384,
+  "CU_BUFFER_MAX": 6000,
+  "CU_SUFF_TUPLES": 4000,
+  "CU_SUFF_STEPS": 400,
+  "CU_EVAL_N": 1024,
+  "CU_NOISE_EPS": [
+   0.0,
+   0.15,
+   0.3
+  ],
+  "CU_ABLATE_TOP_FRAC": 0.1,
+  "CU_HEADLINE_GEN_MIN": 1,
+  "CU_BOOTSTRAP_REPS": 500,
+  "CU_EFF_LABEL_ACC_MAX": 0.98,
+  "CU_LATE_SUCCESS_MIN": 0.45,
+  "CU_SUCCESS_DELTA_MIN": 0.25,
+  "CU_DECODE_MIN": 0.2,
+  "CU_ALIGN_MIN": 0.2,
+  "CU_ENTROPY_MIN": 0.35,
+  "CU_BALANCED_MIN": 0.3,
+  "CU_SUFFICIENCY_MIN": 0.65,
+  "CU_WORLD_ONLY_MAX": 0.3,
+  "CU_VERDICTS": [
+   "CULTURAL_TRANSMISSION_MAINTAINS",
+   "DRIFTS_BUT_USEFUL",
+   "SCAFFOLD_DEPENDENT",
+   "NO_SOCIAL_ACQUISITION",
+   "SUFFICIENCY_FAILED_UNDERPOWERED",
+   "HARD_REJECT"
+  ]
+ },
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5
+ ],
+ "ci_degenerate": false,
+ "summary": {
+  "sufficiency": {
+   "young_success": 0.9199,
+   "gen0_success": 0.9147,
+   "teach_eff_label_acc": 0.9178
+  },
+  "social": {
+   "clean_success": 0.8517,
+   "clean_balanced": 0.8522,
+   "gen1_success": 0.8444,
+   "gen1_only_success": 0.7604,
+   "success_all": 0.8479,
+   "births": 269.1667,
+   "max_generation": 14.0,
+   "eff_label_acc": 0.8573,
+   "message_decode": 0.6765,
+   "sync_decode": 0.0532,
+   "cross_gen0_decode": 0.6723,
+   "token_entropy": 0.646,
+   "action_entropy": 0.954,
+   "n_clean": 13188.5,
+   "n_clean_alive": 40.0
+  },
+  "distill": {
+   "clean_success": 0.874,
+   "clean_balanced": 0.8729,
+   "gen1_success": 0.8665,
+   "gen1_only_success": 0.7811,
+   "success_all": 0.8688,
+   "births": 269.1667,
+   "max_generation": 13.8333,
+   "eff_label_acc": NaN,
+   "message_decode": 0.6824,
+   "sync_decode": 0.0501,
+   "cross_gen0_decode": 0.6792,
+   "token_entropy": 0.6505,
+   "action_entropy": 0.9989,
+   "n_clean": 13209.8333,
+   "n_clean_alive": 39.8333
+  },
+  "world_only": {
+   "clean_success": 0.0677,
+   "clean_balanced": 0.0678,
+   "gen1_success": 0.0677,
+   "gen1_only_success": 0.0679,
+   "success_all": 0.3209,
+   "births": 117.6667,
+   "max_generation": 1.3333,
+   "eff_label_acc": NaN,
+   "message_decode": -0.0132,
+   "sync_decode": -0.0075,
+   "cross_gen0_decode": -0.0028,
+   "token_entropy": 0.9423,
+   "action_entropy": 0.9808,
+   "n_clean": 1692.3333,
+   "n_clean_alive": 0.0
+  },
+  "no_teaching": {
+   "clean_success": 0.0714,
+   "clean_balanced": 0.0711,
+   "gen1_success": 0.0714,
+   "gen1_only_success": 0.0714,
+   "success_all": 0.3239,
+   "births": 116.5,
+   "max_generation": 1.5,
+   "eff_label_acc": NaN,
+   "message_decode": 0.0087,
+   "sync_decode": 0.0008,
+   "cross_gen0_decode": 0.0093,
+   "token_entropy": 0.9811,
+   "action_entropy": 0.9784,
+   "n_clean": 1700.6667,
+   "n_clean_alive": 0.0
+  },
+  "random_teacher": {
+   "clean_success": 0.0721,
+   "clean_balanced": 0.0657,
+   "gen1_success": 0.0861,
+   "gen1_only_success": 0.0864,
+   "success_all": 0.3269,
+   "births": 113.3333,
+   "max_generation": 2.0,
+   "eff_label_acc": NaN,
+   "message_decode": 0.0909,
+   "sync_decode": 0.0795,
+   "cross_gen0_decode": 0.0136,
+   "token_entropy": 0.4968,
+   "action_entropy": 0.5906,
+   "n_clean": 26.5,
+   "n_clean_alive": 0.0
+  },
+  "social_ablate": {
+   "clean_success": 0.8254,
+   "clean_balanced": 0.826,
+   "gen1_success": 0.8223,
+   "gen1_only_success": 0.7714,
+   "success_all": 0.8265,
+   "births": 269.8333,
+   "max_generation": 13.8333,
+   "eff_label_acc": 0.8326,
+   "message_decode": 0.6715,
+   "sync_decode": 0.0506,
+   "cross_gen0_decode": 0.6654,
+   "token_entropy": 0.6509,
+   "action_entropy": 0.9414,
+   "n_clean": 13189.5,
+   "n_clean_alive": 40.0
+  },
+  "noise_0.0": {
+   "clean_success": 0.8535,
+   "clean_balanced": 0.8531,
+   "gen1_success": 0.8464,
+   "gen1_only_success": 0.7672,
+   "success_all": 0.8496,
+   "births": 269.0,
+   "max_generation": 14.1667,
+   "eff_label_acc": 0.8635,
+   "message_decode": 0.6781,
+   "sync_decode": 0.052,
+   "cross_gen0_decode": 0.6768,
+   "token_entropy": 0.6452,
+   "action_entropy": 0.9468,
+   "n_clean": 13195.6667,
+   "n_clean_alive": 40.0
+  },
+  "noise_0.15": {
+   "clean_success": 0.8361,
+   "clean_balanced": 0.8338,
+   "gen1_success": 0.8303,
+   "gen1_only_success": 0.7702,
+   "success_all": 0.8343,
+   "births": 269.1667,
+   "max_generation": 13.6667,
+   "eff_label_acc": 0.7317,
+   "message_decode": 0.68,
+   "sync_decode": 0.0435,
+   "cross_gen0_decode": 0.6821,
+   "token_entropy": 0.6442,
+   "action_entropy": 0.9499,
+   "n_clean": 13206.6667,
+   "n_clean_alive": 40.0
+  },
+  "noise_0.3": {
+   "clean_success": 0.7535,
+   "clean_balanced": 0.7528,
+   "gen1_success": 0.7537,
+   "gen1_only_success": 0.7339,
+   "success_all": 0.7614,
+   "births": 268.8333,
+   "max_generation": 13.5,
+   "eff_label_acc": 0.5668,
+   "message_decode": 0.6797,
+   "sync_decode": 0.0442,
+   "cross_gen0_decode": 0.685,
+   "token_entropy": 0.6512,
+   "action_entropy": 0.9471,
+   "n_clean": 13196.3333,
+   "n_clean_alive": 40.0
+  },
+  "social_lesion": {
+   "open": 0.8337,
+   "mute": 0.0631,
+   "scramble": 0.0641,
+   "no_content": 0.0645
+  },
+  "social_minus_world_only": {
+   "mean": 0.784,
+   "ci": [
+    0.7294,
+    0.8414
+   ]
+  },
+  "social_minus_no_teaching": {
+   "mean": 0.7803,
+   "ci": [
+    0.7325,
+    0.8281
+   ]
+  },
+  "social_minus_random_teacher": {
+   "mean": 0.7796,
+   "ci": [
+    0.7323,
+    0.8204
+   ]
+  },
+  "distill_minus_social": {
+   "mean": 0.0223,
+   "ci": [
+    -0.0137,
+    0.0551
+   ]
+  },
+  "social_over_distill_ratio": 0.9745,
+  "clean_success_ci": [
+   0.8003,
+   0.9094
+  ],
+  "rows": [
+   {
+    "seed": 0,
+    "pair_open": 1.0,
+    "sufficiency": {
+     "young_success": 1.0,
+     "gen0_success": 1.0,
+     "teach_eff_label_acc": 1.0
+    },
+    "arms": {
+     "social": {
+      "arm": "social",
+      "success_all": 0.908,
+      "gen1_success": 0.9036,
+      "gen1_only_success": 0.7947,
+      "clean_success": 0.9141,
+      "clean_balanced": 0.9137,
+      "n_clean": 13195,
+      "n_clean_alive": 40,
+      "births": 270,
+      "deaths": 242,
+      "max_generation": 15,
+      "eff_label_acc": 0.9198,
+      "message_decode": 0.7026,
+      "sync_decode": 0.0562,
+      "cross_gen0_decode": 0.7074,
+      "token_entropy": 0.668,
+      "action_entropy": 0.9928,
+      "lesion_eval": {
+       "open": 0.8857,
+       "mute": 0.0649,
+       "scramble": 0.0605,
+       "no_content": 0.0732
+      },
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 1.0
+       },
+       "1": {
+        "n": 1481,
+        "success": 0.7947
+       },
+       "2": {
+        "n": 1260,
+        "success": 0.8992
+       },
+       "3": {
+        "n": 1500,
+        "success": 0.9673
+       },
+       "4": {
+        "n": 1200,
+        "success": 0.96
+       },
+       "5": {
+        "n": 1320,
+        "success": 0.9462
+       },
+       "6": {
+        "n": 1140,
+        "success": 0.9219
+       },
+       "7": {
+        "n": 1177,
+        "success": 0.8938
+       },
+       "8": {
+        "n": 1436,
+        "success": 0.8747
+       },
+       "9": {
+        "n": 1020,
+        "success": 0.9118
+       },
+       "10": {
+        "n": 968,
+        "success": 0.8884
+       },
+       "11": {
+        "n": 946,
+        "success": 0.9049
+       },
+       "12": {
+        "n": 853,
+        "success": 0.8746
+       },
+       "13": {
+        "n": 473,
+        "success": 0.9154
+       },
+       "14": {
+        "n": 123,
+        "success": 0.9268
+       },
+       "15": {
+        "n": 19,
+        "success": 0.9474
+       }
+      }
+     },
+     "distill": {
+      "arm": "distill",
+      "success_all": 0.8755,
+      "gen1_success": 0.8695,
+      "gen1_only_success": 0.7599,
+      "clean_success": 0.8789,
+      "clean_balanced": 0.8784,
+      "n_clean": 13228,
+      "n_clean_alive": 40,
+      "births": 269,
+      "deaths": 241,
+      "max_generation": 14,
+      "eff_label_acc": NaN,
+      "message_decode": 0.6879,
+      "sync_decode": 0.0543,
+      "cross_gen0_decode": 0.6593,
+      "token_entropy": 0.6822,
+      "action_entropy": 0.9988,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 1.0
+       },
+       "1": {
+        "n": 1391,
+        "success": 0.7599
+       },
+       "2": {
+        "n": 1200,
+        "success": 0.9
+       },
+       "3": {
+        "n": 1320,
+        "success": 0.9311
+       },
+       "4": {
+        "n": 1260,
+        "success": 0.9532
+       },
+       "5": {
+        "n": 1440,
+        "success": 0.941
+       },
+       "6": {
+        "n": 1140,
+        "success": 0.8465
+       },
+       "7": {
+        "n": 1320,
+        "success": 0.8485
+       },
+       "8": {
+        "n": 1320,
+        "success": 0.8197
+       },
+       "9": {
+        "n": 1260,
+        "success": 0.8262
+       },
+       "10": {
+        "n": 1278,
+        "success": 0.8521
+       },
+       "11": {
+        "n": 1129,
+        "success": 0.8831
+       },
+       "12": {
+        "n": 506,
+        "success": 0.8794
+       },
+       "13": {
+        "n": 326,
+        "success": 0.8681
+       },
+       "14": {
+        "n": 29,
+        "success": 0.9655
+       }
+      }
+     },
+     "world_only": {
+      "arm": "world_only",
+      "success_all": 0.3453,
+      "gen1_success": 0.0677,
+      "gen1_only_success": 0.0677,
+      "clean_success": 0.0677,
+      "clean_balanced": 0.0687,
+      "n_clean": 1698,
+      "n_clean_alive": 0,
+      "births": 118,
+      "deaths": 130,
+      "max_generation": 1,
+      "eff_label_acc": NaN,
+      "message_decode": 0.0006,
+      "sync_decode": -0.0159,
+      "cross_gen0_decode": 0.0088,
+      "token_entropy": 0.9422,
+      "action_entropy": 0.9819,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 1.0
+       },
+       "1": {
+        "n": 1698,
+        "success": 0.0677
+       }
+      }
+     },
+     "no_teaching": {
+      "arm": "no_teaching",
+      "success_all": 0.3458,
+      "gen1_success": 0.0616,
+      "gen1_only_success": 0.0616,
+      "clean_success": 0.0616,
+      "clean_balanced": 0.0617,
+      "n_clean": 1657,
+      "n_clean_alive": 0,
+      "births": 119,
+      "deaths": 131,
+      "max_generation": 1,
+      "eff_label_acc": NaN,
+      "message_decode": 0.0,
+      "sync_decode": 0.0145,
+      "cross_gen0_decode": 0.0035,
+      "token_entropy": 0.9851,
+      "action_entropy": 0.9802,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 1.0
+       },
+       "1": {
+        "n": 1657,
+        "success": 0.0616
+       }
+      }
+     },
+     "random_teacher": {
+      "arm": "random_teacher",
+      "success_all": 0.3408,
+      "gen1_success": 0.0746,
+      "gen1_only_success": 0.0747,
+      "clean_success": 0.0698,
+      "clean_balanced": 0.0778,
+      "n_clean": 43,
+      "n_clean_alive": 0,
+      "births": 122,
+      "deaths": 134,
+      "max_generation": 2,
+      "eff_label_acc": NaN,
+      "message_decode": 0.3409,
+      "sync_decode": 0.1818,
+      "cross_gen0_decode": -0.0058,
+      "token_entropy": 0.6665,
+      "action_entropy": 0.6868,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 1.0
+       },
+       "1": {
+        "n": 1740,
+        "success": 0.0747
+       },
+       "2": {
+        "n": 43,
+        "success": 0.0698
+       }
+      }
+     },
+     "social_ablate": {
+      "arm": "social",
+      "success_all": 0.8382,
+      "gen1_success": 0.8304,
+      "gen1_only_success": 0.762,
+      "clean_success": 0.8348,
+      "clean_balanced": 0.8352,
+      "n_clean": 13218,
+      "n_clean_alive": 40,
+      "births": 269,
+      "deaths": 241,
+      "max_generation": 15,
+      "eff_label_acc": 0.8558,
+      "message_decode": 0.6852,
+      "sync_decode": 0.0506,
+      "cross_gen0_decode": 0.6805,
+      "token_entropy": 0.669,
+      "action_entropy": 0.9616,
+      "lesion_eval": {
+       "open": 0.7544,
+       "mute": 0.0635,
+       "scramble": 0.0679,
+       "no_content": 0.0723
+      },
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 1.0
+       },
+       "1": {
+        "n": 1458,
+        "success": 0.762
+       },
+       "2": {
+        "n": 1380,
+        "success": 0.8638
+       },
+       "3": {
+        "n": 1440,
+        "success": 0.9444
+       },
+       "4": {
+        "n": 1260,
+        "success": 0.9056
+       },
+       "5": {
+        "n": 1440,
+        "success": 0.8611
+       },
+       "6": {
+        "n": 1200,
+        "success": 0.8625
+       },
+       "7": {
+        "n": 1320,
+        "success": 0.8402
+       },
+       "8": {
+        "n": 1380,
+        "success": 0.8014
+       },
+       "9": {
+        "n": 1380,
+        "success": 0.7536
+       },
+       "10": {
+        "n": 1075,
+        "success": 0.813
+       },
+       "11": {
+        "n": 913,
+        "success": 0.7382
+       },
+       "12": {
+        "n": 392,
+        "success": 0.75
+       },
+       "13": {
+        "n": 206,
+        "success": 0.767
+       },
+       "14": {
+        "n": 60,
+        "success": 0.7167
+       },
+       "15": {
+        "n": 12,
+        "success": 0.75
+       }
+      }
+     },
+     "noise_0.0": {
+      "arm": "noise",
+      "success_all": 0.9714,
+      "gen1_success": 0.97,
+      "gen1_only_success": 0.852,
+      "clean_success": 0.9826,
+      "clean_balanced": 0.9825,
+      "n_clean": 13207,
+      "n_clean_alive": 40,
+      "births": 268,
+      "deaths": 240,
+      "max_generation": 13,
+      "eff_label_acc": 0.9815,
+      "message_decode": 0.7327,
+      "sync_decode": 0.0423,
+      "cross_gen0_decode": 0.7404,
+      "token_entropy": 0.6687,
+      "action_entropy": 0.9995,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 1.0
+       },
+       "1": {
+        "n": 1473,
+        "success": 0.852
+       },
+       "2": {
+        "n": 1080,
+        "success": 0.9815
+       },
+       "3": {
+        "n": 1380,
+        "success": 0.9971
+       },
+       "4": {
+        "n": 1200,
+        "success": 1.0
+       },
+       "5": {
+        "n": 1380,
+        "success": 1.0
+       },
+       "6": {
+        "n": 1380,
+        "success": 1.0
+       },
+       "7": {
+        "n": 1380,
+        "success": 1.0
+       },
+       "8": {
+        "n": 1380,
+        "success": 0.9841
+       },
+       "9": {
+        "n": 1500,
+        "success": 0.9593
+       },
+       "10": {
+        "n": 1189,
+        "success": 0.9588
+       },
+       "11": {
+        "n": 1003,
+        "success": 0.9362
+       },
+       "12": {
+        "n": 460,
+        "success": 0.9783
+       },
+       "13": {
+        "n": 115,
+        "success": 1.0
+       }
+      }
+     },
+     "noise_0.15": {
+      "arm": "noise",
+      "success_all": 0.8922,
+      "gen1_success": 0.887,
+      "gen1_only_success": 0.8299,
+      "clean_success": 0.8916,
+      "clean_balanced": 0.8906,
+      "n_clean": 13240,
+      "n_clean_alive": 40,
+      "births": 268,
+      "deaths": 240,
+      "max_generation": 13,
+      "eff_label_acc": 0.7719,
+      "message_decode": 0.7108,
+      "sync_decode": 0.0471,
+      "cross_gen0_decode": 0.7117,
+      "token_entropy": 0.6792,
+      "action_entropy": 0.9959,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 1.0
+       },
+       "1": {
+        "n": 1440,
+        "success": 0.8299
+       },
+       "2": {
+        "n": 1260,
+        "success": 0.9429
+       },
+       "3": {
+        "n": 1560,
+        "success": 0.9154
+       },
+       "4": {
+        "n": 1380,
+        "success": 0.9275
+       },
+       "5": {
+        "n": 1260,
+        "success": 0.9056
+       },
+       "6": {
+        "n": 1260,
+        "success": 0.9429
+       },
+       "7": {
+        "n": 1320,
+        "success": 0.9386
+       },
+       "8": {
+        "n": 1500,
+        "success": 0.8967
+       },
+       "9": {
+        "n": 1560,
+        "success": 0.8244
+       },
+       "10": {
+        "n": 1159,
+        "success": 0.8292
+       },
+       "11": {
+        "n": 741,
+        "success": 0.8313
+       },
+       "12": {
+        "n": 394,
+        "success": 0.7614
+       },
+       "13": {
+        "n": 86,
+        "success": 0.7791
+       }
+      }
+     },
+     "noise_0.3": {
+      "arm": "noise",
+      "success_all": 0.7719,
+      "gen1_success": 0.7608,
+      "gen1_only_success": 0.7718,
+      "clean_success": 0.758,
+      "clean_balanced": 0.7573,
+      "n_clean": 13221,
+      "n_clean_alive": 40,
+      "births": 269,
+      "deaths": 241,
+      "max_generation": 12,
+      "eff_label_acc": 0.5773,
+      "message_decode": 0.7129,
+      "sync_decode": 0.042,
+      "cross_gen0_decode": 0.721,
+      "token_entropy": 0.6668,
+      "action_entropy": 0.9724,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 1.0
+       },
+       "1": {
+        "n": 1398,
+        "success": 0.7718
+       },
+       "2": {
+        "n": 1320,
+        "success": 0.8311
+       },
+       "3": {
+        "n": 1440,
+        "success": 0.8743
+       },
+       "4": {
+        "n": 1500,
+        "success": 0.852
+       },
+       "5": {
+        "n": 1380,
+        "success": 0.7739
+       },
+       "6": {
+        "n": 1440,
+        "success": 0.7132
+       },
+       "7": {
+        "n": 1380,
+        "success": 0.7254
+       },
+       "8": {
+        "n": 1380,
+        "success": 0.7225
+       },
+       "9": {
+        "n": 1560,
+        "success": 0.7051
+       },
+       "10": {
+        "n": 1093,
+        "success": 0.6661
+       },
+       "11": {
+        "n": 756,
+        "success": 0.7011
+       },
+       "12": {
+        "n": 272,
+        "success": 0.6875
+       }
+      }
+     }
+    }
+   },
+   {
+    "seed": 1,
+    "pair_open": 0.822265625,
+    "sufficiency": {
+     "young_success": 0.8105,
+     "gen0_success": 0.8086,
+     "teach_eff_label_acc": 0.81
+    },
+    "arms": {
+     "social": {
+      "arm": "social",
+      "success_all": 0.7739,
+      "gen1_success": 0.7712,
+      "gen1_only_success": 0.7186,
+      "clean_success": 0.7748,
+      "clean_balanced": 0.7747,
+      "n_clean": 13171,
+      "n_clean_alive": 40,
+      "births": 270,
+      "deaths": 242,
+      "max_generation": 13,
+      "eff_label_acc": 0.7924,
+      "message_decode": 0.6382,
+      "sync_decode": 0.0562,
+      "cross_gen0_decode": 0.6319,
+      "token_entropy": 0.6138,
+      "action_entropy": 0.9052,
+      "lesion_eval": {
+       "open": 0.7607,
+       "mute": 0.0566,
+       "scramble": 0.0674,
+       "no_content": 0.0659
+      },
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.8292
+       },
+       "1": {
+        "n": 1315,
+        "success": 0.7186
+       },
+       "2": {
+        "n": 1260,
+        "success": 0.7992
+       },
+       "3": {
+        "n": 1260,
+        "success": 0.8103
+       },
+       "4": {
+        "n": 1560,
+        "success": 0.7962
+       },
+       "5": {
+        "n": 1320,
+        "success": 0.7803
+       },
+       "6": {
+        "n": 1560,
+        "success": 0.7596
+       },
+       "7": {
+        "n": 1320,
+        "success": 0.7583
+       },
+       "8": {
+        "n": 1260,
+        "success": 0.7619
+       },
+       "9": {
+        "n": 1800,
+        "success": 0.7444
+       },
+       "10": {
+        "n": 1127,
+        "success": 0.7782
+       },
+       "11": {
+        "n": 613,
+        "success": 0.7945
+       },
+       "12": {
+        "n": 395,
+        "success": 0.7696
+       },
+       "13": {
+        "n": 116,
+        "success": 0.8362
+       }
+      }
+     },
+     "distill": {
+      "arm": "distill",
+      "success_all": 0.7479,
+      "gen1_success": 0.7444,
+      "gen1_only_success": 0.7097,
+      "clean_success": 0.7445,
+      "clean_balanced": 0.7428,
+      "n_clean": 13186,
+      "n_clean_alive": 40,
+      "births": 270,
+      "deaths": 242,
+      "max_generation": 15,
+      "eff_label_acc": NaN,
+      "message_decode": 0.6103,
+      "sync_decode": 0.0281,
+      "cross_gen0_decode": 0.6175,
+      "token_entropy": 0.6204,
+      "action_entropy": 0.9962,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.8208
+       },
+       "1": {
+        "n": 1278,
+        "success": 0.7097
+       },
+       "2": {
+        "n": 1380,
+        "success": 0.8014
+       },
+       "3": {
+        "n": 1380,
+        "success": 0.7993
+       },
+       "4": {
+        "n": 1320,
+        "success": 0.7667
+       },
+       "5": {
+        "n": 1320,
+        "success": 0.7674
+       },
+       "6": {
+        "n": 1320,
+        "success": 0.7295
+       },
+       "7": {
+        "n": 1320,
+        "success": 0.7167
+       },
+       "8": {
+        "n": 1080,
+        "success": 0.738
+       },
+       "9": {
+        "n": 1336,
+        "success": 0.7148
+       },
+       "10": {
+        "n": 1021,
+        "success": 0.7032
+       },
+       "11": {
+        "n": 841,
+        "success": 0.7551
+       },
+       "12": {
+        "n": 688,
+        "success": 0.7137
+       },
+       "13": {
+        "n": 440,
+        "success": 0.7159
+       },
+       "14": {
+        "n": 116,
+        "success": 0.7845
+       },
+       "15": {
+        "n": 44,
+        "success": 0.6136
+       }
+      }
+     },
+     "world_only": {
+      "arm": "world_only",
+      "success_all": 0.2849,
+      "gen1_success": 0.0601,
+      "gen1_only_success": 0.0601,
+      "clean_success": 0.0601,
+      "clean_balanced": 0.0601,
+      "n_clean": 1698,
+      "n_clean_alive": 0,
+      "births": 122,
+      "deaths": 134,
+      "max_generation": 1,
+      "eff_label_acc": NaN,
+      "message_decode": 0.0024,
+      "sync_decode": -0.0283,
+      "cross_gen0_decode": 0.0,
+      "token_entropy": 0.9491,
+      "action_entropy": 0.9756,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.8153
+       },
+       "1": {
+        "n": 1698,
+        "success": 0.0601
+       }
+      }
+     },
+     "no_teaching": {
+      "arm": "no_teaching",
+      "success_all": 0.2932,
+      "gen1_success": 0.0584,
+      "gen1_only_success": 0.0584,
+      "clean_success": 0.0584,
+      "clean_balanced": 0.0582,
+      "n_clean": 1678,
+      "n_clean_alive": 0,
+      "births": 122,
+      "deaths": 134,
+      "max_generation": 1,
+      "eff_label_acc": NaN,
+      "message_decode": 0.0083,
+      "sync_decode": -0.0101,
+      "cross_gen0_decode": 0.0283,
+      "token_entropy": 0.985,
+      "action_entropy": 0.9836,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.8403
+       },
+       "1": {
+        "n": 1678,
+        "success": 0.0584
+       }
+      }
+     },
+     "random_teacher": {
+      "arm": "random_teacher",
+      "success_all": 0.3008,
+      "gen1_success": 0.1,
+      "gen1_only_success": 0.1024,
+      "clean_success": 0.0,
+      "clean_balanced": 0.0,
+      "n_clean": 22,
+      "n_clean_alive": 0,
+      "births": 107,
+      "deaths": 119,
+      "max_generation": 2,
+      "eff_label_acc": NaN,
+      "message_decode": 0.0,
+      "sync_decode": 0.0,
+      "cross_gen0_decode": 0.0,
+      "token_entropy": 0.6012,
+      "action_entropy": 0.6152,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.7889
+       },
+       "1": {
+        "n": 1670,
+        "success": 0.1024
+       },
+       "2": {
+        "n": 80,
+        "success": 0.05
+       }
+      }
+     },
+     "social_ablate": {
+      "arm": "social",
+      "success_all": 0.7922,
+      "gen1_success": 0.7906,
+      "gen1_only_success": 0.723,
+      "clean_success": 0.7966,
+      "clean_balanced": 0.7974,
+      "n_clean": 13166,
+      "n_clean_alive": 40,
+      "births": 271,
+      "deaths": 243,
+      "max_generation": 14,
+      "eff_label_acc": 0.8068,
+      "message_decode": 0.644,
+      "sync_decode": 0.0588,
+      "cross_gen0_decode": 0.6469,
+      "token_entropy": 0.6087,
+      "action_entropy": 0.9061,
+      "lesion_eval": {
+       "open": 0.8149,
+       "mute": 0.0674,
+       "scramble": 0.0649,
+       "no_content": 0.0771
+      },
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.825
+       },
+       "1": {
+        "n": 1307,
+        "success": 0.723
+       },
+       "2": {
+        "n": 1380,
+        "success": 0.7855
+       },
+       "3": {
+        "n": 1080,
+        "success": 0.8306
+       },
+       "4": {
+        "n": 1200,
+        "success": 0.7775
+       },
+       "5": {
+        "n": 1140,
+        "success": 0.7947
+       },
+       "6": {
+        "n": 1260,
+        "success": 0.7913
+       },
+       "7": {
+        "n": 1256,
+        "success": 0.7699
+       },
+       "8": {
+        "n": 1380,
+        "success": 0.8036
+       },
+       "9": {
+        "n": 1680,
+        "success": 0.8018
+       },
+       "10": {
+        "n": 1238,
+        "success": 0.8102
+       },
+       "11": {
+        "n": 891,
+        "success": 0.7957
+       },
+       "12": {
+        "n": 632,
+        "success": 0.7848
+       },
+       "13": {
+        "n": 276,
+        "success": 0.8478
+       },
+       "14": {
+        "n": 173,
+        "success": 0.8497
+       }
+      }
+     },
+     "noise_0.0": {
+      "arm": "noise",
+      "success_all": 0.7816,
+      "gen1_success": 0.7801,
+      "gen1_only_success": 0.743,
+      "clean_success": 0.7832,
+      "clean_balanced": 0.7824,
+      "n_clean": 13150,
+      "n_clean_alive": 40,
+      "births": 270,
+      "deaths": 242,
+      "max_generation": 13,
+      "eff_label_acc": 0.7937,
+      "message_decode": 0.6354,
+      "sync_decode": 0.0583,
+      "cross_gen0_decode": 0.639,
+      "token_entropy": 0.609,
+      "action_entropy": 0.9062,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.8125
+       },
+       "1": {
+        "n": 1428,
+        "success": 0.743
+       },
+       "2": {
+        "n": 1380,
+        "success": 0.7616
+       },
+       "3": {
+        "n": 1140,
+        "success": 0.7912
+       },
+       "4": {
+        "n": 1271,
+        "success": 0.7907
+       },
+       "5": {
+        "n": 1140,
+        "success": 0.7895
+       },
+       "6": {
+        "n": 1271,
+        "success": 0.7828
+       },
+       "7": {
+        "n": 1440,
+        "success": 0.7681
+       },
+       "8": {
+        "n": 1414,
+        "success": 0.7603
+       },
+       "9": {
+        "n": 1563,
+        "success": 0.7985
+       },
+       "10": {
+        "n": 1258,
+        "success": 0.7774
+       },
+       "11": {
+        "n": 775,
+        "success": 0.8245
+       },
+       "12": {
+        "n": 597,
+        "success": 0.8107
+       },
+       "13": {
+        "n": 201,
+        "success": 0.806
+       }
+      }
+     },
+     "noise_0.15": {
+      "arm": "noise",
+      "success_all": 0.7816,
+      "gen1_success": 0.7814,
+      "gen1_only_success": 0.7199,
+      "clean_success": 0.7882,
+      "clean_balanced": 0.7899,
+      "n_clean": 13184,
+      "n_clean_alive": 40,
+      "births": 269,
+      "deaths": 241,
+      "max_generation": 14,
+      "eff_label_acc": 0.6887,
+      "message_decode": 0.6453,
+      "sync_decode": 0.0265,
+      "cross_gen0_decode": 0.6486,
+      "token_entropy": 0.6099,
+      "action_entropy": 0.9081,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.7861
+       },
+       "1": {
+        "n": 1578,
+        "success": 0.7199
+       },
+       "2": {
+        "n": 1380,
+        "success": 0.779
+       },
+       "3": {
+        "n": 1260,
+        "success": 0.8024
+       },
+       "4": {
+        "n": 1380,
+        "success": 0.7826
+       },
+       "5": {
+        "n": 1140,
+        "success": 0.8018
+       },
+       "6": {
+        "n": 1620,
+        "success": 0.8111
+       },
+       "7": {
+        "n": 1680,
+        "success": 0.75
+       },
+       "8": {
+        "n": 1440,
+        "success": 0.7847
+       },
+       "9": {
+        "n": 1174,
+        "success": 0.7896
+       },
+       "10": {
+        "n": 912,
+        "success": 0.7796
+       },
+       "11": {
+        "n": 734,
+        "success": 0.8093
+       },
+       "12": {
+        "n": 390,
+        "success": 0.8256
+       },
+       "13": {
+        "n": 166,
+        "success": 0.7771
+       },
+       "14": {
+        "n": 28,
+        "success": 0.9286
+       }
+      }
+     },
+     "noise_0.3": {
+      "arm": "noise",
+      "success_all": 0.7188,
+      "gen1_success": 0.714,
+      "gen1_only_success": 0.6866,
+      "clean_success": 0.7145,
+      "clean_balanced": 0.7128,
+      "n_clean": 13134,
+      "n_clean_alive": 40,
+      "births": 270,
+      "deaths": 242,
+      "max_generation": 13,
+      "eff_label_acc": 0.5364,
+      "message_decode": 0.6456,
+      "sync_decode": 0.0411,
+      "cross_gen0_decode": 0.6499,
+      "token_entropy": 0.6056,
+      "action_entropy": 0.901,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.8181
+       },
+       "1": {
+        "n": 1273,
+        "success": 0.6866
+       },
+       "2": {
+        "n": 1560,
+        "success": 0.7718
+       },
+       "3": {
+        "n": 1080,
+        "success": 0.7713
+       },
+       "4": {
+        "n": 1260,
+        "success": 0.7413
+       },
+       "5": {
+        "n": 1140,
+        "success": 0.7553
+       },
+       "6": {
+        "n": 1380,
+        "success": 0.7268
+       },
+       "7": {
+        "n": 1500,
+        "success": 0.684
+       },
+       "8": {
+        "n": 1740,
+        "success": 0.6931
+       },
+       "9": {
+        "n": 1651,
+        "success": 0.7081
+       },
+       "10": {
+        "n": 1245,
+        "success": 0.645
+       },
+       "11": {
+        "n": 744,
+        "success": 0.707
+       },
+       "12": {
+        "n": 253,
+        "success": 0.6206
+       },
+       "13": {
+        "n": 61,
+        "success": 0.541
+       }
+      }
+     }
+    }
+   },
+   {
+    "seed": 2,
+    "pair_open": 0.8671875,
+    "sufficiency": {
+     "young_success": 0.8887,
+     "gen0_success": 0.8711,
+     "teach_eff_label_acc": 0.8733
+    },
+    "arms": {
+     "social": {
+      "arm": "social",
+      "success_all": 0.7781,
+      "gen1_success": 0.7733,
+      "gen1_only_success": 0.6976,
+      "clean_success": 0.7799,
+      "clean_balanced": 0.7834,
+      "n_clean": 13192,
+      "n_clean_alive": 40,
+      "births": 269,
+      "deaths": 241,
+      "max_generation": 14,
+      "eff_label_acc": 0.7781,
+      "message_decode": 0.6401,
+      "sync_decode": 0.0424,
+      "cross_gen0_decode": 0.64,
+      "token_entropy": 0.6264,
+      "action_entropy": 0.9264,
+      "lesion_eval": {
+       "open": 0.7466,
+       "mute": 0.063,
+       "scramble": 0.0703,
+       "no_content": 0.064
+      },
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.8792
+       },
+       "1": {
+        "n": 1402,
+        "success": 0.6976
+       },
+       "2": {
+        "n": 1320,
+        "success": 0.7773
+       },
+       "3": {
+        "n": 1440,
+        "success": 0.8063
+       },
+       "4": {
+        "n": 1440,
+        "success": 0.8014
+       },
+       "5": {
+        "n": 1620,
+        "success": 0.7994
+       },
+       "6": {
+        "n": 1500,
+        "success": 0.8013
+       },
+       "7": {
+        "n": 1560,
+        "success": 0.7744
+       },
+       "8": {
+        "n": 1440,
+        "success": 0.7556
+       },
+       "9": {
+        "n": 934,
+        "success": 0.7548
+       },
+       "10": {
+        "n": 847,
+        "success": 0.7521
+       },
+       "11": {
+        "n": 735,
+        "success": 0.7741
+       },
+       "12": {
+        "n": 453,
+        "success": 0.7395
+       },
+       "13": {
+        "n": 175,
+        "success": 0.7886
+       },
+       "14": {
+        "n": 28,
+        "success": 0.75
+       }
+      }
+     },
+     "distill": {
+      "arm": "distill",
+      "success_all": 0.8572,
+      "gen1_success": 0.8569,
+      "gen1_only_success": 0.766,
+      "clean_success": 0.8659,
+      "clean_balanced": 0.8632,
+      "n_clean": 13189,
+      "n_clean_alive": 40,
+      "births": 269,
+      "deaths": 241,
+      "max_generation": 14,
+      "eff_label_acc": NaN,
+      "message_decode": 0.6802,
+      "sync_decode": 0.0545,
+      "cross_gen0_decode": 0.684,
+      "token_entropy": 0.6297,
+      "action_entropy": 0.9997,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.8625
+       },
+       "1": {
+        "n": 1346,
+        "success": 0.766
+       },
+       "2": {
+        "n": 1320,
+        "success": 0.85
+       },
+       "3": {
+        "n": 1440,
+        "success": 0.8653
+       },
+       "4": {
+        "n": 1260,
+        "success": 0.8698
+       },
+       "5": {
+        "n": 1260,
+        "success": 0.877
+       },
+       "6": {
+        "n": 1680,
+        "success": 0.8613
+       },
+       "7": {
+        "n": 1260,
+        "success": 0.8667
+       },
+       "8": {
+        "n": 1080,
+        "success": 0.8537
+       },
+       "9": {
+        "n": 1320,
+        "success": 0.8758
+       },
+       "10": {
+        "n": 1242,
+        "success": 0.8768
+       },
+       "11": {
+        "n": 913,
+        "success": 0.8598
+       },
+       "12": {
+        "n": 486,
+        "success": 0.8827
+       },
+       "13": {
+        "n": 262,
+        "success": 0.8359
+       },
+       "14": {
+        "n": 26,
+        "success": 0.9615
+       }
+      }
+     },
+     "world_only": {
+      "arm": "world_only",
+      "success_all": 0.3126,
+      "gen1_success": 0.0783,
+      "gen1_only_success": 0.0793,
+      "clean_success": 0.0783,
+      "clean_balanced": 0.0773,
+      "n_clean": 1686,
+      "n_clean_alive": 0,
+      "births": 112,
+      "deaths": 124,
+      "max_generation": 2,
+      "eff_label_acc": NaN,
+      "message_decode": -0.0297,
+      "sync_decode": -0.0006,
+      "cross_gen0_decode": -0.019,
+      "token_entropy": 0.927,
+      "action_entropy": 0.9816,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.8611
+       },
+       "1": {
+        "n": 1664,
+        "success": 0.0793
+       },
+       "2": {
+        "n": 22,
+        "success": 0.0
+       }
+      }
+     },
+     "no_teaching": {
+      "arm": "no_teaching",
+      "success_all": 0.3047,
+      "gen1_success": 0.0671,
+      "gen1_only_success": 0.0675,
+      "clean_success": 0.0671,
+      "clean_balanced": 0.0664,
+      "n_clean": 1699,
+      "n_clean_alive": 0,
+      "births": 119,
+      "deaths": 131,
+      "max_generation": 2,
+      "eff_label_acc": NaN,
+      "message_decode": 0.0271,
+      "sync_decode": -0.0047,
+      "cross_gen0_decode": 0.0078,
+      "token_entropy": 0.9829,
+      "action_entropy": 0.9861,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.8653
+       },
+       "1": {
+        "n": 1688,
+        "success": 0.0675
+       },
+       "2": {
+        "n": 11,
+        "success": 0.0
+       }
+      }
+     },
+     "random_teacher": {
+      "arm": "random_teacher",
+      "success_all": 0.328,
+      "gen1_success": 0.082,
+      "gen1_only_success": 0.0817,
+      "clean_success": 0.0,
+      "clean_balanced": 0.0,
+      "n_clean": 0,
+      "n_clean_alive": 0,
+      "births": 109,
+      "deaths": 121,
+      "max_generation": 2,
+      "eff_label_acc": NaN,
+      "message_decode": 0.0,
+      "sync_decode": 0.0,
+      "cross_gen0_decode": 0.0,
+      "token_entropy": 0.0,
+      "action_entropy": 0.0,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.8986
+       },
+       "1": {
+        "n": 1652,
+        "success": 0.0817
+       },
+       "2": {
+        "n": 18,
+        "success": 0.1111
+       }
+      }
+     },
+     "social_ablate": {
+      "arm": "social",
+      "success_all": 0.7914,
+      "gen1_success": 0.7876,
+      "gen1_only_success": 0.7273,
+      "clean_success": 0.7911,
+      "clean_balanced": 0.7911,
+      "n_clean": 13208,
+      "n_clean_alive": 40,
+      "births": 269,
+      "deaths": 241,
+      "max_generation": 14,
+      "eff_label_acc": 0.7986,
+      "message_decode": 0.6595,
+      "sync_decode": 0.0485,
+      "cross_gen0_decode": 0.645,
+      "token_entropy": 0.6461,
+      "action_entropy": 0.9249,
+      "lesion_eval": {
+       "open": 0.7686,
+       "mute": 0.0654,
+       "scramble": 0.0645,
+       "no_content": 0.0674
+      },
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.8708
+       },
+       "1": {
+        "n": 1335,
+        "success": 0.7273
+       },
+       "2": {
+        "n": 1560,
+        "success": 0.8314
+       },
+       "3": {
+        "n": 1200,
+        "success": 0.8325
+       },
+       "4": {
+        "n": 1380,
+        "success": 0.8406
+       },
+       "5": {
+        "n": 1440,
+        "success": 0.8083
+       },
+       "6": {
+        "n": 1260,
+        "success": 0.7532
+       },
+       "7": {
+        "n": 1380,
+        "success": 0.7703
+       },
+       "8": {
+        "n": 1320,
+        "success": 0.7614
+       },
+       "9": {
+        "n": 1354,
+        "success": 0.774
+       },
+       "10": {
+        "n": 1128,
+        "success": 0.7695
+       },
+       "11": {
+        "n": 1055,
+        "success": 0.7744
+       },
+       "12": {
+        "n": 419,
+        "success": 0.8115
+       },
+       "13": {
+        "n": 57,
+        "success": 0.7719
+       },
+       "14": {
+        "n": 15,
+        "success": 0.8
+       }
+      }
+     },
+     "noise_0.0": {
+      "arm": "noise",
+      "success_all": 0.7878,
+      "gen1_success": 0.7835,
+      "gen1_only_success": 0.7389,
+      "clean_success": 0.7861,
+      "clean_balanced": 0.7894,
+      "n_clean": 13202,
+      "n_clean_alive": 40,
+      "births": 269,
+      "deaths": 241,
+      "max_generation": 14,
+      "eff_label_acc": 0.8053,
+      "message_decode": 0.6643,
+      "sync_decode": 0.0472,
+      "cross_gen0_decode": 0.6648,
+      "token_entropy": 0.65,
+      "action_entropy": 0.9272,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.8764
+       },
+       "1": {
+        "n": 1402,
+        "success": 0.7389
+       },
+       "2": {
+        "n": 1380,
+        "success": 0.7913
+       },
+       "3": {
+        "n": 1260,
+        "success": 0.8484
+       },
+       "4": {
+        "n": 1500,
+        "success": 0.8373
+       },
+       "5": {
+        "n": 1380,
+        "success": 0.829
+       },
+       "6": {
+        "n": 1380,
+        "success": 0.7978
+       },
+       "7": {
+        "n": 1560,
+        "success": 0.7788
+       },
+       "8": {
+        "n": 1428,
+        "success": 0.7647
+       },
+       "9": {
+        "n": 1424,
+        "success": 0.7619
+       },
+       "10": {
+        "n": 1152,
+        "success": 0.717
+       },
+       "11": {
+        "n": 519,
+        "success": 0.7071
+       },
+       "12": {
+        "n": 279,
+        "success": 0.7384
+       },
+       "13": {
+        "n": 181,
+        "success": 0.779
+       },
+       "14": {
+        "n": 59,
+        "success": 0.7966
+       }
+      }
+     },
+     "noise_0.15": {
+      "arm": "noise",
+      "success_all": 0.801,
+      "gen1_success": 0.7965,
+      "gen1_only_success": 0.7245,
+      "clean_success": 0.8048,
+      "clean_balanced": 0.8042,
+      "n_clean": 13179,
+      "n_clean_alive": 40,
+      "births": 268,
+      "deaths": 240,
+      "max_generation": 14,
+      "eff_label_acc": 0.7041,
+      "message_decode": 0.675,
+      "sync_decode": 0.0384,
+      "cross_gen0_decode": 0.6751,
+      "token_entropy": 0.6384,
+      "action_entropy": 0.935,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.8958
+       },
+       "1": {
+        "n": 1492,
+        "success": 0.7245
+       },
+       "2": {
+        "n": 1440,
+        "success": 0.8014
+       },
+       "3": {
+        "n": 1200,
+        "success": 0.8158
+       },
+       "4": {
+        "n": 1380,
+        "success": 0.8167
+       },
+       "5": {
+        "n": 1245,
+        "success": 0.7904
+       },
+       "6": {
+        "n": 1200,
+        "success": 0.8375
+       },
+       "7": {
+        "n": 1200,
+        "success": 0.8392
+       },
+       "8": {
+        "n": 1440,
+        "success": 0.8056
+       },
+       "9": {
+        "n": 1680,
+        "success": 0.7976
+       },
+       "10": {
+        "n": 1307,
+        "success": 0.7598
+       },
+       "11": {
+        "n": 639,
+        "success": 0.8028
+       },
+       "12": {
+        "n": 451,
+        "success": 0.765
+       },
+       "13": {
+        "n": 209,
+        "success": 0.7847
+       },
+       "14": {
+        "n": 28,
+        "success": 0.8571
+       }
+      }
+     },
+     "noise_0.3": {
+      "arm": "noise",
+      "success_all": 0.7715,
+      "gen1_success": 0.7668,
+      "gen1_only_success": 0.7356,
+      "clean_success": 0.7672,
+      "clean_balanced": 0.7628,
+      "n_clean": 13227,
+      "n_clean_alive": 40,
+      "births": 269,
+      "deaths": 241,
+      "max_generation": 15,
+      "eff_label_acc": 0.5748,
+      "message_decode": 0.6759,
+      "sync_decode": 0.0435,
+      "cross_gen0_decode": 0.6791,
+      "token_entropy": 0.6345,
+      "action_entropy": 0.9275,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.8708
+       },
+       "1": {
+        "n": 1320,
+        "success": 0.7356
+       },
+       "2": {
+        "n": 1620,
+        "success": 0.8259
+       },
+       "3": {
+        "n": 1260,
+        "success": 0.7937
+       },
+       "4": {
+        "n": 1500,
+        "success": 0.814
+       },
+       "5": {
+        "n": 1260,
+        "success": 0.7833
+       },
+       "6": {
+        "n": 1320,
+        "success": 0.7682
+       },
+       "7": {
+        "n": 1320,
+        "success": 0.7295
+       },
+       "8": {
+        "n": 1380,
+        "success": 0.7391
+       },
+       "9": {
+        "n": 1425,
+        "success": 0.7207
+       },
+       "10": {
+        "n": 977,
+        "success": 0.7605
+       },
+       "11": {
+        "n": 816,
+        "success": 0.7451
+       },
+       "12": {
+        "n": 456,
+        "success": 0.75
+       },
+       "13": {
+        "n": 182,
+        "success": 0.8022
+       },
+       "14": {
+        "n": 56,
+        "success": 0.7321
+       },
+       "15": {
+        "n": 15,
+        "success": 0.6
+       }
+      }
+     }
+    }
+   },
+   {
+    "seed": 3,
+    "pair_open": 1.0,
+    "sufficiency": {
+     "young_success": 1.0,
+     "gen0_success": 1.0,
+     "teach_eff_label_acc": 1.0
+    },
+    "arms": {
+     "social": {
+      "arm": "social",
+      "success_all": 0.9428,
+      "gen1_success": 0.9401,
+      "gen1_only_success": 0.8194,
+      "clean_success": 0.9506,
+      "clean_balanced": 0.9514,
+      "n_clean": 13169,
+      "n_clean_alive": 40,
+      "births": 270,
+      "deaths": 242,
+      "max_generation": 13,
+      "eff_label_acc": 0.9518,
+      "message_decode": 0.7298,
+      "sync_decode": 0.0713,
+      "cross_gen0_decode": 0.7223,
+      "token_entropy": 0.6768,
+      "action_entropy": 0.9971,
+      "lesion_eval": {
+       "open": 0.978,
+       "mute": 0.061,
+       "scramble": 0.0557,
+       "no_content": 0.0732
+      },
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 1.0
+       },
+       "1": {
+        "n": 1329,
+        "success": 0.8194
+       },
+       "2": {
+        "n": 1260,
+        "success": 0.946
+       },
+       "3": {
+        "n": 1440,
+        "success": 0.9521
+       },
+       "4": {
+        "n": 1260,
+        "success": 0.9627
+       },
+       "5": {
+        "n": 1500,
+        "success": 0.9473
+       },
+       "6": {
+        "n": 1560,
+        "success": 0.9468
+       },
+       "7": {
+        "n": 1380,
+        "success": 0.9457
+       },
+       "8": {
+        "n": 1320,
+        "success": 0.9545
+       },
+       "9": {
+        "n": 1440,
+        "success": 0.9521
+       },
+       "10": {
+        "n": 1221,
+        "success": 0.9574
+       },
+       "11": {
+        "n": 827,
+        "success": 0.9528
+       },
+       "12": {
+        "n": 323,
+        "success": 0.9659
+       },
+       "13": {
+        "n": 58,
+        "success": 0.9655
+       }
+      }
+     },
+     "distill": {
+      "arm": "distill",
+      "success_all": 0.9563,
+      "gen1_success": 0.9542,
+      "gen1_only_success": 0.8548,
+      "clean_success": 0.9636,
+      "clean_balanced": 0.9638,
+      "n_clean": 13228,
+      "n_clean_alive": 39,
+      "births": 269,
+      "deaths": 242,
+      "max_generation": 14,
+      "eff_label_acc": NaN,
+      "message_decode": 0.7268,
+      "sync_decode": 0.0489,
+      "cross_gen0_decode": 0.7265,
+      "token_entropy": 0.6793,
+      "action_entropy": 0.9998,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 1.0
+       },
+       "1": {
+        "n": 1391,
+        "success": 0.8548
+       },
+       "2": {
+        "n": 1320,
+        "success": 0.9432
+       },
+       "3": {
+        "n": 1440,
+        "success": 0.9896
+       },
+       "4": {
+        "n": 1440,
+        "success": 0.9729
+       },
+       "5": {
+        "n": 1260,
+        "success": 0.9778
+       },
+       "6": {
+        "n": 1440,
+        "success": 0.9528
+       },
+       "7": {
+        "n": 1500,
+        "success": 0.946
+       },
+       "8": {
+        "n": 1529,
+        "success": 0.9385
+       },
+       "9": {
+        "n": 1268,
+        "success": 0.9606
+       },
+       "10": {
+        "n": 1056,
+        "success": 0.9886
+       },
+       "11": {
+        "n": 744,
+        "success": 0.9866
+       },
+       "12": {
+        "n": 415,
+        "success": 0.9831
+       },
+       "13": {
+        "n": 88,
+        "success": 0.9773
+       },
+       "14": {
+        "n": 28,
+        "success": 1.0
+       }
+      }
+     },
+     "world_only": {
+      "arm": "world_only",
+      "success_all": 0.3422,
+      "gen1_success": 0.0462,
+      "gen1_only_success": 0.0462,
+      "clean_success": 0.0462,
+      "clean_balanced": 0.0465,
+      "n_clean": 1600,
+      "n_clean_alive": 0,
+      "births": 123,
+      "deaths": 135,
+      "max_generation": 1,
+      "eff_label_acc": NaN,
+      "message_decode": -0.0375,
+      "sync_decode": -0.0044,
+      "cross_gen0_decode": -0.0028,
+      "token_entropy": 0.951,
+      "action_entropy": 0.9823,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 1.0
+       },
+       "1": {
+        "n": 1600,
+        "success": 0.0462
+       }
+      }
+     },
+     "no_teaching": {
+      "arm": "no_teaching",
+      "success_all": 0.3557,
+      "gen1_success": 0.0869,
+      "gen1_only_success": 0.0875,
+      "clean_success": 0.0869,
+      "clean_balanced": 0.0856,
+      "n_clean": 1726,
+      "n_clean_alive": 0,
+      "births": 109,
+      "deaths": 121,
+      "max_generation": 2,
+      "eff_label_acc": NaN,
+      "message_decode": 0.0058,
+      "sync_decode": -0.0006,
+      "cross_gen0_decode": 0.0003,
+      "token_entropy": 0.9792,
+      "action_entropy": 0.9712,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 1.0
+       },
+       "1": {
+        "n": 1715,
+        "success": 0.0875
+       },
+       "2": {
+        "n": 11,
+        "success": 0.0
+       }
+      }
+     },
+     "random_teacher": {
+      "arm": "random_teacher",
+      "success_all": 0.3496,
+      "gen1_success": 0.0869,
+      "gen1_only_success": 0.0872,
+      "clean_success": 0.1111,
+      "clean_balanced": 0.0833,
+      "n_clean": 18,
+      "n_clean_alive": 0,
+      "births": 114,
+      "deaths": 126,
+      "max_generation": 2,
+      "eff_label_acc": NaN,
+      "message_decode": 0.0,
+      "sync_decode": 0.0,
+      "cross_gen0_decode": 0.0,
+      "token_entropy": 0.5098,
+      "action_entropy": 0.6485,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 1.0
+       },
+       "1": {
+        "n": 1754,
+        "success": 0.0872
+       },
+       "2": {
+        "n": 29,
+        "success": 0.069
+       }
+      }
+     },
+     "social_ablate": {
+      "arm": "social",
+      "success_all": 0.8976,
+      "gen1_success": 0.8927,
+      "gen1_only_success": 0.8665,
+      "clean_success": 0.8925,
+      "clean_balanced": 0.8901,
+      "n_clean": 13171,
+      "n_clean_alive": 40,
+      "births": 271,
+      "deaths": 243,
+      "max_generation": 14,
+      "eff_label_acc": 0.8923,
+      "message_decode": 0.6862,
+      "sync_decode": 0.0557,
+      "cross_gen0_decode": 0.6919,
+      "token_entropy": 0.6587,
+      "action_entropy": 0.9825,
+      "lesion_eval": {
+       "open": 0.8428,
+       "mute": 0.0605,
+       "scramble": 0.0581,
+       "no_content": 0.064
+      },
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 1.0
+       },
+       "1": {
+        "n": 1386,
+        "success": 0.8665
+       },
+       "2": {
+        "n": 1080,
+        "success": 0.9722
+       },
+       "3": {
+        "n": 1320,
+        "success": 0.9894
+       },
+       "4": {
+        "n": 1140,
+        "success": 0.9746
+       },
+       "5": {
+        "n": 1320,
+        "success": 0.9492
+       },
+       "6": {
+        "n": 1260,
+        "success": 0.8913
+       },
+       "7": {
+        "n": 1320,
+        "success": 0.8652
+       },
+       "8": {
+        "n": 1200,
+        "success": 0.8475
+       },
+       "9": {
+        "n": 1031,
+        "success": 0.87
+       },
+       "10": {
+        "n": 1046,
+        "success": 0.8432
+       },
+       "11": {
+        "n": 1148,
+        "success": 0.8301
+       },
+       "12": {
+        "n": 968,
+        "success": 0.8378
+       },
+       "13": {
+        "n": 532,
+        "success": 0.8026
+       },
+       "14": {
+        "n": 166,
+        "success": 0.8614
+       }
+      }
+     },
+     "noise_0.0": {
+      "arm": "noise",
+      "success_all": 0.9242,
+      "gen1_success": 0.9206,
+      "gen1_only_success": 0.8343,
+      "clean_success": 0.9279,
+      "clean_balanced": 0.9294,
+      "n_clean": 13224,
+      "n_clean_alive": 40,
+      "births": 269,
+      "deaths": 241,
+      "max_generation": 15,
+      "eff_label_acc": 0.9324,
+      "message_decode": 0.7149,
+      "sync_decode": 0.052,
+      "cross_gen0_decode": 0.7212,
+      "token_entropy": 0.6542,
+      "action_entropy": 0.9807,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 1.0
+       },
+       "1": {
+        "n": 1394,
+        "success": 0.8343
+       },
+       "2": {
+        "n": 1320,
+        "success": 0.9674
+       },
+       "3": {
+        "n": 1440,
+        "success": 0.9688
+       },
+       "4": {
+        "n": 1260,
+        "success": 0.9563
+       },
+       "5": {
+        "n": 1200,
+        "success": 0.9333
+       },
+       "6": {
+        "n": 1200,
+        "success": 0.9083
+       },
+       "7": {
+        "n": 1260,
+        "success": 0.9183
+       },
+       "8": {
+        "n": 1260,
+        "success": 0.8984
+       },
+       "9": {
+        "n": 1260,
+        "success": 0.8833
+       },
+       "10": {
+        "n": 1354,
+        "success": 0.9232
+       },
+       "11": {
+        "n": 919,
+        "success": 0.9238
+       },
+       "12": {
+        "n": 722,
+        "success": 0.9307
+       },
+       "13": {
+        "n": 165,
+        "success": 0.9394
+       },
+       "14": {
+        "n": 148,
+        "success": 0.9459
+       },
+       "15": {
+        "n": 16,
+        "success": 0.9375
+       }
+      }
+     },
+     "noise_0.15": {
+      "arm": "noise",
+      "success_all": 0.8704,
+      "gen1_success": 0.8642,
+      "gen1_only_success": 0.8343,
+      "clean_success": 0.8655,
+      "clean_balanced": 0.8608,
+      "n_clean": 13223,
+      "n_clean_alive": 40,
+      "births": 271,
+      "deaths": 243,
+      "max_generation": 13,
+      "eff_label_acc": 0.7637,
+      "message_decode": 0.7064,
+      "sync_decode": 0.0416,
+      "cross_gen0_decode": 0.7108,
+      "token_entropy": 0.6554,
+      "action_entropy": 0.9684,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 1.0
+       },
+       "1": {
+        "n": 1454,
+        "success": 0.8343
+       },
+       "2": {
+        "n": 1260,
+        "success": 0.9167
+       },
+       "3": {
+        "n": 1440,
+        "success": 0.9396
+       },
+       "4": {
+        "n": 1260,
+        "success": 0.9198
+       },
+       "5": {
+        "n": 1380,
+        "success": 0.9036
+       },
+       "6": {
+        "n": 1440,
+        "success": 0.859
+       },
+       "7": {
+        "n": 1331,
+        "success": 0.8415
+       },
+       "8": {
+        "n": 1680,
+        "success": 0.8435
+       },
+       "9": {
+        "n": 1474,
+        "success": 0.8358
+       },
+       "10": {
+        "n": 994,
+        "success": 0.7938
+       },
+       "11": {
+        "n": 845,
+        "success": 0.8012
+       },
+       "12": {
+        "n": 343,
+        "success": 0.8163
+       },
+       "13": {
+        "n": 16,
+        "success": 0.75
+       }
+      }
+     },
+     "noise_0.3": {
+      "arm": "noise",
+      "success_all": 0.8047,
+      "gen1_success": 0.7953,
+      "gen1_only_success": 0.7248,
+      "clean_success": 0.8009,
+      "clean_balanced": 0.8047,
+      "n_clean": 13198,
+      "n_clean_alive": 40,
+      "births": 268,
+      "deaths": 240,
+      "max_generation": 14,
+      "eff_label_acc": 0.6037,
+      "message_decode": 0.7225,
+      "sync_decode": 0.0541,
+      "cross_gen0_decode": 0.7272,
+      "token_entropy": 0.6873,
+      "action_entropy": 0.9821,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 1.0
+       },
+       "1": {
+        "n": 1421,
+        "success": 0.7248
+       },
+       "2": {
+        "n": 1200,
+        "success": 0.8575
+       },
+       "3": {
+        "n": 1380,
+        "success": 0.8471
+       },
+       "4": {
+        "n": 1380,
+        "success": 0.8428
+       },
+       "5": {
+        "n": 1440,
+        "success": 0.8063
+       },
+       "6": {
+        "n": 1500,
+        "success": 0.7767
+       },
+       "7": {
+        "n": 1440,
+        "success": 0.7743
+       },
+       "8": {
+        "n": 1080,
+        "success": 0.7889
+       },
+       "9": {
+        "n": 1200,
+        "success": 0.7558
+       },
+       "10": {
+        "n": 1153,
+        "success": 0.7875
+       },
+       "11": {
+        "n": 818,
+        "success": 0.8056
+       },
+       "12": {
+        "n": 552,
+        "success": 0.8025
+       },
+       "13": {
+        "n": 299,
+        "success": 0.7291
+       },
+       "14": {
+        "n": 56,
+        "success": 0.8214
+       }
+      }
+     }
+    }
+   },
+   {
+    "seed": 4,
+    "pair_open": 0.9368489980697632,
+    "sufficiency": {
+     "young_success": 0.9385,
+     "gen0_success": 0.9307,
+     "teach_eff_label_acc": 0.9398
+    },
+    "arms": {
+     "social": {
+      "arm": "social",
+      "success_all": 0.8566,
+      "gen1_success": 0.8529,
+      "gen1_only_success": 0.7833,
+      "clean_success": 0.8578,
+      "clean_balanced": 0.8606,
+      "n_clean": 13233,
+      "n_clean_alive": 40,
+      "births": 268,
+      "deaths": 240,
+      "max_generation": 15,
+      "eff_label_acc": 0.8651,
+      "message_decode": 0.683,
+      "sync_decode": 0.0456,
+      "cross_gen0_decode": 0.6623,
+      "token_entropy": 0.6619,
+      "action_entropy": 0.9636,
+      "lesion_eval": {
+       "open": 0.8521,
+       "mute": 0.0669,
+       "scramble": 0.0713,
+       "no_content": 0.0586
+      },
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.9347
+       },
+       "1": {
+        "n": 1320,
+        "success": 0.7833
+       },
+       "2": {
+        "n": 1200,
+        "success": 0.915
+       },
+       "3": {
+        "n": 1380,
+        "success": 0.9072
+       },
+       "4": {
+        "n": 1200,
+        "success": 0.89
+       },
+       "5": {
+        "n": 1620,
+        "success": 0.8802
+       },
+       "6": {
+        "n": 1380,
+        "success": 0.8543
+       },
+       "7": {
+        "n": 1560,
+        "success": 0.8276
+       },
+       "8": {
+        "n": 1620,
+        "success": 0.8315
+       },
+       "9": {
+        "n": 1410,
+        "success": 0.8298
+       },
+       "10": {
+        "n": 892,
+        "success": 0.8587
+       },
+       "11": {
+        "n": 705,
+        "success": 0.817
+       },
+       "12": {
+        "n": 357,
+        "success": 0.8487
+       },
+       "13": {
+        "n": 91,
+        "success": 0.7802
+       },
+       "14": {
+        "n": 122,
+        "success": 0.7787
+       },
+       "15": {
+        "n": 56,
+        "success": 0.7679
+       }
+      }
+     },
+     "distill": {
+      "arm": "distill",
+      "success_all": 0.9164,
+      "gen1_success": 0.9155,
+      "gen1_only_success": 0.839,
+      "clean_success": 0.9227,
+      "clean_balanced": 0.9234,
+      "n_clean": 13220,
+      "n_clean_alive": 40,
+      "births": 269,
+      "deaths": 241,
+      "max_generation": 13,
+      "eff_label_acc": NaN,
+      "message_decode": 0.7057,
+      "sync_decode": 0.0604,
+      "cross_gen0_decode": 0.7032,
+      "token_entropy": 0.663,
+      "action_entropy": 0.9993,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.9361
+       },
+       "1": {
+        "n": 1391,
+        "success": 0.839
+       },
+       "2": {
+        "n": 1440,
+        "success": 0.9021
+       },
+       "3": {
+        "n": 1080,
+        "success": 0.9176
+       },
+       "4": {
+        "n": 1500,
+        "success": 0.9347
+       },
+       "5": {
+        "n": 1260,
+        "success": 0.9357
+       },
+       "6": {
+        "n": 1560,
+        "success": 0.9449
+       },
+       "7": {
+        "n": 1440,
+        "success": 0.9493
+       },
+       "8": {
+        "n": 1380,
+        "success": 0.9355
+       },
+       "9": {
+        "n": 1500,
+        "success": 0.9087
+       },
+       "10": {
+        "n": 988,
+        "success": 0.8816
+       },
+       "11": {
+        "n": 897,
+        "success": 0.9052
+       },
+       "12": {
+        "n": 327,
+        "success": 0.9052
+       },
+       "13": {
+        "n": 148,
+        "success": 0.9392
+       }
+      }
+     },
+     "world_only": {
+      "arm": "world_only",
+      "success_all": 0.3357,
+      "gen1_success": 0.0799,
+      "gen1_only_success": 0.0801,
+      "clean_success": 0.0799,
+      "clean_balanced": 0.0799,
+      "n_clean": 1690,
+      "n_clean_alive": 0,
+      "births": 111,
+      "deaths": 123,
+      "max_generation": 2,
+      "eff_label_acc": NaN,
+      "message_decode": -0.0083,
+      "sync_decode": -0.013,
+      "cross_gen0_decode": -0.0065,
+      "token_entropy": 0.942,
+      "action_entropy": 0.9865,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.9361
+       },
+       "1": {
+        "n": 1661,
+        "success": 0.0801
+       },
+       "2": {
+        "n": 29,
+        "success": 0.069
+       }
+      }
+     },
+     "no_teaching": {
+      "arm": "no_teaching",
+      "success_all": 0.3216,
+      "gen1_success": 0.0758,
+      "gen1_only_success": 0.0758,
+      "clean_success": 0.0758,
+      "clean_balanced": 0.077,
+      "n_clean": 1780,
+      "n_clean_alive": 0,
+      "births": 119,
+      "deaths": 131,
+      "max_generation": 1,
+      "eff_label_acc": NaN,
+      "message_decode": 0.0197,
+      "sync_decode": -0.0039,
+      "cross_gen0_decode": 0.0219,
+      "token_entropy": 0.9793,
+      "action_entropy": 0.9711,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.9292
+       },
+       "1": {
+        "n": 1780,
+        "success": 0.0758
+       }
+      }
+     },
+     "random_teacher": {
+      "arm": "random_teacher",
+      "success_all": 0.3357,
+      "gen1_success": 0.0852,
+      "gen1_only_success": 0.0845,
+      "clean_success": 0.1818,
+      "clean_balanced": 0.1667,
+      "n_clean": 33,
+      "n_clean_alive": 0,
+      "births": 111,
+      "deaths": 123,
+      "max_generation": 2,
+      "eff_label_acc": NaN,
+      "message_decode": 0.0,
+      "sync_decode": 0.0,
+      "cross_gen0_decode": 0.0,
+      "token_entropy": 0.5262,
+      "action_entropy": 0.7294,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.9319
+       },
+       "1": {
+        "n": 1645,
+        "success": 0.0845
+       },
+       "2": {
+        "n": 69,
+        "success": 0.1014
+       }
+      }
+     },
+     "social_ablate": {
+      "arm": "social",
+      "success_all": 0.809,
+      "gen1_success": 0.8036,
+      "gen1_only_success": 0.7923,
+      "clean_success": 0.8013,
+      "clean_balanced": 0.8044,
+      "n_clean": 13201,
+      "n_clean_alive": 40,
+      "births": 269,
+      "deaths": 241,
+      "max_generation": 13,
+      "eff_label_acc": 0.8098,
+      "message_decode": 0.6866,
+      "sync_decode": 0.0448,
+      "cross_gen0_decode": 0.657,
+      "token_entropy": 0.6924,
+      "action_entropy": 0.9424,
+      "lesion_eval": {
+       "open": 0.7188,
+       "mute": 0.0615,
+       "scramble": 0.0732,
+       "no_content": 0.0659
+      },
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.9208
+       },
+       "1": {
+        "n": 1406,
+        "success": 0.7923
+       },
+       "2": {
+        "n": 1380,
+        "success": 0.8964
+       },
+       "3": {
+        "n": 1320,
+        "success": 0.9038
+       },
+       "4": {
+        "n": 1320,
+        "success": 0.847
+       },
+       "5": {
+        "n": 1620,
+        "success": 0.8469
+       },
+       "6": {
+        "n": 1500,
+        "success": 0.7833
+       },
+       "7": {
+        "n": 1440,
+        "success": 0.7917
+       },
+       "8": {
+        "n": 1233,
+        "success": 0.7599
+       },
+       "9": {
+        "n": 1500,
+        "success": 0.7353
+       },
+       "10": {
+        "n": 1313,
+        "success": 0.7388
+       },
+       "11": {
+        "n": 608,
+        "success": 0.7122
+       },
+       "12": {
+        "n": 236,
+        "success": 0.7076
+       },
+       "13": {
+        "n": 31,
+        "success": 0.6452
+       }
+      }
+     },
+     "noise_0.0": {
+      "arm": "noise",
+      "success_all": 0.8109,
+      "gen1_success": 0.8042,
+      "gen1_only_success": 0.7102,
+      "clean_success": 0.8124,
+      "clean_balanced": 0.812,
+      "n_clean": 13187,
+      "n_clean_alive": 40,
+      "births": 269,
+      "deaths": 241,
+      "max_generation": 15,
+      "eff_label_acc": 0.8296,
+      "message_decode": 0.6539,
+      "sync_decode": 0.0588,
+      "cross_gen0_decode": 0.6573,
+      "token_entropy": 0.6484,
+      "action_entropy": 0.9333,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.95
+       },
+       "1": {
+        "n": 1425,
+        "success": 0.7102
+       },
+       "2": {
+        "n": 1440,
+        "success": 0.7708
+       },
+       "3": {
+        "n": 1500,
+        "success": 0.8187
+       },
+       "4": {
+        "n": 1440,
+        "success": 0.8458
+       },
+       "5": {
+        "n": 1166,
+        "success": 0.8002
+       },
+       "6": {
+        "n": 1560,
+        "success": 0.8276
+       },
+       "7": {
+        "n": 1500,
+        "success": 0.8053
+       },
+       "8": {
+        "n": 1320,
+        "success": 0.7977
+       },
+       "9": {
+        "n": 1356,
+        "success": 0.8164
+       },
+       "10": {
+        "n": 910,
+        "success": 0.8187
+       },
+       "11": {
+        "n": 562,
+        "success": 0.8577
+       },
+       "12": {
+        "n": 428,
+        "success": 0.8481
+       },
+       "13": {
+        "n": 149,
+        "success": 0.7718
+       },
+       "14": {
+        "n": 154,
+        "success": 0.8182
+       },
+       "15": {
+        "n": 2,
+        "success": 0.5
+       }
+      }
+     },
+     "noise_0.15": {
+      "arm": "noise",
+      "success_all": 0.8669,
+      "gen1_success": 0.8634,
+      "gen1_only_success": 0.7641,
+      "clean_success": 0.8735,
+      "clean_balanced": 0.8711,
+      "n_clean": 13221,
+      "n_clean_alive": 40,
+      "births": 269,
+      "deaths": 241,
+      "max_generation": 14,
+      "eff_label_acc": 0.7622,
+      "message_decode": 0.696,
+      "sync_decode": 0.0585,
+      "cross_gen0_decode": 0.696,
+      "token_entropy": 0.6623,
+      "action_entropy": 0.9707,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.9403
+       },
+       "1": {
+        "n": 1454,
+        "success": 0.7641
+       },
+       "2": {
+        "n": 1200,
+        "success": 0.8558
+       },
+       "3": {
+        "n": 1200,
+        "success": 0.9008
+       },
+       "4": {
+        "n": 1200,
+        "success": 0.8933
+       },
+       "5": {
+        "n": 1320,
+        "success": 0.9023
+       },
+       "6": {
+        "n": 1380,
+        "success": 0.8928
+       },
+       "7": {
+        "n": 1320,
+        "success": 0.8674
+       },
+       "8": {
+        "n": 1380,
+        "success": 0.8355
+       },
+       "9": {
+        "n": 1260,
+        "success": 0.9143
+       },
+       "10": {
+        "n": 1328,
+        "success": 0.8524
+       },
+       "11": {
+        "n": 1073,
+        "success": 0.8425
+       },
+       "12": {
+        "n": 575,
+        "success": 0.8365
+       },
+       "13": {
+        "n": 169,
+        "success": 0.8757
+       },
+       "14": {
+        "n": 56,
+        "success": 0.8571
+       }
+      }
+     },
+     "noise_0.3": {
+      "arm": "noise",
+      "success_all": 0.7587,
+      "gen1_success": 0.7501,
+      "gen1_only_success": 0.7418,
+      "clean_success": 0.7494,
+      "clean_balanced": 0.7467,
+      "n_clean": 13209,
+      "n_clean_alive": 40,
+      "births": 269,
+      "deaths": 241,
+      "max_generation": 14,
+      "eff_label_acc": 0.5598,
+      "message_decode": 0.6632,
+      "sync_decode": 0.0469,
+      "cross_gen0_decode": 0.6645,
+      "token_entropy": 0.673,
+      "action_entropy": 0.9613,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.9361
+       },
+       "1": {
+        "n": 1398,
+        "success": 0.7418
+       },
+       "2": {
+        "n": 1380,
+        "success": 0.7913
+       },
+       "3": {
+        "n": 1320,
+        "success": 0.7947
+       },
+       "4": {
+        "n": 1440,
+        "success": 0.759
+       },
+       "5": {
+        "n": 1380,
+        "success": 0.7993
+       },
+       "6": {
+        "n": 1080,
+        "success": 0.7454
+       },
+       "7": {
+        "n": 1440,
+        "success": 0.7076
+       },
+       "8": {
+        "n": 1080,
+        "success": 0.6981
+       },
+       "9": {
+        "n": 1234,
+        "success": 0.7253
+       },
+       "10": {
+        "n": 1088,
+        "success": 0.727
+       },
+       "11": {
+        "n": 1207,
+        "success": 0.7175
+       },
+       "12": {
+        "n": 586,
+        "success": 0.7713
+       },
+       "13": {
+        "n": 246,
+        "success": 0.8089
+       },
+       "14": {
+        "n": 28,
+        "success": 0.9643
+       }
+      }
+     }
+    }
+   },
+   {
+    "seed": 5,
+    "pair_open": 0.8795573115348816,
+    "sufficiency": {
+     "young_success": 0.8818,
+     "gen0_success": 0.8779,
+     "teach_eff_label_acc": 0.8835
+    },
+    "arms": {
+     "social": {
+      "arm": "social",
+      "success_all": 0.8281,
+      "gen1_success": 0.8251,
+      "gen1_only_success": 0.7489,
+      "clean_success": 0.833,
+      "clean_balanced": 0.8295,
+      "n_clean": 13171,
+      "n_clean_alive": 40,
+      "births": 268,
+      "deaths": 240,
+      "max_generation": 14,
+      "eff_label_acc": 0.8365,
+      "message_decode": 0.6654,
+      "sync_decode": 0.0476,
+      "cross_gen0_decode": 0.67,
+      "token_entropy": 0.6288,
+      "action_entropy": 0.9391,
+      "lesion_eval": {
+       "open": 0.7793,
+       "mute": 0.0664,
+       "scramble": 0.0596,
+       "no_content": 0.0522
+      },
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.8889
+       },
+       "1": {
+        "n": 1545,
+        "success": 0.7489
+       },
+       "2": {
+        "n": 1500,
+        "success": 0.852
+       },
+       "3": {
+        "n": 1500,
+        "success": 0.8593
+       },
+       "4": {
+        "n": 1380,
+        "success": 0.8725
+       },
+       "5": {
+        "n": 1080,
+        "success": 0.8694
+       },
+       "6": {
+        "n": 1440,
+        "success": 0.8514
+       },
+       "7": {
+        "n": 1620,
+        "success": 0.8315
+       },
+       "8": {
+        "n": 1320,
+        "success": 0.8212
+       },
+       "9": {
+        "n": 1499,
+        "success": 0.8019
+       },
+       "10": {
+        "n": 1001,
+        "success": 0.7622
+       },
+       "11": {
+        "n": 628,
+        "success": 0.7914
+       },
+       "12": {
+        "n": 183,
+        "success": 0.8251
+       },
+       "13": {
+        "n": 174,
+        "success": 0.7874
+       },
+       "14": {
+        "n": 26,
+        "success": 0.6538
+       }
+      }
+     },
+     "distill": {
+      "arm": "distill",
+      "success_all": 0.8593,
+      "gen1_success": 0.8582,
+      "gen1_only_success": 0.7575,
+      "clean_success": 0.8685,
+      "clean_balanced": 0.8656,
+      "n_clean": 13208,
+      "n_clean_alive": 40,
+      "births": 269,
+      "deaths": 241,
+      "max_generation": 13,
+      "eff_label_acc": NaN,
+      "message_decode": 0.6834,
+      "sync_decode": 0.0543,
+      "cross_gen0_decode": 0.6848,
+      "token_entropy": 0.6286,
+      "action_entropy": 0.9997,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.8819
+       },
+       "1": {
+        "n": 1398,
+        "success": 0.7575
+       },
+       "2": {
+        "n": 1440,
+        "success": 0.8549
+       },
+       "3": {
+        "n": 1380,
+        "success": 0.8739
+       },
+       "4": {
+        "n": 1740,
+        "success": 0.8931
+       },
+       "5": {
+        "n": 1440,
+        "success": 0.8792
+       },
+       "6": {
+        "n": 1380,
+        "success": 0.8645
+       },
+       "7": {
+        "n": 1560,
+        "success": 0.866
+       },
+       "8": {
+        "n": 1260,
+        "success": 0.8627
+       },
+       "9": {
+        "n": 1205,
+        "success": 0.873
+       },
+       "10": {
+        "n": 1045,
+        "success": 0.8316
+       },
+       "11": {
+        "n": 636,
+        "success": 0.8711
+       },
+       "12": {
+        "n": 337,
+        "success": 0.8694
+       },
+       "13": {
+        "n": 85,
+        "success": 0.9176
+       }
+      }
+     },
+     "world_only": {
+      "arm": "world_only",
+      "success_all": 0.3046,
+      "gen1_success": 0.0741,
+      "gen1_only_success": 0.0741,
+      "clean_success": 0.0741,
+      "clean_balanced": 0.0744,
+      "n_clean": 1782,
+      "n_clean_alive": 0,
+      "births": 120,
+      "deaths": 132,
+      "max_generation": 1,
+      "eff_label_acc": NaN,
+      "message_decode": -0.0067,
+      "sync_decode": 0.0174,
+      "cross_gen0_decode": 0.0025,
+      "token_entropy": 0.9427,
+      "action_entropy": 0.9769,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.875
+       },
+       "1": {
+        "n": 1782,
+        "success": 0.0741
+       }
+      }
+     },
+     "no_teaching": {
+      "arm": "no_teaching",
+      "success_all": 0.3226,
+      "gen1_success": 0.0787,
+      "gen1_only_success": 0.0776,
+      "clean_success": 0.0787,
+      "clean_balanced": 0.0774,
+      "n_clean": 1664,
+      "n_clean_alive": 0,
+      "births": 111,
+      "deaths": 123,
+      "max_generation": 2,
+      "eff_label_acc": NaN,
+      "message_decode": -0.0084,
+      "sync_decode": 0.0096,
+      "cross_gen0_decode": -0.006,
+      "token_entropy": 0.9749,
+      "action_entropy": 0.9781,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.8861
+       },
+       "1": {
+        "n": 1624,
+        "success": 0.0776
+       },
+       "2": {
+        "n": 40,
+        "success": 0.125
+       }
+      }
+     },
+     "random_teacher": {
+      "arm": "random_teacher",
+      "success_all": 0.3066,
+      "gen1_success": 0.0877,
+      "gen1_only_success": 0.0881,
+      "clean_success": 0.0698,
+      "clean_balanced": 0.0667,
+      "n_clean": 43,
+      "n_clean_alive": 0,
+      "births": 117,
+      "deaths": 129,
+      "max_generation": 2,
+      "eff_label_acc": NaN,
+      "message_decode": 0.2045,
+      "sync_decode": 0.2955,
+      "cross_gen0_decode": 0.0872,
+      "token_entropy": 0.6771,
+      "action_entropy": 0.8639,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.8681
+       },
+       "1": {
+        "n": 1804,
+        "success": 0.0881
+       },
+       "2": {
+        "n": 43,
+        "success": 0.0698
+       }
+      }
+     },
+     "social_ablate": {
+      "arm": "social",
+      "success_all": 0.8306,
+      "gen1_success": 0.8287,
+      "gen1_only_success": 0.7574,
+      "clean_success": 0.836,
+      "clean_balanced": 0.8375,
+      "n_clean": 13173,
+      "n_clean_alive": 40,
+      "births": 270,
+      "deaths": 242,
+      "max_generation": 13,
+      "eff_label_acc": 0.8322,
+      "message_decode": 0.6678,
+      "sync_decode": 0.0451,
+      "cross_gen0_decode": 0.6714,
+      "token_entropy": 0.6305,
+      "action_entropy": 0.931,
+      "lesion_eval": {
+       "open": 0.8613,
+       "mute": 0.0605,
+       "scramble": 0.0703,
+       "no_content": 0.0654
+      },
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.8708
+       },
+       "1": {
+        "n": 1488,
+        "success": 0.7574
+       },
+       "2": {
+        "n": 1440,
+        "success": 0.8174
+       },
+       "3": {
+        "n": 1380,
+        "success": 0.8529
+       },
+       "4": {
+        "n": 1380,
+        "success": 0.8551
+       },
+       "5": {
+        "n": 1560,
+        "success": 0.8391
+       },
+       "6": {
+        "n": 1500,
+        "success": 0.8233
+       },
+       "7": {
+        "n": 1500,
+        "success": 0.8233
+       },
+       "8": {
+        "n": 1231,
+        "success": 0.8359
+       },
+       "9": {
+        "n": 1588,
+        "success": 0.8426
+       },
+       "10": {
+        "n": 1071,
+        "success": 0.8525
+       },
+       "11": {
+        "n": 543,
+        "success": 0.8232
+       },
+       "12": {
+        "n": 208,
+        "success": 0.8173
+       },
+       "13": {
+        "n": 12,
+        "success": 0.9167
+       }
+      }
+     },
+     "noise_0.0": {
+      "arm": "noise",
+      "success_all": 0.8217,
+      "gen1_success": 0.8201,
+      "gen1_only_success": 0.7246,
+      "clean_success": 0.8288,
+      "clean_balanced": 0.8232,
+      "n_clean": 13204,
+      "n_clean_alive": 40,
+      "births": 269,
+      "deaths": 241,
+      "max_generation": 15,
+      "eff_label_acc": 0.8383,
+      "message_decode": 0.6672,
+      "sync_decode": 0.0535,
+      "cross_gen0_decode": 0.6378,
+      "token_entropy": 0.6409,
+      "action_entropy": 0.9341,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.8556
+       },
+       "1": {
+        "n": 1278,
+        "success": 0.7246
+       },
+       "2": {
+        "n": 1200,
+        "success": 0.8392
+       },
+       "3": {
+        "n": 1200,
+        "success": 0.815
+       },
+       "4": {
+        "n": 1140,
+        "success": 0.8649
+       },
+       "5": {
+        "n": 1260,
+        "success": 0.8349
+       },
+       "6": {
+        "n": 1440,
+        "success": 0.8472
+       },
+       "7": {
+        "n": 1560,
+        "success": 0.8372
+       },
+       "8": {
+        "n": 1560,
+        "success": 0.8301
+       },
+       "9": {
+        "n": 1320,
+        "success": 0.8129
+       },
+       "10": {
+        "n": 1218,
+        "success": 0.8046
+       },
+       "11": {
+        "n": 884,
+        "success": 0.7964
+       },
+       "12": {
+        "n": 595,
+        "success": 0.8218
+       },
+       "13": {
+        "n": 153,
+        "success": 0.817
+       },
+       "14": {
+        "n": 82,
+        "success": 0.8415
+       },
+       "15": {
+        "n": 12,
+        "success": 0.9167
+       }
+      }
+     },
+     "noise_0.15": {
+      "arm": "noise",
+      "success_all": 0.7936,
+      "gen1_success": 0.7893,
+      "gen1_only_success": 0.7484,
+      "clean_success": 0.7929,
+      "clean_balanced": 0.786,
+      "n_clean": 13193,
+      "n_clean_alive": 40,
+      "births": 270,
+      "deaths": 242,
+      "max_generation": 14,
+      "eff_label_acc": 0.6998,
+      "message_decode": 0.6467,
+      "sync_decode": 0.0491,
+      "cross_gen0_decode": 0.6502,
+      "token_entropy": 0.6199,
+      "action_entropy": 0.9215,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.8833
+       },
+       "1": {
+        "n": 1232,
+        "success": 0.7484
+       },
+       "2": {
+        "n": 1080,
+        "success": 0.8019
+       },
+       "3": {
+        "n": 1140,
+        "success": 0.793
+       },
+       "4": {
+        "n": 1380,
+        "success": 0.8159
+       },
+       "5": {
+        "n": 1680,
+        "success": 0.8149
+       },
+       "6": {
+        "n": 1440,
+        "success": 0.7875
+       },
+       "7": {
+        "n": 1440,
+        "success": 0.7826
+       },
+       "8": {
+        "n": 1140,
+        "success": 0.7807
+       },
+       "9": {
+        "n": 1236,
+        "success": 0.7629
+       },
+       "10": {
+        "n": 1040,
+        "success": 0.7837
+       },
+       "11": {
+        "n": 1119,
+        "success": 0.8079
+       },
+       "12": {
+        "n": 577,
+        "success": 0.7712
+       },
+       "13": {
+        "n": 348,
+        "success": 0.8103
+       },
+       "14": {
+        "n": 53,
+        "success": 0.6981
+       }
+      }
+     },
+     "noise_0.3": {
+      "arm": "noise",
+      "success_all": 0.7428,
+      "gen1_success": 0.7353,
+      "gen1_only_success": 0.7428,
+      "clean_success": 0.7308,
+      "clean_balanced": 0.7323,
+      "n_clean": 13189,
+      "n_clean_alive": 40,
+      "births": 268,
+      "deaths": 240,
+      "max_generation": 13,
+      "eff_label_acc": 0.5487,
+      "message_decode": 0.6579,
+      "sync_decode": 0.0374,
+      "cross_gen0_decode": 0.6684,
+      "token_entropy": 0.6402,
+      "action_entropy": 0.9381,
+      "lesion_eval": {},
+      "per_generation": {
+       "0": {
+        "n": 720,
+        "success": 0.8986
+       },
+       "1": {
+        "n": 1353,
+        "success": 0.7428
+       },
+       "2": {
+        "n": 1260,
+        "success": 0.8317
+       },
+       "3": {
+        "n": 1380,
+        "success": 0.8159
+       },
+       "4": {
+        "n": 1200,
+        "success": 0.7758
+       },
+       "5": {
+        "n": 1620,
+        "success": 0.7735
+       },
+       "6": {
+        "n": 1500,
+        "success": 0.7547
+       },
+       "7": {
+        "n": 1500,
+        "success": 0.714
+       },
+       "8": {
+        "n": 1500,
+        "success": 0.6613
+       },
+       "9": {
+        "n": 1358,
+        "success": 0.6819
+       },
+       "10": {
+        "n": 1237,
+        "success": 0.6532
+       },
+       "11": {
+        "n": 584,
+        "success": 0.6661
+       },
+       "12": {
+        "n": 354,
+        "success": 0.6638
+       },
+       "13": {
+        "n": 56,
+        "success": 0.7321
+       }
+      }
+     }
+    }
+   }
+  ]
+ },
+ "verdict": "CULTURAL_TRANSMISSION_MAINTAINS",
+ "honest_claim": "Removes the genetic/parent-distillation wheel: naive offspring acquire the grammar only by imitating fallible reproduced elders' observed behaviour; headline on the post-gen-0 clean chain. Not spontaneous emergence.",
+ "wall_seconds": 10355.4
+}

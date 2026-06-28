@@ -1,0 +1,826 @@
+{
+ "kind": "ctm_openref_il",
+ "block": "powered",
+ "device": "cuda",
+ "frozen": {
+  "OPEN_DEVICE": "auto",
+  "OPEN_N_ATTRS": 3,
+  "OPEN_A_VALS": 8,
+  "OPEN_N_REF": 512,
+  "OPEN_VOCAB": 5,
+  "OPEN_MSG_LEN": 6,
+  "OPEN_K": 32,
+  "OPEN_EVAL_N": 256,
+  "OPEN_N_GENS": 4,
+  "OPEN_N_SEEDS": 6,
+  "OPEN_PILOT_SEEDS": 2,
+  "OPEN_BOOTSTRAP_REPS": 600,
+  "OPEN_HIDDEN": 48,
+  "OPEN_SYNC": 32,
+  "OPEN_TICKS": 6,
+  "OPEN_MEMORY": 3,
+  "OPEN_NLM": 12,
+  "OPEN_BOTTLENECK": 10,
+  "OPEN_BATCH": 64,
+  "OPEN_LR": 0.0025,
+  "OPEN_INTERACTIVE_STEPS": 900,
+  "OPEN_IMITATE_STEPS": 700,
+  "OPEN_LISTENER_STEPS": 800,
+  "OPEN_PILOT_STEPS_SCALE": 0.45,
+  "OPEN_TAU_HI": 1.2,
+  "OPEN_TAU_LO": 0.45,
+  "OPEN_ARMS": [
+   "NONE",
+   "BALANCE",
+   "IB"
+  ],
+  "OPEN_PRIMARY_ARM": "BALANCE",
+  "OPEN_WORLDS": [
+   "normal",
+   "shuffled",
+   "random_label"
+  ],
+  "OPEN_IB_WEIGHT": 0.015,
+  "OPEN_BALANCE_WEIGHT": 0.06,
+  "OPEN_JOINT_MIN": 0.35,
+  "OPEN_UNSEEN_VALUE_MIN": 0.35,
+  "OPEN_ORACLE_PROP_MIN": 0.55,
+  "OPEN_OPEN_MUTE_MIN": 0.2,
+  "OPEN_TOPSIM_MIN": 0.1,
+  "OPEN_POSDIS_MIN": 0.04,
+  "OPEN_RISE_MIN": 0.02,
+  "OPEN_SHUFFLED_MAX": 0.22,
+  "OPEN_COORD_RECON_MAX": 0.95,
+  "OPEN_REUSE_CLOSER_MARGIN": 0.01,
+  "OPEN_VERDICTS": [
+   "COMPOSITIONAL_BIAS_EMERGES",
+   "DISENTANGLED_COORDINATE_CODE",
+   "COMPRESSION_NOT_COMPOSITION",
+   "NO_TRANSMISSIBLE_BIAS",
+   "DISCRIMINATOR_BROKEN",
+   "HARD_REJECT"
+  ],
+  "OPEN_LITERATURE": {
+   "iterated_learning": "Ren et al. 2020 ICLR; Kirby/Smith/Brighton tradition",
+   "emergent_generalization": "Chaabouni et al. 2020 ACL; Kharitonov/Baroni line",
+   "bottlenecks": "Tucker et al. 2022 VQ-VIB; Zheng et al. 2024 CVPR"
+  },
+  "OPEN_SPLIT_HASH": "67c6b969c42ed472",
+  "OPEN_DECISION_RULE": "A win requires oracle propagation, held-out-combo and unseen-value-context generalization, causal open>mute, anti-holistic structure, distance closer to reuse grammar than coordinate/hash baselines, shuffled-factor failure, and positive Kirby rise. Coordinate-like wins are explicitly downgraded."
+ },
+ "marginal_proof": {
+  "marginals_match": true,
+  "same_label_multiset": true
+ },
+ "oracle_rows": [
+  {
+   "seed": 0,
+   "arm": "NONE",
+   "world": "normal",
+   "curve": [
+    {
+     "gen": 0,
+     "heldout_joint": 0.125,
+     "unseen_value_context_joint": 0.125,
+     "open_minus_mute": 0.125,
+     "attrs": [
+      0.5078125,
+      0.42578125,
+      0.5390625
+     ]
+    },
+    {
+     "gen": 1,
+     "heldout_joint": 0.09765625,
+     "unseen_value_context_joint": 0.09765625,
+     "open_minus_mute": 0.09765625,
+     "attrs": [
+      0.52734375,
+      0.453125,
+      0.41796875
+     ]
+    },
+    {
+     "gen": 2,
+     "heldout_joint": 0.05078125,
+     "unseen_value_context_joint": 0.05078125,
+     "open_minus_mute": 0.046875,
+     "attrs": [
+      0.48046875,
+      0.30078125,
+      0.3515625
+     ]
+    },
+    {
+     "gen": 3,
+     "heldout_joint": 0.05078125,
+     "unseen_value_context_joint": 0.05078125,
+     "open_minus_mute": 0.05078125,
+     "attrs": [
+      0.45703125,
+      0.33984375,
+      0.34375
+     ]
+    },
+    {
+     "gen": 4,
+     "heldout_joint": 0.0546875,
+     "unseen_value_context_joint": 0.0546875,
+     "open_minus_mute": 0.05078125,
+     "attrs": [
+      0.46875,
+      0.21484375,
+      0.28515625
+     ]
+    }
+   ],
+   "final": {
+    "gen": 4,
+    "heldout_joint": 0.0546875,
+    "unseen_value_context_joint": 0.0546875,
+    "open_minus_mute": 0.05078125,
+    "attrs": [
+     0.46875,
+     0.21484375,
+     0.28515625
+    ]
+   },
+   "rise": -0.0703125,
+   "diagnostics": {
+    "topsim": 0.1652,
+    "posdis": 0.5386,
+    "mi_matrix": [
+     [
+      0.5061,
+      0.1691,
+      0.2655
+     ],
+     [
+      0.2576,
+      0.0809,
+      0.0446
+     ],
+     [
+      0.5587,
+      0.1494,
+      0.1348
+     ],
+     [
+      0.2253,
+      0.099,
+      0.0613
+     ],
+     [
+      0.4151,
+      0.177,
+      0.3761
+     ],
+     [
+      0.1706,
+      0.0541,
+      0.0486
+     ]
+    ],
+    "single_slot_value_decode": 0.332,
+    "distance": {
+     "reuse_oracle": 0.5169,
+     "coordinate_alias": 0.5684,
+     "random_hash": 0.7975,
+     "smooth_hash": 0.6992,
+     "rotated_coordinate": 0.6517
+    },
+    "closer_to_reuse_than_hardest": true
+   }
+  },
+  {
+   "seed": 1,
+   "arm": "NONE",
+   "world": "normal",
+   "curve": [
+    {
+     "gen": 0,
+     "heldout_joint": 0.08203125,
+     "unseen_value_context_joint": 0.08203125,
+     "open_minus_mute": 0.08203125,
+     "attrs": [
+      0.3984375,
+      0.515625,
+      0.5
+     ]
+    },
+    {
+     "gen": 1,
+     "heldout_joint": 0.14453125,
+     "unseen_value_context_joint": 0.14453125,
+     "open_minus_mute": 0.140625,
+     "attrs": [
+      0.53515625,
+      0.453125,
+      0.51953125
+     ]
+    },
+    {
+     "gen": 2,
+     "heldout_joint": 0.046875,
+     "unseen_value_context_joint": 0.046875,
+     "open_minus_mute": 0.046875,
+     "attrs": [
+      0.40234375,
+      0.41796875,
+      0.2890625
+     ]
+    },
+    {
+     "gen": 3,
+     "heldout_joint": 0.0390625,
+     "unseen_value_context_joint": 0.0390625,
+     "open_minus_mute": 0.03515625,
+     "attrs": [
+      0.4453125,
+      0.33984375,
+      0.23046875
+     ]
+    },
+    {
+     "gen": 4,
+     "heldout_joint": 0.03515625,
+     "unseen_value_context_joint": 0.03515625,
+     "open_minus_mute": 0.03515625,
+     "attrs": [
+      0.4296875,
+      0.32421875,
+      0.30859375
+     ]
+    }
+   ],
+   "final": {
+    "gen": 4,
+    "heldout_joint": 0.03515625,
+    "unseen_value_context_joint": 0.03515625,
+    "open_minus_mute": 0.03515625,
+    "attrs": [
+     0.4296875,
+     0.32421875,
+     0.30859375
+    ]
+   },
+   "rise": -0.046875,
+   "diagnostics": {
+    "topsim": 0.1471,
+    "posdis": 0.2644,
+    "mi_matrix": [
+     [
+      0.3297,
+      0.1849,
+      0.1304
+     ],
+     [
+      0.1276,
+      0.0566,
+      0.1288
+     ],
+     [
+      0.3711,
+      0.2222,
+      0.2603
+     ],
+     [
+      0.0475,
+      0.1976,
+      0.0964
+     ],
+     [
+      0.2733,
+      0.2666,
+      0.2157
+     ],
+     [
+      0.0535,
+      0.0373,
+      0.0275
+     ]
+    ],
+    "single_slot_value_decode": 0.2969,
+    "distance": {
+     "reuse_oracle": 0.5052,
+     "coordinate_alias": 0.5345,
+     "random_hash": 0.8118,
+     "smooth_hash": 0.6979,
+     "rotated_coordinate": 0.6296
+    },
+    "closer_to_reuse_than_hardest": true
+   }
+  },
+  {
+   "seed": 2,
+   "arm": "NONE",
+   "world": "normal",
+   "curve": [
+    {
+     "gen": 0,
+     "heldout_joint": 0.140625,
+     "unseen_value_context_joint": 0.140625,
+     "open_minus_mute": 0.140625,
+     "attrs": [
+      0.484375,
+      0.59765625,
+      0.5625
+     ]
+    },
+    {
+     "gen": 1,
+     "heldout_joint": 0.13671875,
+     "unseen_value_context_joint": 0.13671875,
+     "open_minus_mute": 0.13671875,
+     "attrs": [
+      0.44140625,
+      0.5234375,
+      0.5859375
+     ]
+    },
+    {
+     "gen": 2,
+     "heldout_joint": 0.0546875,
+     "unseen_value_context_joint": 0.0546875,
+     "open_minus_mute": 0.0546875,
+     "attrs": [
+      0.37890625,
+      0.30078125,
+      0.3984375
+     ]
+    },
+    {
+     "gen": 3,
+     "heldout_joint": 0.046875,
+     "unseen_value_context_joint": 0.046875,
+     "open_minus_mute": 0.04296875,
+     "attrs": [
+      0.359375,
+      0.30078125,
+      0.3203125
+     ]
+    },
+    {
+     "gen": 4,
+     "heldout_joint": 0.0546875,
+     "unseen_value_context_joint": 0.0546875,
+     "open_minus_mute": 0.0546875,
+     "attrs": [
+      0.30078125,
+      0.26171875,
+      0.515625
+     ]
+    }
+   ],
+   "final": {
+    "gen": 4,
+    "heldout_joint": 0.0546875,
+    "unseen_value_context_joint": 0.0546875,
+    "open_minus_mute": 0.0546875,
+    "attrs": [
+     0.30078125,
+     0.26171875,
+     0.515625
+    ]
+   },
+   "rise": -0.0859375,
+   "diagnostics": {
+    "topsim": 0.1584,
+    "posdis": 0.3652,
+    "mi_matrix": [
+     [
+      0.2069,
+      0.1846,
+      0.2468
+     ],
+     [
+      0.117,
+      0.0484,
+      0.1423
+     ],
+     [
+      0.1964,
+      0.2411,
+      0.3673
+     ],
+     [
+      0.058,
+      0.0389,
+      0.1194
+     ],
+     [
+      0.1554,
+      0.1776,
+      0.3697
+     ],
+     [
+      0.0675,
+      0.0914,
+      0.1741
+     ]
+    ],
+    "single_slot_value_decode": 0.2995,
+    "distance": {
+     "reuse_oracle": 0.5462,
+     "coordinate_alias": 0.6562,
+     "random_hash": 0.7995,
+     "smooth_hash": 0.7559,
+     "rotated_coordinate": 0.625
+    },
+    "closer_to_reuse_than_hardest": true
+   }
+  },
+  {
+   "seed": 3,
+   "arm": "NONE",
+   "world": "normal",
+   "curve": [
+    {
+     "gen": 0,
+     "heldout_joint": 0.1328125,
+     "unseen_value_context_joint": 0.1328125,
+     "open_minus_mute": 0.1328125,
+     "attrs": [
+      0.5234375,
+      0.5703125,
+      0.546875
+     ]
+    },
+    {
+     "gen": 1,
+     "heldout_joint": 0.1171875,
+     "unseen_value_context_joint": 0.1171875,
+     "open_minus_mute": 0.11328125,
+     "attrs": [
+      0.55859375,
+      0.40234375,
+      0.453125
+     ]
+    },
+    {
+     "gen": 2,
+     "heldout_joint": 0.078125,
+     "unseen_value_context_joint": 0.078125,
+     "open_minus_mute": 0.078125,
+     "attrs": [
+      0.44921875,
+      0.36328125,
+      0.3359375
+     ]
+    },
+    {
+     "gen": 3,
+     "heldout_joint": 0.04296875,
+     "unseen_value_context_joint": 0.04296875,
+     "open_minus_mute": 0.04296875,
+     "attrs": [
+      0.48828125,
+      0.265625,
+      0.2265625
+     ]
+    },
+    {
+     "gen": 4,
+     "heldout_joint": 0.0390625,
+     "unseen_value_context_joint": 0.0390625,
+     "open_minus_mute": 0.0390625,
+     "attrs": [
+      0.42578125,
+      0.3359375,
+      0.23828125
+     ]
+    }
+   ],
+   "final": {
+    "gen": 4,
+    "heldout_joint": 0.0390625,
+    "unseen_value_context_joint": 0.0390625,
+    "open_minus_mute": 0.0390625,
+    "attrs": [
+     0.42578125,
+     0.3359375,
+     0.23828125
+    ]
+   },
+   "rise": -0.09375,
+   "diagnostics": {
+    "topsim": 0.1682,
+    "posdis": 0.5587,
+    "mi_matrix": [
+     [
+      0.4218,
+      0.2277,
+      0.1418
+     ],
+     [
+      0.2368,
+      0.0739,
+      0.04
+     ],
+     [
+      0.4981,
+      0.1287,
+      0.0613
+     ],
+     [
+      0.0548,
+      0.1641,
+      0.0389
+     ],
+     [
+      0.4698,
+      0.1971,
+      0.1383
+     ],
+     [
+      0.0684,
+      0.0872,
+      0.0224
+     ]
+    ],
+    "single_slot_value_decode": 0.2904,
+    "distance": {
+     "reuse_oracle": 0.5332,
+     "coordinate_alias": 0.5156,
+     "random_hash": 0.7962,
+     "smooth_hash": 0.6667,
+     "rotated_coordinate": 0.6009
+    },
+    "closer_to_reuse_than_hardest": false
+   }
+  },
+  {
+   "seed": 4,
+   "arm": "NONE",
+   "world": "normal",
+   "curve": [
+    {
+     "gen": 0,
+     "heldout_joint": 0.140625,
+     "unseen_value_context_joint": 0.140625,
+     "open_minus_mute": 0.140625,
+     "attrs": [
+      0.65234375,
+      0.3203125,
+      0.54296875
+     ]
+    },
+    {
+     "gen": 1,
+     "heldout_joint": 0.140625,
+     "unseen_value_context_joint": 0.140625,
+     "open_minus_mute": 0.13671875,
+     "attrs": [
+      0.453125,
+      0.46484375,
+      0.5625
+     ]
+    },
+    {
+     "gen": 2,
+     "heldout_joint": 0.05859375,
+     "unseen_value_context_joint": 0.05859375,
+     "open_minus_mute": 0.05859375,
+     "attrs": [
+      0.4609375,
+      0.37109375,
+      0.35546875
+     ]
+    },
+    {
+     "gen": 3,
+     "heldout_joint": 0.0390625,
+     "unseen_value_context_joint": 0.0390625,
+     "open_minus_mute": 0.0390625,
+     "attrs": [
+      0.2890625,
+      0.38671875,
+      0.375
+     ]
+    },
+    {
+     "gen": 4,
+     "heldout_joint": 0.04296875,
+     "unseen_value_context_joint": 0.04296875,
+     "open_minus_mute": 0.04296875,
+     "attrs": [
+      0.26171875,
+      0.3828125,
+      0.46484375
+     ]
+    }
+   ],
+   "final": {
+    "gen": 4,
+    "heldout_joint": 0.04296875,
+    "unseen_value_context_joint": 0.04296875,
+    "open_minus_mute": 0.04296875,
+    "attrs": [
+     0.26171875,
+     0.3828125,
+     0.46484375
+    ]
+   },
+   "rise": -0.09765625,
+   "diagnostics": {
+    "topsim": 0.1878,
+    "posdis": 0.3316,
+    "mi_matrix": [
+     [
+      0.0777,
+      0.2834,
+      0.3684
+     ],
+     [
+      0.0981,
+      0.059,
+      0.0386
+     ],
+     [
+      0.1604,
+      0.3487,
+      0.2577
+     ],
+     [
+      0.0873,
+      0.1882,
+      0.0587
+     ],
+     [
+      0.1733,
+      0.1246,
+      0.2003
+     ],
+     [
+      0.0783,
+      0.1743,
+      0.0996
+     ]
+    ],
+    "single_slot_value_decode": 0.2865,
+    "distance": {
+     "reuse_oracle": 0.5365,
+     "coordinate_alias": 0.5872,
+     "random_hash": 0.7995,
+     "smooth_hash": 0.6458,
+     "rotated_coordinate": 0.6172
+    },
+    "closer_to_reuse_than_hardest": true
+   }
+  },
+  {
+   "seed": 5,
+   "arm": "NONE",
+   "world": "normal",
+   "curve": [
+    {
+     "gen": 0,
+     "heldout_joint": 0.09375,
+     "unseen_value_context_joint": 0.09375,
+     "open_minus_mute": 0.08984375,
+     "attrs": [
+      0.59765625,
+      0.42578125,
+      0.45703125
+     ]
+    },
+    {
+     "gen": 1,
+     "heldout_joint": 0.140625,
+     "unseen_value_context_joint": 0.140625,
+     "open_minus_mute": 0.13671875,
+     "attrs": [
+      0.44921875,
+      0.5078125,
+      0.54296875
+     ]
+    },
+    {
+     "gen": 2,
+     "heldout_joint": 0.0703125,
+     "unseen_value_context_joint": 0.0703125,
+     "open_minus_mute": 0.06640625,
+     "attrs": [
+      0.38671875,
+      0.30859375,
+      0.36328125
+     ]
+    },
+    {
+     "gen": 3,
+     "heldout_joint": 0.0546875,
+     "unseen_value_context_joint": 0.0546875,
+     "open_minus_mute": 0.05078125,
+     "attrs": [
+      0.3125,
+      0.31640625,
+      0.35546875
+     ]
+    },
+    {
+     "gen": 4,
+     "heldout_joint": 0.0625,
+     "unseen_value_context_joint": 0.0625,
+     "open_minus_mute": 0.0625,
+     "attrs": [
+      0.35546875,
+      0.3046875,
+      0.2734375
+     ]
+    }
+   ],
+   "final": {
+    "gen": 4,
+    "heldout_joint": 0.0625,
+    "unseen_value_context_joint": 0.0625,
+    "open_minus_mute": 0.0625,
+    "attrs": [
+     0.35546875,
+     0.3046875,
+     0.2734375
+    ]
+   },
+   "rise": -0.03125,
+   "diagnostics": {
+    "topsim": 0.1867,
+    "posdis": 0.3632,
+    "mi_matrix": [
+     [
+      0.1702,
+      0.329,
+      0.1284
+     ],
+     [
+      0.0892,
+      0.2203,
+      0.0161
+     ],
+     [
+      0.3063,
+      0.4787,
+      0.167
+     ],
+     [
+      0.0831,
+      0.1412,
+      0.096
+     ],
+     [
+      0.2898,
+      0.2052,
+      0.231
+     ],
+     [
+      0.1039,
+      0.099,
+      0.1329
+     ]
+    ],
+    "single_slot_value_decode": 0.3268,
+    "distance": {
+     "reuse_oracle": 0.5319,
+     "coordinate_alias": 0.6042,
+     "random_hash": 0.7982,
+     "smooth_hash": 0.7259,
+     "rotated_coordinate": 0.6217
+    },
+    "closer_to_reuse_than_hardest": true
+   }
+  }
+ ],
+ "arms": {},
+ "oracle_summary": {
+  "heldout_joint": {
+   "mean": 0.0482,
+   "ci": [
+    0.0404,
+    0.056
+   ],
+   "per_seed": [
+    0.0547,
+    0.0352,
+    0.0547,
+    0.0391,
+    0.043,
+    0.0625
+   ]
+  },
+  "rise": {
+   "mean": -0.071,
+   "ci": [
+    -0.0898,
+    -0.0514
+   ],
+   "per_seed": [
+    -0.0703,
+    -0.0469,
+    -0.0859,
+    -0.0938,
+    -0.0977,
+    -0.0312
+   ]
+  }
+ },
+ "verdict": "DISCRIMINATOR_BROKEN",
+ "wall_seconds": 516.7
+}

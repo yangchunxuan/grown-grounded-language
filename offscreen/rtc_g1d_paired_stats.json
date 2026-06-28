@@ -1,0 +1,33 @@
+{
+  "kind": "rtc_g1d_paired_stats",
+  "source": "rtc_g1d_lethal_verdict_sig0.3.json",
+  "machine_verdict": "RTC_G1D_INCONCLUSIVE",
+  "note": "Machine verdict is INCONCLUSIVE because it tests ABSOLUTE majority survival (fusion CI-lower > 0.5). The relative claim (fusion beats each degraded control) is tested here by an exact paired (by-seed) two-sided McNemar test.",
+  "n_seeds": 24,
+  "fusion_alive_rate": 0.5833,
+  "tests": {
+    "fusion_vs_scramble": {
+      "discordant_fusion_lives": 12,
+      "discordant_control_lives": 0,
+      "control_alive_rate": 0.0833,
+      "mcnemar_exact_two_sided_p": 0.00048828125,
+      "significant_p_lt_5e-4": true
+    },
+    "fusion_vs_misroute": {
+      "discordant_fusion_lives": 13,
+      "discordant_control_lives": 0,
+      "control_alive_rate": 0.0417,
+      "mcnemar_exact_two_sided_p": 0.000244140625,
+      "significant_p_lt_5e-4": true
+    },
+    "fusion_vs_mute": {
+      "discordant_fusion_lives": 13,
+      "discordant_control_lives": 0,
+      "control_alive_rate": 0.0417,
+      "mcnemar_exact_two_sided_p": 0.000244140625,
+      "significant_p_lt_5e-4": true
+    }
+  },
+  "all_controls_p_lt_5e-4": true,
+  "max_p_across_controls": 0.00048828125
+}

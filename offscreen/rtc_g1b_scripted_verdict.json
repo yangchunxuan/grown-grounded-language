@@ -1,0 +1,836 @@
+{
+  "kind": "rtc_g1b_scripted_v1",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "channel_epochs": 500,
+  "honest_claim": "Scripted-forage S5 test: well-trained grown channel + scripted packet-score policy. open=fusion vs mute/scramble/body_follow/solo survival lift. Decouples policy-learning from channel-load-bearing. JOINT compositionality (installed FactoredSpeaker) is NOT retested here.",
+  "channel_roundtrip_acc": [
+    0.8112,
+    0.9408,
+    0.8736,
+    0.8112,
+    0.8656,
+    0.92,
+    0.7968,
+    0.9136,
+    0.9616,
+    0.8416,
+    0.96,
+    1.0
+  ],
+  "channel_roundtrip_mean": 0.8913,
+  "open_alive_ci": [
+    0.4167,
+    0.9167
+  ],
+  "deltas": {
+    "open_minus_mute": [
+      0.4167,
+      0.9167
+    ],
+    "open_minus_scramble": [
+      0.4167,
+      0.9167
+    ],
+    "open_minus_body_follow": [
+      0.4167,
+      0.9167
+    ],
+    "open_minus_solo": [
+      0.4167,
+      0.9167
+    ]
+  },
+  "summary": {
+    "body_follow": {
+      "alive": 0.0,
+      "alive_ci": [
+        0.0,
+        0.0
+      ],
+      "age": 278.0,
+      "age_ci": [
+        278.0,
+        278.0
+      ],
+      "final_energy": 0.0,
+      "final_energy_ci": [
+        0.0,
+        0.0
+      ],
+      "eat_rate": 0.0,
+      "eat_rate_ci": [
+        0.0,
+        0.0
+      ],
+      "bad_rate": 0.0,
+      "bad_rate_ci": [
+        0.0,
+        0.0
+      ],
+      "rest_rate": 1.0,
+      "rest_rate_ci": [
+        1.0,
+        1.0
+      ],
+      "rows": [
+        {
+          "seed": 0,
+          "policy": "body_follow",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 1,
+          "policy": "body_follow",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 2,
+          "policy": "body_follow",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 3,
+          "policy": "body_follow",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 4,
+          "policy": "body_follow",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 5,
+          "policy": "body_follow",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 6,
+          "policy": "body_follow",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 7,
+          "policy": "body_follow",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 8,
+          "policy": "body_follow",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 9,
+          "policy": "body_follow",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 10,
+          "policy": "body_follow",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 11,
+          "policy": "body_follow",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        }
+      ]
+    },
+    "fusion": {
+      "alive": 0.6667,
+      "alive_ci": [
+        0.4167,
+        0.9167
+      ],
+      "age": 286.0,
+      "age_ci": [
+        250.8167,
+        314.8333
+      ],
+      "final_energy": 37.3732,
+      "final_energy_ci": [
+        18.3613,
+        57.6791
+      ],
+      "eat_rate": 0.3252,
+      "eat_rate_ci": [
+        0.2338,
+        0.4107
+      ],
+      "bad_rate": 0.1391,
+      "bad_rate_ci": [
+        0.1087,
+        0.1677
+      ],
+      "rest_rate": 0.5357,
+      "rest_rate_ci": [
+        0.4406,
+        0.6549
+      ],
+      "rows": [
+        {
+          "seed": 0,
+          "policy": "fusion",
+          "alive": 0.0,
+          "age": 258,
+          "final_energy": 0.0,
+          "eat_rate": 0.0078,
+          "bad_rate": 0.0233,
+          "rest_rate": 0.969
+        },
+        {
+          "seed": 1,
+          "policy": "fusion",
+          "alive": 1.0,
+          "age": 320,
+          "final_energy": 35.8794,
+          "eat_rate": 0.3156,
+          "bad_rate": 0.1156,
+          "rest_rate": 0.5687
+        },
+        {
+          "seed": 2,
+          "policy": "fusion",
+          "alive": 1.0,
+          "age": 320,
+          "final_energy": 33.8564,
+          "eat_rate": 0.3563,
+          "bad_rate": 0.0969,
+          "rest_rate": 0.5469
+        },
+        {
+          "seed": 3,
+          "policy": "fusion",
+          "alive": 1.0,
+          "age": 320,
+          "final_energy": 82.3075,
+          "eat_rate": 0.5781,
+          "bad_rate": 0.1656,
+          "rest_rate": 0.2562
+        },
+        {
+          "seed": 4,
+          "policy": "fusion",
+          "alive": 1.0,
+          "age": 320,
+          "final_energy": 21.685,
+          "eat_rate": 0.3,
+          "bad_rate": 0.1313,
+          "rest_rate": 0.5687
+        },
+        {
+          "seed": 5,
+          "policy": "fusion",
+          "alive": 0.0,
+          "age": 142,
+          "final_energy": 0.0,
+          "eat_rate": 0.2183,
+          "bad_rate": 0.1901,
+          "rest_rate": 0.5915
+        },
+        {
+          "seed": 6,
+          "policy": "fusion",
+          "alive": 1.0,
+          "age": 320,
+          "final_energy": 38.4085,
+          "eat_rate": 0.3937,
+          "bad_rate": 0.15,
+          "rest_rate": 0.4562
+        },
+        {
+          "seed": 7,
+          "policy": "fusion",
+          "alive": 0.0,
+          "age": 276,
+          "final_energy": 0.0,
+          "eat_rate": 0.279,
+          "bad_rate": 0.2464,
+          "rest_rate": 0.4746
+        },
+        {
+          "seed": 8,
+          "policy": "fusion",
+          "alive": 1.0,
+          "age": 320,
+          "final_energy": 37.4925,
+          "eat_rate": 0.275,
+          "bad_rate": 0.0875,
+          "rest_rate": 0.6375
+        },
+        {
+          "seed": 9,
+          "policy": "fusion",
+          "alive": 0.0,
+          "age": 196,
+          "final_energy": 0.0,
+          "eat_rate": 0.1378,
+          "bad_rate": 0.1939,
+          "rest_rate": 0.6684
+        },
+        {
+          "seed": 10,
+          "policy": "fusion",
+          "alive": 1.0,
+          "age": 320,
+          "final_energy": 80.1278,
+          "eat_rate": 0.45,
+          "bad_rate": 0.1313,
+          "rest_rate": 0.4188
+        },
+        {
+          "seed": 11,
+          "policy": "fusion",
+          "alive": 1.0,
+          "age": 320,
+          "final_energy": 118.7215,
+          "eat_rate": 0.5906,
+          "bad_rate": 0.1375,
+          "rest_rate": 0.2719
+        }
+      ]
+    },
+    "mute": {
+      "alive": 0.0,
+      "alive_ci": [
+        0.0,
+        0.0
+      ],
+      "age": 278.0,
+      "age_ci": [
+        278.0,
+        278.0
+      ],
+      "final_energy": 0.0,
+      "final_energy_ci": [
+        0.0,
+        0.0
+      ],
+      "eat_rate": 0.0,
+      "eat_rate_ci": [
+        0.0,
+        0.0
+      ],
+      "bad_rate": 0.0,
+      "bad_rate_ci": [
+        0.0,
+        0.0
+      ],
+      "rest_rate": 1.0,
+      "rest_rate_ci": [
+        1.0,
+        1.0
+      ],
+      "rows": [
+        {
+          "seed": 0,
+          "policy": "mute",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 1,
+          "policy": "mute",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 2,
+          "policy": "mute",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 3,
+          "policy": "mute",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 4,
+          "policy": "mute",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 5,
+          "policy": "mute",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 6,
+          "policy": "mute",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 7,
+          "policy": "mute",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 8,
+          "policy": "mute",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 9,
+          "policy": "mute",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 10,
+          "policy": "mute",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 11,
+          "policy": "mute",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        }
+      ]
+    },
+    "scramble": {
+      "alive": 0.0,
+      "alive_ci": [
+        0.0,
+        0.0
+      ],
+      "age": 104.5,
+      "age_ci": [
+        91.1229,
+        121.4604
+      ],
+      "final_energy": 0.0,
+      "final_energy_ci": [
+        0.0,
+        0.0
+      ],
+      "eat_rate": 0.1286,
+      "eat_rate_ci": [
+        0.0658,
+        0.1959
+      ],
+      "bad_rate": 0.5445,
+      "bad_rate_ci": [
+        0.4908,
+        0.6025
+      ],
+      "rest_rate": 0.3269,
+      "rest_rate_ci": [
+        0.2744,
+        0.3699
+      ],
+      "rows": [
+        {
+          "seed": 0,
+          "policy": "scramble",
+          "alive": 0.0,
+          "age": 72,
+          "final_energy": 0.0,
+          "eat_rate": 0.0139,
+          "bad_rate": 0.75,
+          "rest_rate": 0.2361
+        },
+        {
+          "seed": 1,
+          "policy": "scramble",
+          "alive": 0.0,
+          "age": 92,
+          "final_energy": 0.0,
+          "eat_rate": 0.087,
+          "bad_rate": 0.5543,
+          "rest_rate": 0.3587
+        },
+        {
+          "seed": 2,
+          "policy": "scramble",
+          "alive": 0.0,
+          "age": 168,
+          "final_energy": 0.0,
+          "eat_rate": 0.3929,
+          "bad_rate": 0.3988,
+          "rest_rate": 0.2083
+        },
+        {
+          "seed": 3,
+          "policy": "scramble",
+          "alive": 0.0,
+          "age": 113,
+          "final_energy": 0.0,
+          "eat_rate": 0.2655,
+          "bad_rate": 0.4956,
+          "rest_rate": 0.2389
+        },
+        {
+          "seed": 4,
+          "policy": "scramble",
+          "alive": 0.0,
+          "age": 91,
+          "final_energy": 0.0,
+          "eat_rate": 0.011,
+          "bad_rate": 0.5385,
+          "rest_rate": 0.4505
+        },
+        {
+          "seed": 5,
+          "policy": "scramble",
+          "alive": 0.0,
+          "age": 87,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.5747,
+          "rest_rate": 0.4253
+        },
+        {
+          "seed": 6,
+          "policy": "scramble",
+          "alive": 0.0,
+          "age": 133,
+          "final_energy": 0.0,
+          "eat_rate": 0.203,
+          "bad_rate": 0.3985,
+          "rest_rate": 0.3985
+        },
+        {
+          "seed": 7,
+          "policy": "scramble",
+          "alive": 0.0,
+          "age": 98,
+          "final_energy": 0.0,
+          "eat_rate": 0.0816,
+          "bad_rate": 0.5204,
+          "rest_rate": 0.398
+        },
+        {
+          "seed": 8,
+          "policy": "scramble",
+          "alive": 0.0,
+          "age": 106,
+          "final_energy": 0.0,
+          "eat_rate": 0.1698,
+          "bad_rate": 0.6038,
+          "rest_rate": 0.2264
+        },
+        {
+          "seed": 9,
+          "policy": "scramble",
+          "alive": 0.0,
+          "age": 80,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.6375,
+          "rest_rate": 0.3625
+        },
+        {
+          "seed": 10,
+          "policy": "scramble",
+          "alive": 0.0,
+          "age": 126,
+          "final_energy": 0.0,
+          "eat_rate": 0.1825,
+          "bad_rate": 0.4365,
+          "rest_rate": 0.381
+        },
+        {
+          "seed": 11,
+          "policy": "scramble",
+          "alive": 0.0,
+          "age": 88,
+          "final_energy": 0.0,
+          "eat_rate": 0.1364,
+          "bad_rate": 0.625,
+          "rest_rate": 0.2386
+        }
+      ]
+    },
+    "solo": {
+      "alive": 0.0,
+      "alive_ci": [
+        0.0,
+        0.0
+      ],
+      "age": 278.0,
+      "age_ci": [
+        278.0,
+        278.0
+      ],
+      "final_energy": 0.0,
+      "final_energy_ci": [
+        0.0,
+        0.0
+      ],
+      "eat_rate": 0.0,
+      "eat_rate_ci": [
+        0.0,
+        0.0
+      ],
+      "bad_rate": 0.0,
+      "bad_rate_ci": [
+        0.0,
+        0.0
+      ],
+      "rest_rate": 1.0,
+      "rest_rate_ci": [
+        1.0,
+        1.0
+      ],
+      "rows": [
+        {
+          "seed": 0,
+          "policy": "solo",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 1,
+          "policy": "solo",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 2,
+          "policy": "solo",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 3,
+          "policy": "solo",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 4,
+          "policy": "solo",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 5,
+          "policy": "solo",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 6,
+          "policy": "solo",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 7,
+          "policy": "solo",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 8,
+          "policy": "solo",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 9,
+          "policy": "solo",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 10,
+          "policy": "solo",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        },
+        {
+          "seed": 11,
+          "policy": "solo",
+          "alive": 0.0,
+          "age": 278,
+          "final_energy": 0.0,
+          "eat_rate": 0.0,
+          "bad_rate": 0.0,
+          "rest_rate": 1.0
+        }
+      ]
+    }
+  },
+  "gates": {
+    "channel_accurate": true,
+    "open_survives_majority": false,
+    "open_beats_mute": true,
+    "open_beats_scramble": true,
+    "open_beats_body_follow": true
+  },
+  "verdict": "RTC_G1B_FAIL"
+}

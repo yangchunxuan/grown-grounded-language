@@ -1,0 +1,271 @@
+{
+  "kind": "rtc_g1d_lethal",
+  "seeds": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "prereg": {
+    "RTC_SENSOR_SIGMA": 0.2,
+    "LE_ROUNDS": 60,
+    "LE_VENTS": 12,
+    "LE_STEP_PER_ROUND": 3,
+    "RTC_ADVECT_SPEED": 0.45,
+    "RTC_VENTS_PER_CHANNEL": 5
+  },
+  "channel_roundtrip_mean": 0.8592,
+  "mean_lethal_frac": 0.268,
+  "summary": {
+    "fusion": {
+      "alive": 0.0,
+      "alive_ci": [
+        0.0,
+        0.0
+      ],
+      "food_pick_rate": 0.6157,
+      "rounds": 14.75
+    },
+    "scramble": {
+      "alive": 0.0,
+      "alive_ci": [
+        0.0,
+        0.0
+      ],
+      "food_pick_rate": 0.4451,
+      "rounds": 4.75
+    },
+    "misroute": {
+      "alive": 0.0,
+      "alive_ci": [
+        0.0,
+        0.0
+      ],
+      "food_pick_rate": 0.3348,
+      "rounds": 6.5
+    },
+    "mute": {
+      "alive": 0.0,
+      "alive_ci": [
+        0.0,
+        0.0
+      ],
+      "food_pick_rate": 0.4688,
+      "rounds": 5.25
+    },
+    "oracle": {
+      "alive": 1.0,
+      "alive_ci": [
+        1.0,
+        1.0
+      ],
+      "food_pick_rate": 0.9708,
+      "rounds": 60.0
+    }
+  },
+  "deltas": {
+    "fusion_minus_scramble": [
+      0.0,
+      0.0
+    ],
+    "fusion_minus_misroute": [
+      0.0,
+      0.0
+    ],
+    "fusion_minus_mute": [
+      0.0,
+      0.0
+    ]
+  },
+  "gates": {
+    "channel_accurate": true,
+    "lethal_stakes_real": true,
+    "fusion_survives": false,
+    "fusion_beats_scramble": false,
+    "fusion_beats_misroute": false,
+    "fusion_beats_mute": false
+  },
+  "verdict": "RTC_G1D_INCONCLUSIVE",
+  "rows": [
+    {
+      "seed": 0,
+      "arm": "fusion",
+      "alive": 0.0,
+      "rounds": 11,
+      "food_pick_rate": 0.6364,
+      "death_by_toxin": 1,
+      "lethal_frac": 0.2652
+    },
+    {
+      "seed": 0,
+      "arm": "scramble",
+      "alive": 0.0,
+      "rounds": 4,
+      "food_pick_rate": 0.75,
+      "death_by_toxin": 1,
+      "lethal_frac": 0.2083
+    },
+    {
+      "seed": 0,
+      "arm": "misroute",
+      "alive": 0.0,
+      "rounds": 10,
+      "food_pick_rate": 0.4,
+      "death_by_toxin": 1,
+      "lethal_frac": 0.2667
+    },
+    {
+      "seed": 0,
+      "arm": "mute",
+      "alive": 0.0,
+      "rounds": 6,
+      "food_pick_rate": 0.3333,
+      "death_by_toxin": 1,
+      "lethal_frac": 0.2639
+    },
+    {
+      "seed": 0,
+      "arm": "oracle",
+      "alive": 1.0,
+      "rounds": 60,
+      "food_pick_rate": 0.9667,
+      "death_by_toxin": 0,
+      "lethal_frac": 0.2597
+    },
+    {
+      "seed": 1,
+      "arm": "fusion",
+      "alive": 0.0,
+      "rounds": 10,
+      "food_pick_rate": 0.9,
+      "death_by_toxin": 1,
+      "lethal_frac": 0.3333
+    },
+    {
+      "seed": 1,
+      "arm": "scramble",
+      "alive": 0.0,
+      "rounds": 3,
+      "food_pick_rate": 0.6667,
+      "death_by_toxin": 1,
+      "lethal_frac": 0.2778
+    },
+    {
+      "seed": 1,
+      "arm": "misroute",
+      "alive": 0.0,
+      "rounds": 3,
+      "food_pick_rate": 0.6667,
+      "death_by_toxin": 1,
+      "lethal_frac": 0.2778
+    },
+    {
+      "seed": 1,
+      "arm": "mute",
+      "alive": 0.0,
+      "rounds": 4,
+      "food_pick_rate": 0.5,
+      "death_by_toxin": 1,
+      "lethal_frac": 0.3125
+    },
+    {
+      "seed": 1,
+      "arm": "oracle",
+      "alive": 1.0,
+      "rounds": 60,
+      "food_pick_rate": 1.0,
+      "death_by_toxin": 0,
+      "lethal_frac": 0.2833
+    },
+    {
+      "seed": 2,
+      "arm": "fusion",
+      "alive": 0.0,
+      "rounds": 4,
+      "food_pick_rate": 0.25,
+      "death_by_toxin": 1,
+      "lethal_frac": 0.1875
+    },
+    {
+      "seed": 2,
+      "arm": "scramble",
+      "alive": 0.0,
+      "rounds": 11,
+      "food_pick_rate": 0.3636,
+      "death_by_toxin": 1,
+      "lethal_frac": 0.1894
+    },
+    {
+      "seed": 2,
+      "arm": "misroute",
+      "alive": 0.0,
+      "rounds": 2,
+      "food_pick_rate": 0.0,
+      "death_by_toxin": 1,
+      "lethal_frac": 0.1667
+    },
+    {
+      "seed": 2,
+      "arm": "mute",
+      "alive": 0.0,
+      "rounds": 8,
+      "food_pick_rate": 0.375,
+      "death_by_toxin": 1,
+      "lethal_frac": 0.1875
+    },
+    {
+      "seed": 2,
+      "arm": "oracle",
+      "alive": 1.0,
+      "rounds": 60,
+      "food_pick_rate": 1.0,
+      "death_by_toxin": 0,
+      "lethal_frac": 0.2083
+    },
+    {
+      "seed": 3,
+      "arm": "fusion",
+      "alive": 0.0,
+      "rounds": 34,
+      "food_pick_rate": 0.6765,
+      "death_by_toxin": 1,
+      "lethal_frac": 0.1961
+    },
+    {
+      "seed": 3,
+      "arm": "scramble",
+      "alive": 0.0,
+      "rounds": 1,
+      "food_pick_rate": 0.0,
+      "death_by_toxin": 1,
+      "lethal_frac": 0.1667
+    },
+    {
+      "seed": 3,
+      "arm": "misroute",
+      "alive": 0.0,
+      "rounds": 11,
+      "food_pick_rate": 0.2727,
+      "death_by_toxin": 1,
+      "lethal_frac": 0.1818
+    },
+    {
+      "seed": 3,
+      "arm": "mute",
+      "alive": 0.0,
+      "rounds": 3,
+      "food_pick_rate": 0.6667,
+      "death_by_toxin": 1,
+      "lethal_frac": 0.1944
+    },
+    {
+      "seed": 3,
+      "arm": "oracle",
+      "alive": 1.0,
+      "rounds": 60,
+      "food_pick_rate": 0.9167,
+      "death_by_toxin": 0,
+      "lethal_frac": 0.3208
+    }
+  ]
+}

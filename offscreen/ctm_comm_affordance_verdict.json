@@ -1,0 +1,42 @@
+{
+ "kind": "comm_affordance_probe",
+ "steps": 700,
+ "seeds": [
+  0,
+  1,
+  2,
+  3
+ ],
+ "births_mean": {
+  "open": 160.0,
+  "mute": 121.75,
+  "scramble": 135.0
+ },
+ "open_vs_mute_rel_births": {
+  "mean": 0.3134,
+  "ci95": [
+   0.1806,
+   0.4465
+  ],
+  "per_seed": [
+   0.4756,
+   0.2,
+   0.1613,
+   0.4167
+  ]
+ },
+ "open_vs_scramble_rel_births": {
+  "mean": 0.1681,
+  "ci95": [
+   0.0385,
+   0.2712
+  ],
+  "per_seed": [
+   0.2737,
+   0.012,
+   0.118,
+   0.2687
+  ]
+ },
+ "verdict": "WORLD_REWARDS_FLOCKING_NOT_COMM"
+}

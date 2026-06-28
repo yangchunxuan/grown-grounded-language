@@ -1,0 +1,6349 @@
+{
+  "kind": "rtc_g1f_coevolve_v1",
+  "block": "formal",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "prereg": {
+    "arms": [
+      "pure_selection",
+      "kirby_linked",
+      "shared_weights_kin",
+      "frozen_random",
+      "shared_frozen_random"
+    ],
+    "controls": [
+      "open",
+      "scramble",
+      "mute",
+      "oracle"
+    ],
+    "G1F_POP": 12,
+    "G1F_GENS": 18,
+    "G1F_ROUNDS": 36,
+    "G1F_VENTS": 10,
+    "G1F_STEP": 3,
+    "G1F_HIDDEN": 24,
+    "G1F_MUT": 0.035,
+    "G1F_KIRBY_EPOCHS": 45,
+    "G1F_HOLD_FRAC": 0.55,
+    "G1F_MII_MOVE_MIN": 0.02,
+    "G1F_MII_SAMPLE": 160,
+    "RTC_TOXIC_DEATH_g1f_taskdesign": -0.9,
+    "no_truth_gradient": true,
+    "channel_init": "random FactoredSpeaker/FactoredListener",
+    "decision_reads": "decoded per-agent messages only; true field only in eat/oracle resolution",
+    "cultural_mechanism": "kirby_linked imitates parent utterances via mortal_generations._imitate",
+    "shared_weights_kin": "UnifiedIO ties encode/decode table; lineage id is inherited; listener prefers same-lineage speakers; shared_frozen_random is the architecture null"
+  },
+  "summary": {
+    "pure_selection": {
+      "final_mii_mean": 0.00119,
+      "final_mii_ci": [
+        0.0006,
+        0.0017
+      ],
+      "mii_rise_mean": -0.00029,
+      "mii_rise_ci": [
+        -0.0009,
+        0.0004
+      ],
+      "final_survival_mean": 0.0694,
+      "survival_rise_mean": -0.0278,
+      "control_alive": {
+        "open": 0.0972,
+        "scramble": 0.0278,
+        "mute": 0.0833,
+        "oracle": 1.0
+      }
+    },
+    "kirby_linked": {
+      "final_mii_mean": 0.00169,
+      "final_mii_ci": [
+        0.0009,
+        0.0025
+      ],
+      "mii_rise_mean": 4e-05,
+      "mii_rise_ci": [
+        -0.0009,
+        0.0009
+      ],
+      "final_survival_mean": 0.0833,
+      "survival_rise_mean": 0.0417,
+      "control_alive": {
+        "open": 0.2778,
+        "scramble": 0.0139,
+        "mute": 0.1528,
+        "oracle": 1.0
+      }
+    },
+    "shared_weights_kin": {
+      "final_mii_mean": 0.12392,
+      "final_mii_ci": [
+        0.0752,
+        0.1807
+      ],
+      "mii_rise_mean": 0.12243,
+      "mii_rise_ci": [
+        0.0691,
+        0.1775
+      ],
+      "final_survival_mean": 0.2361,
+      "survival_rise_mean": -0.0833,
+      "control_alive": {
+        "open": 0.2361,
+        "scramble": 0.0278,
+        "mute": 0.0416,
+        "oracle": 1.0
+      }
+    },
+    "frozen_random": {
+      "final_mii_mean": 0.00155,
+      "final_mii_ci": [
+        0.0012,
+        0.0019
+      ],
+      "mii_rise_mean": 0.0,
+      "mii_rise_ci": [
+        0.0,
+        0.0
+      ],
+      "final_survival_mean": 0.0694,
+      "survival_rise_mean": -0.0833,
+      "control_alive": {
+        "open": 0.0139,
+        "scramble": 0.0972,
+        "mute": 0.0555,
+        "oracle": 1.0
+      }
+    },
+    "shared_frozen_random": {
+      "final_mii_mean": 0.00155,
+      "final_mii_ci": [
+        0.0012,
+        0.002
+      ],
+      "mii_rise_mean": 0.0,
+      "mii_rise_ci": [
+        0.0,
+        0.0
+      ],
+      "final_survival_mean": 0.0694,
+      "survival_rise_mean": 0.0139,
+      "control_alive": {
+        "open": 0.0694,
+        "scramble": 0.0694,
+        "mute": 0.0694,
+        "oracle": 1.0
+      }
+    }
+  },
+  "paired_tests": {
+    "best_minus_arch_null_final_mii": {
+      "mean": 0.12237,
+      "ci": [
+        0.0725,
+        0.1806
+      ]
+    },
+    "open_minus_scramble_alive": {
+      "mean": 0.20833,
+      "ci": [
+        0.0,
+        0.4517
+      ]
+    },
+    "open_minus_mute_alive": {
+      "mean": 0.19445,
+      "ci": [
+        0.0139,
+        0.3889
+      ]
+    },
+    "survival_rise": {
+      "mean": -0.08335,
+      "ci": [
+        -0.2083,
+        0.0906
+      ]
+    },
+    "mii_survival_corr": {
+      "mean": 0.01839,
+      "ci": [
+        -0.1216,
+        0.158
+      ]
+    }
+  },
+  "best_arm": "shared_weights_kin",
+  "arch_null_for_best": "shared_frozen_random",
+  "redline_hits": {},
+  "gates": {
+    "redline_scan_clean": true,
+    "pilot_mii_moves_off_floor": true,
+    "evolved_beats_arch_null_mii": true,
+    "open_beats_scramble_survival": false,
+    "open_beats_mute_survival": true,
+    "survival_co_rises_with_mii": false
+  },
+  "verdict": "RTC_G1F_MII_MOVES_NOT_LOAD_BEARING",
+  "honest_claim": "Cheap G1F pilot. If null, survival selection plus the tested legitimate Kirby linkage did not move cross-agent intelligibility off the bootstrap floor.",
+  "rows": [
+    {
+      "seed": 0,
+      "arm": "pure_selection",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00123,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 15.4167,
+          "food_pick_rate": 0.4105
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.00133,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 9.6667,
+          "food_pick_rate": 0.3333
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.0018,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 9.6667,
+          "food_pick_rate": 0.3361
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.00208,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 19.8333,
+          "food_pick_rate": 0.3705
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00232,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 3.6667,
+          "food_pick_rate": 0.202
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.00421,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 6.9167,
+          "food_pick_rate": 0.2737
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.00218,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 16.75,
+          "food_pick_rate": 0.4734
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.00227,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 13.8333,
+          "food_pick_rate": 0.3275
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.00256,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 13.25,
+          "food_pick_rate": 0.2532
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.00265,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 18.5,
+          "food_pick_rate": 0.4127
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.00213,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 8.5833,
+          "food_pick_rate": 0.349
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.00199,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 10.25,
+          "food_pick_rate": 0.124
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.00218,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 17.3333,
+          "food_pick_rate": 0.3466
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.00218,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 14.0,
+          "food_pick_rate": 0.2126
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.00156,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 5.9167,
+          "food_pick_rate": 0.0794
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.00199,
+          "mii_self": 0.00313,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 14.0,
+          "food_pick_rate": 0.3378
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.00152,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 14.4167,
+          "food_pick_rate": 0.4295
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.00166,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 10.4167,
+          "food_pick_rate": 0.2211
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00223,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 13.5,
+          "food_pick_rate": 0.4256
+        }
+      ],
+      "init_mii": 0.00123,
+      "final_mii": 0.00223,
+      "mii_rise": 0.001,
+      "init_survival": 0.0,
+      "final_survival": 0.0,
+      "survival_rise": 0.0,
+      "controls": {
+        "open": {
+          "alive": 0.0,
+          "rounds": 10.5833,
+          "food_pick_rate": 0.257
+        },
+        "scramble": {
+          "alive": 0.0,
+          "rounds": 5.9167,
+          "food_pick_rate": 0.3306
+        },
+        "mute": {
+          "alive": 0.0,
+          "rounds": 5.5,
+          "food_pick_rate": 0.2912
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 1.0
+        }
+      }
+    },
+    {
+      "seed": 0,
+      "arm": "kirby_linked",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00185,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 14.5,
+          "food_pick_rate": 0.3807
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.00237,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 12.9167,
+          "food_pick_rate": 0.328
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.0017,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 25.0833,
+          "food_pick_rate": 0.363
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.4167,
+          "rounds": 17.1667,
+          "food_pick_rate": 0.4389
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 10.9167,
+          "food_pick_rate": 0.2712
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.0017,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 15.3333,
+          "food_pick_rate": 0.2662
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.0008,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 11.5,
+          "food_pick_rate": 0.1533
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.00085,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 19.9167,
+          "food_pick_rate": 0.4903
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.00066,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 16.0833,
+          "food_pick_rate": 0.2604
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.00052,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 16.5833,
+          "food_pick_rate": 0.3774
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 5.5833,
+          "food_pick_rate": 0.3467
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.00142,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 12.75,
+          "food_pick_rate": 0.3384
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.00104,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 18.0833,
+          "food_pick_rate": 0.3971
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.00071,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 11.1667,
+          "food_pick_rate": 0.2712
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.00104,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 21.0833,
+          "food_pick_rate": 0.4224
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.00033,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 16.25,
+          "food_pick_rate": 0.479
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.00028,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.4167,
+          "rounds": 23.5,
+          "food_pick_rate": 0.3541
+        },
+        {
+          "gen": 17,
+          "mii_cross": 9e-05,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.3333,
+          "food_pick_rate": 0.167
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00038,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 9.75,
+          "food_pick_rate": 0.242
+        }
+      ],
+      "init_mii": 0.00185,
+      "final_mii": 0.00038,
+      "mii_rise": -0.00147,
+      "init_survival": 0.0833,
+      "final_survival": 0.0,
+      "survival_rise": -0.0833,
+      "controls": {
+        "open": {
+          "alive": 0.3333,
+          "rounds": 21.3333,
+          "food_pick_rate": 0.2447
+        },
+        "scramble": {
+          "alive": 0.0,
+          "rounds": 9.6667,
+          "food_pick_rate": 0.1723
+        },
+        "mute": {
+          "alive": 0.1667,
+          "rounds": 13.25,
+          "food_pick_rate": 0.2685
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 1.0
+        }
+      }
+    },
+    {
+      "seed": 0,
+      "arm": "shared_weights_kin",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00099,
+          "mii_self": 0.10208,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 16.25,
+          "food_pick_rate": 0.3644
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.01274,
+          "mii_self": 0.12448,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 19.6667,
+          "food_pick_rate": 0.5076
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.01686,
+          "mii_self": 0.1,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 19.9167,
+          "food_pick_rate": 0.485
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.0179,
+          "mii_self": 0.11667,
+          "mii_chance": 0.0016,
+          "survival": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 0.3472
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.03134,
+          "mii_self": 0.09219,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 17.5,
+          "food_pick_rate": 0.4528
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.03385,
+          "mii_self": 0.08385,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 14.8333,
+          "food_pick_rate": 0.3038
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.0358,
+          "mii_self": 0.10833,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 18.75,
+          "food_pick_rate": 0.4388
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.02794,
+          "mii_self": 0.09583,
+          "mii_chance": 0.0016,
+          "survival": 0.4167,
+          "rounds": 16.0,
+          "food_pick_rate": 0.2315
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.02737,
+          "mii_self": 0.08854,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 26.8333,
+          "food_pick_rate": 0.5229
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.02756,
+          "mii_self": 0.10052,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 22.9167,
+          "food_pick_rate": 0.5728
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.05052,
+          "mii_self": 0.10521,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 22.0833,
+          "food_pick_rate": 0.5897
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.08759,
+          "mii_self": 0.12604,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 22.0,
+          "food_pick_rate": 0.4425
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.07647,
+          "mii_self": 0.12448,
+          "mii_chance": 0.0016,
+          "survival": 0.75,
+          "rounds": 28.8333,
+          "food_pick_rate": 0.5775
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.06136,
+          "mii_self": 0.10781,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 20.3333,
+          "food_pick_rate": 0.3818
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.0598,
+          "mii_self": 0.10104,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 23.3333,
+          "food_pick_rate": 0.5396
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.07259,
+          "mii_self": 0.10781,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 24.0,
+          "food_pick_rate": 0.4696
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.0669,
+          "mii_self": 0.10625,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 16.0,
+          "food_pick_rate": 0.4146
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.05578,
+          "mii_self": 0.10729,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 20.4167,
+          "food_pick_rate": 0.3581
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.08883,
+          "mii_self": 0.1276,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 23.3333,
+          "food_pick_rate": 0.5913
+        }
+      ],
+      "init_mii": 0.00099,
+      "final_mii": 0.08883,
+      "mii_rise": 0.08784,
+      "init_survival": 0.25,
+      "final_survival": 0.1667,
+      "survival_rise": -0.0833,
+      "controls": {
+        "open": {
+          "alive": 0.0833,
+          "rounds": 21.9167,
+          "food_pick_rate": 0.5201
+        },
+        "scramble": {
+          "alive": 0.0,
+          "rounds": 13.6667,
+          "food_pick_rate": 0.3148
+        },
+        "mute": {
+          "alive": 0.0,
+          "rounds": 11.5,
+          "food_pick_rate": 0.4085
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 1.0
+        }
+      }
+    },
+    {
+      "seed": 0,
+      "arm": "frozen_random",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00109,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.5833,
+          "rounds": 24.5833,
+          "food_pick_rate": 0.478
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.00109,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 14.0,
+          "food_pick_rate": 0.349
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.00109,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 15.3333,
+          "food_pick_rate": 0.4481
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.00109,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 24.4167,
+          "food_pick_rate": 0.441
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00109,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 8.9167,
+          "food_pick_rate": 0.4476
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.00109,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 21.5833,
+          "food_pick_rate": 0.1622
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.00109,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 19.1667,
+          "food_pick_rate": 0.4186
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.00109,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.75,
+          "food_pick_rate": 0.3341
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.00109,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 8.4167,
+          "food_pick_rate": 0.336
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.00109,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 12.0,
+          "food_pick_rate": 0.2869
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.00109,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 10.5833,
+          "food_pick_rate": 0.5306
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.00109,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 10.25,
+          "food_pick_rate": 0.3029
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.00109,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 7.75,
+          "food_pick_rate": 0.213
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.00109,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 13.8333,
+          "food_pick_rate": 0.1975
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.00109,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 11.5833,
+          "food_pick_rate": 0.2606
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.00109,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 17.5833,
+          "food_pick_rate": 0.4023
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.00109,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 11.5833,
+          "food_pick_rate": 0.3193
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.00109,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.6667,
+          "food_pick_rate": 0.2435
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00109,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 10.0833,
+          "food_pick_rate": 0.2552
+        }
+      ],
+      "init_mii": 0.00109,
+      "final_mii": 0.00109,
+      "mii_rise": 0.0,
+      "init_survival": 0.5833,
+      "final_survival": 0.0833,
+      "survival_rise": -0.5,
+      "controls": {
+        "open": {
+          "alive": 0.0,
+          "rounds": 21.3333,
+          "food_pick_rate": 0.4844
+        },
+        "scramble": {
+          "alive": 0.0,
+          "rounds": 5.0833,
+          "food_pick_rate": 0.1364
+        },
+        "mute": {
+          "alive": 0.0,
+          "rounds": 21.1667,
+          "food_pick_rate": 0.5097
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 1.0
+        }
+      }
+    },
+    {
+      "seed": 0,
+      "arm": "shared_frozen_random",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00137,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.0833,
+          "food_pick_rate": 0.1794
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.00137,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 11.8333,
+          "food_pick_rate": 0.4145
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.00137,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 7.8333,
+          "food_pick_rate": 0.3475
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.00137,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 19.1667,
+          "food_pick_rate": 0.347
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00137,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 8.6667,
+          "food_pick_rate": 0.1513
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.00137,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 8.5,
+          "food_pick_rate": 0.2208
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.00137,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.6667,
+          "food_pick_rate": 0.4676
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.00137,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 8.5,
+          "food_pick_rate": 0.4877
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.00137,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 12.5833,
+          "food_pick_rate": 0.3059
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.00137,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 12.5,
+          "food_pick_rate": 0.3599
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.00137,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 2.25,
+          "food_pick_rate": 0.2181
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.00137,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 14.75,
+          "food_pick_rate": 0.2585
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.00137,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.5833,
+          "food_pick_rate": 0.2033
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.00137,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 12.9167,
+          "food_pick_rate": 0.3949
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.00137,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 5.0833,
+          "food_pick_rate": 0.232
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.00137,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 10.0833,
+          "food_pick_rate": 0.3009
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.00137,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 22.8333,
+          "food_pick_rate": 0.5109
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.00137,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 11.0,
+          "food_pick_rate": 0.2987
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00137,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 17.3333,
+          "food_pick_rate": 0.2519
+        }
+      ],
+      "init_mii": 0.00137,
+      "final_mii": 0.00137,
+      "mii_rise": 0.0,
+      "init_survival": 0.0,
+      "final_survival": 0.0833,
+      "survival_rise": 0.0833,
+      "controls": {
+        "open": {
+          "alive": 0.0833,
+          "rounds": 7.5,
+          "food_pick_rate": 0.4192
+        },
+        "scramble": {
+          "alive": 0.25,
+          "rounds": 15.3333,
+          "food_pick_rate": 0.4623
+        },
+        "mute": {
+          "alive": 0.25,
+          "rounds": 14.5,
+          "food_pick_rate": 0.3613
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 0.9444
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "arm": "pure_selection",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00166,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 16.8333,
+          "food_pick_rate": 0.2788
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.00175,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 3.1667,
+          "food_pick_rate": 0.2389
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.00137,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 10.6667,
+          "food_pick_rate": 0.1437
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.0018,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 17.8333,
+          "food_pick_rate": 0.263
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00133,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 11.6667,
+          "food_pick_rate": 0.2731
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.00137,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 14.1667,
+          "food_pick_rate": 0.1551
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.00057,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 8.5833,
+          "food_pick_rate": 0.1541
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.00118,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 24.3333,
+          "food_pick_rate": 0.5856
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.00104,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 9.8333,
+          "food_pick_rate": 0.243
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.00024,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 11.25,
+          "food_pick_rate": 0.3037
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.00024,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 15.0,
+          "food_pick_rate": 0.2878
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.00024,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 3.6667,
+          "food_pick_rate": 0.1319
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.0009,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 16.4167,
+          "food_pick_rate": 0.2686
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.00014,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.5833,
+          "food_pick_rate": 0.3247
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.00047,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 5.9167,
+          "food_pick_rate": 0.105
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.00057,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 25.3333,
+          "food_pick_rate": 0.3995
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.0008,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 10.75,
+          "food_pick_rate": 0.245
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.00024,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 23.3333,
+          "food_pick_rate": 0.2698
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00052,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 12.75,
+          "food_pick_rate": 0.4697
+        }
+      ],
+      "init_mii": 0.00166,
+      "final_mii": 0.00052,
+      "mii_rise": -0.00114,
+      "init_survival": 0.3333,
+      "final_survival": 0.0,
+      "survival_rise": -0.3333,
+      "controls": {
+        "open": {
+          "alive": 0.0833,
+          "rounds": 11.0833,
+          "food_pick_rate": 0.3763
+        },
+        "scramble": {
+          "alive": 0.0,
+          "rounds": 12.0833,
+          "food_pick_rate": 0.1948
+        },
+        "mute": {
+          "alive": 0.0833,
+          "rounds": 13.9167,
+          "food_pick_rate": 0.3558
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 0.9444
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "arm": "kirby_linked",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00123,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 18.0833,
+          "food_pick_rate": 0.2684
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.00194,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 10.75,
+          "food_pick_rate": 0.2326
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.00161,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.4167,
+          "food_pick_rate": 0.3358
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.00223,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.6667,
+          "rounds": 26.0,
+          "food_pick_rate": 0.4172
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00166,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 12.1667,
+          "food_pick_rate": 0.3583
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.00175,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.5833,
+          "rounds": 29.3333,
+          "food_pick_rate": 0.331
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.00128,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 11.0833,
+          "food_pick_rate": 0.1176
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.0009,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 9.9167,
+          "food_pick_rate": 0.2459
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.00057,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 13.6667,
+          "food_pick_rate": 0.2733
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.00043,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 14.75,
+          "food_pick_rate": 0.2887
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.00095,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 21.5,
+          "food_pick_rate": 0.3331
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.0008,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 15.9167,
+          "food_pick_rate": 0.4843
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.00024,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.6667,
+          "food_pick_rate": 0.2584
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.0,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 15.9167,
+          "food_pick_rate": 0.306
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.0,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 10.5,
+          "food_pick_rate": 0.3959
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.00104,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 14.5833,
+          "food_pick_rate": 0.3869
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.00019,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 11.0,
+          "food_pick_rate": 0.2623
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.00147,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 11.8333,
+          "food_pick_rate": 0.4586
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00166,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 14.0,
+          "food_pick_rate": 0.3193
+        }
+      ],
+      "init_mii": 0.00123,
+      "final_mii": 0.00166,
+      "mii_rise": 0.00043,
+      "init_survival": 0.0833,
+      "final_survival": 0.0,
+      "survival_rise": -0.0833,
+      "controls": {
+        "open": {
+          "alive": 0.0,
+          "rounds": 9.8333,
+          "food_pick_rate": 0.3706
+        },
+        "scramble": {
+          "alive": 0.0,
+          "rounds": 6.5,
+          "food_pick_rate": 0.4272
+        },
+        "mute": {
+          "alive": 0.0833,
+          "rounds": 8.0,
+          "food_pick_rate": 0.2679
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 1.0
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "arm": "shared_weights_kin",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00166,
+          "mii_self": 0.12865,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 20.0,
+          "food_pick_rate": 0.5492
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.01231,
+          "mii_self": 0.10938,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 20.1667,
+          "food_pick_rate": 0.5536
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.01989,
+          "mii_self": 0.0599,
+          "mii_chance": 0.0016,
+          "survival": 0.6667,
+          "rounds": 26.1667,
+          "food_pick_rate": 0.5144
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.03726,
+          "mii_self": 0.05729,
+          "mii_chance": 0.0016,
+          "survival": 0.4167,
+          "rounds": 20.1667,
+          "food_pick_rate": 0.4956
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.0384,
+          "mii_self": 0.05729,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 22.4167,
+          "food_pick_rate": 0.2782
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.03097,
+          "mii_self": 0.05469,
+          "mii_chance": 0.0016,
+          "survival": 0.4167,
+          "rounds": 24.1667,
+          "food_pick_rate": 0.6589
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.02045,
+          "mii_self": 0.03698,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 20.6667,
+          "food_pick_rate": 0.4443
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.04034,
+          "mii_self": 0.04219,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 17.25,
+          "food_pick_rate": 0.3181
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.04754,
+          "mii_self": 0.04844,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 19.25,
+          "food_pick_rate": 0.3988
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.05739,
+          "mii_self": 0.05938,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 32.3333,
+          "food_pick_rate": 0.6467
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.05161,
+          "mii_self": 0.0526,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 14.4167,
+          "food_pick_rate": 0.5063
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.04882,
+          "mii_self": 0.05365,
+          "mii_chance": 0.0016,
+          "survival": 0.5833,
+          "rounds": 26.9167,
+          "food_pick_rate": 0.6067
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.05402,
+          "mii_self": 0.05938,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 23.6667,
+          "food_pick_rate": 0.3076
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.05369,
+          "mii_self": 0.05781,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 10.9167,
+          "food_pick_rate": 0.3165
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.04858,
+          "mii_self": 0.05677,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 22.0,
+          "food_pick_rate": 0.4668
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.06027,
+          "mii_self": 0.06406,
+          "mii_chance": 0.0016,
+          "survival": 0.6667,
+          "rounds": 26.25,
+          "food_pick_rate": 0.573
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.0563,
+          "mii_self": 0.05885,
+          "mii_chance": 0.0016,
+          "survival": 0.5833,
+          "rounds": 23.75,
+          "food_pick_rate": 0.5457
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.05616,
+          "mii_self": 0.05729,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 22.0833,
+          "food_pick_rate": 0.459
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.05019,
+          "mii_self": 0.05208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 8.4167,
+          "food_pick_rate": 0.5129
+        }
+      ],
+      "init_mii": 0.00166,
+      "final_mii": 0.05019,
+      "mii_rise": 0.04853,
+      "init_survival": 0.25,
+      "final_survival": 0.0,
+      "survival_rise": -0.25,
+      "controls": {
+        "open": {
+          "alive": 0.0,
+          "rounds": 9.5,
+          "food_pick_rate": 0.0706
+        },
+        "scramble": {
+          "alive": 0.0833,
+          "rounds": 5.8333,
+          "food_pick_rate": 0.169
+        },
+        "mute": {
+          "alive": 0.0833,
+          "rounds": 11.0833,
+          "food_pick_rate": 0.1096
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 1.0
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "arm": "frozen_random",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00104,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 4.3333,
+          "food_pick_rate": 0.1722
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.00104,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 11.4167,
+          "food_pick_rate": 0.4159
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.00104,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 10.25,
+          "food_pick_rate": 0.2736
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.00104,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 10.6667,
+          "food_pick_rate": 0.264
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00104,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 11.75,
+          "food_pick_rate": 0.2389
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.00104,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 12.1667,
+          "food_pick_rate": 0.33
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.00104,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 13.8333,
+          "food_pick_rate": 0.4402
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.00104,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 15.0,
+          "food_pick_rate": 0.2159
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.00104,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 19.5,
+          "food_pick_rate": 0.264
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.00104,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 14.1667,
+          "food_pick_rate": 0.5371
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.00104,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 7.5,
+          "food_pick_rate": 0.0907
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.00104,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 18.5833,
+          "food_pick_rate": 0.516
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.00104,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 9.25,
+          "food_pick_rate": 0.1523
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.00104,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 4.6667,
+          "food_pick_rate": 0.0579
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.00104,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 10.25,
+          "food_pick_rate": 0.4005
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.00104,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 33.5,
+          "food_pick_rate": 0.5079
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.00104,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 2.6667,
+          "food_pick_rate": 0.1639
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.00104,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 11.1667,
+          "food_pick_rate": 0.3072
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00104,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 15.4167,
+          "food_pick_rate": 0.3044
+        }
+      ],
+      "init_mii": 0.00104,
+      "final_mii": 0.00104,
+      "mii_rise": 0.0,
+      "init_survival": 0.0,
+      "final_survival": 0.0,
+      "survival_rise": 0.0,
+      "controls": {
+        "open": {
+          "alive": 0.0,
+          "rounds": 20.5,
+          "food_pick_rate": 0.4549
+        },
+        "scramble": {
+          "alive": 0.25,
+          "rounds": 17.6667,
+          "food_pick_rate": 0.366
+        },
+        "mute": {
+          "alive": 0.1667,
+          "rounds": 25.4167,
+          "food_pick_rate": 0.453
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 1.0
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "arm": "shared_frozen_random",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00166,
+          "mii_self": 0.11198,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 12.0833,
+          "food_pick_rate": 0.3266
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.00166,
+          "mii_self": 0.11198,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 4.0,
+          "food_pick_rate": 0.3944
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.00166,
+          "mii_self": 0.11198,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 16.9167,
+          "food_pick_rate": 0.3758
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.00166,
+          "mii_self": 0.11198,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 10.5,
+          "food_pick_rate": 0.2829
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00166,
+          "mii_self": 0.11198,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 10.0833,
+          "food_pick_rate": 0.2084
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.00166,
+          "mii_self": 0.11198,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 5.5,
+          "food_pick_rate": 0.1325
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.00166,
+          "mii_self": 0.11198,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.0,
+          "food_pick_rate": 0.3122
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.00166,
+          "mii_self": 0.11198,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 17.0833,
+          "food_pick_rate": 0.3214
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.00166,
+          "mii_self": 0.11198,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 10.5833,
+          "food_pick_rate": 0.436
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.00166,
+          "mii_self": 0.11198,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 18.0,
+          "food_pick_rate": 0.369
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.00166,
+          "mii_self": 0.11198,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.4167,
+          "food_pick_rate": 0.1388
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.00166,
+          "mii_self": 0.11198,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 8.0,
+          "food_pick_rate": 0.2194
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.00166,
+          "mii_self": 0.11198,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 17.5833,
+          "food_pick_rate": 0.3894
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.00166,
+          "mii_self": 0.11198,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 16.9167,
+          "food_pick_rate": 0.2705
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.00166,
+          "mii_self": 0.11198,
+          "mii_chance": 0.0016,
+          "survival": 0.75,
+          "rounds": 30.75,
+          "food_pick_rate": 0.4472
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.00166,
+          "mii_self": 0.11198,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 15.0,
+          "food_pick_rate": 0.2819
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.00166,
+          "mii_self": 0.11198,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 12.4167,
+          "food_pick_rate": 0.2597
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.00166,
+          "mii_self": 0.11198,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 16.4167,
+          "food_pick_rate": 0.347
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00166,
+          "mii_self": 0.11198,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 11.25,
+          "food_pick_rate": 0.3134
+        }
+      ],
+      "init_mii": 0.00166,
+      "final_mii": 0.00166,
+      "mii_rise": 0.0,
+      "init_survival": 0.0833,
+      "final_survival": 0.0,
+      "survival_rise": -0.0833,
+      "controls": {
+        "open": {
+          "alive": 0.0,
+          "rounds": 5.25,
+          "food_pick_rate": 0.2156
+        },
+        "scramble": {
+          "alive": 0.0833,
+          "rounds": 12.3333,
+          "food_pick_rate": 0.3541
+        },
+        "mute": {
+          "alive": 0.0833,
+          "rounds": 7.5833,
+          "food_pick_rate": 0.2944
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 0.8889
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "arm": "pure_selection",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00152,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 9.0,
+          "food_pick_rate": 0.1819
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.00085,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 7.25,
+          "food_pick_rate": 0.2871
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.00047,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 4.9167,
+          "food_pick_rate": 0.2178
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.00099,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 11.1667,
+          "food_pick_rate": 0.4379
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00109,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.5833,
+          "rounds": 29.1667,
+          "food_pick_rate": 0.3922
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.0018,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 4.25,
+          "food_pick_rate": 0.0819
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.00185,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 8.8333,
+          "food_pick_rate": 0.1842
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.00241,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 10.5,
+          "food_pick_rate": 0.2731
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.00085,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 7.4167,
+          "food_pick_rate": 0.2177
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.00128,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 8.6667,
+          "food_pick_rate": 0.322
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.00147,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 23.5833,
+          "food_pick_rate": 0.2516
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.00128,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 7.6667,
+          "food_pick_rate": 0.3821
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.00123,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 7.5833,
+          "food_pick_rate": 0.284
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.00175,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 14.3333,
+          "food_pick_rate": 0.3617
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.00199,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 12.0,
+          "food_pick_rate": 0.5091
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.00265,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 5.4167,
+          "food_pick_rate": 0.2856
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.00241,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 14.5,
+          "food_pick_rate": 0.352
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.00251,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 13.3333,
+          "food_pick_rate": 0.511
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00189,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 19.0,
+          "food_pick_rate": 0.4093
+        }
+      ],
+      "init_mii": 0.00152,
+      "final_mii": 0.00189,
+      "mii_rise": 0.00037,
+      "init_survival": 0.0,
+      "final_survival": 0.3333,
+      "survival_rise": 0.3333,
+      "controls": {
+        "open": {
+          "alive": 0.4167,
+          "rounds": 20.0833,
+          "food_pick_rate": 0.3846
+        },
+        "scramble": {
+          "alive": 0.0,
+          "rounds": 15.6667,
+          "food_pick_rate": 0.402
+        },
+        "mute": {
+          "alive": 0.4167,
+          "rounds": 21.1667,
+          "food_pick_rate": 0.3703
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 1.0
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "arm": "kirby_linked",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00152,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 7.1667,
+          "food_pick_rate": 0.2736
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.00152,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 5.0833,
+          "food_pick_rate": 0.3451
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.00133,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 5.3333,
+          "food_pick_rate": 0.1643
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.00114,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 18.0,
+          "food_pick_rate": 0.494
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00152,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 9.0,
+          "food_pick_rate": 0.3217
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.00185,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 20.6667,
+          "food_pick_rate": 0.4211
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.00104,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 9.0833,
+          "food_pick_rate": 0.2606
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.00142,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.8333,
+          "rounds": 30.25,
+          "food_pick_rate": 0.3194
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.00161,
+          "mii_self": 0.00469,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 16.25,
+          "food_pick_rate": 0.337
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.0027,
+          "mii_self": 0.00573,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.9167,
+          "food_pick_rate": 0.2847
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.00298,
+          "mii_self": 0.00469,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.8333,
+          "food_pick_rate": 0.4315
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.00251,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 14.9167,
+          "food_pick_rate": 0.4385
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.00312,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 19.3333,
+          "food_pick_rate": 0.3626
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.00436,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 11.5,
+          "food_pick_rate": 0.331
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.00653,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 21.3333,
+          "food_pick_rate": 0.36
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.00341,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 27.9167,
+          "food_pick_rate": 0.2773
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.00313,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.6667,
+          "food_pick_rate": 0.1223
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.0026,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 10.0833,
+          "food_pick_rate": 0.3378
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00294,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 17.5833,
+          "food_pick_rate": 0.3163
+        }
+      ],
+      "init_mii": 0.00152,
+      "final_mii": 0.00294,
+      "mii_rise": 0.00142,
+      "init_survival": 0.0,
+      "final_survival": 0.25,
+      "survival_rise": 0.25,
+      "controls": {
+        "open": {
+          "alive": 0.25,
+          "rounds": 15.5,
+          "food_pick_rate": 0.1361
+        },
+        "scramble": {
+          "alive": 0.0,
+          "rounds": 3.0,
+          "food_pick_rate": 0.1377
+        },
+        "mute": {
+          "alive": 0.0,
+          "rounds": 5.9167,
+          "food_pick_rate": 0.0882
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 1.0
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "arm": "shared_weights_kin",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.0018,
+          "mii_self": 0.13542,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 25.5833,
+          "food_pick_rate": 0.6094
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.03565,
+          "mii_self": 0.18646,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 10.5833,
+          "food_pick_rate": 0.6221
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.03139,
+          "mii_self": 0.15417,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 14.3333,
+          "food_pick_rate": 0.3779
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.02803,
+          "mii_self": 0.14219,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 22.5833,
+          "food_pick_rate": 0.5173
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.02595,
+          "mii_self": 0.14167,
+          "mii_chance": 0.0016,
+          "survival": 0.5833,
+          "rounds": 27.8333,
+          "food_pick_rate": 0.5826
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.03381,
+          "mii_self": 0.11667,
+          "mii_chance": 0.0016,
+          "survival": 0.75,
+          "rounds": 30.75,
+          "food_pick_rate": 0.4587
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.04844,
+          "mii_self": 0.07448,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 26.3333,
+          "food_pick_rate": 0.4032
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.04844,
+          "mii_self": 0.07448,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 13.6667,
+          "food_pick_rate": 0.5754
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.05521,
+          "mii_self": 0.05521,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 24.0833,
+          "food_pick_rate": 0.6381
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.05625,
+          "mii_self": 0.05625,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 23.3333,
+          "food_pick_rate": 0.4271
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.05625,
+          "mii_self": 0.05625,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.3333,
+          "food_pick_rate": 0.3134
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.05625,
+          "mii_self": 0.05625,
+          "mii_chance": 0.0016,
+          "survival": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 0.5764
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.05625,
+          "mii_self": 0.05625,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 28.75,
+          "food_pick_rate": 0.6637
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.05521,
+          "mii_self": 0.05521,
+          "mii_chance": 0.0016,
+          "survival": 0.8333,
+          "rounds": 33.3333,
+          "food_pick_rate": 0.53
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.05417,
+          "mii_self": 0.05417,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 23.75,
+          "food_pick_rate": 0.4875
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.05208,
+          "mii_self": 0.05208,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 17.6667,
+          "food_pick_rate": 0.4198
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.05208,
+          "mii_self": 0.05208,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 17.5,
+          "food_pick_rate": 0.4288
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.05469,
+          "mii_self": 0.05469,
+          "mii_chance": 0.0016,
+          "survival": 0.75,
+          "rounds": 30.0,
+          "food_pick_rate": 0.4911
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.05521,
+          "mii_self": 0.05521,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 17.1667,
+          "food_pick_rate": 0.3853
+        }
+      ],
+      "init_mii": 0.0018,
+      "final_mii": 0.05521,
+      "mii_rise": 0.05341,
+      "init_survival": 0.5,
+      "final_survival": 0.25,
+      "survival_rise": -0.25,
+      "controls": {
+        "open": {
+          "alive": 0.6667,
+          "rounds": 24.8333,
+          "food_pick_rate": 0.4897
+        },
+        "scramble": {
+          "alive": 0.0,
+          "rounds": 12.8333,
+          "food_pick_rate": 0.3582
+        },
+        "mute": {
+          "alive": 0.0833,
+          "rounds": 11.9167,
+          "food_pick_rate": 0.2781
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 0.9722
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "arm": "frozen_random",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00199,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.0833,
+          "food_pick_rate": 0.2802
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.00199,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 4.8333,
+          "food_pick_rate": 0.2198
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.00199,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 11.5833,
+          "food_pick_rate": 0.3514
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.00199,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.1667,
+          "food_pick_rate": 0.1843
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00199,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 14.5833,
+          "food_pick_rate": 0.2997
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.00199,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 16.75,
+          "food_pick_rate": 0.395
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.00199,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 9.0,
+          "food_pick_rate": 0.29
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.00199,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 11.5,
+          "food_pick_rate": 0.5889
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.00199,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 26.0833,
+          "food_pick_rate": 0.3862
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.00199,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 8.5,
+          "food_pick_rate": 0.253
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.00199,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.1667,
+          "food_pick_rate": 0.2718
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.00199,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 6.5,
+          "food_pick_rate": 0.2296
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.00199,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 8.8333,
+          "food_pick_rate": 0.3903
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.00199,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 5.9167,
+          "food_pick_rate": 0.2139
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.00199,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 15.75,
+          "food_pick_rate": 0.3888
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.00199,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 3.6667,
+          "food_pick_rate": 0.2627
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.00199,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 7.4167,
+          "food_pick_rate": 0.3755
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.00199,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 12.6667,
+          "food_pick_rate": 0.2675
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00199,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 4.4167,
+          "food_pick_rate": 0.1478
+        }
+      ],
+      "init_mii": 0.00199,
+      "final_mii": 0.00199,
+      "mii_rise": 0.0,
+      "init_survival": 0.0,
+      "final_survival": 0.0,
+      "survival_rise": 0.0,
+      "controls": {
+        "open": {
+          "alive": 0.0,
+          "rounds": 2.6667,
+          "food_pick_rate": 0.1167
+        },
+        "scramble": {
+          "alive": 0.0,
+          "rounds": 15.9167,
+          "food_pick_rate": 0.4906
+        },
+        "mute": {
+          "alive": 0.0,
+          "rounds": 5.9167,
+          "food_pick_rate": 0.1077
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 0.9444
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "arm": "shared_frozen_random",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00256,
+          "mii_self": 0.15417,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 8.4167,
+          "food_pick_rate": 0.2653
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.00256,
+          "mii_self": 0.15417,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 10.0833,
+          "food_pick_rate": 0.1843
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.00256,
+          "mii_self": 0.15417,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 14.3333,
+          "food_pick_rate": 0.3207
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.00256,
+          "mii_self": 0.15417,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 14.0,
+          "food_pick_rate": 0.4671
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00256,
+          "mii_self": 0.15417,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 11.9167,
+          "food_pick_rate": 0.1708
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.00256,
+          "mii_self": 0.15417,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 12.75,
+          "food_pick_rate": 0.4211
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.00256,
+          "mii_self": 0.15417,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 9.3333,
+          "food_pick_rate": 0.3046
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.00256,
+          "mii_self": 0.15417,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.4167,
+          "food_pick_rate": 0.3975
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.00256,
+          "mii_self": 0.15417,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 15.5833,
+          "food_pick_rate": 0.3239
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.00256,
+          "mii_self": 0.15417,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 24.6667,
+          "food_pick_rate": 0.5124
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.00256,
+          "mii_self": 0.15417,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 18.8333,
+          "food_pick_rate": 0.4135
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.00256,
+          "mii_self": 0.15417,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 8.0833,
+          "food_pick_rate": 0.2345
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.00256,
+          "mii_self": 0.15417,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 10.0,
+          "food_pick_rate": 0.2437
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.00256,
+          "mii_self": 0.15417,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 13.4167,
+          "food_pick_rate": 0.407
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.00256,
+          "mii_self": 0.15417,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 8.6667,
+          "food_pick_rate": 0.1505
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.00256,
+          "mii_self": 0.15417,
+          "mii_chance": 0.0016,
+          "survival": 0.4167,
+          "rounds": 16.5,
+          "food_pick_rate": 0.1944
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.00256,
+          "mii_self": 0.15417,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 5.25,
+          "food_pick_rate": 0.1708
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.00256,
+          "mii_self": 0.15417,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 15.4167,
+          "food_pick_rate": 0.312
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00256,
+          "mii_self": 0.15417,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 20.9167,
+          "food_pick_rate": 0.4656
+        }
+      ],
+      "init_mii": 0.00256,
+      "final_mii": 0.00256,
+      "mii_rise": 0.0,
+      "init_survival": 0.0,
+      "final_survival": 0.0833,
+      "survival_rise": 0.0833,
+      "controls": {
+        "open": {
+          "alive": 0.0833,
+          "rounds": 14.4167,
+          "food_pick_rate": 0.3736
+        },
+        "scramble": {
+          "alive": 0.0833,
+          "rounds": 12.5,
+          "food_pick_rate": 0.4552
+        },
+        "mute": {
+          "alive": 0.0,
+          "rounds": 12.75,
+          "food_pick_rate": 0.4183
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 1.0
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "arm": "pure_selection",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00133,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 7.0833,
+          "food_pick_rate": 0.2583
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.00133,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 7.0,
+          "food_pick_rate": 0.2728
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.00142,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 18.9167,
+          "food_pick_rate": 0.3158
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.00251,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 11.1667,
+          "food_pick_rate": 0.1818
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00237,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 2.0833,
+          "food_pick_rate": 0.2292
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.00142,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 12.25,
+          "food_pick_rate": 0.2913
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.00156,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 10.5,
+          "food_pick_rate": 0.4192
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.00175,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 11.3333,
+          "food_pick_rate": 0.2015
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.00185,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.8333,
+          "rounds": 34.5833,
+          "food_pick_rate": 0.4043
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.00099,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 8.9167,
+          "food_pick_rate": 0.2856
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.00128,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 10.6667,
+          "food_pick_rate": 0.4045
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.00152,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 3.6667,
+          "food_pick_rate": 0.0536
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.00114,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 3.9167,
+          "food_pick_rate": 0.0998
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.00133,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 11.0,
+          "food_pick_rate": 0.2776
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.00137,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 11.5,
+          "food_pick_rate": 0.3856
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.00152,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 10.4167,
+          "food_pick_rate": 0.3749
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.00147,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 14.6667,
+          "food_pick_rate": 0.4654
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.00114,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 4.25,
+          "food_pick_rate": 0.3163
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00076,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 17.1667,
+          "food_pick_rate": 0.3213
+        }
+      ],
+      "init_mii": 0.00133,
+      "final_mii": 0.00076,
+      "mii_rise": -0.00057,
+      "init_survival": 0.0,
+      "final_survival": 0.0,
+      "survival_rise": 0.0,
+      "controls": {
+        "open": {
+          "alive": 0.0,
+          "rounds": 14.75,
+          "food_pick_rate": 0.3721
+        },
+        "scramble": {
+          "alive": 0.0,
+          "rounds": 11.0833,
+          "food_pick_rate": 0.4919
+        },
+        "mute": {
+          "alive": 0.0,
+          "rounds": 12.0,
+          "food_pick_rate": 0.3395
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 0.9722
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "arm": "kirby_linked",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.0017,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.75,
+          "food_pick_rate": 0.447
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.00175,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 12.5833,
+          "food_pick_rate": 0.3391
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.00142,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 9.8333,
+          "food_pick_rate": 0.3037
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.00161,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 16.6667,
+          "food_pick_rate": 0.5046
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00043,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 10.5,
+          "food_pick_rate": 0.5088
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.00066,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 16.4167,
+          "food_pick_rate": 0.3036
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.00076,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 14.9167,
+          "food_pick_rate": 0.3261
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.00057,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 13.8333,
+          "food_pick_rate": 0.3948
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.00043,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.1667,
+          "food_pick_rate": 0.28
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.00114,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 11.1667,
+          "food_pick_rate": 0.3326
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.00043,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 13.3333,
+          "food_pick_rate": 0.2497
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.00014,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 15.5,
+          "food_pick_rate": 0.2699
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.00024,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 20.75,
+          "food_pick_rate": 0.4102
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.00038,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 4.3333,
+          "food_pick_rate": 0.2851
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.00085,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 15.1667,
+          "food_pick_rate": 0.3874
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.00043,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.4167,
+          "rounds": 24.25,
+          "food_pick_rate": 0.4054
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.00066,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 12.3333,
+          "food_pick_rate": 0.2756
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.00066,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 4.0,
+          "food_pick_rate": 0.1819
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00095,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 9.25,
+          "food_pick_rate": 0.3509
+        }
+      ],
+      "init_mii": 0.0017,
+      "final_mii": 0.00095,
+      "mii_rise": -0.00075,
+      "init_survival": 0.0,
+      "final_survival": 0.0,
+      "survival_rise": 0.0,
+      "controls": {
+        "open": {
+          "alive": 0.25,
+          "rounds": 19.75,
+          "food_pick_rate": 0.3854
+        },
+        "scramble": {
+          "alive": 0.0,
+          "rounds": 17.0833,
+          "food_pick_rate": 0.317
+        },
+        "mute": {
+          "alive": 0.1667,
+          "rounds": 16.75,
+          "food_pick_rate": 0.419
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 1.0
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "arm": "shared_weights_kin",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00156,
+          "mii_self": 0.09896,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 19.0,
+          "food_pick_rate": 0.2766
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.01009,
+          "mii_self": 0.05573,
+          "mii_chance": 0.0016,
+          "survival": 0.4167,
+          "rounds": 18.5,
+          "food_pick_rate": 0.5579
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.02268,
+          "mii_self": 0.09635,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 23.5833,
+          "food_pick_rate": 0.5192
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.03352,
+          "mii_self": 0.08125,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 19.5833,
+          "food_pick_rate": 0.4476
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.03509,
+          "mii_self": 0.1224,
+          "mii_chance": 0.0016,
+          "survival": 0.4167,
+          "rounds": 23.0833,
+          "food_pick_rate": 0.4284
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.13314,
+          "mii_self": 0.20312,
+          "mii_chance": 0.0016,
+          "survival": 0.4167,
+          "rounds": 20.1667,
+          "food_pick_rate": 0.3611
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.13253,
+          "mii_self": 0.19375,
+          "mii_chance": 0.0016,
+          "survival": 0.6667,
+          "rounds": 30.8333,
+          "food_pick_rate": 0.466
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.22126,
+          "mii_self": 0.21823,
+          "mii_chance": 0.0016,
+          "survival": 0.9167,
+          "rounds": 34.1667,
+          "food_pick_rate": 0.4884
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.2455,
+          "mii_self": 0.24323,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 22.5833,
+          "food_pick_rate": 0.48
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.2117,
+          "mii_self": 0.20573,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 31.0833,
+          "food_pick_rate": 0.6064
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.19991,
+          "mii_self": 0.1974,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 19.4167,
+          "food_pick_rate": 0.4205
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.20208,
+          "mii_self": 0.2,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 27.8333,
+          "food_pick_rate": 0.496
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.18651,
+          "mii_self": 0.18594,
+          "mii_chance": 0.0016,
+          "survival": 0.5833,
+          "rounds": 28.25,
+          "food_pick_rate": 0.2984
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.20559,
+          "mii_self": 0.20625,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 22.3333,
+          "food_pick_rate": 0.5575
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.18589,
+          "mii_self": 0.18646,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 23.5,
+          "food_pick_rate": 0.2569
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.17154,
+          "mii_self": 0.17344,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 21.1667,
+          "food_pick_rate": 0.4324
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.16155,
+          "mii_self": 0.16042,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 19.4167,
+          "food_pick_rate": 0.5788
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.16657,
+          "mii_self": 0.16563,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 24.1667,
+          "food_pick_rate": 0.3644
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.17969,
+          "mii_self": 0.17969,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 13.1667,
+          "food_pick_rate": 0.6911
+        }
+      ],
+      "init_mii": 0.00156,
+      "final_mii": 0.17969,
+      "mii_rise": 0.17813,
+      "init_survival": 0.1667,
+      "final_survival": 0.0833,
+      "survival_rise": -0.0834,
+      "controls": {
+        "open": {
+          "alive": 0.0,
+          "rounds": 11.25,
+          "food_pick_rate": 0.4702
+        },
+        "scramble": {
+          "alive": 0.0833,
+          "rounds": 14.5,
+          "food_pick_rate": 0.4209
+        },
+        "mute": {
+          "alive": 0.0,
+          "rounds": 9.25,
+          "food_pick_rate": 0.4727
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 1.0
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "arm": "frozen_random",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00208,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 14.0,
+          "food_pick_rate": 0.3003
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.00208,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 8.0833,
+          "food_pick_rate": 0.4495
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.00208,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 7.3333,
+          "food_pick_rate": 0.3513
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.00208,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 14.1667,
+          "food_pick_rate": 0.3117
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00208,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 10.5,
+          "food_pick_rate": 0.273
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.00208,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 27.5,
+          "food_pick_rate": 0.38
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.00208,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 13.4167,
+          "food_pick_rate": 0.271
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.00208,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 10.4167,
+          "food_pick_rate": 0.2714
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.00208,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 13.8333,
+          "food_pick_rate": 0.2682
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.00208,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 10.5,
+          "food_pick_rate": 0.2085
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.00208,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 12.5833,
+          "food_pick_rate": 0.3557
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.00208,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 26.5833,
+          "food_pick_rate": 0.3743
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.00208,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 3.75,
+          "food_pick_rate": 0.2044
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.00208,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 17.25,
+          "food_pick_rate": 0.3969
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.00208,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 11.25,
+          "food_pick_rate": 0.2128
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.00208,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.0,
+          "food_pick_rate": 0.15
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.00208,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 8.3333,
+          "food_pick_rate": 0.2209
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.00208,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 8.25,
+          "food_pick_rate": 0.2694
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00208,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 24.25,
+          "food_pick_rate": 0.4439
+        }
+      ],
+      "init_mii": 0.00208,
+      "final_mii": 0.00208,
+      "mii_rise": 0.0,
+      "init_survival": 0.25,
+      "final_survival": 0.1667,
+      "survival_rise": -0.0833,
+      "controls": {
+        "open": {
+          "alive": 0.0,
+          "rounds": 8.3333,
+          "food_pick_rate": 0.3827
+        },
+        "scramble": {
+          "alive": 0.3333,
+          "rounds": 26.0,
+          "food_pick_rate": 0.3929
+        },
+        "mute": {
+          "alive": 0.0,
+          "rounds": 8.5,
+          "food_pick_rate": 0.4521
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 1.0
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "arm": "shared_frozen_random",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00142,
+          "mii_self": 0.13802,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 15.25,
+          "food_pick_rate": 0.3792
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.00142,
+          "mii_self": 0.13802,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 8.0,
+          "food_pick_rate": 0.3995
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.00142,
+          "mii_self": 0.13802,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 14.6667,
+          "food_pick_rate": 0.5022
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.00142,
+          "mii_self": 0.13802,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 9.75,
+          "food_pick_rate": 0.3995
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00142,
+          "mii_self": 0.13802,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 10.5833,
+          "food_pick_rate": 0.3214
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.00142,
+          "mii_self": 0.13802,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 8.1667,
+          "food_pick_rate": 0.2733
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.00142,
+          "mii_self": 0.13802,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 19.6667,
+          "food_pick_rate": 0.3403
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.00142,
+          "mii_self": 0.13802,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 15.5,
+          "food_pick_rate": 0.376
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.00142,
+          "mii_self": 0.13802,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 9.25,
+          "food_pick_rate": 0.2922
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.00142,
+          "mii_self": 0.13802,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 14.5833,
+          "food_pick_rate": 0.4645
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.00142,
+          "mii_self": 0.13802,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 10.75,
+          "food_pick_rate": 0.3022
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.00142,
+          "mii_self": 0.13802,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 9.0833,
+          "food_pick_rate": 0.2116
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.00142,
+          "mii_self": 0.13802,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 20.5,
+          "food_pick_rate": 0.3837
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.00142,
+          "mii_self": 0.13802,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 19.4167,
+          "food_pick_rate": 0.2955
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.00142,
+          "mii_self": 0.13802,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 3.25,
+          "food_pick_rate": 0.1681
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.00142,
+          "mii_self": 0.13802,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 17.5,
+          "food_pick_rate": 0.2817
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.00142,
+          "mii_self": 0.13802,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 4.0833,
+          "food_pick_rate": 0.2278
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.00142,
+          "mii_self": 0.13802,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 16.5,
+          "food_pick_rate": 0.229
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00142,
+          "mii_self": 0.13802,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 9.5833,
+          "food_pick_rate": 0.2685
+        }
+      ],
+      "init_mii": 0.00142,
+      "final_mii": 0.00142,
+      "mii_rise": 0.0,
+      "init_survival": 0.25,
+      "final_survival": 0.1667,
+      "survival_rise": -0.0833,
+      "controls": {
+        "open": {
+          "alive": 0.1667,
+          "rounds": 13.4167,
+          "food_pick_rate": 0.3436
+        },
+        "scramble": {
+          "alive": 0.0,
+          "rounds": 17.6667,
+          "food_pick_rate": 0.4157
+        },
+        "mute": {
+          "alive": 0.0833,
+          "rounds": 15.0,
+          "food_pick_rate": 0.3549
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 0.9722
+        }
+      }
+    },
+    {
+      "seed": 4,
+      "arm": "pure_selection",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.0017,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 14.5833,
+          "food_pick_rate": 0.3511
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.00161,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 12.6667,
+          "food_pick_rate": 0.2803
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.00185,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 12.5,
+          "food_pick_rate": 0.2478
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.00251,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 11.0,
+          "food_pick_rate": 0.2746
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00251,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 10.5833,
+          "food_pick_rate": 0.2986
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.00265,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 10.9167,
+          "food_pick_rate": 0.2809
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.00223,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 3.75,
+          "food_pick_rate": 0.1506
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.00166,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.4167,
+          "rounds": 23.4167,
+          "food_pick_rate": 0.4251
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.00156,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 8.0,
+          "food_pick_rate": 0.3091
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 9.1667,
+          "food_pick_rate": 0.2118
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.00152,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 8.4167,
+          "food_pick_rate": 0.4419
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.00085,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 8.6667,
+          "food_pick_rate": 0.2883
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.00104,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 5.6667,
+          "food_pick_rate": 0.121
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 7.0833,
+          "food_pick_rate": 0.3697
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.00208,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 7.0,
+          "food_pick_rate": 0.3195
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.00256,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 9.3333,
+          "food_pick_rate": 0.2265
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.00189,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 12.75,
+          "food_pick_rate": 0.252
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.00199,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 9.6667,
+          "food_pick_rate": 0.2633
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00152,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 22.0,
+          "food_pick_rate": 0.3291
+        }
+      ],
+      "init_mii": 0.0017,
+      "final_mii": 0.00152,
+      "mii_rise": -0.00018,
+      "init_survival": 0.0833,
+      "final_survival": 0.0833,
+      "survival_rise": 0.0,
+      "controls": {
+        "open": {
+          "alive": 0.0833,
+          "rounds": 16.9167,
+          "food_pick_rate": 0.3205
+        },
+        "scramble": {
+          "alive": 0.1667,
+          "rounds": 12.5833,
+          "food_pick_rate": 0.24
+        },
+        "mute": {
+          "alive": 0.0,
+          "rounds": 19.6667,
+          "food_pick_rate": 0.3771
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 0.9167
+        }
+      }
+    },
+    {
+      "seed": 4,
+      "arm": "kirby_linked",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00175,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 13.0833,
+          "food_pick_rate": 0.2642
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.0018,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 19.3333,
+          "food_pick_rate": 0.5233
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.00152,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.4167,
+          "rounds": 19.25,
+          "food_pick_rate": 0.3751
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.00204,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 17.0833,
+          "food_pick_rate": 0.3217
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00166,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 23.9167,
+          "food_pick_rate": 0.3461
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.00109,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.25,
+          "food_pick_rate": 0.2189
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.00128,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 9.25,
+          "food_pick_rate": 0.6033
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.00095,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 3.9167,
+          "food_pick_rate": 0.1111
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.0,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 6.3333,
+          "food_pick_rate": 0.3194
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.0,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 15.5,
+          "food_pick_rate": 0.2599
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.0,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 8.25,
+          "food_pick_rate": 0.2105
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.0,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 12.25,
+          "food_pick_rate": 0.1513
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.00014,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.4167,
+          "rounds": 19.5833,
+          "food_pick_rate": 0.2759
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.00019,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.4167,
+          "rounds": 27.0833,
+          "food_pick_rate": 0.4568
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.00038,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 7.0833,
+          "food_pick_rate": 0.2514
+        },
+        {
+          "gen": 15,
+          "mii_cross": 9e-05,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 4.25,
+          "food_pick_rate": 0.289
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.00019,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 9.3333,
+          "food_pick_rate": 0.3608
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.00066,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 11.9167,
+          "food_pick_rate": 0.1399
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00095,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 7.8333,
+          "food_pick_rate": 0.2619
+        }
+      ],
+      "init_mii": 0.00175,
+      "final_mii": 0.00095,
+      "mii_rise": -0.0008,
+      "init_survival": 0.0833,
+      "final_survival": 0.0,
+      "survival_rise": -0.0833,
+      "controls": {
+        "open": {
+          "alive": 0.25,
+          "rounds": 18.0,
+          "food_pick_rate": 0.4288
+        },
+        "scramble": {
+          "alive": 0.0833,
+          "rounds": 21.5,
+          "food_pick_rate": 0.5224
+        },
+        "mute": {
+          "alive": 0.25,
+          "rounds": 16.5833,
+          "food_pick_rate": 0.3531
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 1.0
+        }
+      }
+    },
+    {
+      "seed": 4,
+      "arm": "shared_weights_kin",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00114,
+          "mii_self": 0.13698,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 23.75,
+          "food_pick_rate": 0.5009
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.0286,
+          "mii_self": 0.17656,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 19.1667,
+          "food_pick_rate": 0.4449
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.04953,
+          "mii_self": 0.18125,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 21.5,
+          "food_pick_rate": 0.5604
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.07083,
+          "mii_self": 0.20417,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 27.6667,
+          "food_pick_rate": 0.5483
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.13821,
+          "mii_self": 0.2,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 13.6667,
+          "food_pick_rate": 0.4414
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.11889,
+          "mii_self": 0.19635,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 19.5833,
+          "food_pick_rate": 0.499
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.21932,
+          "mii_self": 0.24583,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 23.3333,
+          "food_pick_rate": 0.4675
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.21179,
+          "mii_self": 0.2375,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 19.1667,
+          "food_pick_rate": 0.4074
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.25,
+          "mii_self": 0.25,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 29.8333,
+          "food_pick_rate": 0.57
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.25076,
+          "mii_self": 0.25,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 22.5,
+          "food_pick_rate": 0.4046
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.24583,
+          "mii_self": 0.24583,
+          "mii_chance": 0.0016,
+          "survival": 0.5833,
+          "rounds": 30.5,
+          "food_pick_rate": 0.5106
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.24375,
+          "mii_self": 0.24375,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 26.3333,
+          "food_pick_rate": 0.5301
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.2375,
+          "mii_self": 0.2375,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 22.0833,
+          "food_pick_rate": 0.6944
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.23542,
+          "mii_self": 0.23542,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 19.3333,
+          "food_pick_rate": 0.539
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.24479,
+          "mii_self": 0.24479,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 25.3333,
+          "food_pick_rate": 0.6527
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.24271,
+          "mii_self": 0.24271,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 32.25,
+          "food_pick_rate": 0.6143
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.24579,
+          "mii_self": 0.24531,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 24.5,
+          "food_pick_rate": 0.5088
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.23551,
+          "mii_self": 0.23438,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 19.5833,
+          "food_pick_rate": 0.4056
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.24498,
+          "mii_self": 0.24479,
+          "mii_chance": 0.0016,
+          "survival": 0.8333,
+          "rounds": 33.4167,
+          "food_pick_rate": 0.5556
+        }
+      ],
+      "init_mii": 0.00114,
+      "final_mii": 0.24498,
+      "mii_rise": 0.24384,
+      "init_survival": 0.5,
+      "final_survival": 0.8333,
+      "survival_rise": 0.3333,
+      "controls": {
+        "open": {
+          "alive": 0.5833,
+          "rounds": 25.4167,
+          "food_pick_rate": 0.4602
+        },
+        "scramble": {
+          "alive": 0.0,
+          "rounds": 9.1667,
+          "food_pick_rate": 0.3848
+        },
+        "mute": {
+          "alive": 0.0833,
+          "rounds": 12.5833,
+          "food_pick_rate": 0.2364
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 1.0
+        }
+      }
+    },
+    {
+      "seed": 4,
+      "arm": "frozen_random",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 14.4167,
+          "food_pick_rate": 0.2876
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 13.0833,
+          "food_pick_rate": 0.2544
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 10.4167,
+          "food_pick_rate": 0.3549
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 17.1667,
+          "food_pick_rate": 0.4966
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 16.75,
+          "food_pick_rate": 0.3386
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 20.0833,
+          "food_pick_rate": 0.3579
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 13.6667,
+          "food_pick_rate": 0.2892
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 7.0,
+          "food_pick_rate": 0.3659
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.1667,
+          "food_pick_rate": 0.3072
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 17.0833,
+          "food_pick_rate": 0.481
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 14.75,
+          "food_pick_rate": 0.1992
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 11.1667,
+          "food_pick_rate": 0.2193
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 16.1667,
+          "food_pick_rate": 0.356
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 2.75,
+          "food_pick_rate": 0.0486
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 2.9167,
+          "food_pick_rate": 0.0914
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 11.3333,
+          "food_pick_rate": 0.2807
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 12.5833,
+          "food_pick_rate": 0.3111
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 10.3333,
+          "food_pick_rate": 0.3658
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00118,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 19.5833,
+          "food_pick_rate": 0.2847
+        }
+      ],
+      "init_mii": 0.00118,
+      "final_mii": 0.00118,
+      "mii_rise": 0.0,
+      "init_survival": 0.0833,
+      "final_survival": 0.1667,
+      "survival_rise": 0.0834,
+      "controls": {
+        "open": {
+          "alive": 0.0833,
+          "rounds": 7.3333,
+          "food_pick_rate": 0.3316
+        },
+        "scramble": {
+          "alive": 0.0,
+          "rounds": 3.9167,
+          "food_pick_rate": 0.3299
+        },
+        "mute": {
+          "alive": 0.0833,
+          "rounds": 6.0833,
+          "food_pick_rate": 0.2741
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 1.0
+        }
+      }
+    },
+    {
+      "seed": 4,
+      "arm": "shared_frozen_random",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00133,
+          "mii_self": 0.11927,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.8333,
+          "food_pick_rate": 0.1017
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.00133,
+          "mii_self": 0.11927,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 12.1667,
+          "food_pick_rate": 0.2108
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.00133,
+          "mii_self": 0.11927,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 7.1667,
+          "food_pick_rate": 0.3417
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.00133,
+          "mii_self": 0.11927,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 10.0,
+          "food_pick_rate": 0.4352
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00133,
+          "mii_self": 0.11927,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 11.0833,
+          "food_pick_rate": 0.3727
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.00133,
+          "mii_self": 0.11927,
+          "mii_chance": 0.0016,
+          "survival": 0.6667,
+          "rounds": 25.8333,
+          "food_pick_rate": 0.3237
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.00133,
+          "mii_self": 0.11927,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 16.6667,
+          "food_pick_rate": 0.3007
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.00133,
+          "mii_self": 0.11927,
+          "mii_chance": 0.0016,
+          "survival": 0.4167,
+          "rounds": 23.3333,
+          "food_pick_rate": 0.4523
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.00133,
+          "mii_self": 0.11927,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 11.0833,
+          "food_pick_rate": 0.3018
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.00133,
+          "mii_self": 0.11927,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 8.75,
+          "food_pick_rate": 0.4094
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.00133,
+          "mii_self": 0.11927,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 17.6667,
+          "food_pick_rate": 0.2883
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.00133,
+          "mii_self": 0.11927,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 20.9167,
+          "food_pick_rate": 0.4185
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.00133,
+          "mii_self": 0.11927,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 15.1667,
+          "food_pick_rate": 0.384
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.00133,
+          "mii_self": 0.11927,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 7.1667,
+          "food_pick_rate": 0.1491
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.00133,
+          "mii_self": 0.11927,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 14.5,
+          "food_pick_rate": 0.3461
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.00133,
+          "mii_self": 0.11927,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 17.1667,
+          "food_pick_rate": 0.3839
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.00133,
+          "mii_self": 0.11927,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 18.9167,
+          "food_pick_rate": 0.3555
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.00133,
+          "mii_self": 0.11927,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 8.25,
+          "food_pick_rate": 0.2863
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00133,
+          "mii_self": 0.11927,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 11.8333,
+          "food_pick_rate": 0.2435
+        }
+      ],
+      "init_mii": 0.00133,
+      "final_mii": 0.00133,
+      "mii_rise": 0.0,
+      "init_survival": 0.0,
+      "final_survival": 0.0,
+      "survival_rise": 0.0,
+      "controls": {
+        "open": {
+          "alive": 0.0833,
+          "rounds": 11.0,
+          "food_pick_rate": 0.289
+        },
+        "scramble": {
+          "alive": 0.0,
+          "rounds": 7.75,
+          "food_pick_rate": 0.2255
+        },
+        "mute": {
+          "alive": 0.0,
+          "rounds": 12.8333,
+          "food_pick_rate": 0.2902
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 1.0
+        }
+      }
+    },
+    {
+      "seed": 5,
+      "arm": "pure_selection",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00142,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 15.0,
+          "food_pick_rate": 0.2608
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.00099,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 12.4167,
+          "food_pick_rate": 0.1817
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.00052,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 24.1667,
+          "food_pick_rate": 0.4864
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.00062,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 5.5,
+          "food_pick_rate": 0.475
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00123,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 17.25,
+          "food_pick_rate": 0.1737
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.00085,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 9.3333,
+          "food_pick_rate": 0.3119
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.00114,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 11.75,
+          "food_pick_rate": 0.3636
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.00085,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 12.9167,
+          "food_pick_rate": 0.2589
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.00118,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 9.4167,
+          "food_pick_rate": 0.1861
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.00071,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 19.25,
+          "food_pick_rate": 0.2556
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.00118,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 8.3333,
+          "food_pick_rate": 0.1138
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.00114,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.5833,
+          "rounds": 28.6667,
+          "food_pick_rate": 0.4706
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.0008,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 10.25,
+          "food_pick_rate": 0.2915
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.00057,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 7.8333,
+          "food_pick_rate": 0.452
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.00038,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 12.0,
+          "food_pick_rate": 0.4797
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.00114,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 8.3333,
+          "food_pick_rate": 0.2385
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.00133,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 20.0833,
+          "food_pick_rate": 0.2868
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.0009,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 18.0,
+          "food_pick_rate": 0.317
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00019,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 11.9167,
+          "food_pick_rate": 0.5732
+        }
+      ],
+      "init_mii": 0.00142,
+      "final_mii": 0.00019,
+      "mii_rise": -0.00123,
+      "init_survival": 0.1667,
+      "final_survival": 0.0,
+      "survival_rise": -0.1667,
+      "controls": {
+        "open": {
+          "alive": 0.0,
+          "rounds": 6.0,
+          "food_pick_rate": 0.2354
+        },
+        "scramble": {
+          "alive": 0.0,
+          "rounds": 2.75,
+          "food_pick_rate": 0.1389
+        },
+        "mute": {
+          "alive": 0.0,
+          "rounds": 7.75,
+          "food_pick_rate": 0.1492
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 1.0
+        }
+      }
+    },
+    {
+      "seed": 5,
+      "arm": "kirby_linked",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00185,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 7.25,
+          "food_pick_rate": 0.266
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.00152,
+          "mii_self": 0.00052,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 5.5,
+          "food_pick_rate": 0.199
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.00208,
+          "mii_self": 0.0,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 5.4167,
+          "food_pick_rate": 0.0971
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.00142,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 20.0,
+          "food_pick_rate": 0.4147
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00218,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 13.0833,
+          "food_pick_rate": 0.2904
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.00156,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 20.4167,
+          "food_pick_rate": 0.4564
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.00142,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 18.8333,
+          "food_pick_rate": 0.3064
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.00213,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 4.5,
+          "food_pick_rate": 0.1932
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.00114,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 15.5,
+          "food_pick_rate": 0.3019
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.00294,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 17.4167,
+          "food_pick_rate": 0.4681
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.00256,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 5.4167,
+          "food_pick_rate": 0.1929
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.00237,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 8.25,
+          "food_pick_rate": 0.136
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.00308,
+          "mii_self": 0.00312,
+          "mii_chance": 0.0016,
+          "survival": 0.4167,
+          "rounds": 23.75,
+          "food_pick_rate": 0.5681
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.00308,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 5.8333,
+          "food_pick_rate": 0.2976
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.00374,
+          "mii_self": 0.00365,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 13.9167,
+          "food_pick_rate": 0.29
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.00241,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 29.1667,
+          "food_pick_rate": 0.3185
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.0027,
+          "mii_self": 0.00104,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 9.5,
+          "food_pick_rate": 0.3581
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.00279,
+          "mii_self": 0.00156,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 13.75,
+          "food_pick_rate": 0.2869
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00327,
+          "mii_self": 0.00208,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 15.8333,
+          "food_pick_rate": 0.377
+        }
+      ],
+      "init_mii": 0.00185,
+      "final_mii": 0.00327,
+      "mii_rise": 0.00142,
+      "init_survival": 0.0,
+      "final_survival": 0.25,
+      "survival_rise": 0.25,
+      "controls": {
+        "open": {
+          "alive": 0.5833,
+          "rounds": 23.9167,
+          "food_pick_rate": 0.2996
+        },
+        "scramble": {
+          "alive": 0.0,
+          "rounds": 20.1667,
+          "food_pick_rate": 0.3467
+        },
+        "mute": {
+          "alive": 0.25,
+          "rounds": 15.5,
+          "food_pick_rate": 0.4369
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 0.8611
+        }
+      }
+    },
+    {
+      "seed": 5,
+      "arm": "shared_weights_kin",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.0018,
+          "mii_self": 0.11042,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 17.3333,
+          "food_pick_rate": 0.4003
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.01231,
+          "mii_self": 0.10469,
+          "mii_chance": 0.0016,
+          "survival": 0.6667,
+          "rounds": 28.75,
+          "food_pick_rate": 0.6287
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.01652,
+          "mii_self": 0.08229,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 18.1667,
+          "food_pick_rate": 0.5152
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.02642,
+          "mii_self": 0.08125,
+          "mii_chance": 0.0016,
+          "survival": 0.5833,
+          "rounds": 24.1667,
+          "food_pick_rate": 0.5389
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.04669,
+          "mii_self": 0.08073,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 16.8333,
+          "food_pick_rate": 0.365
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.04181,
+          "mii_self": 0.08177,
+          "mii_chance": 0.0016,
+          "survival": 0.5833,
+          "rounds": 29.0833,
+          "food_pick_rate": 0.6089
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.08381,
+          "mii_self": 0.11562,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 25.9167,
+          "food_pick_rate": 0.3672
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.0857,
+          "mii_self": 0.11198,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 21.25,
+          "food_pick_rate": 0.6513
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.08035,
+          "mii_self": 0.11562,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 7.5833,
+          "food_pick_rate": 0.4037
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.13277,
+          "mii_self": 0.14948,
+          "mii_chance": 0.0016,
+          "survival": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 0.5602
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.18674,
+          "mii_self": 0.18802,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 21.25,
+          "food_pick_rate": 0.6157
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.18063,
+          "mii_self": 0.18333,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 8.6667,
+          "food_pick_rate": 0.3319
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.17893,
+          "mii_self": 0.17969,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.4167,
+          "food_pick_rate": 0.325
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.17169,
+          "mii_self": 0.17656,
+          "mii_chance": 0.0016,
+          "survival": 0.5,
+          "rounds": 22.25,
+          "food_pick_rate": 0.3654
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.1232,
+          "mii_self": 0.13281,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 7.3333,
+          "food_pick_rate": 0.3841
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.12614,
+          "mii_self": 0.12552,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 24.75,
+          "food_pick_rate": 0.5864
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.10606,
+          "mii_self": 0.10573,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 18.25,
+          "food_pick_rate": 0.4283
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.13504,
+          "mii_self": 0.14583,
+          "mii_chance": 0.0016,
+          "survival": 0.5833,
+          "rounds": 25.6667,
+          "food_pick_rate": 0.4237
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.12462,
+          "mii_self": 0.12708,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 12.25,
+          "food_pick_rate": 0.2165
+        }
+      ],
+      "init_mii": 0.0018,
+      "final_mii": 0.12462,
+      "mii_rise": 0.12282,
+      "init_survival": 0.25,
+      "final_survival": 0.0833,
+      "survival_rise": -0.1667,
+      "controls": {
+        "open": {
+          "alive": 0.0833,
+          "rounds": 9.0833,
+          "food_pick_rate": 0.2596
+        },
+        "scramble": {
+          "alive": 0.0,
+          "rounds": 13.1667,
+          "food_pick_rate": 0.3658
+        },
+        "mute": {
+          "alive": 0.0,
+          "rounds": 2.25,
+          "food_pick_rate": 0.1042
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 1.0
+        }
+      }
+    },
+    {
+      "seed": 5,
+      "arm": "frozen_random",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00194,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 10.0833,
+          "food_pick_rate": 0.4225
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.00194,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.0833,
+          "food_pick_rate": 0.133
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.00194,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 22.25,
+          "food_pick_rate": 0.4249
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.00194,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 19.1667,
+          "food_pick_rate": 0.3226
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00194,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.9167,
+          "food_pick_rate": 0.3311
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.00194,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 4.0833,
+          "food_pick_rate": 0.212
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.00194,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 9.25,
+          "food_pick_rate": 0.4342
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.00194,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 4.9167,
+          "food_pick_rate": 0.2091
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.00194,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 7.0833,
+          "food_pick_rate": 0.2647
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.00194,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 19.0833,
+          "food_pick_rate": 0.5079
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.00194,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 10.4167,
+          "food_pick_rate": 0.4013
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.00194,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 9.5833,
+          "food_pick_rate": 0.3593
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.00194,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 27.5833,
+          "food_pick_rate": 0.3047
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.00194,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.0833,
+          "food_pick_rate": 0.2314
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.00194,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 3.5833,
+          "food_pick_rate": 0.2528
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.00194,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 9.9167,
+          "food_pick_rate": 0.3291
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.00194,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 15.4167,
+          "food_pick_rate": 0.3399
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.00194,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 16.75,
+          "food_pick_rate": 0.3611
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00194,
+          "mii_self": 0.0026,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 7.1667,
+          "food_pick_rate": 0.402
+        }
+      ],
+      "init_mii": 0.00194,
+      "final_mii": 0.00194,
+      "mii_rise": 0.0,
+      "init_survival": 0.0,
+      "final_survival": 0.0,
+      "survival_rise": 0.0,
+      "controls": {
+        "open": {
+          "alive": 0.0,
+          "rounds": 5.0833,
+          "food_pick_rate": 0.1468
+        },
+        "scramble": {
+          "alive": 0.0,
+          "rounds": 12.9167,
+          "food_pick_rate": 0.3615
+        },
+        "mute": {
+          "alive": 0.0833,
+          "rounds": 8.4167,
+          "food_pick_rate": 0.1735
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 1.0
+        }
+      }
+    },
+    {
+      "seed": 5,
+      "arm": "shared_frozen_random",
+      "traj": [
+        {
+          "gen": 0,
+          "mii_cross": 0.00095,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 10.4167,
+          "food_pick_rate": 0.1942
+        },
+        {
+          "gen": 1,
+          "mii_cross": 0.00095,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 9.5833,
+          "food_pick_rate": 0.4977
+        },
+        {
+          "gen": 2,
+          "mii_cross": 0.00095,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 10.1667,
+          "food_pick_rate": 0.299
+        },
+        {
+          "gen": 3,
+          "mii_cross": 0.00095,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.25,
+          "rounds": 11.5833,
+          "food_pick_rate": 0.2894
+        },
+        {
+          "gen": 4,
+          "mii_cross": 0.00095,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 6.75,
+          "food_pick_rate": 0.2067
+        },
+        {
+          "gen": 5,
+          "mii_cross": 0.00095,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 7.9167,
+          "food_pick_rate": 0.2923
+        },
+        {
+          "gen": 6,
+          "mii_cross": 0.00095,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 9.75,
+          "food_pick_rate": 0.35
+        },
+        {
+          "gen": 7,
+          "mii_cross": 0.00095,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 6.25,
+          "food_pick_rate": 0.2908
+        },
+        {
+          "gen": 8,
+          "mii_cross": 0.00095,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 5.75,
+          "food_pick_rate": 0.2258
+        },
+        {
+          "gen": 9,
+          "mii_cross": 0.00095,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 15.0833,
+          "food_pick_rate": 0.4252
+        },
+        {
+          "gen": 10,
+          "mii_cross": 0.00095,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 4.8333,
+          "food_pick_rate": 0.0955
+        },
+        {
+          "gen": 11,
+          "mii_cross": 0.00095,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 27.75,
+          "food_pick_rate": 0.4912
+        },
+        {
+          "gen": 12,
+          "mii_cross": 0.00095,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 4.75,
+          "food_pick_rate": 0.1689
+        },
+        {
+          "gen": 13,
+          "mii_cross": 0.00095,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.3333,
+          "rounds": 18.4167,
+          "food_pick_rate": 0.3779
+        },
+        {
+          "gen": 14,
+          "mii_cross": 0.00095,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 13.8333,
+          "food_pick_rate": 0.3256
+        },
+        {
+          "gen": 15,
+          "mii_cross": 0.00095,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 10.5833,
+          "food_pick_rate": 0.3427
+        },
+        {
+          "gen": 16,
+          "mii_cross": 0.00095,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.1667,
+          "rounds": 18.3333,
+          "food_pick_rate": 0.392
+        },
+        {
+          "gen": 17,
+          "mii_cross": 0.00095,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0,
+          "rounds": 10.8333,
+          "food_pick_rate": 0.2999
+        },
+        {
+          "gen": 18,
+          "mii_cross": 0.00095,
+          "mii_self": 0.13958,
+          "mii_chance": 0.0016,
+          "survival": 0.0833,
+          "rounds": 10.4167,
+          "food_pick_rate": 0.5185
+        }
+      ],
+      "init_mii": 0.00095,
+      "final_mii": 0.00095,
+      "mii_rise": 0.0,
+      "init_survival": 0.0,
+      "final_survival": 0.0833,
+      "survival_rise": 0.0833,
+      "controls": {
+        "open": {
+          "alive": 0.0,
+          "rounds": 13.0,
+          "food_pick_rate": 0.2195
+        },
+        "scramble": {
+          "alive": 0.0,
+          "rounds": 4.5,
+          "food_pick_rate": 0.1369
+        },
+        "mute": {
+          "alive": 0.0,
+          "rounds": 11.5,
+          "food_pick_rate": 0.2467
+        },
+        "oracle": {
+          "alive": 1.0,
+          "rounds": 36.0,
+          "food_pick_rate": 0.9722
+        }
+      }
+    }
+  ],
+  "wall_seconds": 520.9
+}
