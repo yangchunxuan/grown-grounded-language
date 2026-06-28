@@ -219,8 +219,8 @@ multi-agent red-team** for verification — and this protocol is itself part of 
 contribution, not an incidental tool. The discipline that makes the results trustworthy is
 that no agent's claimed "win" was accepted without surviving the four-check attack-machine
 (architecture-matched null, fair baseline, ≥6 seeds with a bootstrap CI on the win-margin,
-adversarial red-team). Headline results were **independently reproduced on a separate
-machine by a different model** and audited for oracle leakage. The human author (Chunxuan
+adversarial red-team). Headline scripts were **independently rerun from a fresh clone on a
+separate machine** and produced the same verdicts, with an oracle-leakage audit. The human author (Chunxuan
 Yang) set the goals, the frozen pre-registration thresholds, and the redlines, and made the
 final claims.
 
