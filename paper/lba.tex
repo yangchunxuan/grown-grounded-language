@@ -2,7 +2,9 @@
 
 \usepackage{natbib,alifeconf}  %% The order is important
 \usepackage{url,hyperref,cleveref}
+\hypersetup{hidelinks}
 \usepackage{booktabs}
+\usepackage{placeins}
 
 \newcommand\blfootnote[1]{%
   \begingroup
@@ -104,38 +106,34 @@ committed verdict JSONs are in the repository (\texttt{WALLS\_VERDICT.md}).}
 \toprule
 \textbf{Wall} & \textbf{Cheap shortcut (the apparent win)} & \textbf{Ruled out by} \\
 \midrule
-Self-supervised prediction & temporal integration by \emph{any} recurrent net (world too dead to have learnable dynamics) & untrained random reservoir beats the trained world-model \\
-Within-life optimization & exhaustive coverage / installed structure (space small enough to tabulate) & coverage cliff under a fixed budget \\
-Compositional generalization & holistic codes (task too small; symmetric pressures only stall) & held-out joint stays $0$ across eight attacks \\
-Cooperation beyond communication & mutual-decode equivalence / basin lottery (population too small) & selection-gate CI crosses $0$ \\
-Spatial communication & co-location / flocking (speaker info $\supseteq$ listener need) & content- vs.\ flocking-control comparison \\
+Self-supervised prediction & temporal integration by generic recurrence (dead world) & untrained reservoir beats trained world-model \\
+Within-life optimization & exhaustive coverage in a small state space & coverage cliff under a fixed budget \\
+Compositional generalization & holistic codes under symmetric pressure & held-out joint stays $0$ across eight attacks \\
+Cooperation beyond communication & basin lottery / mutual-decode equivalence & selection-gate CI crosses $0$ \\
+Spatial communication & co-location / flocking & content- vs.\ flocking-control comparison \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
-\begin{figure*}[t]
+\begin{figure*}[t!]
 \centering
 \includegraphics[width=\textwidth]{fig_rtc}
-\caption{Results inside the constructed world, all values from committed verdict
-artifacts; bars show bootstrap 95\% CIs. \textbf{(a)} Lethal signaling (24 seeds):
-agents acting on real decoded content (\emph{fusion}, 0.58) survive far above the
-degraded controls---\emph{scramble} (random message, 0.08), \emph{misroute}
-(correct content, broken content-to-location binding, 0.04) and \emph{mute} (no
-message, 0.04); \emph{oracle} (true argmax, fenced reference) =1.00. fusion beats
-every control by an exact paired McNemar test ($p<5\mathrm{e}{-}4$; the run's own
-absolute-majority-survival gate is inconclusive, so this is a \emph{relative}
-result). The decisive \emph{misroute} control isolates that the content-to-location
-\emph{binding}, not mere signal presence, carries survival. \textbf{(b)} A
-heritable ``trust'' gene gating use of the channel (8 seeds) rises to
-${\approx}0.96$ under real content but stays at the mutation floor
-(${\sim}0.3$--$0.4$) under scrambled content or no selection: use of a (separately
-trained) channel is \emph{selected for}---adoption, not de-novo emergence.
-\textbf{(c)} Co-evolution from random weights under survival selection (6 seeds):
-an apparent intelligibility rise (0.124) does \emph{not} separate cleanly from a
-communication-blind random-fitness control (0.096; survival$-$control bootstrap CI
-$[-0.05, 0.11]$ includes $0$), and both sit far above the frozen null (0.002)---the
-rise is clonal descent-convergence, not selection for communication. The
-signaling-bootstrap deadlock holds.}
+\caption{Results inside the constructed world; all values from committed verdict
+artifacts, bars are bootstrap 95\% CIs. \textbf{(a)} Lethal signaling (24 seeds):
+\emph{fusion} (real decoded content, 0.58) survives far above \emph{scramble}
+(random, 0.08), \emph{misroute} (correct content, broken content-to-location
+binding, 0.04) and \emph{mute} (0.04); \emph{oracle} (fenced) $=1.00$. fusion beats
+each control by an exact paired McNemar test ($p<5\mathrm{e}{-}4$); the run's own
+absolute-majority gate is inconclusive, so this is a \emph{relative} result, and
+\emph{misroute} isolates that content-to-location \emph{binding} (not signal
+presence) carries survival. \textbf{(b)} A heritable ``trust'' gene (8 seeds) rises
+to ${\approx}0.96$ under real content vs.\ ${\sim}0.3$--$0.4$ under scrambled / no
+selection: \emph{use} of a separately-trained channel is selected for (adoption,
+not de-novo emergence). \textbf{(c)} Co-evolving the channel from random weights
+(6 seeds): the apparent intelligibility rise (0.124) does \emph{not} separate from a
+communication-blind control (0.096; survival$-$control CI $[-0.05, 0.11]$ includes
+$0$), both far above the frozen null (0.002)---clonal descent-convergence, not
+selection for communication.}
 \label{fig:rtc}
 \end{figure*}
 
@@ -178,12 +176,13 @@ precisely-mapped wall system; and (3)~a constructive recipe (close shortcuts, th
 test) with scoped positives and a clean co-evolution negative. We suggest
 emergent-communication claims be reported against architecture-matched nulls and
 communication-blind controls as standard. All verdicts and code are committed;
-headline results were independently reproduced on a separate machine by a
-different model and audited for oracle-leakage. AI agents generated implementation
-candidates and adversarial critiques, but all headline verdicts are
+headline scripts were independently rerun from a fresh clone on a separate machine
+and produced the same verdicts, with an oracle-leakage audit. AI agents generated
+implementation candidates and adversarial critiques, but all headline verdicts are
 script-produced, committed, and reproducible from fixed seeds; the adversarial
 multi-agent audit is itself part of the contribution.
 
+\FloatBarrier
 \footnotesize
 \begin{thebibliography}{9}
 \setlength{\itemsep}{0pt}
