@@ -1,4 +1,6 @@
-# STAGE: WHY IS g1f KIN-ONLY? — DIAGNOSTIC pre-registration **v4**
+# STAGE: WHY IS g1f KIN-ONLY? — DIAGNOSTIC pre-registration **v4.1 — LOCKED**
+
+**v4.1 changelog (LOCK round, Gemini final code-grounded review → LOCK with 3 polish guards; applied here).** (1) gate-0 pairing must cover BOTH the outer control seed (`:269`) AND the inner episode rng (`_run_episode:169`, which also drifts by `len(mode)`) — see §0/§7. (2) "LIVING" pinned to post-episode `alive==True` (MII stays gen-start/pre-episode) — see §3. (3) SESOI must be written to the JSON with explicit before-CF ordering evidence — see §0. No design change; implementation guards only. LOCKED for implementation.
 
 **v4 changelog.** v3 got a THIRD pair of code-grounded reviews (Codex + Gemini), independently converging on one blocker: the **comm-blind (random-fitness) cross-founder null is the WRONG null** — it removes BOTH communication-selection AND world-survival-selection, so "survival beats comm-blind-CF" would falsely label shared-world convergence (e) as (a); and comm-blind drift-collapses/dies under the toxic world, NaN-ing the baseline. Deeper: in g1f, cross-lineage communication is **never selected** (kin-only `_speaker_for`) and survival is communication-mediated, so **no "world-selected but communication-free" null exists** → "communication-selection vs world-convergence" is **ill-posed in g1f** and cannot be settled by this diagnostic; it is deferred to the C2 intervention. v4 therefore DROPS the comm-blind null and the comm-selection claim, and asks the narrower, well-posed, C1-actionable question below.
 
@@ -30,9 +32,9 @@
 
 ## 3. FROZEN RULES (magnitudes calibrated from the floor, not pre-frozen)
 - arm=shared_weights_kin; mode=formal; n=16 seeds.
-- coexistence: a gen counts iff **≥2 founders each have ≥3 LIVING agents** (per-agent alive log).
+- coexistence: a gen counts iff **≥2 founders each have ≥3 LIVING agents**, where LIVING = `alive==True` in that gen's `_run_episode` return (post-episode). MII matrix is computed at gen-start on the full pop (pre-episode); both use the SAME gen — coexistence gates which gens enter the analysis, MII supplies the values. 🔴v4.1
 - **CF** = mean over coexisting gens of cross-founder MII; **WF** = within-founder MII; **FLOOR** = frozen-mixed MII; bootstrap 95% CIs over seeds.
-- SESOI = **1 seed-SD of FLOOR** (frozen-mixed), computed from the floor BEFORE looking at CF. Report raw + standardized margins.
+- SESOI = **1 seed-SD of FLOOR** (frozen-mixed), computed from the floor BEFORE looking at CF. Report raw + standardized margins. **Write SESOI + a "computed_before_CF: true" ordering marker into the JSON** (forecloses post-hoc-threshold suspicion). 🔴v4.1
 - peak = max CF over a seed's coexisting gens, mean across seeds.
 - INCONCLUSIVE_NO_WINDOW iff **< 8 of 16 seeds have ≥2 coexisting gens**.
 
@@ -62,7 +64,7 @@ Else (CF, WF, FLOOR over coexisting gens):
 ## 7. Implementation-verify (converged "cannot tell from files")
 - artifacts lack lineage/matrix/per-agent state → MUST instrument; no retrospective (Codex+Gemini confirmed).
 - `.lineage`-keyed CF/WF (blind-test all-same-lineage → NaN/skip).
-- gate-0 paired on identical world/post/metabolic seed, only message mode differs (NOT the `:269` mode-name seed).
+- gate-0 paired on identical world/post/metabolic seed, only message mode differs — pair BOTH the outer control seed (`:269`) AND the **inner episode rng** (`_run_episode:169` `default_rng(seed*41+len(mode))`, which ALSO drifts by mode-name length). Cleanest fix: refactor `_run_episode` to accept an external rng, or external-seed it identically across the three modes. 🔴v4.1
 - separate RNG streams (evolution / shuffle / message-mode) — none shifts another; recorded.
 - per-agent ALIVE added to `_run_episode` return.
 - after collapse, singleton-lineage gen → excluded from coexistence (NaN).
