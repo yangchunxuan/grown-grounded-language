@@ -14,7 +14,7 @@
 }
 
 %% ===== FILL IN: replace the author name, affiliation, and email below =====
-\title{Five Walls on the Path to a Grown Grounded Language: An Adversarial Self-Audit of Emergent Communication}
+\title{Five Walls on the Path to Growing a Grounded Language: An Adversarial Self-Audit of Emergent Communication}
 \author{
     Chunxuan Yang \\
     \mbox{}\\
@@ -35,16 +35,16 @@ four checks together: an architecture-matched null, a fair baseline, $\geq$6
 seeds with a bootstrap confidence interval on the win-margin, and an adversarial
 red-team. This rig caught \emph{six} of our own apparent wins as artifacts.
 Across five distinct attacks we banked zero clean breaks: each fell to a cheap
-shortcut the world allowed, suggesting that \emph{in our tested regimes the
-dominant bottleneck is world design rather than model class or optimizer}, and
-that structure does not grow in worlds too small to require it. We then
+shortcut the world allowed, suggesting that \emph{in our tested regimes world
+design was a recurring bottleneck}, and that structure does not grow in worlds too
+small to require it. We then
 constructively build a world (a Relay-Tide Commons) that closes each shortcut.
 Inside it, grown-channel content is \emph{relatively} load-bearing for survival
 against degraded controls, and its \emph{use} is selected up under evolution---but
-the channel itself does \emph{not} co-evolve from random initialization under
-survival selection (an apparent intelligibility rise did not separate from a
-communication-blind control). We offer the self-audit protocol, the mapped wall
-system, and fully reproducible artifacts as the contribution.
+we detect \emph{no} co-evolution of the channel itself from random initialization
+under survival selection (an apparent intelligibility rise did not separate from a
+communication-blind control; $n{=}6$, underpowered). We offer the self-audit protocol, the mapped wall
+system, and reproducible verdict artifacts as the contribution.
 \end{abstract}
 
 % Choose one of: Full Paper, Summaries, or Late Breaking Abstracts
@@ -56,11 +56,11 @@ Data/Code available at: \url{https://github.com/yangchunxuan/grown-grounded-lang
 \section{The attack-machine}
 A candidate result is banked only if it passes \emph{every} row of
 \Cref{tab:protocol} simultaneously, with the verdict a committed, reproducible
-JSON. An \emph{architecture-matched null} is the same architecture and parameter
-count with the mechanism ablated (e.g.\ an untrained random reservoir, a
-frozen-random channel); the \emph{red-team} is a panel of independent agents that
-each try to construct a confound explaining the win without the mechanism, and a
-surviving confound forces an added control or a retraction. The rig caught
+JSON. The \emph{architecture-matched null} is the same architecture and parameter
+count with the mechanism ablated (an untrained random reservoir, a frozen-random
+channel); the \emph{red-team} is a panel of independent agents each constructing a
+confound that explains the win without the mechanism, and a surviving confound
+forces an added control or a retraction. The rig caught
 \emph{six} of our own apparent wins as artifacts---e.g.\ a ``$+0.10$'' world-model
 denoising gain that an untrained reservoir of the same class beat by $3$--$4\times$,
 and a channel ``intelligibility rise'' that did not separate from a
@@ -88,9 +88,8 @@ Replication & separate machine / model & same headline verdict \\
 \section{Five walls and a convergent diagnosis}
 Across five attacks, multiple independent agents, and repeated red-teams, no
 clean break survived to the headline (\Cref{tab:walls}). Two convergent readings:
-in our tested regimes the dominant bottleneck was world design rather than model
-class or optimizer; and structure does not grow in worlds too small to require
-it---\emph{installed} structure works. Each shortcut was first taken seriously and
+in our tested regimes world design was a recurring bottleneck; and structure does
+not grow in worlds too small to require it---\emph{installed} structure works. Each shortcut was first taken seriously and
 ruled out only when removing it from the world removed the wall. Per-wall
 apparent-win\,$\to$\,confound\,$\to$\,control\,$\to$\,verdict chains, with the
 committed JSON artifacts, are documented in the repository.
@@ -118,22 +117,21 @@ Spatial communication & co-location / flocking & content- vs.\ flocking-control 
 \begin{figure*}[t!]
 \centering
 \includegraphics[width=\textwidth]{fig_rtc}
-\caption{Results inside the constructed world; all values from committed verdict
+\caption{Results inside the constructed world; values from committed verdict
 artifacts, bars are bootstrap 95\% CIs. \textbf{(a)} Lethal signaling (24 seeds):
-\emph{fusion} (real decoded content, 0.58) survives far above \emph{scramble}
-(random, 0.08), \emph{misroute} (correct content, broken content-to-location
-binding, 0.04) and \emph{mute} (0.04); \emph{oracle} (fenced) $=1.00$. fusion beats
-each control by an exact paired McNemar test ($p<5\mathrm{e}{-}4$); the run's own
-absolute-majority gate is inconclusive, so this is a \emph{relative} result, and
-\emph{misroute} isolates that content-to-location \emph{binding} (not signal
-presence) carries survival. \textbf{(b)} A heritable ``trust'' gene (8 seeds) rises
-to ${\approx}0.96$ under real content vs.\ ${\sim}0.3$--$0.4$ under scrambled / no
-selection: \emph{use} of a separately-trained channel is selected for (adoption,
-not de-novo emergence). \textbf{(c)} Co-evolving the channel from random weights
-(6 seeds): the apparent intelligibility rise (0.124) does \emph{not} separate from a
-communication-blind control (0.096; survival$-$control CI $[-0.05, 0.11]$ includes
-$0$), both far above the frozen null (0.002)---clonal descent-convergence, not
-selection for communication.}
+\emph{fusion} (real content, 0.58) survives far above \emph{scramble} (random,
+0.08), \emph{misroute} (correct content, broken content-to-location binding, 0.04)
+and \emph{mute} (0.04); \emph{oracle} (fenced) $=1.00$. fusion beats each control
+by an exact paired McNemar test ($p<5\mathrm{e}{-}4$); the absolute-majority gate
+is inconclusive, so this is \emph{relative}, and \emph{misroute} shows the
+content-to-location \emph{binding} (not signal presence) carries survival.
+\textbf{(b)} A heritable ``trust'' gene (8 seeds) rises to ${\approx}0.96$ under
+real content vs.\ ${\sim}0.3$--$0.4$ under scrambled / no selection: \emph{use} of a
+separately-trained channel is selected for (adoption, not de-novo emergence).
+\textbf{(c)} Co-evolving from random weights (6 seeds): the apparent
+intelligibility rise (0.124) does \emph{not} separate from a communication-blind
+control (0.096; survival$-$control CI $[-0.05, 0.11]$ includes $0$; underpowered),
+both far above the frozen null (0.002).}
 \label{fig:rtc}
 \end{figure*}
 
@@ -158,12 +156,13 @@ rises from $0.17$ to $0.96$ under real content, versus ${\sim}0.3$--$0.4$ under
 scrambled content or no selection (\Cref{fig:rtc}b): selection for \emph{using} a
 separately-trained channel (adoption), not de-novo emergence.
 
-\textbf{Does the channel co-evolve?---a clean negative.} From random
-speaker/listener weights under survival selection alone (no truth gradient), even
-the strongest legitimate mechanism (tied encode/decode weights plus kin
-assimilation) does not grow a load-bearing channel (\Cref{fig:rtc}c): the apparent
-intelligibility rise did not separate from a communication-blind control, so it is
-clonal descent-convergence, not selection for communication.
+\textbf{Does the channel co-evolve?---no detectable effect, underpowered.} From
+random speaker/listener weights under survival selection alone (no truth gradient),
+even the strongest legitimate mechanism (tied encode/decode weights plus kin
+assimilation) shows no detectable growth of a load-bearing channel
+(\Cref{fig:rtc}c): the apparent intelligibility rise did not separate from a
+communication-blind control ($n{=}6$, underpowered), consistent with clonal
+descent-convergence rather than selection for communication.
 
 \section{Boundaries and contribution}
 The positives live inside constructed worlds; the core goal---a load-bearing
@@ -173,14 +172,13 @@ ceiling: a grown channel can carry information yet remain too imprecise, or too
 easily bypassed, to be load-bearing. We contribute (1)~a transferable adversarial
 self-audit protocol that demonstrably catches false positives; (2)~a
 precisely-mapped wall system; and (3)~a constructive recipe (close shortcuts, then
-test) with scoped positives and a clean co-evolution negative. We suggest
+test) with scoped positives and a co-evolution null (no detectable effect,
+underpowered). We suggest
 emergent-communication claims be reported against architecture-matched nulls and
-communication-blind controls as standard. All verdicts and code are committed;
-headline scripts were independently rerun from a fresh clone on a separate machine
-and produced the same verdicts, with an oracle-leakage audit. AI agents generated
-implementation candidates and adversarial critiques, but all headline verdicts are
-script-produced, committed, and reproducible from fixed seeds; the adversarial
-multi-agent audit is itself part of the contribution.
+communication-blind controls as standard. All code and verdict JSONs are committed
+and reproducible from fixed seeds; headline scripts were rerun from a fresh clone
+on a separate machine to the same verdicts, with an oracle-leakage audit. AI agents
+produced candidate implementations and adversarial critiques under this protocol.
 
 \FloatBarrier
 \footnotesize

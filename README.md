@@ -30,8 +30,8 @@ Across five distinct attempts to make a *grown* channel become load-bearing, we 
 **cheap shortcut the world allowed** rather than real grown language. The convergent
 diagnosis:
 
-> **The bottleneck is the world, not the brain or the optimizer.** Structure does not grow
-> in worlds too small to require it; *installed* structure works, but it does not *emerge*.
+> **In the worlds we tested, world design was a recurring bottleneck.** Structure does not grow
+> in worlds too small to require it; *installed* structure works, but we did not see it *emerge*.
 
 To check this, we built a shortcut-proof world (a **Relay-Tide Commons (RTC)**: a 2D living
 micro-society on a torus where survival depends on decoding and relaying messages about a
@@ -42,10 +42,10 @@ rig applied, we get:
 |---|---|---|
 | **g1d — lethal signaling** | A *separately trained* grown channel's content (specifically its content-to-location **binding**) is **relatively** load-bearing for survival vs. degraded controls. | Scoped positive |
 | **g1e — use emerges under selection** | A heritable "trust" gene that gates *using* the channel is **selected up** under real content but not under scrambled content or no selection. | Scoped positive (adoption, not de-novo emergence) |
-| **g1f — does the channel co-evolve?** | Starting from **random** speaker/listener weights under survival selection alone, the channel does **not** grow into a load-bearing one. An apparent intelligibility rise was exposed as **clonal descent-convergence** by a communication-blind control. | **Clean negative** |
+| **g1f — does the channel co-evolve?** | Starting from **random** speaker/listener weights under survival selection alone, we detect **no** growth into a load-bearing channel. An apparent intelligibility rise did not separate from a communication-blind control (consistent with **clonal descent-convergence**). | **No detectable effect (underpowered, n=6)** |
 
 So: a grown channel can be *adopted* and can be *relatively* useful when handed to the
-agents, but it **does not grow from scratch under selection** — the signaling-bootstrap
+agents, but we detect **no growth from scratch under selection** (underpowered) — the signaling-bootstrap
 deadlock holds. The core goal remains unreached.
 
 ### The attack-machine (methodology)
@@ -79,7 +79,7 @@ this repo are *earned* — the rig was in the room when the most attractive numb
 
 ## The paper
 
-> **Chunxuan Yang.** *Five Walls to a Grown Grounded Language: An Adversarial Self-Audit of
+> **Chunxuan Yang.** *Five Walls on the Path to Growing a Grounded Language: An Adversarial Self-Audit of
 > Emergent Communication.* ALIFE 2026, Late-Breaking Abstract. Sogang University, Seoul,
 > Republic of Korea.
 
@@ -127,7 +127,7 @@ Expected (from `offscreen/rtc_g1e_emerge_verdict_tox-0.9.json`): the trust gene 
 ~0.17 to **0.96** under real content, but stays at the mutation floor (~0.30 scramble,
 ~0.41 drift). Verdict `RTC_G1E_CONTENT_USE_EMERGES`.
 
-### g1f — does the channel co-evolve from random init? (clean negative, 6 seeds)
+### g1f — does the channel co-evolve from random init? (no detectable effect, underpowered; 6 seeds)
 
 Run the g1f **formal** block
 (not the cheap pilot) with `RTC_G1F_FORMAL=1`:
@@ -146,8 +146,8 @@ mutual intelligibility (MII) moves off the bootstrap floor is `shared_weights_ki
 (final MII ≈ **0.124** vs. its architecture-matched null `shared_frozen_random` ≈ 0.002) —
 but that rise is **not** load-bearing: survival does **not** co-rise with MII, and a
 communication-blind random-fitness control reaches the same MII level (clonal
-descent-convergence). Verdict `RTC_G1F_MII_MOVES_NOT_LOAD_BEARING` — i.e. the channel does
-not co-evolve.
+descent-convergence). Verdict `RTC_G1F_MII_MOVES_NOT_LOAD_BEARING` — i.e. we detect no
+co-evolution of the channel (underpowered, n=6).
 
 ### Tests
 
@@ -193,7 +193,7 @@ paper/          lba.tex, fig_rtc.pdf, the compiled lba.pdf, and the ALIFE style 
   scratch under selection has not been demonstrated. The positives live *inside constructed
   worlds*; g1d is *relative* (vs. degraded controls), not absolute, and inside a narrow
   stakes window in a world built to make content matter; g1e is *adoption* of a
-  separately-trained channel, not de-novo emergence; g1f is a clean negative on co-evolution.
+  separately-trained channel, not de-novo emergence; g1f is a co-evolution null (no detectable effect, underpowered).
 - **Recurring obstacle: world design + a grounding/fidelity ceiling.** A grown channel can
   carry information yet remain too imprecise, or too easily bypassed, to be load-bearing.
 - **Internal disagreement is documented, not hidden.** `offscreen/WALLS_VERDICT.md` is an
@@ -233,7 +233,7 @@ final claims.
 
 ```bibtex
 @inproceedings{yang2026fivewalls,
-  title     = {Five Walls to a Grown Grounded Language:
+  title     = {Five Walls on the Path to Growing a Grounded Language:
                An Adversarial Self-Audit of Emergent Communication},
   author    = {Yang, Chunxuan},
   booktitle = {Proceedings of the 2026 Conference on Artificial Life (ALIFE)},
