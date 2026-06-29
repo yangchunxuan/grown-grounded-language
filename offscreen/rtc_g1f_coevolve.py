@@ -165,8 +165,11 @@ def _speaker_for(pop: list[Agent], listener_i: int, post_i: int, gen_round: int,
     return pop[(listener_i + post_i + gen_round + 1) % len(pop)]
 
 
-def _run_episode(seed: int, pop: list[Agent], mode: str = "open", arm: str = ""):
-    rng = np.random.default_rng(seed * 41 + len(mode))
+def _run_episode(seed: int, pop: list[Agent], mode: str = "open", arm: str = "", rng=None):
+    # rng kept optional for instrument-only paired gate-0 (kin-only diagnostic): passing the
+    # SAME rng across open/mute/scramble removes the len(mode) drift below. Default = unchanged.
+    if rng is None:
+        rng = np.random.default_rng(seed * 41 + len(mode))
     world = RTCWorld(seed)
     for _ in range(40):
         world.step()
@@ -202,12 +205,13 @@ def _run_episode(seed: int, pop: list[Agent], mode: str = "open", arm: str = "")
     return {
         "fitness": fitness,
         "alive": float(np.mean([st.alive for st in states])),
+        "alive_per_agent": [bool(st.alive) for st in states],  # instrument-only: kin-only diagnostic coexistence gate
         "rounds": float(np.mean(rounds)),
         "food_pick_rate": float(np.mean(food / np.maximum(1.0, rounds))),
     }
 
 
-def _mii(pop: list[Agent]) -> dict:
+def _mii(pop: list[Agent], return_matrix: bool = False) -> dict:
     rng = np.random.default_rng(12345)
     if G1F_MII_SAMPLE >= mc.N_REFERENTS:
         idx = list(range(mc.N_REFERENTS))
@@ -224,12 +228,16 @@ def _mii(pop: list[Agent]) -> dict:
         matrix.append(row)
     diag = [matrix[i][i] for i in range(len(pop))]
     off = [matrix[i][j] for i in range(len(pop)) for j in range(len(pop)) if i != j]
-    return {
+    out = {
         "self": round(float(np.mean(diag)), 5),
         "cross": round(float(np.mean(off)), 5),
         "min_offdiag": round(float(np.min(off)), 5),
         "chance": round(float(1.0 / mc.N_REFERENTS), 5),
     }
+    if return_matrix:  # instrument-only: kin-only diagnostic CF/WF (off-diagonal keyed on .lineage)
+        out["matrix"] = matrix
+        out["lineages"] = [int(a.lineage) for a in pop]
+    return out
 
 
 def _select_next(seed: int, gen: int, pop: list[Agent], fitness, arm: str, rng):
