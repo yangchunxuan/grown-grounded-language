@@ -240,6 +240,48 @@ def _mii(pop: list[Agent], return_matrix: bool = False) -> dict:
     return out
 
 
+def _mii_matrix_fast(pop):
+    """Vectorized FULL pop x pop MII matrix for UnifiedIO pops (C1 collapse probe, spec v5.1).
+
+    Byte-identical to _mii(pop, return_matrix=True)["matrix"] for UnifiedIO agents: emit/predict are
+    pure argmax over stored float32 table values (no float arithmetic), and numpy argmax tie-breaks to
+    the lowest index along the SAME axis here as in the scalar path. Falls back to the loop _mii for
+    non-UnifiedIO pops. Returns (matrix: list[list[float]], lineages: list[int]).
+    Verify with test_mii_fast_equiv (includes a deliberate-tie case) before trusting it.
+    """
+    if not all(isinstance(a.speaker, UnifiedIO) and a.listener is a.speaker for a in pop):
+        m = _mii(pop, return_matrix=True)
+        return m["matrix"], m["lineages"]
+    rng = np.random.default_rng(12345)
+    if G1F_MII_SAMPLE >= mc.N_REFERENTS:
+        idx = list(range(mc.N_REFERENTS))
+    else:
+        idx = sorted(rng.choice(mc.N_REFERENTS, G1F_MII_SAMPLE, replace=False).tolist())
+    refs = np.asarray([mc.index_to_referent(i) for i in idx], dtype=np.int64)  # (R, K)
+    R, K = refs.shape
+    P = len(pop)
+    tables = np.stack([a.speaker.table for a in pop])  # (P, K, BANDS, VOCAB)
+    # emit: msgs[i, r, ch] = argmax over VOCAB of tables[i, ch, refs[r, ch], :]
+    msgs = np.empty((P, R, K), dtype=np.int64)
+    for ch in range(K):
+        gathered = tables[:, ch, refs[:, ch], :]  # (P, R, VOCAB)
+        msgs[:, :, ch] = np.argmax(gathered, axis=-1)
+    msgs_flat = (msgs % rc.RTC_VOCAB).reshape(P * R, K)
+    # predict + exact-match, per listener j (vectorized over speakers x refs)
+    cols = []
+    for j in range(P):
+        Tj = tables[j]  # (K, BANDS, VOCAB)
+        preds = np.empty((P * R, K), dtype=np.int64)
+        for ch in range(K):
+            sel = Tj[ch][:, msgs_flat[:, ch]]  # (BANDS, P*R)
+            preds[:, ch] = np.argmax(sel, axis=0)
+        preds = preds.reshape(P, R, K)
+        match = np.all(preds == refs, axis=-1)  # (P speakers, R) vs the same refs
+        cols.append(match.mean(axis=1))  # (P,) = matrix[speaker_i][listener_j]
+    M = np.stack(cols, axis=1)  # (speaker, listener)
+    return [[float(M[i, j]) for j in range(P)] for i in range(P)], [int(a.lineage) for a in pop]
+
+
 def _select_next(seed: int, gen: int, pop: list[Agent], fitness, arm: str, rng):
     if arm in ("frozen_random", "shared_frozen_random"):
         return pop
@@ -256,6 +298,37 @@ def _select_next(seed: int, gen: int, pop: list[Agent], fitness, arm: str, rng):
         else:
             new_pop.append(_mutate(p, child_seed, rng))
     return new_pop[: len(pop)]
+
+
+def _select_next_soft(seed: int, gen: int, pop: list[Agent], fitness, rng):
+    """C1 niching selection (spec v5.1): tournament-k2 on LINEAGE-SHARED fitness, kin reproduction.
+
+    shared_fitness_i = raw_fitness_i / (count of same-lineage agents in the GEN-START pop)  -- niche
+    occupancy in the selection pool, NOT post-episode living count (living-count would reward
+    high-mortality lineages). Mirrors _select_next's shared_weights_kin reproduction (deepcopy parents
+    + mutate-fill, preserve_lineage=True) but replaces top-50% truncation with tournament-k2.
+    RNG invariant: this function is selected at the CALL SITE per cell; it consumes `rng` only here,
+    so it never shifts the hard cells' stream.
+    """
+    fitness = np.asarray(fitness, float)
+    n = len(pop)
+    lin = [int(a.lineage) for a in pop]
+    counts: dict[int, int] = {}
+    for L in lin:
+        counts[L] = counts.get(L, 0) + 1
+    shared = np.asarray([fitness[i] / counts[lin[i]] for i in range(n)], float)
+    n_parents = max(2, n // 2)
+    parents = []
+    for _ in range(n_parents):
+        a = int(rng.integers(0, n))
+        b = int(rng.integers(0, n))
+        parents.append(pop[a] if shared[a] >= shared[b] else pop[b])
+    new_pop = [copy.deepcopy(p) for p in parents]
+    while len(new_pop) < n:
+        p = parents[int(rng.integers(0, len(parents)))]
+        child_seed = seed * 100_003 + gen * 1009 + len(new_pop)
+        new_pop.append(_mutate(p, child_seed, rng, preserve_lineage=True))
+    return new_pop[: n]
 
 
 def _run_arm(seed: int, arm: str):
