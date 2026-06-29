@@ -1,24 +1,24 @@
 {
   "kind": "rtc_g1f_power_analysis",
-  "source": "rtc_g1f_commblind_verdict_s12.json",
-  "n_seeds": 12,
-  "survival_mii_mean": 0.09449,
-  "commblind_mii_mean": 0.11886,
-  "win_margin_mean": -0.02437,
-  "win_margin_sd": 0.09661,
+  "source": "rtc_g1f_commblind_verdict_formal48.json",
+  "n_seeds": 48,
+  "survival_mii_mean": 0.17219,
+  "commblind_mii_mean": 0.1271,
+  "win_margin_mean": 0.04509,
+  "win_margin_sd": 0.08747,
   "win_margin_ci95": [
-    -0.08172,
-    0.02263
+    0.02017,
+    0.06982
   ],
-  "effect_detectable_at_this_n": false,
+  "effect_detectable_at_this_n": true,
   "power_to_detect_observed_effect": {
-    "6": 0.095,
-    "12": 0.141,
-    "16": 0.172,
-    "24": 0.235,
-    "32": 0.297
+    "6": 0.243,
+    "12": 0.431,
+    "16": 0.541,
+    "24": 0.714,
+    "32": 0.83
   },
-  "mde_80pct_power_at_this_n": 0.07814,
-  "seeds_needed_for_observed_effect_at_80pct": 124,
-  "interpretation": "At n=12, the survival-minus-commblind win-margin is -0.0244 (95% CI [-0.0817, 0.0226]). The CI includes 0: NO detectable effect. This null bounds the true effect: with 80% power at n=12 we could have detected an effect >= 0.0781; the observed -0.0244 would need 124 seeds to reach 80% power."
+  "mde_80pct_power_at_this_n": 0.03537,
+  "seeds_needed_for_observed_effect_at_80pct": 30,
+  "interpretation": "At n=48, the survival-minus-commblind win-margin is 0.0451 (95% CI [0.0202, 0.0698]). The CI excludes 0: a detectable effect."
 }
