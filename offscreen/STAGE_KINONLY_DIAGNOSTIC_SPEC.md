@@ -1,65 +1,65 @@
-# STAGE: WHY IS g1f KIN-ONLY? — DIAGNOSTIC pre-registration **v2**
+# STAGE: WHY IS g1f KIN-ONLY? — DIAGNOSTIC pre-registration **v3**
 
-**v2 changelog.** v1 got a code-grounded red-team (read `rtc_g1f_coevolve.py`): verdict DO_NOT_LOCK. v2 closes all converged fixes: lock the arm, add cause (d), fix the (c) null, operationalize every threshold, and do a FREE retrospective first. Type unchanged: **DIAGNOSTIC, no mechanism change** — instrument g1f to learn WHY its co-evolved channel is kin-lineage-only, so the later intervention targets the real cause.
+**v3 changelog.** v2 got a SECOND independent code-grounded red-team (Codex), converging with the first (Gemini). Both DO_NOT_LOCK. v3 fixes: (1) the "free retrospective" was **code-refuted** (committed artifacts contain only trajectory summaries — no per-agent lineage / MII matrix) → REMOVED; a new instrumented run is required. (2) Add a 5th cause **(e) COMMON-ATTRACTOR** (both reviewers) and make the **comm-blind cross-founder MII the PRIMARY null** that separates real cross-lineage communication-selection from shared-world convergence. (3) gate-0 made non-tautological via a **random-token** baseline. (4) thresholds become **calibration outputs relative to the measured null**, not pre-frozen magnitudes. (5) reword the arm-lock; add per-agent-alive logging. Type unchanged: **DIAGNOSTIC, no mechanism change.**
 
-**Candidate causes (now FOUR):**
-- **(a) DEMOGRAPHIC** — population collapses to ~1 founder; "kin-only" is largely a tautology (no non-kin pairs left).
-- **(b) SELECTION-RULE** — kin-only listening means cross-lineage decoding is never selected; codes are partially compatible but unaligned.
-- **(c) REPRESENTATIONAL-INCOMPATIBLE** — coexisting lineages grow arbitrary private codes with no shared anchor; cannot align without shared grounding.
-- **(d) FITNESS-IRRELEVANCE** 🔴v2 — the world may not REQUIRE cross-lineage decoding to survive at all (self-foraging suffices); then (a)/(b)/(c) are all moot and the diagnostic must NOT fabricate a "barrier". Tested first (§4 gate-0).
+**Candidate causes (FIVE):**
+- **(a) DEMOGRAPHIC** — collapse to ~1 founder; cross-lineage selection-alignment exists while lineages coexist but is truncated by collapse. → intervention ~ C1.
+- **(b) SELECTION-RULE** — codes partially compatible but cross-lineage decoding never selected. → C2.
+- **(c) REPRESENTATIONAL-INCOMPATIBLE** — arbitrary private codes, no shared anchor. → needs shared grounding.
+- **(d) FITNESS-IRRELEVANCE** — the world doesn't require (cross-lineage) message content at all; (a)–(c) moot. (gate-0)
+- **(e) COMMON-ATTRACTOR / SHARED-GROUNDING CONVERGENCE** 🔴v3 — lineages converge to similar codes because the SAME world/metabolic structure favors them, NOT communication selection. The decisive discriminator vs (a) is the **comm-blind cross-founder null**.
 
-> Non-language floor (from g1f data): comm-blind MII = 0.127 vs frozen = 0.0016 (≈80× chance) — shared architecture/world/init alone. Every "cross-founder signal" below is measured ABOVE the right empirical baseline, never above chance.
+## 0. SCOPE LOCK + instrumentation-only (code-verify before run)
+- **Arm = `shared_weights_kin`** — the only arm with **inherited founder-lineage reproduction** (`:247` `preserve_lineage=True`; other arms reset `child.lineage=seed` at `:96`; copied survivors keep parent lineage via deepcopy `:240`; frozen arms trivially preserve). 🔴v3 reworded: "inherited-lineage reproduction", not "only arm where lineage propagates".
+- **New logging (no dynamics/RNG-order change), per gen:** the full MII **matrix** + the **per-agent `.lineage` vector** + **per-agent ALIVE state** (Codex: `_run_episode` returns only aggregate alive `:148`/`:155` — must add per-agent alive to support the coexistence criterion + M3).
+- cross-founder MII filter keys on `.lineage` (blind-test: all-`lineage=0` pop → NaN/skip).
+- **lineage-shuffle uses a SEPARATE local RNG** seeded off a snapshot (must NOT consume the evolution RNG, else instrument-only is false). 🔴v3
+- reward-chain present (`_decoded_score`→`pick`→`eat`, `:153/:191/:197`); load-bearing tested in gate-0.
+- record full config (env/seeds/formal/arm) in the JSON.
 
-## 0. SCOPE LOCK + instrumentation-only (code-verify before run) 🔴v2
-- **ARM IS LOCKED to `shared_weights_kin`.** Reason: it is the ONLY arm with cross-generation lineage propagation (`rtc_g1f_coevolve.py:247` `preserve_lineage=True`); all other arms reset `lineage` to `child_seed` each reproduction (`:100`), so "founder" is undefined for them. All measurements, baselines, and the probe run ONLY on this arm; record the scope limit in the JSON.
-- **Cross-founder MII filter must key on `.lineage`, not agent index.** Blind-test: feed a pop with all `lineage=0` → the function must return NaN/skip (not 0, not all-pairs mean).
-- **lineage-shuffle timing**: randomly permute `pop[i].lineage` labels BEFORE computing the MII matrix (NOT a post-hoc reindex of (i,j) pairs).
-- **reward-chain sanity (V0a-lite)**: confirm in code + at run that open-mode survival > mute-mode survival on this arm (messages are load-bearing at all); `_decoded_score`→`pick`→`eat` (`:192-198`). If open ≈ mute → see cause (d).
-- Dynamics, selection, listener, repro UNCHANGED; only logging added (no RNG-order change). Record full config (env/seeds/formal) in the JSON.
+## 1. Measurements (all on shared_weights_kin)
+- **M1 — cross-founder MII trajectory** over coexisting gens (+ within-founder MII + inverse-Simpson N_eff).
+- **M2 — cross-decode `CD` trajectory** over coexisting gens (lineage-A listener on lineage-B speaker, both directions).
+- **M3 — gate-0 load-bearing (non-tautological)** 🔴v3: open-mode vs **mute** vs **random-token** survival (random-token = i.i.d. message each frame; it IS "followed" but carries no content, so it breaks the open-mode "argmax follows decoded score" tautology Codex flagged).
 
-## 1. Measurements
-- **M1 — cross-founder MII trajectory** over gens, restricted to coexisting gens (§3), on `shared_weights_kin`; log within-founder MII + inverse-Simpson N_eff alongside.
-- **M2 — cross-decode `CD` TRAJECTORY** (not just final gen 🔴v2): over coexisting gens, lineage-A listener decoding lineage-B speaker (both directions), vs within-lineage `WD`.
-- **M3 — stratified survival (cause d) 🔴v2**: per coexisting gen, survival rate of agents whose `pick` follows decoded messages vs agents that effectively self-forage (argmax not tracking the decoded score). Also the open-vs-mute survival gap.
+## 2. Baselines (same arm/env/seeds/formal; the linchpin is the comm-blind cross-founder null)
+- **comm-blind cross-founder MII / CD** 🔴v3 (PRIMARY null) — random-fitness reproduction, same arm, multi-lineage, instrumented identically. This is cross-lineage decodability from {shared world + architecture + descent} WITHOUT communication selection. Survival must BEAT this to claim real cross-lineage selection.
+- **frozen-mixed** = frozen-random agents from deterministically disjoint init seeds within each diagnostic seed (genuinely unrelated) — floor for CD's "no evolution at all".
+- **lineage-shuffle** — relabel `.lineage` (separate RNG) before computing M1 — catches non-lineage structure.
 
-## 2. Non-language baselines (same arm/env/seeds/formal)
-- **lineage-shuffle** → non-language floor for M1 (cross-founder MII).
-- **frozen-mixed** = frozen-random agents drawn from **DIFFERENT seeds** (genuinely unrelated) 🔴v2 → non-language floor for **CD** (this is the null cause-(c) uses, NOT chance).
-- A signal counts only if it clears its baseline by the stated SESOI.
+## 3. FROZEN RULES (magnitudes are CALIBRATION OUTPUTS of the run's own nulls, per Codex #6)
+- arm=shared_weights_kin; mode=formal; n=16 seeds.
+- coexistence: a gen counts iff **≥2 founders each have ≥3 LIVING agents** (uses the new per-agent alive log).
+- **SESOI is data-calibrated, not pre-frozen**: a margin counts only if its bootstrap 95% CI excludes 0 **AND** the point estimate ≥ **one seed-to-seed SD of the corresponding comm-blind null**. (Report the SD; this replaces the un-grounded 0.04/0.02.)
+- peak = max cross-founder MII over a seed's coexisting gens, then mean across seeds.
+- INCONCLUSIVE_NO_WINDOW iff **< 8 of 16 seeds have ≥2 coexisting gens**.
 
-## 3. FROZEN values (LOCKED)
-- arm = **shared_weights_kin**; mode = **formal**; n = **16 seeds**.
-- **coexistence criterion**: a gen counts iff **≥2 founders each have ≥3 living agents** (absolute count, pop=16) 🔴v2.
-- **peak** = max cross-founder MII over a seed's coexisting gens, then mean across seeds 🔴v2.
-- **CF** = mean over coexisting gens of (cross-founder MII − max{lineage-shuffle, frozen-mixed}), bootstrap 95% CI over seeds.
-- chance = 1/625 = 0.0016 (verified). **CD null = frozen-mixed CD** (not chance) 🔴v2.
-- Δ_min = 0.04 for CF; **CD SESOI = 0.02 over frozen-mixed** 🔴v2. (Both first calibrated by the §6 retrospective; if unchanged, flagged "untested anchor, g1f within-arm scale".)
-- **INCONCLUSIVE_NO_WINDOW** iff **fewer than 8 of 16 seeds have ≥2 coexisting gens** 🔴v2.
+## 4. PRE-REGISTERED decision rule
+**Gate-0 (cause d):** if open-survival ≤ mute-survival OR open-survival ≈ random-token-survival (CI overlaps) → **FITNESS_IRRELEVANCE_WARNING** (content not load-bearing); stop, do not label (a)–(c)/(e).
 
-## 4. PRE-REGISTERED decision rule (numerical)
-**Gate 0 (cause d, runs first):** if open-mode survival ≤ mute-mode survival on this arm, OR self-forage survival ≥ message-following survival in coexisting gens → **FITNESS_IRRELEVANCE_WARNING**: the world does not require message content; (a)/(b)/(c) are not interpretable. Stop and report.
+Else, using {comm-blind-CF, frozen-mixed, lineage-shuffle} nulls:
+- **(a) DEMOGRAPHIC** iff cross-founder MII(survival) **beats comm-blind-CF** (CI-clean margin ≥ data-SESOI) AND it **declines with collapse** (final-coexist < 0.5×peak). → real cross-lineage selection-alignment exists at coexistence, truncated by collapse → **C1**.
+- **(e) COMMON-ATTRACTOR** iff cross-founder MII(survival) is elevated above frozen-mixed/shuffle BUT **does NOT beat comm-blind-CF** (CI overlaps). → alignment is shared-world convergence, not communication selection → neither C1 nor C2-about-communication helps; the "alignment" isn't language. 🔴v3
+- **(b) SELECTION-RULE** iff cross-founder MII ≈ frozen-mixed (no alignment) BUT **CD beats comm-blind-CF CD** (codes latently cross-decodable, never selected). → **C2**.
+- **(c) INCOMPATIBLE** iff cross-founder MII ≈ frozen-mixed AND CD does NOT beat comm-blind-CF CD. → needs shared grounding.
+- **INCONCLUSIVE_NO_WINDOW** → C1 as a window-opening enabler, re-diagnose, still no C2.
+- Per-seed aggregation: report the distribution; default for a split = the more conservative cause (c ≻ e ≻ b ≻ a) unless ≥12/16 agree.
 
-Else classify (CF baseline-subtracted; CD vs frozen-mixed):
-- **(a) DEMOGRAPHIC** iff CF CI excludes 0 AND CF ≥ 0.04 AND it declines with collapse (final-coexist CF < 0.5 × peak). → kin-only ≈ collapse; intervention reduces toward **C1-only**. *Interpretation caveat 🔴v2: a positive (a) means C1 ENABLES cross-founder alignment under coexistence; it does NOT distinguish "alignment driven by cross-lineage communication selection" from "alignment driven by shared world-pressure on independently-evolving lineages." The latter is still C1-fixable here but may not transfer to worlds with different grounding.*
-- **(b) SELECTION-RULE** iff CF CI includes 0 / < 0.04 BUT CD exceeds frozen-mixed by ≥ 0.02 (codes partially compatible, never selected to align). → **C2-only** lever; a minimal C2-only probe confirms.
-- **(c) INCOMPATIBLE** iff CF < 0.04 AND CD does NOT exceed frozen-mixed by ≥0.02 (no cross-decodability above the non-language floor). → C1/C2 insufficient; needs **shared-grounding** — re-scope before building.
-- **INCONCLUSIVE_NO_WINDOW** (per §3): C1 as a diagnostic ENABLER (open a window), re-diagnose with C1 on, still NO C2.
-- **Per-seed aggregation 🔴v2**: report the per-seed label distribution; the project default for a split is the more conservative cause (c ≻ b ≻ a; demand the stronger intervention) unless a clear majority (≥12/16) favors one.
+## 5. Outcomes → intervention implication
+(a)→C1-only; (b)→C2-only; (c)→shared-grounding (re-scope); (d)→world doesn't require content (question ill-posed here); **(e)→the kin-only "language" is partly shared-world convergence, not communication — a deflationary finding that reframes g1f's positive itself**; INCONCLUSIVE→C1-enabler then re-diagnose.
 
-## 5. Outcomes → implication for the shelved intervention
-- (a) → C1-only; (b) → C2-only; (c) → C1/C2 insufficient, need grounding (re-scope); (d) → the world itself doesn't require cross-lineage content (deepest finding — the public-language question is ill-posed in this world); INCONCLUSIVE → C1-enabler then re-diagnose.
+## 6. Steps — NO free retrospective (it was code-refuted) 🔴v3
+1. Pass §0: instrument shared_weights_kin (matrix + lineage vector + per-agent alive; `.lineage`-keyed cross-founder MII + CD; separate-RNG lineage-shuffle; random-token mode for gate-0); blind-tests; config recorded.
+2. Run formal n=16 on shared_weights_kin + the three baselines (comm-blind-CF, frozen-mixed, lineage-shuffle) at the SAME config; calibrate SESOI from the comm-blind null's seed-SD.
+3. Report per-seed coexistence-window counts (sanity) → gate-0 → §4 classification + trajectories + per-seed distribution + written read. **Pre-register the gate before looking at the survival arm's cross-founder numbers** (calibration uses the nulls only).
+4. Only THEN pick/trim the intervention to the diagnosed cause.
 
-## 6. Steps — RETROSPECTIVE FIRST 💡v2 (may avoid a new run entirely)
-0. **Free retrospective**: the committed g1f `shared_weights_kin` runs already store row-level data (`rtc_g1f_coevolve.py:432`). FIRST extract per-agent `.lineage` + the MII matrix from the existing formal-48 artifact and compute cross-founder MII + the coexistence-window distribution + a calibration estimate of CF's natural scale (sets Δ_min). If the existing data suffices, the diagnostic may be answerable with NO new run.
-1. If a new run is needed: pass §0 (lock arm, implement `.lineage`-keyed cross-founder MII + CD trajectory + M3 + baselines; blind-tests; config recorded).
-2. Run formal n=16 on `shared_weights_kin` + lineage-shuffle + frozen-mixed at the SAME config.
-3. Report: per-seed coexistence-window count (sanity) FIRST; then Gate 0; then the §4 classification + trajectory plots + the probe + per-seed distribution + a written read.
-4. Only THEN pick/trim the intervention to target the diagnosed cause.
-
-## 7. Implementation-verify (the red-team's "cannot tell from files" list — confirm in code before claiming)
-- cross-founder MII keys on `.lineage` (blind-test all-same-lineage → NaN/skip).
-- lineage-shuffle permutes `.lineage` before MII (not post-hoc pair reindex).
-- `_speaker_for` after collapse (`:161-165`): singleton lineage → listens to self → that gen excluded from coexistence (NaN, not counted).
-- MII is an offline metric (`:219`, uses `speaker.emit` directly, NOT `_speaker_for`) → confirm the alternation in `_speaker_for` does not contaminate the measurement; record this independence in the JSON.
-- report each seed's coexistence-window length.
-- same-config / formal-not-pilot enforced and recorded.
+## 7. Implementation-verify (converged "cannot tell from files")
+- artifacts lack lineage/matrix/per-agent state (Codex-confirmed) → MUST instrument; no retrospective.
+- `.lineage`-keyed cross-founder filter (blind-test all-same-lineage → NaN/skip).
+- lineage-shuffle on a separate RNG (no evolution-RNG consumption).
+- per-agent ALIVE log added (aggregate-only today, `_run_episode`).
+- after collapse, singleton lineage / self-listening (`_speaker_for :160`) gen → excluded from coexistence (NaN).
+- MII is offline (`:219`, uses `speaker.emit` not `_speaker_for`) → confirm `_speaker_for` alternation doesn't contaminate it; record independence.
+- comm-blind-CF baseline = random-fitness, SAME arm/config; frozen-mixed = deterministically disjoint init seeds within each diagnostic seed.
+- whether enough coexisting windows exist at n=16, and whether CD beats the comm-blind-CF null — only knowable after the run.
