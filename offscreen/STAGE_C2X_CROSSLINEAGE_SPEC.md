@@ -1,4 +1,15 @@
-# STAGE: C2X — CROSS-LINEAGE SELECTION MICRO-PROBE — pre-registration **DRAFT (not locked)**
+# STAGE: C2X — CROSS-LINEAGE SELECTION MICRO-PROBE — pre-registration **LOCKED**
+
+**LOCK note.** Three independent code-grounded reviews (Codex, Gemini, DeepSeek) all returned **LOCK**,
+no blocker. The §1.1 convergence crux is confirmed testable (not doomed-by-design): Gemini formally
+retracted its earlier "aliasing dead-end" position and supplied a **pigeonhole proof** (VOCAB=6 < the
+mappings needed for polyglot decoding ⇒ a single tied table cannot decode disjoint private codes ⇒ a
+shared/consensus code is the only stable survival attractor). Applied polish (all non-blocking): softened
+§1.1 "single shared code" to allow synonym-compatible consensus; added `C2X_SCRAMBLE_CF` to `baseline_max`;
+added speaker-source N_eff≥2.5 + behavioral functional-distance to the painted-collapse guards; added a
+byte-stability test for the `speaker_rule` parameter; clarified the no-non-kin-present edge case. Remaining
+unknowns are all empirical (does the optimizer reach the shared-code basin in 40 gens? does forced non-kin
+listening crash viability? is n=16 enough power?) — these are what the run resolves. LOCKED for implementation.
 
 **Lineage.** Descends from g1f (channel co-evolves, kin-scoped) → kin-only DIAGNOSTIC (directional C) →
 C1 COLLAPSE PROBE (`C1_OPENS_WINDOW_C`: A refuted, C supported — even with sustained multi-lineage
@@ -36,10 +47,14 @@ fixed — it applies selection, and there is a concrete convergence mechanism th
   Selecting a listener to decode the non-kin code it hears therefore **drags that agent's emission
   toward the same code**. Decode-pressure couples into emit-convergence.
 - With **no speaker-ID** (founder-id forbidden as input, §3), a listener that hears balanced non-kin
-  speakers can only survive if those speakers share ≈one code. The unique stable attractor where all
-  listeners survive is a **single shared code**. Selection thus points at convergence; the open
-  question is purely whether **mutation + tournament selection (no gradient)** can REACH that attractor
-  from diverged codes, over ~4 effective lineages (soft96, not 10) in the small 4×5×6 table space.
+  speakers can only survive if those speakers share a code it can decode. **Pigeonhole (Gemini's review):
+  a single tied table cannot be a "polyglot" — VOCAB=6 columns cannot hold the disjoint mappings needed
+  to decode several private codes at once, so multiple private codes MUST alias inside one listener and
+  aliasing → toxic death.** Hence the only stable all-agent survival attractor is a **shared/consensus
+  code** — note this need NOT be identical tables: synonym-compatible decoding (lineages emit different
+  symbols that listeners map to the same band) also satisfies it. Selection thus points at convergence;
+  the open question is purely whether **mutation + tournament selection (no gradient)** can REACH that
+  attractor from diverged codes, over ~4 effective lineages (soft96, not 10) in the small 4×5×6 space.
 This is an **optimizer-reachability** question — empirical, not settled by theory. The project's
 methodology forbids banking a theory-predicted negative (cf. the g1f false-negative). C2X tests it
 cheaply; its pre-registered failure outcome (`C2X_PRIVATE_CODES_PERSIST`, §8) **is** the reviewer's
@@ -54,6 +69,9 @@ reproduction; 1 agent/founder init — directly comparable to soft96). The ONLY 
   listener i's, by **deterministic balanced round-robin over currently-present non-self lineages**,
   keyed by `(seed, gen, round, i, j)` — NOT by fitness, decode success, message content, or truth.
 - If <2 lineages are present, the gen is no-window (cannot contribute to the primary verdict).
+- **Edge case (DeepSeek):** if for a given listener at a given round NO non-self lineage is alive (only
+  possible inside a single-lineage gen, already no-window), that round falls back to mute for survival
+  bookkeeping; such gens never contribute to the primary C2X verdict.
 - Forced non-kin listening; NOT a chosen "good"/teacher speaker.
 - Implement as a **new `speaker_rule` parameter**; the default `_speaker_for` stays byte-stable so g1f/C1
   remain reproducible. New runner `offscreen/rtc_g1f_c2x_crosslineage.py` reusing the C1 runner.
@@ -97,15 +115,17 @@ outside the fence or if the partner rule reads reward/code-quality/ground-truth.
 ## 6. Primary metrics + painted-collapse guards
 - `CF` (cross-founder MII, different-lineage off-diag), `WF` (within-founder, same-lineage off-diag),
   `FLOOR` (frozen-mixed CF).
-- `baseline_max = max(C1_KIN_ONLY_CF, C2X_COMMBLIND_CF, C2X_RANDOM_TOKEN_CF, FROZEN_MIXED_CF)`.
+- `baseline_max = max(C1_KIN_ONLY_CF, C2X_COMMBLIND_CF, C2X_RANDOM_TOKEN_CF, C2X_SCRAMBLE_CF, FROZEN_MIXED_CF)` (scramble-CF added per Codex — content-vs-presence must be subtracted too, not only a lesion).
 - `CF_margin = C2X_OPEN_CF − baseline_max` (subtract the strongest non-language baseline).
 - survival lift: C2X_OPEN alive/rounds/food-rate minus random-token / scramble / mute, paired by seed.
 - diversity: inverse-Simpson N_eff over living founder shares (final gen + across coexistence windows).
 - **painted-collapse guards (reject "manufactured" alignment):** final living-founder N_eff median ≥ 3.0
-  AND 25th-pctile ≥ 2.5; **no single lineage supplies >40% of actual cross-lineage speaker events**;
-  median pairwise UnifiedIO table-L2 distance among living founders at final gen ≥ 0.5× gen-0; report
-  reproduction-lineage N_eff AND speaker-source N_eff. (Message-set distance reported, NOT a reject
-  criterion — a real shared code may legitimately reduce it.)
+  AND 25th-pctile ≥ 2.5; **no single lineage supplies >40% of actual cross-lineage speaker events** AND
+  **speaker-source N_eff ≥ 2.5** (Codex — catch 2–3 lineages jointly dominating while each stays <40%);
+  median pairwise UnifiedIO table-L2 distance among living founders at final gen ≥ 0.5× gen-0; **AND a
+  behavioral/message functional-distance report** (Codex — catch high table-L2 in unused margins while
+  behavior is functionally identical). Report reproduction-lineage N_eff AND speaker-source N_eff.
+  (Message-set distance reported, NOT a reject criterion — a real shared code may legitimately reduce it.)
 
 ## 7. Coexistence window gate (C1 dual gate)
 A gen is a measurement window iff (a) ≥2 founder lineages each ≥3 living agents (post-episode) AND
@@ -153,6 +173,9 @@ reward-message coupling is broken; fix before any larger run.
 - New runner `offscreen/rtc_g1f_c2x_crosslineage.py`; add a `speaker_rule` parameter to the speaker path
   (default = current `_speaker_for`, byte-stable). Reuse `_mii_matrix_fast`, `_select_next_soft`,
   `_run_episode(rng=...)`. Do NOT edit any LOCKED spec or verdict JSON.
+- **Byte-stability test (Codex):** a unit test must assert that adding the `speaker_rule` parameter leaves
+  the default `_speaker_for` / g1f / C1 path byte-identical (same MII matrices + verdict on a fixed seed)
+  — alongside the existing `_mii_matrix_fast` numpy-equivalence test.
 - Record full config, env, seed list, git commit, RNG-stream descriptions, and all arm/control summaries
   in the verdict JSON.
 - Determinism: formal + pinned seeds; the equivalence test gates the vectorized MII.
