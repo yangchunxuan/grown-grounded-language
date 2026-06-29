@@ -91,7 +91,7 @@ below.
 
 ## Reproducing the headline numbers
 
-All experiments are pure NumPy + Python, CPU-only, and deterministic per seed. Run them as
+All experiments are Python + PyTorch, CPU-only (no GPU required), and deterministic per seed. Run them as
 **modules from the repository root** (they import `config.prereg_rtc` and `offscreen.*`).
 Tunable knobs are environment variables; verdict filenames embed the prereg values
 (`RTC_SENSOR_SIGMA`, `RTC_TOXIC_DEATH`) so each run is self-labeling.

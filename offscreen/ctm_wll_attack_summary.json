@@ -1,0 +1,137 @@
+{
+ "kind": "ctm_wll_attack_summary_v1",
+ "block": "powered",
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5
+ ],
+ "params": {
+  "rounds": 30,
+  "explore_n": 384,
+  "sub_steps": 10,
+  "batch": 256,
+  "lr": 0.01,
+  "temp": 8.0,
+  "em_min_success": 1,
+  "chance": 0.0625
+ },
+ "controls": {
+  "FROZEN": {
+   "post_pi": 0.0757,
+   "post_pi_ci": [
+    0.0337,
+    0.1089
+   ],
+   "pre_pi": 0.0734,
+   "pre_old": 0.9111,
+   "mean_explore_reward": null,
+   "known_cells_final": 0.0
+  },
+  "EXPLORE_ONLY_NO_REWARD": {
+   "post_pi": 0.0853,
+   "post_pi_ci": [
+    0.0305,
+    0.1426
+   ],
+   "pre_pi": 0.0734,
+   "pre_old": 0.9111,
+   "mean_explore_reward": null,
+   "known_cells_final": 16.0
+  },
+  "DISTILL_SWITCH": {
+   "post_pi": 0.9168,
+   "post_pi_ci": [
+    0.861,
+    0.9717
+   ],
+   "pre_pi": 0.0734,
+   "pre_old": 0.9111,
+   "mean_explore_reward": null,
+   "known_cells_final": 16.0
+  }
+ },
+ "methods": [
+  {
+   "method": "TEMP_SELF_IM",
+   "post_pi": 0.9126,
+   "post_pi_ci": [
+    0.8631,
+    0.9622
+   ],
+   "distance_to_distill_ceiling": 0.0042,
+   "control_status": {
+    "frozen_post_pi": 0.0757,
+    "explore_only_post_pi_ci": [
+     0.0305,
+     0.1426
+    ],
+    "distill_post_pi": 0.9168
+   },
+   "verdict": "SELF_REWARD_REBINDS_PENDING_REDTEAM",
+   "json": "offscreen/ctm_wll_temp_self_im_verdict.json"
+  },
+  {
+   "method": "EM_REWARD_RELABEL",
+   "post_pi": 0.9157,
+   "post_pi_ci": [
+    0.8627,
+    0.9717
+   ],
+   "distance_to_distill_ceiling": 0.0011,
+   "control_status": {
+    "frozen_post_pi": 0.0757,
+    "explore_only_post_pi_ci": [
+     0.0305,
+     0.1426
+    ],
+    "distill_post_pi": 0.9168
+   },
+   "verdict": "SELF_REWARD_REBINDS_PENDING_REDTEAM",
+   "json": "offscreen/ctm_wll_em_reward_relabel_verdict.json"
+  },
+  {
+   "method": "EXPLORE_ONLY_NO_REWARD",
+   "post_pi": 0.0853,
+   "post_pi_ci": [
+    0.0305,
+    0.1426
+   ],
+   "distance_to_distill_ceiling": 0.8315,
+   "control_status": {
+    "frozen_post_pi": 0.0757,
+    "explore_only_post_pi_ci": [
+     0.0305,
+     0.1426
+    ],
+    "distill_post_pi": 0.9168
+   },
+   "verdict": "CONTROL_PASS_NO_REBIND",
+   "json": "offscreen/ctm_wll_explore_only_no_reward_verdict.json"
+  },
+  {
+   "method": "DISTILL_SWITCH",
+   "post_pi": 0.9168,
+   "post_pi_ci": [
+    0.861,
+    0.9717
+   ],
+   "distance_to_distill_ceiling": 0.0,
+   "control_status": {
+    "frozen_post_pi": 0.0757,
+    "explore_only_post_pi_ci": [
+     0.0305,
+     0.1426
+    ],
+    "distill_post_pi": 0.9168
+   },
+   "verdict": "ORACLE_CEILING_RECONFIRMED",
+   "json": "offscreen/ctm_wll_distill_switch_verdict.json"
+  }
+ ],
+ "headline": "SELF_REWARD_SIGNAL_FOUND_PENDING_REDTEAM",
+ "wall_seconds": 208.2
+}

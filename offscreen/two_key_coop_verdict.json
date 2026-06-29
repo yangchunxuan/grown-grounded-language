@@ -1,0 +1,447 @@
+{
+  "kind": "stage2_two_key_coop",
+  "mode": "formal",
+  "arm": "A2_death",
+  "seeds": 6,
+  "trials": 600,
+  "by_arm": {
+    "open": {
+      "mean": 0.8738888888888889,
+      "sd": 0.08455037215825112,
+      "ci95": [
+        0.8022152777777779,
+        0.9325416666666667
+      ],
+      "per_seed": [
+        0.71,
+        0.8483333333333334,
+        0.9066666666666666,
+        0.8933333333333333,
+        0.895,
+        0.99
+      ]
+    },
+    "mute": {
+      "mean": 0.11499999999999999,
+      "sd": 0.012397729780234108,
+      "ci95": [
+        0.10611111111111111,
+        0.1255625
+      ],
+      "per_seed": [
+        0.13666666666666666,
+        0.10333333333333333,
+        0.105,
+        0.12333333333333334,
+        0.10333333333333333,
+        0.11833333333333333
+      ]
+    },
+    "scramble": {
+      "mean": 0.04,
+      "sd": 0.04064298035149307,
+      "ci95": [
+        0.013333333333333334,
+        0.07445833333333333
+      ],
+      "per_seed": [
+        0.12333333333333334,
+        0.01,
+        0.013333333333333334,
+        0.056666666666666664,
+        0.01,
+        0.02666666666666667
+      ]
+    },
+    "private": {
+      "mean": 0.11777777777777777,
+      "sd": 0.0729260575963298,
+      "ci95": [
+        0.06777777777777778,
+        0.1830694444444444
+      ],
+      "per_seed": [
+        0.05,
+        0.26666666666666666,
+        0.05333333333333334,
+        0.10166666666666667,
+        0.13666666666666666,
+        0.09833333333333333
+      ]
+    },
+    "coord_x2": {
+      "mean": 0.9944444444444445,
+      "sd": 0.008258927081843604,
+      "ci95": [
+        0.9872222222222221,
+        0.9994444444444444
+      ],
+      "per_seed": [
+        0.9766666666666667,
+        0.9983333333333333,
+        0.9983333333333333,
+        1.0,
+        0.9933333333333333,
+        1.0
+      ]
+    },
+    "coord_x2_mute_i": {
+      "mean": 0.9541666666666666,
+      "sd": 0.029639032072964564,
+      "ci95": [
+        0.9319305555555556,
+        0.975
+      ],
+      "per_seed": [
+        0.8983333333333333,
+        0.9416666666666667,
+        0.9716666666666667,
+        0.9533333333333334,
+        0.9666666666666667,
+        0.9933333333333333
+      ]
+    },
+    "coord_x2_mute_j": {
+      "mean": 0.9533333333333334,
+      "sd": 0.03254626336861513,
+      "ci95": [
+        0.928611111111111,
+        0.9758472222222223
+      ],
+      "per_seed": [
+        0.8933333333333333,
+        0.9483333333333334,
+        0.975,
+        0.9416666666666667,
+        0.9633333333333334,
+        0.9983333333333333
+      ]
+    },
+    "solo": {
+      "mean": 0.3386111111111111,
+      "sd": 0.024217698354307884,
+      "ci95": [
+        0.3186041666666667,
+        0.35833333333333334
+      ],
+      "per_seed": [
+        0.36666666666666664,
+        0.335,
+        0.35333333333333333,
+        0.31166666666666665,
+        0.30333333333333334,
+        0.3616666666666667
+      ]
+    },
+    "mute_i": {
+      "mean": 0.31222222222222223,
+      "sd": 0.025507200629442207,
+      "ci95": [
+        0.2905486111111111,
+        0.3308333333333333
+      ],
+      "per_seed": [
+        0.265,
+        0.3016666666666667,
+        0.32,
+        0.3433333333333333,
+        0.30833333333333335,
+        0.335
+      ]
+    },
+    "mute_j": {
+      "mean": 0.31777777777777777,
+      "sd": 0.028393182975956974,
+      "ci95": [
+        0.29638194444444443,
+        0.3397430555555555
+      ],
+      "per_seed": [
+        0.29,
+        0.345,
+        0.34,
+        0.29833333333333334,
+        0.2816666666666667,
+        0.3516666666666667
+      ]
+    }
+  },
+  "mii_cross": {
+    "mean": 0.8544823232323233,
+    "sd": 0.06173095573264979,
+    "ci95": [
+      0.8011714365881032,
+      0.8975168350168352
+    ],
+    "per_seed": [
+      0.7337962962962963,
+      0.8348063973063977,
+      0.8594276094276088,
+      0.9114057239057237,
+      0.8657407407407407,
+      0.9217171717171727
+    ]
+  },
+  "mii_cross_gate": {
+    "rule": "SUCCESS requires mean mii_cross across all COOP2_N_SEEDS to be >= COOP2_MII_CROSS_MIN. Every seed must be reported; no seed may be dropped, filtered, or back-filled. Per-seed mii_cross is disclosed in the verdict.",
+    "threshold_mean": 0.7,
+    "mean": 0.8544823232323233,
+    "per_seed": [
+      0.7337962962962963,
+      0.8348063973063977,
+      0.8594276094276088,
+      0.9114057239057237,
+      0.8657407407407407,
+      0.9217171717171727
+    ],
+    "passed": true
+  },
+  "seed_policy": {
+    "required_seed_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "completed_seed_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "dropped_seed_ids": [],
+    "backfill_allowed": false,
+    "exact_required_seed_count": 6,
+    "underpowered_if_not_exact": true
+  },
+  "pivotality_i": {
+    "mean": 0.5616666666666666,
+    "sd": 0.06315765107165475,
+    "ci95": [
+      0.5091666666666667,
+      0.6080555555555556
+    ],
+    "per_seed": [
+      0.44499999999999995,
+      0.5466666666666666,
+      0.5866666666666667,
+      0.55,
+      0.5866666666666667,
+      0.655
+    ]
+  },
+  "pivotality_j": {
+    "mean": 0.5561111111111111,
+    "sd": 0.07412868357387077,
+    "ci95": [
+      0.48750000000000004,
+      0.6149999999999999
+    ],
+    "per_seed": [
+      0.42,
+      0.5033333333333334,
+      0.5666666666666667,
+      0.595,
+      0.6133333333333333,
+      0.6383333333333333
+    ]
+  },
+  "pivotality_mean": 0.5588888888888889,
+  "coord_x2_pivotality_i": {
+    "mean": 0.040277777777777767,
+    "sd": 0.023301896812528557,
+    "ci95": [
+      0.02,
+      0.05889583333333332
+    ],
+    "per_seed": [
+      0.07833333333333337,
+      0.05666666666666664,
+      0.026666666666666616,
+      0.046666666666666634,
+      0.026666666666666616,
+      0.00666666666666671
+    ]
+  },
+  "coord_x2_pivotality_j": {
+    "mean": 0.0411111111111111,
+    "sd": 0.02631128941381027,
+    "ci95": [
+      0.02055555555555555,
+      0.062229166666666655
+    ],
+    "per_seed": [
+      0.08333333333333337,
+      0.04999999999999993,
+      0.023333333333333317,
+      0.05833333333333335,
+      0.029999999999999916,
+      0.0016666666666667052
+    ]
+  },
+  "coord_x2_pivotality_mean": 0.0406944444444444,
+  "pivotality_over_coord_x2": {
+    "mean": 0.5181944444444445,
+    "sd": 0.09067444904644609,
+    "ci95": [
+      0.4382951388888888,
+      0.5866666666666668
+    ],
+    "per_seed": [
+      0.35166666666666657,
+      0.4716666666666668,
+      0.5516666666666667,
+      0.52,
+      0.5716666666666668,
+      0.6425
+    ]
+  },
+  "coord_minus_coop": "deprecated_do_not_use_raw_rate_conjunction_vs_replaceable_control",
+  "open_minus_mute": 0.758888888888889,
+  "open_minus_solo": 0.5352777777777779,
+  "open_minus_private": 0.7561111111111112,
+  "open_minus_coord_x2": "deprecated_do_not_use_raw_rate_conjunction_vs_replaceable_control",
+  "per_seed": [
+    {
+      "seed": 0,
+      "mii_cross": 0.7337962962962963,
+      "arms": {
+        "open": 0.71,
+        "mute": 0.13666666666666666,
+        "scramble": 0.12333333333333334,
+        "private": 0.05,
+        "coord_x2": 0.9766666666666667,
+        "coord_x2_mute_i": 0.8983333333333333,
+        "coord_x2_mute_j": 0.8933333333333333,
+        "solo": 0.36666666666666664,
+        "mute_i": 0.265,
+        "mute_j": 0.29
+      }
+    },
+    {
+      "seed": 1,
+      "mii_cross": 0.8348063973063977,
+      "arms": {
+        "open": 0.8483333333333334,
+        "mute": 0.10333333333333333,
+        "scramble": 0.01,
+        "private": 0.26666666666666666,
+        "coord_x2": 0.9983333333333333,
+        "coord_x2_mute_i": 0.9416666666666667,
+        "coord_x2_mute_j": 0.9483333333333334,
+        "solo": 0.335,
+        "mute_i": 0.3016666666666667,
+        "mute_j": 0.345
+      }
+    },
+    {
+      "seed": 2,
+      "mii_cross": 0.8594276094276088,
+      "arms": {
+        "open": 0.9066666666666666,
+        "mute": 0.105,
+        "scramble": 0.013333333333333334,
+        "private": 0.05333333333333334,
+        "coord_x2": 0.9983333333333333,
+        "coord_x2_mute_i": 0.9716666666666667,
+        "coord_x2_mute_j": 0.975,
+        "solo": 0.35333333333333333,
+        "mute_i": 0.32,
+        "mute_j": 0.34
+      }
+    },
+    {
+      "seed": 3,
+      "mii_cross": 0.9114057239057237,
+      "arms": {
+        "open": 0.8933333333333333,
+        "mute": 0.12333333333333334,
+        "scramble": 0.056666666666666664,
+        "private": 0.10166666666666667,
+        "coord_x2": 1.0,
+        "coord_x2_mute_i": 0.9533333333333334,
+        "coord_x2_mute_j": 0.9416666666666667,
+        "solo": 0.31166666666666665,
+        "mute_i": 0.3433333333333333,
+        "mute_j": 0.29833333333333334
+      }
+    },
+    {
+      "seed": 4,
+      "mii_cross": 0.8657407407407407,
+      "arms": {
+        "open": 0.895,
+        "mute": 0.10333333333333333,
+        "scramble": 0.01,
+        "private": 0.13666666666666666,
+        "coord_x2": 0.9933333333333333,
+        "coord_x2_mute_i": 0.9666666666666667,
+        "coord_x2_mute_j": 0.9633333333333334,
+        "solo": 0.30333333333333334,
+        "mute_i": 0.30833333333333335,
+        "mute_j": 0.2816666666666667
+      }
+    },
+    {
+      "seed": 5,
+      "mii_cross": 0.9217171717171727,
+      "arms": {
+        "open": 0.99,
+        "mute": 0.11833333333333333,
+        "scramble": 0.02666666666666667,
+        "private": 0.09833333333333333,
+        "coord_x2": 1.0,
+        "coord_x2_mute_i": 0.9933333333333333,
+        "coord_x2_mute_j": 0.9983333333333333,
+        "solo": 0.3616666666666667,
+        "mute_i": 0.335,
+        "mute_j": 0.3516666666666667
+      }
+    }
+  ],
+  "frozen": {
+    "COOP2_VERSION": "Relational-two-key-lock-v1",
+    "COOP2_FREEZE_DATE": "2026-06-21",
+    "COOP2_STATUS": "FROZEN_AFTER_PILOT",
+    "COOP2_N_SEEDS": 6,
+    "COOP2_TRIALS": 600,
+    "COOP2_PILOT_SEEDS": 2,
+    "COOP2_PILOT_TRIALS": 200,
+    "COOP2_OPEN_ABOVE_MUTE_MIN": 0.3,
+    "COOP2_OPEN_ABOVE_SOLO_MIN": 0.2,
+    "COOP2_OPEN_ABOVE_PRIVATE_MIN": 0.3,
+    "COOP2_PRIVATE_RESIDUAL_MAX": 0.3,
+    "COOP2_PIVOTALITY_MIN": 0.35,
+    "COOP2_PIVOTALITY_OVER_COORD_X2_MIN": 0.25,
+    "COOP2_MII_CROSS_MIN": 0.7,
+    "COOP2_MII_CROSS_RULE": "SUCCESS requires mean mii_cross across all COOP2_N_SEEDS to be >= COOP2_MII_CROSS_MIN. Every seed must be reported; no seed may be dropped, filtered, or back-filled. Per-seed mii_cross is disclosed in the verdict.",
+    "COOP2_BOOTSTRAP_REPS": 1000,
+    "COOP2_ARMS": [
+      "open",
+      "mute",
+      "scramble",
+      "private",
+      "coord_x2",
+      "coord_x2_mute_i",
+      "coord_x2_mute_j",
+      "solo",
+      "mute_i",
+      "mute_j",
+      "ref_cotrain"
+    ],
+    "COOP2_DECISION": {
+      "SUCCESS_GROWN_LANGUAGE_ENABLES_COOPERATION": "OPEN beats mute, solo, and private; single-message knockouts are pivotal for the two-key lock; lock pivotality is well above the replaceable CTRL-COORD-X2 pivotality; and the grown population's mii_cross clears the shared-code floor",
+      "COORDINATION_NOT_COOPERATION": "OPEN beats mute/solo but lock pivotality is low, or not larger than the replaceable CTRL-COORD-X2 pivotality: the result is parallel coordination, not an irreducible joint act",
+      "LANGUAGE_PRESENT_NOT_SHARED": "OPEN does not beat CTRL-PRIVATE, or private residual remains high: language-like behavior exists but is not a shared population code",
+      "CHANNEL_NOT_LOAD_BEARING": "OPEN does not beat MUTE by the frozen margin: the channel is not necessary for the lock",
+      "UNDERPOWERED": "fewer than COOP2_N_SEEDS paired seeds, or a dropped/duplicated seed",
+      "HARD_REJECT": "oracle leak, borrowed weights, redline failure, or the grown population does not clear the mean shared-code mii_cross floor over all reported seeds"
+    },
+    "COOP2_DECISION_RULE": "Each agent may use only its own private type and the type decoded from the heard message. The hidden partner type and S=(A+B)%3 are read only by resolve_two_key_lock at scoring time."
+  },
+  "verdict": "SUCCESS_GROWN_LANGUAGE_ENABLES_COOPERATION"
+}
