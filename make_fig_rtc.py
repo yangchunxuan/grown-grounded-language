@@ -38,7 +38,7 @@ plt.rcParams.update({
     "xtick.labelsize": 9, "ytick.labelsize": 9, "legend.fontsize": 9,
     "axes.spines.top": False, "axes.spines.right": False,
 })
-fig, (axA, axB, axC) = plt.subplots(1, 3, figsize=(11.0, 3.7), constrained_layout=True)
+fig, (axA, axB, axC) = plt.subplots(1, 3, figsize=(11.0, 2.5), constrained_layout=True)
 
 
 def yerr(mean, ci):
