@@ -24,7 +24,7 @@ Pre-registered before running. All FROZEN values are locked; we run once and rep
 ## 2. Metrics
 - **PRIMARY: cross-founder MII** (V0b) — non-kin pairs only.
 - **DIVERSITY (gate + guard): effective lineage count = inverse-Simpson index** of founder shares, reported as a trajectory over gens.
-- **FM-β guard: lineage functional distance** — mean pairwise distance between lineages' speaker weight-vectors AND message-set (symbol-distribution) distance. Share-based N_eff alone does NOT prove the maintained lineages are functionally different ("painted collapse").
+- **FM-β guard: lineage functional distance** — mean pairwise distance between lineages' speaker weight-vectors AND message-set (symbol-distribution) distance. **Report BOTH; gate (c) requires BOTH > 0 (either one alone is insufficient).** Share-based N_eff alone does NOT prove the maintained lineages are functionally different ("painted collapse").
 
 ## 3. Controls — ALL at the SAME env/seeds/formal block, C1 ON unless noted (the g1f same-config lesson)
 1. **paired comm-blind** (survival vs random fitness, same init/seed, **C1 ON**) — descent/selection discriminator.
@@ -39,13 +39,13 @@ Pre-registered before running. All FROZEN values are locked; we run once and rep
 - mode = **formal**; gens = **40** (g1f plateaued ~gen12–14 at pop16; report the plateau gen; if not plateaued, see §5 INCONCLUSIVE).
 - pop = **96**; initial founder count **K = 12** (8 agents/founder at start).
 - selection = **tournament k=2 on shared fitness** (the ONE chosen operator — NOT an either/or); fitness-sharing form = `raw / same_lineage_count` (exponent 1.0).
-- seeds = **n = 48** (g1f paired-diff σ≈0.10 → MDE≈0.04 at 80%+ power). **If observed cross-founder σ ≫ 0.10 (multi-lineage may be noisier), report it and treat n=48 as INCONCLUSIVE rather than NO_PUBLIC — do not falsely report a negative.** 🔴 new in v2.
+- seeds = **n = 48** (g1f paired-diff σ≈0.10 → MDE≈0.04 at 80%+ power). **If observed cross-founder σ > 0.20 (= 2×0.10), report it and treat n=48 as INCONCLUSIVE rather than a negative — do not falsely report NO_CROSS_LINEAGE.** 🔴 v2.
 - no-oracle redline unchanged; no borrowed weights.
 
 ## 5. SUCCESS GATE (FROZEN) — verdict `CROSS_LINEAGE_MII_COEVOLVES` iff ALL hold:
 - **(a) effect**: `cross_founder_MII(survival)` minus **the MAX of {comm-blind, frozen-mixed, lineage-shuffle}** has a bootstrap 95% CI **excluding 0 AND a point estimate ≥ Δ_min = 0.04** (SESOI anchored to g1f's +0.045). Subtracting the strongest non-language baseline is the FM-α fix. 🔴
 - **(b) diversity**: effective-lineage-count (inverse-Simpson) **median over seeds ≥ 3 AND 25th-percentile ≥ 2.5** at the final gen. 🔴 (raised from >1)
-- **(c) functional**: lineage functional distance > 0 and not collapsing (FM-β guard) — maintained lineages are genuinely different, not relabeled clones.
+- **(c) functional**: lineage functional distance does NOT collapse — **final-gen functional distance ≥ 0.5 × gen-0 functional distance** (FM-β guard); maintained lineages stay genuinely different, not relabeled clones.
 
 ### Outcomes (FROZEN, incl. corner cases)
 - **CROSS_LINEAGE_MII_COEVOLVES** — (a)+(b)+(c) all pass → then run §6 lesions before banking.
@@ -58,8 +58,8 @@ Run on any (a)+(b)+(c)-passing result BEFORE banking; each prediction + the fail
 - **L1 lineage-shuffle** → predict cross-founder margin collapses < Δ_min. If it does NOT collapse ⇒ **FM-α** (metric measuring non-language convergence) — REJECT.
 - **L2 random-token** → predict margin = chance. If treatment ≈ random-token ⇒ **FM-γ** (content-free shortcut) — REJECT.
 - **L3 targeted message edit** (swap founder-A's symbol for founder-B's) → predict cross-lineage behavior changes in the edit's direction. If no change ⇒ messages not causal — REJECT.
-- **L4 comm-lesion @ gen40** (cut the cross-lineage message channel) → predict survival/MII falls toward comm-blind within N ticks. If unchanged ⇒ channel not load-bearing — REJECT.
-- **L5 frozen-listener @ gen30** → predict cross-founder MII plateaus from gen30; if it keeps rising ⇒ speaker-side shortcut — investigate.
+- **L4 comm-lesion @ gen40** (cut the cross-lineage message channel) → predict survival/MII falls toward comm-blind **within 5 ticks** of the cut. If unchanged ⇒ channel not load-bearing — REJECT.
+- **L5 frozen-listener @ gen30** → predict cross-founder MII plateaus from gen30; if it keeps rising ⇒ speaker-side shortcut. **L5 is DIAGNOSTIC-ONLY (does NOT reject by itself); a failing L5 triggers a follow-up speaker-side audit.**
 
 ## 6. Implementation steps (then run)
 1. Pass V0a/V0b/V0c (§0) — code-verify the reward→message chain, implement true cross-founder MII + functional-distance + inverse-Simpson, record config.
