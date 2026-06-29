@@ -1,54 +1,72 @@
-# STAGE: PUBLIC (cross-lineage) LANGUAGE — pre-registration spec
+# STAGE: CROSS-LINEAGE MUTUAL INTELLIGIBILITY — pre-registration spec **v2**
 
-**Question.** g1f showed survival selection co-evolves a decodable channel, but **kin-lineage only** (population collapses to ~1 founder; cross-agent MII is decoding among near-clones). This stage asks the next question directly:
+**v2 changelog.** v1 was reviewed by three independent red-teams (Gemini full A–J + two others); unanimous verdict **DO_NOT_LOCK**. Direction endorsed; the spec had a fatal hole (no non-language baseline for cross-founder MII) plus unfrozen degrees of freedom. v2 closes every converged fix below. **Claim wording downgraded**: this stage tests CROSS-LINEAGE mutual intelligibility, NOT "public language" (that label is reserved for a later, higher-diversity stage).
 
-> **Does a PUBLIC, cross-lineage shared language co-evolve — i.e. can agents whose lineages never shared an ancestor come to decode each other above a comm-blind control, while lineage diversity is maintained?**
+**Question (v2, calibrated).** g1f showed survival selection co-evolves a decodable channel but **kin-lineage only** (~1 founder fixes; cross-agent MII is decoding among near-clones). This stage asks:
 
-Pre-registered BEFORE running. Frozen choices below are locked; we run once at the locked config and report whatever comes out (positive, scoped-null, or design-failure).
+> **Does survival selection raise mutual intelligibility between agents from DIFFERENT founder lineages, ABOVE all non-language baselines, while genuine lineage diversity is maintained?**
+
+Pre-registered before running. All FROZEN values are locked; we run once and report whatever comes out.
+
+> **The load-bearing fact that shapes this spec (from g1f data):** comm-blind MII = **0.127** vs frozen = **0.0016** — i.e. shared architecture + shared world + shared init produce ~75× the floor MII **with no communication selection at all**. Therefore cross-founder MII is presumed contaminated by a large non-language baseline until proven otherwise. The whole control design exists to subtract that baseline.
 
 ---
 
-## 1. Base + the two load-bearing changes
-Extend the g1f RTC co-evolution harness (`rtc_g1f_coevolve.py`). Exactly two mechanism changes vs g1f, each independently ablatable:
+## 0. IMPLEMENTATION-VERIFICATION GATES (must pass in code BEFORE the run — the reviews could not check these from files)
+- **V0a — reward→message strict chain (FM-γ).** Read `rtc_g1f_coevolve.py` reward/fitness path and CONFIRM that an agent which does not decode cross-lineage message content cannot exceed chance survival. If the world does NOT enforce this, the world must be changed (or the run is invalid — it would re-run the W3 "content-free shortcut"). The `random-token` control (§3) is the empirical test; V0a is the code-level confirmation.
+- **V0b — true cross-FOUNDER MII.** Current code computes an all-pairs off-diagonal (`min_offdiag`). Implement a metric restricted to pairs whose founders **never shared an ancestor**. Record the exact MII definition (probing-decode of sampled referents → exact-tuple recovery; NOT raw weight similarity) in the verdict JSON.
+- **V0c — config recorded.** Every run's JSON records full env (incl. formal flag, C1-state, selection operator, all frozen params) + seeds, so treatment and every control are provably the SAME config.
 
-**C1 — maintain lineage diversity (kill founder collapse).** g1f uses 50%-truncation + clone-refill in a small pop → fixation to ~1 lineage. Replace with:
-- **soft selection** (fitness-proportional or tournament-k=2 instead of hard top-50% truncation), AND
-- **larger population** (locked **pop=96**), AND
-- **fitness sharing / niching** by lineage (penalize over-represented lineages) — the primary diversity lever.
-Ablation arm: g1f-style hard-truncation + pop=16 (should collapse — the negative control for C1).
+## 1. The two mechanism changes (each independently ablatable)
+- **C1 — maintain lineage diversity.** Replace g1f's hard top-50% truncation with **tournament selection, k=2, on SHARED fitness** where `shared_fitness_i = raw_fitness_i / (count of living same-lineage agents)` (standard lineage fitness-sharing). Larger pop. (Ablation: g1f hard-truncation + pop=16 — the negative control that should collapse.)
+- **C2 — put cross-lineage intelligibility under selection.** `_speaker_for` pairs each listener with speakers from **other** founder lineages (mixed-lineage interaction), so survival depends on decoding non-kin. (Ablation = C2-only / kin-only listening, see §3.)
 
-**C2 — put CROSS-lineage intelligibility under selection (the decisive change).** g1f's listener rule lets agents only ever hear **same-lineage** speakers → cross-lineage decoding was never selected for, so a private kin code suffices. Change `_speaker_for` so a listener is paired with speakers from **other** lineages (mixed-lineage interaction), so survival depends on decoding non-kin.
-Ablation arm: kin-only listening (= g1f rule) under C1's diversity (isolates whether C2 is the load-bearing change).
+## 2. Metrics
+- **PRIMARY: cross-founder MII** (V0b) — non-kin pairs only.
+- **DIVERSITY (gate + guard): effective lineage count = inverse-Simpson index** of founder shares, reported as a trajectory over gens.
+- **FM-β guard: lineage functional distance** — mean pairwise distance between lineages' speaker weight-vectors AND message-set (symbol-distribution) distance. Share-based N_eff alone does NOT prove the maintained lineages are functionally different ("painted collapse").
 
-## 2. Primary metric (and why it differs from g1f)
-- **PRIMARY: cross-founder MII** = mutual intelligibility restricted to agent pairs whose lineages **never shared an ancestor** (`min_offdiag` / off-block of the MII matrix — already computed in g1f but ignored in its headline). g1f's bug was reporting population-average MII, which rises mechanically with fixation.
-- **GUARD: effective-lineage-count** over generations (report the trajectory). If it falls to ~1, diversity maintenance failed and the public-language question is untestable in that run.
+## 3. Controls — ALL at the SAME env/seeds/formal block, C1 ON unless noted (the g1f same-config lesson)
+1. **paired comm-blind** (survival vs random fitness, same init/seed, **C1 ON**) — descent/selection discriminator.
+2. **frozen-mixed** (multi-lineage population, frozen-random weights, no reproduction) — **the true non-language zero-baseline for cross-founder MII** (single-lineage frozen 0.0016 does NOT represent the mixed case). 🔴 new in v2.
+3. **lineage-shuffle** (same run; founder-ids randomly relabeled BEFORE computing cross-founder MII) — proves the metric measures lineage structure, not artifact. Predicted margin → ~0. 🔴 new in v2.
+4. **random-token** (each frame an i.i.d. random message; ≠ scramble) — tests whether a content-free token suffices. Predicted = chance. 🔴 new in v2.
+5. **scramble** (decode a permuted real message) — content vs presence.
+6. **C1-only ablation** (C1 on, kin-only listening) and **C2-only ablation** (cross-lineage listening, g1f hard-truncation + pop=16) — isolate each mechanism. 🔴 C2-only new in v2.
+7. **within-lineage MII** — **apparatus sanity**: must be significantly > frozen; **seeds that fail this are excluded from the main analysis** (instrument not in place).
 
-## 3. Controls (attack-machine, SAME-CONFIG discipline — the g1f lesson)
-Every control runs at the **identical env/seeds/formal block** as the treatment (enforced + recorded in the JSON):
-- **paired comm-blind control** (survival-fitness vs random-fitness reproduction, same init/seed) — the decisive null isolating selection-for-communication from descent-convergence.
-- **architecture-matched frozen-random null** (no reproduction) — the floor.
-- **scramble** (decode a permuted message) — content vs presence.
+## 4. FROZEN values (LOCKED — no post-hoc tuning; renaming/redefining a gate later = protocol violation, per the W4 governance lesson)
+- mode = **formal**; gens = **40** (g1f plateaued ~gen12–14 at pop16; report the plateau gen; if not plateaued, see §5 INCONCLUSIVE).
+- pop = **96**; initial founder count **K = 12** (8 agents/founder at start).
+- selection = **tournament k=2 on shared fitness** (the ONE chosen operator — NOT an either/or); fitness-sharing form = `raw / same_lineage_count` (exponent 1.0).
+- seeds = **n = 48** (g1f paired-diff σ≈0.10 → MDE≈0.04 at 80%+ power). **If observed cross-founder σ ≫ 0.10 (multi-lineage may be noisier), report it and treat n=48 as INCONCLUSIVE rather than NO_PUBLIC — do not falsely report a negative.** 🔴 new in v2.
+- no-oracle redline unchanged; no borrowed weights.
 
-## 4. Pre-registered thresholds (FROZEN)
-- Mode: **formal** (`RTC_G1F_FORMAL=1`), **gens=40** (g1f plateaued ~gen12–14 at pop16; allow headroom at pop96; report the plateau gen).
-- pop=96; lineages tracked by frozen founder id.
-- **seeds: n=48** (power: g1f paired-diff sd≈0.10 → MDE≈0.04 at n=48, 80%+ power; matches the g1f canonical).
-- **VERDICT GATE tests the ACTUAL claim** (not a proxy): PUBLIC_LANGUAGE_COEVOLVES iff **(a)** cross-founder MII − comm-blind cross-founder MII has a bootstrap 95% CI **excluding 0**, AND **(b)** effective-lineage-count stays **> 1** (median over seeds ≥ 2 at the final gen). Both must hold.
-- no-oracle redline unchanged (decisions read only decoded messages / own body); no borrowed weights.
+## 5. SUCCESS GATE (FROZEN) — verdict `CROSS_LINEAGE_MII_COEVOLVES` iff ALL hold:
+- **(a) effect**: `cross_founder_MII(survival)` minus **the MAX of {comm-blind, frozen-mixed, lineage-shuffle}** has a bootstrap 95% CI **excluding 0 AND a point estimate ≥ Δ_min = 0.04** (SESOI anchored to g1f's +0.045). Subtracting the strongest non-language baseline is the FM-α fix. 🔴
+- **(b) diversity**: effective-lineage-count (inverse-Simpson) **median over seeds ≥ 3 AND 25th-percentile ≥ 2.5** at the final gen. 🔴 (raised from >1)
+- **(c) functional**: lineage functional distance > 0 and not collapsing (FM-β guard) — maintained lineages are genuinely different, not relabeled clones.
 
-## 5. Pre-registered outcomes (all honest)
-- **PUBLIC_LANGUAGE_COEVOLVES** — both gates pass → the project's first cross-lineage shared-language positive. (Then: red-team it — bottleneck/diversity confounds, MII-semantics, same-config — before banking.)
-- **NO_PUBLIC_LANGUAGE (scoped null)** — diversity maintained (eff-lineage>1) but cross-founder MII does NOT beat comm-blind → public language does not co-evolve here; g1f's positive stays kin-scoped. A clean, real negative.
-- **DESIGN_FAILURE (untestable)** — diversity still collapses despite C1 → cannot test C2; iterate C1, do not report a language verdict.
+### Outcomes (FROZEN, incl. corner cases)
+- **CROSS_LINEAGE_MII_COEVOLVES** — (a)+(b)+(c) all pass → then run §6 lesions before banking.
+- **NO_CROSS_LINEAGE_MII (scoped null)** — (b) holds (diversity maintained) but (a) fails. AND (b) passes but (a) fails ⇒ this bucket. 🔴
+- **DESIGN_FAILURE (untestable)** — (b) fails (diversity collapsed despite C1), regardless of (a). AND (a) passes but (b) fails ⇒ this bucket (a "positive" among collapsed lineages is just g1f again). 🔴
+- **INCONCLUSIVE** — observed σ ≫ planned, power insufficient; report, do not call it a negative. 🔴
+
+## 5b. RED-TEAM LESIONS — PRE-DECLARED, predictions FROZEN (🔴 new in v2; "thought of but not in the spec = not thought of")
+Run on any (a)+(b)+(c)-passing result BEFORE banking; each prediction + the failure-mode it would trigger is locked now:
+- **L1 lineage-shuffle** → predict cross-founder margin collapses < Δ_min. If it does NOT collapse ⇒ **FM-α** (metric measuring non-language convergence) — REJECT.
+- **L2 random-token** → predict margin = chance. If treatment ≈ random-token ⇒ **FM-γ** (content-free shortcut) — REJECT.
+- **L3 targeted message edit** (swap founder-A's symbol for founder-B's) → predict cross-lineage behavior changes in the edit's direction. If no change ⇒ messages not causal — REJECT.
+- **L4 comm-lesion @ gen40** (cut the cross-lineage message channel) → predict survival/MII falls toward comm-blind within N ticks. If unchanged ⇒ channel not load-bearing — REJECT.
+- **L5 frozen-listener @ gen30** → predict cross-founder MII plateaus from gen30; if it keeps rising ⇒ speaker-side shortcut — investigate.
 
 ## 6. Implementation steps (then run)
-1. Add C1 diversity knobs to `_select_next` (soft selection + lineage fitness-sharing) behind env flags; keep g1f hard-truncation as the ablation default-off.
-2. Add C2 cross-lineage listener option to `_speaker_for` (env flag).
-3. Promote **cross-founder MII** (`min_offdiag`) + **effective-lineage-count** to first-class outputs in the verdict JSON; record full config (env/seeds/formal) in the JSON.
-4. Wire the paired comm-blind + frozen + scramble controls at the SAME config.
-5. Smoke-test at pilot scale (just to confirm it runs — NOT for any verdict), then run the locked formal n=48.
-6. Power/reconcile + a written confound red-team before any claim.
+1. Pass V0a/V0b/V0c (§0) — code-verify the reward→message chain, implement true cross-founder MII + functional-distance + inverse-Simpson, record config.
+2. Add C1 (tournament-k2 + lineage fitness-sharing) and C2 (cross-lineage `_speaker_for`) behind env flags; g1f behavior is the ablation default-off.
+3. Wire ALL §3 controls at the same config; implement the §5b lesions.
+4. Pilot smoke-test (runs-without-crashing ONLY, no verdict), then the locked formal n=48.
+5. Power/reconcile + the §5b pre-declared lesion battery + a written confound report before any claim.
 
-## 7. Config-provenance discipline (carried from CLAIM_LEDGER.md)
-- The treatment and every control MUST be the same env/seed/formal block; the JSON records it; a mismatch invalidates the run (this is the exact bug that produced the g1f false negative).
+## 7. Provenance discipline (carried from CLAIM_LEDGER.md)
+Treatment and every control MUST share env/seed/formal/C1-state; the JSON records it; a mismatch invalidates the run. This is the exact class of bug (formal-vs-pilot) that produced the g1f false negative — never again.
