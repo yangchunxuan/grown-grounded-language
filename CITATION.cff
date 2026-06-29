@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software or refer to these results, please cite the ALIFE 2026 Late-Breaking Abstract below."
-title: "Grown Grounded Language: Growing a Shared, Decodable, Grounded Language from Scratch (and Five Walls It Hits)"
+title: "grown-grounded-language: research code and committed verdict artifacts"
 type: software
 authors:
   - family-names: "Yang"
@@ -17,7 +17,7 @@ keywords:
   - negative results
 preferred-citation:
   type: conference-paper
-  title: "Grown Grounded Language: Growing a Shared, Decodable, Grounded Language from Scratch (and Five Walls It Hits)"
+  title: "Five Walls on the Path to Growing a Grounded Language: An Adversarial Self-Audit of Emergent Communication"
   authors:
     - family-names: "Yang"
       given-names: "Chunxuan"

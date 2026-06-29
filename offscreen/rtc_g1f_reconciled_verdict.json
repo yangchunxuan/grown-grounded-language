@@ -1,0 +1,40 @@
+{
+  "kind": "rtc_g1f_reconciled",
+  "n_seeds": 48,
+  "mode": "formal",
+  "decisive_test": "comm-blind control (paired, same-init survival-fitness vs random-fitness reproduction)",
+  "apparent_win": {
+    "source": "rtc_g1f_coevolve_verdict_s12.json",
+    "naive_gate_verdict": "RTC_G1F_CHANNEL_COEVOLVES",
+    "shared_weights_kin_mii_mean": 0.18338,
+    "shared_weights_kin_mii_ci": [
+      0.1307,
+      0.2393
+    ],
+    "all_gates_pass": true,
+    "gates": {
+      "redline_scan_clean": true,
+      "pilot_mii_moves_off_floor": true,
+      "evolved_beats_arch_null_mii": true,
+      "open_beats_scramble_survival": true,
+      "open_beats_mute_survival": true,
+      "survival_co_rises_with_mii": true
+    }
+  },
+  "control_refutation": {
+    "source": "rtc_g1f_commblind_verdict_s12.json",
+    "survival_fitness_mii_mean": 0.17219,
+    "commblind_fitness_mii_mean": 0.1271,
+    "frozen_null_mii_mean": 0.00163,
+    "paired_win_margin_survival_minus_commblind": 0.04509,
+    "win_margin_ci95": [
+      0.02017,
+      0.06982
+    ],
+    "ci_includes_zero": false,
+    "mde_80pct_power": 0.03537,
+    "seeds_needed_for_observed_effect_at_80pct": 30
+  },
+  "verdict": "RTC_G1F_COEVOLVE_SURVIVES_COMMBLIND_CONTROL",
+  "interpretation": "The naive pre-registered gate-bundle declares 'RTC_G1F_CHANNEL_COEVOLVES' (all gates pass; shared-weights-kin MII rises to 0.183). But the architecture+process-matched comm-blind control reaches the same MII range (survival-fitness 0.172 vs comm-blind-fitness 0.127; paired survival-minus-commblind margin +0.045, 95% CI [0.02017, 0.06982], excludes 0). The control is BEATEN: survival-fitness selection raises cross-agent MII (0.172) above the matched comm-blind control (0.127) = selection FOR communication, not mere descent-convergence. SCOPE (load-bearing limitation): the population collapses to ~1 founder lineage, so this is KIN-LINEAGE (within-family) channel co-evolution, NOT yet a demonstrated public cross-lineage shared language."
+}
