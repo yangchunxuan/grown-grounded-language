@@ -1,0 +1,80 @@
+{
+  "kind": "rtc_g1f_commblind_control",
+  "claim": "Control for the g1f 'mii moves' result: shared_weights reproduction with COMM-BLIND (random) fitness reaches the same cross-agent mii as survival selection -> the mii rise is clonal descent-convergence, not selection for communication.",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "survival_final_mii": [
+    0.03199,
+    0.04762,
+    0.09003,
+    0.03646,
+    0.0744,
+    0.10286,
+    0.04446,
+    0.05115,
+    0.10547,
+    0.25651,
+    0.14323,
+    0.14974
+  ],
+  "commblind_final_mii": [
+    0.07943,
+    0.32031,
+    0.07496,
+    0.05394,
+    0.024,
+    0.0519,
+    0.05785,
+    0.08631,
+    0.13411,
+    0.13988,
+    0.14583,
+    0.25781
+  ],
+  "frozen_final_mii": [
+    0.00074,
+    0.00093,
+    0.00149,
+    0.00316,
+    0.00093,
+    0.00037,
+    0.00205,
+    0.00149,
+    0.0013,
+    0.00093,
+    0.00112,
+    0.00074
+  ],
+  "survival_mean": 0.09449,
+  "survival_ci": [
+    0.0617,
+    0.1375
+  ],
+  "commblind_mean": 0.11886,
+  "commblind_ci": [
+    0.0769,
+    0.1754
+  ],
+  "frozen_mean": 0.00127,
+  "frozen_ci": [
+    0.0009,
+    0.0017
+  ],
+  "survival_minus_commblind_ci": [
+    -0.0823,
+    0.0257
+  ],
+  "mii_moves_is_descent_convergence_artifact": true
+}

@@ -14,13 +14,15 @@ same rng seed -> the only difference is whether selection can 'see' communicatio
      descent-convergence ARTIFACT (not a bootstrap escape).
   if survival final mii >> commblind -> mii-moves is real selection-for-communication.
 """
+import os
+
 import numpy as np
 
 from offscreen import rtc_g1f_coevolve as g1f
 from offscreen.rtc_g1_run import _ci
 
 ARM = "shared_weights_kin"
-SEEDS = list(range(6))
+SEEDS = list(range(int(os.environ.get("RTC_G1F_COMMBLIND_SEEDS", "6"))))
 
 
 def _init(seed):

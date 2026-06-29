@@ -1,0 +1,165 @@
+{
+  "kind": "wm_first_run",
+  "config": {
+    "seed": 0,
+    "arm": "A2_fitness",
+    "pop_size": 4,
+    "generations": 3,
+    "ticks": 12,
+    "repr_steps": 15,
+    "repr_lr": 0.001,
+    "ac_steps": 8,
+    "ac_lr": 0.0003,
+    "device": "cpu",
+    "out": "offscreen/wm_smoke2_verdict.json",
+    "device_used": "cpu"
+  },
+  "timings_s": {
+    "collect": 3.8464667797088623,
+    "repr": 2.020026206970215,
+    "actor_critic": 0.5707528591156006,
+    "probe": 0.3285338878631592,
+    "denoise": 0.3422720432281494,
+    "total": 7.13258171081543
+  },
+  "collect": {
+    "n_replay_items": 96,
+    "n_death_rows": 0,
+    "n_trace_rows": 192,
+    "obs_dim": 8,
+    "per_gen_capture_rate": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "posdis_safety": {
+      "armed": true,
+      "status": "armed_waiting_for_wm_language",
+      "collapse": false,
+      "reground_bottleneck_required": false,
+      "reason": "safety is armed, but world-model language emission is not active yet",
+      "legacy_posdis": [
+        0.34871848769996716,
+        0.3936679888868718,
+        0.3559401042535577,
+        0.3602226617131964
+      ],
+      "wm_language_posdis": null,
+      "collapse_margin": 0.05,
+      "window": 3
+    }
+  },
+  "repr_train": {
+    "initial": {
+      "total": 7.452528953552246,
+      "decoder": 3.2469980716705322,
+      "reward": 3.6764049530029297,
+      "continue_loss": 0.6619530916213989,
+      "kl_dyn": 2.789471387863159,
+      "kl_rep": 2.789471387863159
+    },
+    "final": {
+      "total": 1.747731328010559,
+      "decoder": 0.2904333174228668,
+      "reward": 0.7173355221748352,
+      "continue_loss": 0.0013525154208764434,
+      "kl_dyn": 1.0,
+      "kl_rep": 1.0
+    },
+    "n_steps": 15
+  },
+  "actor_critic": {
+    "first": {
+      "actor_loss": -0.5590757131576538,
+      "value_loss": 3.7869722843170166,
+      "entropy": 3.865483522415161,
+      "horizon": 15,
+      "policy_training": true
+    },
+    "last": {
+      "actor_loss": -0.5577892661094666,
+      "value_loss": 2.62713885307312,
+      "entropy": 3.8154730796813965,
+      "horizon": 15,
+      "policy_training": true
+    },
+    "n_steps": 8,
+    "gamma": 0.997,
+    "lambda_return": 0.95
+  },
+  "probe": {
+    "n_rows": 96,
+    "latent_dim": 512,
+    "split_mode": "episode",
+    "split_warning": null,
+    "policy_training": false,
+    "targets": {
+      "energy": {
+        "metric": "ridge_r2",
+        "real": 0.322487473487854,
+        "control": -0.4747387170791626,
+        "selectivity": 0.7972261905670166,
+        "input_baseline": 1.0,
+        "value_added_over_input": -0.677512526512146,
+        "direct_input_column": 3,
+        "claim_ok": false,
+        "claim_warning": "energy is directly present in agent_visible",
+        "train_rows": 48,
+        "test_rows": 48
+      },
+      "death_risk": {
+        "metric": "ridge_auroc",
+        "real": null,
+        "control": null,
+        "selectivity": null,
+        "input_baseline": null,
+        "energy_only_baseline": null,
+        "value_added_over_input": null,
+        "value_added_over_energy_only": null,
+        "available": false,
+        "claim_ok": false,
+        "claim_warning": "death-risk must beat input and energy-only baselines"
+      },
+      "trust": {
+        "metric": "ridge_r2",
+        "real": null,
+        "control": null,
+        "selectivity": null,
+        "available": false,
+        "reason": "no trust label is stored in replay"
+      }
+    }
+  },
+  "denoising": {
+    "status": "ok",
+    "n_rows": 192,
+    "n_train": 132,
+    "n_test": 60,
+    "n_lineages": 8,
+    "components": {
+      "referent_comp_0": {
+        "constant": true
+      },
+      "referent_comp_1": {
+        "n_classes": 3,
+        "majority_floor": 0.6166666666666667,
+        "latent_acc": 1.0,
+        "input_acc": 0.6166666666666667,
+        "value_added_over_input": 0.3833333333333333,
+        "shuffled_control": 0.36666666666666664,
+        "selectivity": 0.6333333333333333
+      },
+      "referent_comp_2": {
+        "n_classes": 2,
+        "majority_floor": 0.8333333333333334,
+        "latent_acc": 1.0,
+        "input_acc": 1.0,
+        "value_added_over_input": 0.0,
+        "shuffled_control": 0.6333333333333333,
+        "selectivity": 0.3666666666666667
+      }
+    }
+  },
+  "honest_summary": "Stage 1-2 offline: collected real world_model-mode replay, trained WM representation + actor-critic on GPU, probed the trained latent. energy claim is tautological (direct input col) -> claim_ok reflects that. death_risk reported with input baseline. true_distance denoising NOW measured (latent vs raw-input recovery of the true referent, lineage-split). Closing the online loop and re-running L1 coop gates WITH the trained agent require a source change to inject pre-trained agents into run() (next step, with adversarial self-review)."
+}

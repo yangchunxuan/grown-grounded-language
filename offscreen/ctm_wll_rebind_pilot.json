@@ -1,0 +1,468 @@
+{
+ "kind": "ctm_wll_rebind_v1",
+ "block": "pilot",
+ "seeds": [
+  0,
+  1
+ ],
+ "rounds": 20,
+ "explore_n": 256,
+ "chance": 0.0625,
+ "results": {
+  "FROZEN": {
+   "post_pi": 0.0918,
+   "post_pi_ci": [
+    0.0654,
+    0.1182
+   ],
+   "sync_post": 0.6973,
+   "pre_pi": 0.0893,
+   "pre_old": 0.9243,
+   "rows": [
+    {
+     "arm": "FROZEN",
+     "pre_old": 1.0,
+     "pre_pi": 0.1182,
+     "post_pi": 0.1182,
+     "trajectory": [
+      0.1396,
+      0.125,
+      0.1357,
+      0.123,
+      0.1094,
+      0.1123,
+      0.1406,
+      0.124,
+      0.1299,
+      0.1172,
+      0.1279,
+      0.1123,
+      0.1191,
+      0.127,
+      0.1143,
+      0.1152,
+      0.124,
+      0.1387,
+      0.1445,
+      0.1182
+     ],
+     "sync_pre": 0.709,
+     "sync_post": 0.7305,
+     "mean_explore_rate": null
+    },
+    {
+     "arm": "FROZEN",
+     "pre_old": 0.8486,
+     "pre_pi": 0.0605,
+     "post_pi": 0.0654,
+     "trajectory": [
+      0.0625,
+      0.0674,
+      0.0576,
+      0.0537,
+      0.0557,
+      0.0645,
+      0.0645,
+      0.0645,
+      0.0547,
+      0.0576,
+      0.0635,
+      0.0576,
+      0.0674,
+      0.0518,
+      0.0527,
+      0.0586,
+      0.0723,
+      0.0732,
+      0.0654,
+      0.0654
+     ],
+     "sync_pre": 0.6328,
+     "sync_post": 0.6641,
+     "mean_explore_rate": null
+    }
+   ]
+  },
+  "WLL_ON": {
+   "post_pi": 0.1616,
+   "post_pi_ci": [
+    0.1377,
+    0.1855
+   ],
+   "sync_post": 0.6973,
+   "pre_pi": 0.0893,
+   "pre_old": 0.9243,
+   "rows": [
+    {
+     "arm": "WLL_ON",
+     "pre_old": 1.0,
+     "pre_pi": 0.1182,
+     "post_pi": 0.1855,
+     "trajectory": [
+      0.1396,
+      0.125,
+      0.1357,
+      0.123,
+      0.1094,
+      0.1123,
+      0.1982,
+      0.1748,
+      0.1914,
+      0.1768,
+      0.1865,
+      0.167,
+      0.1924,
+      0.1875,
+      0.1689,
+      0.1816,
+      0.1777,
+      0.2012,
+      0.2207,
+      0.1855
+     ],
+     "sync_pre": 0.709,
+     "sync_post": 0.7305,
+     "mean_explore_rate": 0.1617
+    },
+    {
+     "arm": "WLL_ON",
+     "pre_old": 0.8486,
+     "pre_pi": 0.0605,
+     "post_pi": 0.1377,
+     "trajectory": [
+      0.0625,
+      0.0674,
+      0.0576,
+      0.0537,
+      0.0557,
+      0.1172,
+      0.1289,
+      0.1309,
+      0.123,
+      0.1221,
+      0.124,
+      0.1172,
+      0.1318,
+      0.1113,
+      0.1221,
+      0.1221,
+      0.126,
+      0.1377,
+      0.124,
+      0.1377
+     ],
+     "sync_pre": 0.6328,
+     "sync_post": 0.6641,
+     "mean_explore_rate": 0.1039
+    }
+   ]
+  },
+  "WLL_REINFORCE": {
+   "post_pi": 0.251,
+   "post_pi_ci": [
+    0.2441,
+    0.2578
+   ],
+   "sync_post": 0.6973,
+   "pre_pi": 0.0893,
+   "pre_old": 0.9243,
+   "rows": [
+    {
+     "arm": "WLL_REINFORCE",
+     "pre_old": 1.0,
+     "pre_pi": 0.1182,
+     "post_pi": 0.2441,
+     "trajectory": [
+      0.1396,
+      0.125,
+      0.1357,
+      0.166,
+      0.1816,
+      0.1777,
+      0.1982,
+      0.1748,
+      0.1914,
+      0.1768,
+      0.251,
+      0.2275,
+      0.252,
+      0.252,
+      0.2285,
+      0.251,
+      0.2412,
+      0.2549,
+      0.2852,
+      0.2441
+     ],
+     "sync_pre": 0.709,
+     "sync_post": 0.7305,
+     "mean_explore_rate": null
+    },
+    {
+     "arm": "WLL_REINFORCE",
+     "pre_old": 0.8486,
+     "pre_pi": 0.0605,
+     "post_pi": 0.2578,
+     "trajectory": [
+      0.0625,
+      0.0674,
+      0.0576,
+      0.0537,
+      0.1797,
+      0.1758,
+      0.1797,
+      0.1914,
+      0.1924,
+      0.1836,
+      0.1904,
+      0.1865,
+      0.1885,
+      0.168,
+      0.1914,
+      0.1865,
+      0.1904,
+      0.2031,
+      0.1787,
+      0.2578
+     ],
+     "sync_pre": 0.6328,
+     "sync_post": 0.6641,
+     "mean_explore_rate": null
+    }
+   ]
+  },
+  "NO_MEMORY": {
+   "post_pi": 0.1616,
+   "post_pi_ci": [
+    0.1377,
+    0.1855
+   ],
+   "sync_post": 0.6973,
+   "pre_pi": 0.0893,
+   "pre_old": 0.9243,
+   "rows": [
+    {
+     "arm": "NO_MEMORY",
+     "pre_old": 1.0,
+     "pre_pi": 0.1182,
+     "post_pi": 0.1855,
+     "trajectory": [
+      0.1396,
+      0.125,
+      0.1357,
+      0.123,
+      0.1094,
+      0.1123,
+      0.1406,
+      0.1748,
+      0.1914,
+      0.1768,
+      0.1865,
+      0.167,
+      0.1924,
+      0.1875,
+      0.1689,
+      0.1816,
+      0.1777,
+      0.2012,
+      0.2207,
+      0.1855
+     ],
+     "sync_pre": 0.709,
+     "sync_post": 0.7305,
+     "mean_explore_rate": 0.1596
+    },
+    {
+     "arm": "NO_MEMORY",
+     "pre_old": 0.8486,
+     "pre_pi": 0.0605,
+     "post_pi": 0.1377,
+     "trajectory": [
+      0.0625,
+      0.0674,
+      0.0576,
+      0.0537,
+      0.0557,
+      0.1172,
+      0.1289,
+      0.1309,
+      0.123,
+      0.1221,
+      0.124,
+      0.1172,
+      0.1318,
+      0.1113,
+      0.1221,
+      0.1221,
+      0.126,
+      0.1377,
+      0.124,
+      0.1377
+     ],
+     "sync_pre": 0.6328,
+     "sync_post": 0.6641,
+     "mean_explore_rate": 0.1037
+    }
+   ]
+  },
+  "WLL_SCOUT_TOO": {
+   "post_pi": 0.251,
+   "post_pi_ci": [
+    0.2402,
+    0.2617
+   ],
+   "sync_post": 0.6973,
+   "pre_pi": 0.0893,
+   "pre_old": 0.9243,
+   "rows": [
+    {
+     "arm": "WLL_SCOUT_TOO",
+     "pre_old": 1.0,
+     "pre_pi": 0.1182,
+     "post_pi": 0.2402,
+     "trajectory": [
+      0.1396,
+      0.125,
+      0.1357,
+      0.123,
+      0.2393,
+      0.2441,
+      0.2568,
+      0.2256,
+      0.252,
+      0.2461,
+      0.248,
+      0.2334,
+      0.2617,
+      0.2441,
+      0.2256,
+      0.251,
+      0.2422,
+      0.2656,
+      0.2861,
+      0.2402
+     ],
+     "sync_pre": 0.709,
+     "sync_post": 0.7305,
+     "mean_explore_rate": 0.2191
+    },
+    {
+     "arm": "WLL_SCOUT_TOO",
+     "pre_old": 0.8486,
+     "pre_pi": 0.0605,
+     "post_pi": 0.2617,
+     "trajectory": [
+      0.0625,
+      0.0674,
+      0.1328,
+      0.1768,
+      0.1699,
+      0.1875,
+      0.1914,
+      0.2002,
+      0.1895,
+      0.2412,
+      0.2549,
+      0.2422,
+      0.248,
+      0.2383,
+      0.251,
+      0.2529,
+      0.2686,
+      0.2686,
+      0.2354,
+      0.2617
+     ],
+     "sync_pre": 0.6328,
+     "sync_post": 0.6641,
+     "mean_explore_rate": 0.1975
+    }
+   ]
+  },
+  "DISTILL_SWITCH": {
+   "post_pi": 0.9112,
+   "post_pi_ci": [
+    0.8223,
+    1.0
+   ],
+   "sync_post": 0.6973,
+   "pre_pi": 0.0893,
+   "pre_old": 0.9243,
+   "rows": [
+    {
+     "arm": "DISTILL_SWITCH",
+     "pre_old": 1.0,
+     "pre_pi": 0.1182,
+     "post_pi": 1.0,
+     "trajectory": [
+      0.1396,
+      0.125,
+      0.1357,
+      0.123,
+      0.2324,
+      0.3457,
+      0.5762,
+      0.793,
+      0.875,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ],
+     "sync_pre": 0.709,
+     "sync_post": 0.7305,
+     "mean_explore_rate": null
+    },
+    {
+     "arm": "DISTILL_SWITCH",
+     "pre_old": 0.8486,
+     "pre_pi": 0.0605,
+     "post_pi": 0.8223,
+     "trajectory": [
+      0.0625,
+      0.0674,
+      0.0576,
+      0.0537,
+      0.1748,
+      0.0645,
+      0.3037,
+      0.4502,
+      0.5,
+      0.4746,
+      0.583,
+      0.7041,
+      0.7021,
+      0.7988,
+      0.8164,
+      0.7422,
+      0.7529,
+      0.7197,
+      0.8008,
+      0.8223
+     ],
+     "sync_pre": 0.6328,
+     "sync_post": 0.6641,
+     "mean_explore_rate": null
+    }
+   ]
+  }
+ },
+ "best_within_life_arm": "WLL_REINFORCE",
+ "best_within_life_minus_frozen": {
+  "mean": 0.1591,
+  "ci": [
+   0.1259,
+   0.1924
+  ]
+ },
+ "verdict": "NO_WITHIN_LIFE_RECOVERY",
+ "honest_claim": "Single-agent within-life adaptation to a mid-life payoff permutation by heads-only reward-gated self-imitation (scout+core frozen => sync readability preserved by construction). Tests whether the within-life learning time-scale ADAPTS an acquired skill where a frozen agent cannot, without bootstrapping (escapes the optimizer wall). Single-agent capability test; living-society transmission of the re-bound code is the follow-up.",
+ "wall_seconds": 110.7
+}
