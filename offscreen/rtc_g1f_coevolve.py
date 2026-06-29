@@ -145,9 +145,13 @@ def _message_for(agent: Agent, world: RTCWorld, post, rng, mode: str):
     if mode == "mute":
         return None
     if mode == "scramble":
-        return scramble_message(rng)
+        return scramble_message(rng)  # iid random symbols = C2X random-token control
     vals = _sensor_values(world, post[0], post[1], FULL_BASIS, rng)
-    return agent.speaker.emit(values_to_bands(vals))
+    real = agent.speaker.emit(values_to_bands(vals))
+    if mode == "permute":  # C2X scramble control: permute the REAL message's symbols (content-vs-structure)
+        perm = rng.permutation(len(real))
+        return tuple(int(real[int(k)]) for k in perm)
+    return real
 
 
 def _decoded_score(agent: Agent, msg, w) -> float:
@@ -157,7 +161,17 @@ def _decoded_score(agent: Agent, msg, w) -> float:
     return float(np.dot(w, bands_to_values(dec)))
 
 
-def _speaker_for(pop: list[Agent], listener_i: int, post_i: int, gen_round: int, arm: str):
+def _speaker_for(pop: list[Agent], listener_i: int, post_i: int, gen_round: int, arm: str, speaker_rule=None):
+    if speaker_rule == "cross_lineage_balanced":
+        # C2X: forced NON-kin listening. Deterministic balanced round-robin over present non-self
+        # lineages keyed by (listener_i, post_i, gen_round) only — no fitness/content/truth/founder-id leak.
+        my = pop[listener_i].lineage
+        other_lins = sorted({int(a.lineage) for a in pop if a.lineage != my})
+        if not other_lins:
+            return None  # no non-kin present (single-lineage gen) -> caller falls back to mute
+        lin = other_lins[(listener_i + post_i + gen_round) % len(other_lins)]
+        members = [j for j, a in enumerate(pop) if a.lineage == lin]
+        return pop[members[(post_i + gen_round) % len(members)]]
     if arm == "shared_weights_kin":
         same = [j for j, a in enumerate(pop) if a.lineage == pop[listener_i].lineage]
         if same:
@@ -165,7 +179,7 @@ def _speaker_for(pop: list[Agent], listener_i: int, post_i: int, gen_round: int,
     return pop[(listener_i + post_i + gen_round + 1) % len(pop)]
 
 
-def _run_episode(seed: int, pop: list[Agent], mode: str = "open", arm: str = "", rng=None):
+def _run_episode(seed: int, pop: list[Agent], mode: str = "open", arm: str = "", rng=None, speaker_rule=None):
     # rng kept optional for instrument-only paired gate-0 (kin-only diagnostic): passing the
     # SAME rng across open/mute/scramble removes the len(mode) drift below. Default = unchanged.
     if rng is None:
@@ -193,9 +207,9 @@ def _run_episode(seed: int, pop: list[Agent], mode: str = "open", arm: str = "",
             else:
                 scores = []
                 for j, post in enumerate(posts):
-                    # Per-agent message; shared_weights_kin assimilates by lineage.
-                    speaker = _speaker_for(pop, i, j, gen_round, arm)
-                    msg = _message_for(speaker, world, post, rng, mode)
+                    # Per-agent message; shared_weights_kin assimilates by lineage; C2X forces non-kin.
+                    speaker = _speaker_for(pop, i, j, gen_round, arm, speaker_rule)
+                    msg = _message_for(speaker, world, post, rng, mode) if speaker is not None else None
                     scores.append(_decoded_score(pop[i], msg, weights))
                 pick = int(np.argmax(scores))
             out = eat(states[i], world.patch(*posts[pick]), weights)
