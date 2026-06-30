@@ -1,4 +1,12 @@
-# STAGE: C2X3 — FORCED-DIVERSITY × CROSS-LINEAGE PRESSURE — pre-registration **DRAFT v2 (not locked)**
+# STAGE: C2X3 — FORCED-DIVERSITY × CROSS-LINEAGE PRESSURE — pre-registration **v2.1 — LOCKED**
+
+**LOCK note (review round 2: Codex + Opus-4.7 both on v2).** Both confirmed the round-1 blocker (decision-tree
+conflation) is RESOLVED, no-oracle clean, quota = legit niching (not painting), per-gen logging resolves the
+timing question. Both INDEPENDENTLY caught the SAME real v2 bug — the degenerate byte-stability test
+`K=POP,m=1` is impossible under AUGMENT (Codex called it DO_NOT_LOCK, Opus polish; identical fix). Applied:
+degenerate test → **K=0** (+ quota-specific invariants); CF **gray-zone** verdict `C2X3_INCONCLUSIVE_GRAY_CF`
+(sub-SESOI rise not forced into private/public); `CONTENT_FREE_SHORTCUT` → `CONTENT_FREE_UNDER_FORCED_ROUTING`
+(+ kin-context note). No science change; these are label/test correctness. LOCKED for implementation.
 
 **v2 changelog (review round 1: Codex DO_NOT_LOCK + Opus-4.7 LOCK → adjudicated Codex's blocker is real, applied).** Codex's blocker: the decision tree conflated alive-viability / content-load / content-free. Fixed → §5 now has FOUR independent checks (alive_viable = ALIVE only, no open-vs-mute; diversity_held; treatment_content_load = open>mute IN the forced arm; CF_success), §6 is an ordered tree. CONTENT_FREE is now judged in the treatment arm (Codex), NOT "kin dead" (my v1 error). Added `C2X3_QUOTA_KINONLY` control + `C2X3_DESIGN_FAILURE_QUOTA` to de-confound "pressure beats quota" from "quota too weak". Renamed PUBLIC_CODE_EMERGES → `C2X3_SCOPED_PUBLIC_CODE_GIVEN_FORCED_DIVERSITY` (scope in the label). Pinned quota = augment + lowest-index tiebreak; "census slots guaranteed, living N_eff measured"; degenerate byte-stability test. Both reviewers: quota is legit niching (not painting), no-oracle clean, per-gen logging resolves the timing question.
 
@@ -88,8 +96,10 @@ Each check has its OWN metric; open-vs-mute is NOT inside viability:
    - QUOTA_KINONLY also failed → `C2X3_DESIGN_FAILURE_QUOTA` (quota too weak / mis-implemented — NOT a
      science result; fix the quota & rerun).
 3. alive_viable + diversity_held + NOT treatment_content_load (open ≯ mute in FORCED) →
-   `C2X3_CONTENT_FREE_SHORTCUT` (the world doesn't need message content at all = reward-message decoupled;
-   judged IN the treatment arm, NOT via "kin dead" — Codex's correct test).
+   `C2X3_CONTENT_FREE_UNDER_FORCED_ROUTING` (in THIS arm's 50%-non-kin routing, no message content is
+   load-bearing — judged in the treatment arm, NOT via "kin dead", Codex's correct test). NB: if the
+   kin-routing paired_eval (§8) shows kin content IS healthy, read this as "the forced routing dilutes
+   content too much," NOT "the world doesn't reward content" (Opus).
 4. + treatment_content_load + CF_success → `C2X3_SCOPED_PUBLIC_CODE_GIVEN_FORCED_DIVERSITY` (renamed so the
    label itself carries the scope — Opus/Codex: a label-only reader must not over-read it as "public code
    emerges naturally"). Scoped positive: cross-lineage code CAN form when diversity is held; remaining
@@ -98,6 +108,9 @@ Each check has its OWN metric; open-vs-mute is NOT inside viability:
    ≈ floor) → `C2X3_PRIVATE_CODES_PERSIST_UNDER_FORCED_DIVERSITY` (bulletproof negative, n≥16: alive +
    diverse + content load-bearing, yet cross-lineage stays at floor → grounding / rich-world needed = next
    paper). The clean, interpretable negative C2X2 could not deliver.
+5b. CF above floor but margin < SESOI (a real-but-sub-threshold rise, `cf_during_high_pressure_coexist`
+   NOT at floor) → `C2X3_INCONCLUSIVE_GRAY_CF` (report the partial rise honestly; do NOT force it into
+   private-codes OR public-code — Codex gray-zone fix).
 6. CF rises but painted guards fail → `C2X3_PAINTED_ALIGNMENT`. Any non-positive at n=8 → `C2X3_INCONCLUSIVE_N8`.
 
 ## 7. No-oracle + not-manufactured-alignment
@@ -114,9 +127,13 @@ non-kin, no quota) so a positive verdict is on unscaffolded cross-lineage decodi
   compute gen-start lineage counts → pick top-K largest lineages (**ties → lowest lineage-index**) →
   reserve **m** offspring slots each (AUGMENT: they may also win more via tournament) → fill the remaining
   `n − K·m` slots by the C1 tournament-k2-on-shared-fitness; preserve_lineage=True throughout.
-- **Byte-stability tests:** (i) MII numpy-equivalence (carried); (ii) constant-route at p=0 == kin-only
-  (carried); (iii) **`_select_next_quota` at K=POP,m=1 must be byte-identical to `_select_next_soft`** (the
-  degenerate case — catches quota-impl errors).
+- **Byte-stability + quota tests** (Codex+Opus both flagged the v2 test as impossible): (i) MII
+  numpy-equivalence (carried); (ii) constant-route at p=0 == kin-only (carried); (iii) **`_select_next_quota`
+  at K=0 (no reservation → all slots go to tournament) must be byte-identical to `_select_next_soft`** (the
+  correct degenerate case; NOT K=POP,m=1 — under AUGMENT that reserves every slot and tournament never runs,
+  so it cannot equal soft). PLUS quota-specific invariants: each protected lineage receives **≥ m** offspring;
+  AUGMENT lets protected lineages **also** win extra tournament slots; the top-K tiebreak (lowest
+  lineage-index) is deterministic.
 - Constant-0.5 routing reuses C2X2's mixed-route closure with fixed p=0.5. **kin-content-load** = reuse
   C2X2 `paired_eval` (rtc_g1f_c2x2_ramped.py:152) on KIN routing (speaker_rule=None) — reported as context.
 - **Store the per-gen trajectory arrays in the JSON** (the C2X2 gap) + per-gen: protected-lineage IDs,
