@@ -79,7 +79,7 @@ control, whose fix left the conclusion intact and slightly strengthened the marg
 (+0.045 $\to$ +0.0548).
 \end{abstract}
 
-Code \& data: all source, the hand-coded world, the experiment runners, and every banked verdict JSON are openly available at \url{https://github.com/yangchunxuan/grown-grounded-language}; every result regenerates via the commands in the Appendix. An archival snapshot is deposited at Zenodo, DOI \url{https://doi.org/10.5281/zenodo.21074235} (concept DOI, always resolving to the latest version).\\
+Code \& data: all source, the hand-coded world, the experiment runners, and every banked verdict JSON are openly available at \url{https://github.com/yangchunxuan/grown-grounded-language}; every result regenerates via the per-stage commands in the Appendix and \texttt{offscreen/RUNBOOK.md}. An archival snapshot is deposited at Zenodo, DOI \url{https://doi.org/10.5281/zenodo.21074235} (concept DOI, always resolving to the latest version).\\
 \blfootnote{\textcopyright{} 2026 Chunxuan Yang. Published under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.}
 
 \textbf{Keywords:} artificial life; emergent communication; signalling code; survival selection; clonal descent; kin selection; adversarial self-audit methodology
@@ -357,7 +357,9 @@ The central failure mode in this literature is leakage: an agent that secretly r
 truth can fake communication. We draw a hard \textbf{no-oracle redline}: agent decisions
 may read \textbf{only decoded messages, own body state, and legal sensors}, \emph{never}
 true world patch, edibility, target-code, or founder-id-as-policy-input. A static-analysis
-scan enforces a subset on the core runner.
+scan (\texttt{\_redline\_scan}) enforces a subset on the core co-evolution runner
+\texttt{rtc\_g1f\_coevolve.py} only; the cross-lineage runners (C2X/C2X2/C2X3) are enforced
+by construction and checked by code-grounded review, not by this automated scan.
 
 \subsection{Code-grounded adversarial multi-agent review}
 
@@ -475,8 +477,9 @@ chance while each decoded its own kin $\approx 100\times$ above chance.
 Two pre-registered sentinels rule out the obvious artifacts. (i) \textbf{Lineage-shuffle}:
 permuting lineage labels lifts CF from 0.0009 to 0.065 (a \textasciitilde{}75$\times$
 jump), confirming the metric truly keys on lineage membership. (ii) \textbf{Gate-0 (content
-load-bearing)}: opening the channel yields MII 0.31 versus 0.03 when muted and 0.05 when
-scrambled, with CIs excluding zero. The floor-level CF is genuine cross-lineage
+load-bearing)}: open-channel populations survive far better than muted or scrambled ones
+(fraction alive 0.31 vs.\ 0.03 vs.\ 0.05, CIs excluding zero), so message content is
+load-bearing for survival. The floor-level CF is therefore genuine cross-lineage
 unintelligibility, not an inert channel.
 
 \subsection{Maintaining diversity is necessary but not sufficient}
@@ -809,10 +812,16 @@ every g1f harness via \texttt{os.environ.setdefault}; all banked g1f-arc runs us
 \begin{itemize}
 \item \textbf{g1f (survival-selected channel; 28 generations):} predates the
   provenance-block discipline; reproduce as a documented multi-step sequence. (1) Run the
-  $n{=}48$ RNG-fixed random-fitness control. This rngfix verdict is the \textbf{sole source}
-  for every headline number. (2) The legacy helpers predate the RNG-fix and are
-  \textbf{superseded}. (3) Lineage composition:
-  \texttt{rtc\_g1f\_lineage\_share\_verdict.json}: dominant-share 99.1\%, N$_{\rm eff}$ 1.02.
+  $n{=}48$ RNG-fixed random-fitness control:
+  \texttt{RTC\_G1F\_FORMAL=1 RTC\_TOXIC\_DEATH=-0.9 RTC\_G1F\_COMMBLIND\_SEEDS=48 python -m
+  offscreen.rtc\_g1f\_commblind\_control}, banked as
+  \texttt{rtc\_g1f\_commblind\_verdict\_formal48\_rngfix.json} @5a6885a (its embedded
+  provenance records base commit \texttt{254f3d7} with \texttt{git\_dirty}; it was banked at
+  \texttt{5a6885a}). This rngfix verdict is the \textbf{sole source} for every headline
+  number. (2) The legacy helpers (\texttt{..\_formal48.json}, \texttt{..\_reconciled\_verdict.json})
+  predate the RNG-fix and are \textbf{superseded}. (3) Lineage composition
+  (\texttt{RTC\_G1F\_LINEAGE\_SEEDS=48 python -m offscreen.rtc\_g1f\_lineage\_share}):
+  \texttt{rtc\_g1f\_lineage\_share\_verdict.json} @5a6885a: dominant-share 99.1\%, N$_{\rm eff}$ 1.02.
 
 \item \textbf{g1f transient probe (secondary, post-hoc; gen 28/56/100/150, $n{=}24$):}
   \texttt{rtc\_g1f\_transient\_probe\_verdict.json} @ddc2822.
@@ -842,7 +851,9 @@ harness invariants under \texttt{tests/}, enforced on every push by
 against silent behavior drift: vectorized MII is byte-identical to the reference loop;
 \texttt{make\_provenance} produces a well-formed record; all RTC modules import cleanly; and
 the no-oracle redline scan (\texttt{\_redline\_scan} over
-\texttt{rtc\_g1f\_coevolve.py}) returns zero hits.
+\texttt{rtc\_g1f\_coevolve.py}) returns zero hits. This automated scan covers the core
+co-evolution runner only; the cross-lineage runners (C2X/C2X2/C2X3) are enforced by
+construction and checked by code-grounded review, not by this scan.
 
 \FloatBarrier
 

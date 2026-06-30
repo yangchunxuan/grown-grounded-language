@@ -54,7 +54,7 @@ pre-registration + no-oracle + adversarial review) that keeps every claim honest
 ## Runners (`offscreen/`) — the g1f arc, in order
 | runner | stage | mechanism | verdict json |
 |---|---|---|---|
-| `rtc_g1f_coevolve.py` (`_run_arm`) | g1f | survival-selected channel, 5 arms | `rtc_g1f_commblind_verdict_formal48.json` etc. |
+| `rtc_g1f_coevolve.py` (`_run_arm`) | g1f | survival-selected channel, 5 arms | `rtc_g1f_commblind_verdict_formal48_rngfix.json` (sole headline source) + `rtc_g1f_lineage_share_verdict.json`; legacy `..._formal48.json` / `..._reconciled` / `..._power_analysis` = superseded |
 | `rtc_g1f_kinonly_diagnostic.py` | diagnostic | why kin-only? CF vs WF vs floor | `rtc_g1f_kinonly_diagnostic_verdict.json` |
 | `rtc_g1f_c1_collapse_probe.py` | C1 | 2×2 {hard,soft}×{16,96} niching | `rtc_g1f_c1_collapse_probe_verdict.json` |
 | `rtc_g1f_c2x_crosslineage.py` | C2X | forced 100% non-kin listening | `rtc_g1f_c2x_crosslineage_verdict.json` |

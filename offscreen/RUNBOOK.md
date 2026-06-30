@@ -12,6 +12,11 @@ THAT result was produced). Run all commands from the repo root.
   negative**; bank a negative only at **n=16**.
 - **Determinism:** every run is seeded; same command+commit → byte-identical verdict. Re-running OVERWRITES
   the working verdict JSON — the banked version is preserved in git at the commit the ledger cites.
+- **Embedded vs banked provenance:** a verdict's embedded `provenance.git_commit` records the BASE commit of
+  the working tree *when the run was generated* (with `git_dirty: true` if there were uncommitted changes);
+  this can differ from the **banking commit** where the file actually lives in git (cited as `@commit` in the
+  ledger/paper). Both are intentional — cite the banking commit; the embedded base+dirty is the honest record
+  of generation. (e.g. the rngfix/lineage verdicts: embedded base `254f3d7`-dirty, banked `@5a6885a`.)
 - **Seed-parallelism (C2X3+):** `C2X3_WORKERS=N` parallelizes seeds; default `1` (serial, byte-stable).
   Cap workers (do NOT saturate): ~6 on a 16-core box. Verified byte-identical to serial (see Gate below).
 

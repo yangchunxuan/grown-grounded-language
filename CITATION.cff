@@ -1,27 +1,30 @@
 cff-version: 1.2.0
-message: "If you use this software or refer to these results, please cite the ALIFE 2026 Late-Breaking Abstract below."
+message: "If you use this software or refer to these results, please cite the paper below."
 title: "grown-grounded-language: research code and committed verdict artifacts"
 type: software
+version: "v2.0-g1f"
 authors:
   - family-names: "Yang"
     given-names: "Chunxuan"
     affiliation: "Sogang University"
 repository-code: "https://github.com/yangchunxuan/grown-grounded-language"
+doi: "10.5281/zenodo.21074235"
 license: MIT
 keywords:
   - artificial life
   - emergent communication
-  - grounded language
-  - multi-agent reinforcement learning
-  - world models
-  - negative results
+  - signalling code
+  - survival selection
+  - clonal descent
+  - kin selection
+  - adversarial self-audit methodology
 preferred-citation:
-  type: conference-paper
-  title: "Five Walls on the Path to Growing a Grounded Language: An Adversarial Self-Audit of Emergent Communication"
+  type: article
+  title: "A Decodable Signalling Code Co-evolves but Stays Private to Kin: Survival Selection, Clonal Descent, and Why No Public Code Bootstrapped in a Minimal World"
   authors:
     - family-names: "Yang"
       given-names: "Chunxuan"
       affiliation: "Sogang University"
-  collection-title: "Proceedings of the 2026 Conference on Artificial Life (ALIFE 2026), Late-Breaking Abstracts"
+  journal: "Artificial Life (MIT Press)"
   year: 2026
-  notes: "Late-Breaking Abstract. Paper text licensed CC-BY 4.0."
+  notes: "Submitted. Code archived at Zenodo, concept DOI 10.5281/zenodo.21074235. Paper text licensed CC-BY 4.0. Supersedes the 'Five Walls' ALIFE 2026 late-breaking abstract (tag v1.0-alife2026)."

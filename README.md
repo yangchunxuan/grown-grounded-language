@@ -1,249 +1,170 @@
 # Grown Grounded Language
 
-**From-scratch agents that try to GROW a shared, decodable, grounded language — and an
-adversarial self-audit that keeps catching us when we think we've succeeded.**
+**A from-scratch ALife study of whether a *decodable* signalling code can grow under survival
+selection alone — and whether what grows is a public language or a private kin code.**
 
-Grown Grounded Language is a research codebase for **emergent grounded communication and cooperation** in
-small multi-agent worlds. The standing goal of the field — and of this project — is a
-population of *from-scratch* creatures that **grows** a language which is
+This repository backs the paper **"A Decodable Signalling Code Co-evolves but Stays Private to
+Kin: Survival Selection, Clonal Descent, and Why No Public Code Bootstrapped in a Minimal
+World"** (submitted to *Artificial Life*, MIT Press), and its 2-page compression as an
+**ALIFE 2026 Late-Breaking Abstract** ("Survival Selection Grows a Private Kin Code, Not a
+Public Language").
 
-- **shared** (one agent can decode another's symbols),
-- **decodable / grounded** (symbols carry world content we can read with probes), and
-- **load-bearing** (the language causally helps the agents survive and cooperate, not
-  merely present).
+- Journal manuscript: `paper/ggl.tex` → `paper/ggl.pdf`
+- ALIFE-2026 late-breaking abstract: `paper/lba_g1f.tex` → `paper/lba_g1f.pdf`
+- Archived snapshot (cite this): Zenodo concept DOI **10.5281/zenodo.21074235** (tag `v2.0-g1f`)
 
-This repository backs an **ALIFE 2026 Late-Breaking Abstract** that reports, honestly, that
-we did **not** reach that goal — and argues that the *methodology we used to keep ourselves
-honest* is the more useful contribution. The headline is a negative result with a precise
-diagnosis, plus a small set of scoped, audited positives.
-
-> **This project is a standalone language + cooperation + world-model research program**, factored
-> out of a larger internal ALife sandbox so the communication research stands on its own with
-> no external dependency.
+> The earlier "Five Walls" late-breaking abstract (`paper/lba.tex`, frozen at tag
+> `v1.0-alife2026`) is **superseded** by the g1f arc above and is kept only as a historical
+> artifact. Do not read it as the current result.
 
 ---
 
-## The headline result (honest)
+## The headline result (honest, scoped)
 
-Across five distinct attempts to make a *grown* channel become load-bearing, we banked
-**zero clean wall-breaks**. Every apparent success, when stress-tested, turned out to be a
-**cheap shortcut the world allowed** rather than real grown language. The convergent
-diagnosis:
+In a minimal hand-coded 2-D lethal-vent world, tiny tied code-table agents (initialised from
+`N(0,1)`, no gradient on communication, no oracle, no borrowed weights) evolve a **decodable**
+communication channel under survival selection. The result **decomposes**:
 
-> **In the worlds we tested, world design was a recurring bottleneck.** Structure does not grow
-> in worlds too small to require it; *installed* structure works, but we did not see it *emerge*.
+- The architecture-matched **random-fitness control** — identical in every way except the
+  reproduction-fitness signal (survival vs uniform-random, reproduction RNG byte-matched) —
+  also fixates to ~one lineage and already reaches mutual intelligibility (MII) **0.1174**
+  (~73× the 1/625 ≈ 0.0016 chance floor). This is the clonal-descent baseline, not zero.
+- At the pre-registered gen-28 fixation point, survival selection adds a **paired win-margin of
+  +0.0548 (95% CI [0.0234, 0.0849], n=48)**: survival-arm MII **0.17219** vs control **0.1174**.
+  Selection therefore *sharpens* a largely descent-determined channel rather than originating it.
+- A secondary, post-hoc transient probe (n=24) shows this margin is a **transient acceleration**
+  that decays to a CI including zero by ~gen 100 as the control's own clonal fixation catches up.
+- The code stays **private to kin**: the survival arm fixates to a single founder lineage
+  (dominant-lineage share **99.1%**, N_eff **1.02**), so within-founder MII runs ≈0.16 (~100×
+  chance) while cross-founder MII sits at the floor.
+- **No public cross-lineage code bootstraps.** Even when diversity is actively sustained
+  (niching at pop=96, soft96: N_eff 4.10 over 20+ coexisting generations) and even when survival
+  is made to depend on decoding non-kin (three heterogeneous interventions C2X/C2X2/C2X3),
+  cross-founder MII never leaves the floor; where the pressure bites, survival crashes. We name
+  this a **pressure-vs-survival tension**. (Cross-lineage probes are n=8: positive-or-inconclusive
+  tier — reported as "did not bootstrap under the regimes tested," not a formal negative.)
 
-To check this, we built a shortcut-proof world (a **Relay-Tide Commons (RTC)**: a 2D living
-micro-society on a torus where survival depends on decoding and relaying messages about a
-hidden tidal nutrient field that no single body can sense). Inside it, with the same audit
-rig applied, we get:
+### The attack-machine (methodology contribution)
 
-| Result | What it shows | Status |
-|---|---|---|
-| **g1d — lethal signaling** | A *separately trained* grown channel's content (specifically its content-to-location **binding**) is **relatively** load-bearing for survival vs. degraded controls. | Scoped positive |
-| **g1e — use emerges under selection** | A heritable "trust" gene that gates *using* the channel is **selected up** under real content but not under scrambled content or no selection. | Scoped positive (adoption, not de-novo emergence) |
-| **g1f — does the channel co-evolve?** | Starting from **random** speaker/listener weights under survival selection alone, we detect **no** growth into a load-bearing channel. An apparent intelligibility rise did not separate from a communication-blind control (consistent with **clonal descent-convergence**). | **No detectable effect (underpowered, n=6)** |
-
-So: a grown channel can be *adopted* and can be *relatively* useful when handed to the
-agents, but we detect **no growth from scratch under selection** (underpowered) — the signaling-bootstrap
-deadlock holds. The core goal remains unreached.
-
-### The attack-machine (methodology)
-
-A result counts **only if it survives all four checks simultaneously**:
-
-1. an **architecture-matched null** (same parameters/recurrence, mechanism ablated — e.g. an
-   untrained random reservoir, a frozen-random channel);
-2. a **fair baseline** the mechanism must beat by design;
-3. **≥6 seeds with a bootstrap CI on the win-margin** (treatment − null), not on the
-   treatment alone; and
-4. an **adversarial red-team** that actively tries to construct a confound.
-
-As an executable protocol — a result is banked only if **every** row passes:
-
-| Step | Required artifact | Pass criterion |
-|---|---|---|
-| Null | matched-architecture ablation | win-margin CI > 0 vs. null |
-| Baseline | fair non-mechanistic baseline | treatment beats baseline |
-| Seeds | ≥6 seeds | bootstrap CI on the margin |
-| Red-team | written confound report | no surviving shortcut |
-| Verdict | committed JSON / log | reproducible from seeds |
-| Replication | separate machine / model | same headline verdict |
-
-This rig caught **six** of our own apparent wins as artifacts (e.g. a "+0.10" world-model
-denoising gain that an untrained reservoir beat by 3–4×; a channel "intelligibility rise"
-that did not separate from a communication-blind random-fitness control). The negatives in
-this repo are *earned* — the rig was in the room when the most attractive numbers landed.
+Every claim must survive an **architecture-matched control**, a **fair baseline**, **≥6-seed
+bootstrap-CI win-margins**, **frozen pre-registration**, a **no-oracle redline**, and
+**code-grounded adversarial review**. The single methodological claim is **bidirectionality**:
+the audit is built to catch *deflation* as readily as inflation. It demonstrably did, twice, on
+this project's own headline: (1) a pilot/formal false *negative* that had buried a real effect,
+and (2) an RNG-offset bug in the headline control whose fix *strengthened* the margin
+(+0.045 → +0.0548).
 
 ---
 
-## The paper
+## Setup
 
-> **Chunxuan Yang.** *Five Walls on the Path to Growing a Grounded Language: An Adversarial Self-Audit of
-> Emergent Communication.* ALIFE 2026, Late-Breaking Abstract. Sogang University, Seoul,
-> Republic of Korea.
+Python ≥ 3.10. Mirrors `.github/workflows/ci.yml` (CPU-only Torch):
 
-Source: `paper/lba.tex` (with `paper/fig_rtc.pdf` and the compiled `paper/lba.pdf`). The figure
-`fig_rtc` is regenerated directly from the committed verdict JSONs by `make_fig_rtc.py`, as described
-below.
-
----
+```bash
+python3 -m venv .venv && . .venv/bin/activate          # use `python3`; `python` may be unset
+pip install --index-url https://download.pytorch.org/whl/cpu torch   # CPU wheel (avoids the large CUDA download)
+pip install -r requirements.txt
+python -m pytest tests/ -q                              # expected: 24 passed
+```
 
 ## Reproducing the headline numbers
 
-All experiments are Python + PyTorch, CPU-only (no GPU required), and deterministic per seed. Run them as
-**modules from the repository root** (they import `config.prereg_rtc` and `offscreen.*`).
-Tunable knobs are environment variables; verdict filenames embed the prereg values
-(`RTC_SENSOR_SIGMA`, `RTC_TOXIC_DEATH`) so each run is self-labeling.
+Python, CPU/GPU, deterministic per seed. Run as **modules from the repository root**. The
+heavy runs cannot be CI-automated; the exact per-stage commands, env vars, and expected
+verdicts are in **`offscreen/RUNBOOK.md`** (paired with `ARCHITECTURE.md` and the claim ledger
+`offscreen/CLAIM_LEDGER.md`). The g1f headline:
 
 ```bash
-# from the repo root
-export PYTHONUTF8=1
+# headline: RNG-fixed random-fitness control, n=48 (the SOLE source of every headline number)
+RTC_G1F_FORMAL=1 RTC_TOXIC_DEATH=-0.9 RTC_G1F_COMMBLIND_SEEDS=48 \
+  python -m offscreen.rtc_g1f_commblind_control
+#   -> offscreen/rtc_g1f_commblind_verdict.json (banked as ..._formal48_rngfix.json):
+#      survival MII 0.17219 vs random-fitness 0.1174, paired margin +0.0548 [0.0234, 0.0849]
+
+# lineage composition (kin-privacy)
+RTC_G1F_FORMAL=1 RTC_TOXIC_DEATH=-0.9 RTC_G1F_LINEAGE_SEEDS=48 \
+  python -m offscreen.rtc_g1f_lineage_share
+#   -> rtc_g1f_lineage_share_verdict.json: dominant-share 99.1%, N_eff 1.02
+
+# transient probe (margin decays to gen 150)
+RTC_G1F_FORMAL=1 RTC_TOXIC_DEATH=-0.9 RTC_G1F_TRANSIENT_SEEDS=24 \
+  RTC_G1F_TRANSIENT_CKPTS=28,56,100,150 python -m offscreen.rtc_g1f_transient_probe
 ```
 
-### g1d — lethal signaling (24 seeds): content binding is load-bearing vs. controls
+The kin-only diagnostic and the C1 / C2X / C2X2 / C2X3 cross-lineage probes (and the
+parallel-equivalence gate) are documented stage-by-stage in `offscreen/RUNBOOK.md`. Paper
+figures regenerate from the committed verdict JSONs via `python paper/make_figs.py`.
 
 ```bash
-RTC_SENSOR_SIGMA=0.3 RTC_TOXIC_DEATH=-0.9 RTC_LE_SEEDS=24 \
-  python -m offscreen.rtc_g1d_lethal
-# writes offscreen/rtc_g1d_lethal_verdict_sig0.3.json
+# fast invariant tests (these ARE in CI) — includes the no-oracle redline scan
+python -m pytest tests/ -q          # expected: 24 passed
 ```
 
-Expected (from `offscreen/rtc_g1d_lethal_verdict_sig0.3.json`): survival —
-**fusion 0.58**, scramble 0.08, **misroute 0.04**, mute 0.04, oracle 1.00 (fenced
-reference). The decisive **misroute** control (correct content, broken
-content-to-location binding) dies, isolating that the *binding*, not mere signal presence,
-carries survival.
-
-### g1e — content-use emerges under selection (8 seeds)
-
-```bash
-RTC_SENSOR_SIGMA=0.3 RTC_TOXIC_DEATH=-0.9 RTC_EM_SEEDS=8 \
-  python -m offscreen.rtc_g1e_emerge
-# writes offscreen/rtc_g1e_emerge_verdict_tox-0.9.json
-```
-
-Expected (from `offscreen/rtc_g1e_emerge_verdict_tox-0.9.json`): the trust gene rises from
-~0.17 to **0.96** under real content, but stays at the mutation floor (~0.30 scramble,
-~0.41 drift). Verdict `RTC_G1E_CONTENT_USE_EMERGES`.
-
-### g1f — does the channel co-evolve from random init? (no detectable effect, underpowered; 6 seeds)
-
-Run the g1f **formal** block
-(not the cheap pilot) with `RTC_G1F_FORMAL=1`:
-
-```bash
-RTC_G1F_FORMAL=1 RTC_TOXIC_DEATH=-0.9 RTC_G1F_SEEDS=6 \
-  python -m offscreen.rtc_g1f_coevolve
-# writes offscreen/rtc_g1f_coevolve_verdict.json
-
-# communication-blind control (the one that exposes the artifact):
-python -m offscreen.rtc_g1f_commblind_control
-```
-
-Expected (from `offscreen/rtc_g1f_coevolve_verdict.json`): the only arm whose cross-agent
-mutual intelligibility (MII) moves off the bootstrap floor is `shared_weights_kin`
-(final MII ≈ **0.124** vs. its architecture-matched null `shared_frozen_random` ≈ 0.002) —
-but that rise is **not** load-bearing: survival does **not** co-rise with MII, and a
-communication-blind random-fitness control reaches the same MII level (clonal
-descent-convergence). Verdict `RTC_G1F_MII_MOVES_NOT_LOAD_BEARING` — i.e. we detect no
-co-evolution of the channel (underpowered, n=6).
-
-### Tests
-
-```bash
-PYTHONUTF8=1 python -m pytest tests/ -q
-```
-
-`tests/test_rtc_smoke.py` import-checks every RTC module and asserts the **no-oracle redline**:
-each RTC harness ships a static scan (`_redline_scan()` in `offscreen/rtc_g1f_coevolve.py`) that
-rejects forbidden ground-truth access, so an agent's decision reads only its decoded channel, its
-own body, and heard messages — never the true field. (The true field is read only by `eat()`
-resolution and the clearly-fenced `oracle` reference arm.)
+> Companion probes `g1d` (world-state grounding) and `g1e` (use-emerges-under-selection) are
+> retained in `offscreen/` and cited once in the paper as supporting / out-of-scope.
 
 ---
 
 ## Repository structure
 
-This is a **minimal companion repository** trimmed to exactly what backs the paper.
-
 ```
 rtc_*.py        RTC substrate at repo root: rtc_world, rtc_language, rtc_metabolism,
                 rtc_perception, rtc_fusion.
-make_fig_rtc.py regenerates paper/fig_rtc.pdf from the committed verdict JSONs.
-reproduce.sh    re-runs g1d / g1e / g1f + tests + figure.
-systems/        the from-scratch machinery the RTC experiments need: the emergent
-                channel (mortal_channel), Kirby iterated learning (mortal_generations),
-                mortal_death, mortal_metrics, and the CTM continuous-thought cell (ctm_cell).
-config/         frozen pre-registration: prereg_rtc.py (RTC world constants + env knobs)
-                and prereg_mortal.py.
-offscreen/      the RTC experiment runners (rtc_g0/g1/g1b/g1c/g1d/g1e/g1f_coevolve +
-                rtc_g1f_commblind_control) + the committed *verdict.json that back every
-                number in the paper, plus WALLS_VERDICT.md, CTM_ARC_WRITEUP.md, and
-                STAGE_RICH_WORLD_RTC_SPEC.md.
+config/         frozen pre-registration: prereg_rtc.py (RTC world constants + env knobs).
+systems/        from-scratch machinery (emergent channel, Kirby iterated learning, CTM cell).
+offscreen/      experiment runners (rtc_g1f_* : coevolve, commblind_control, lineage_share,
+                transient_probe, kinonly_diagnostic, c1/c2x/c2x2/c2x3) + the committed
+                *_verdict.json behind every number, plus the canonical paper markdown
+                (PAPER.md), the claim ledger (CLAIM_LEDGER.md), the runbook (RUNBOOK.md),
+                the arc write-up (G1F_ARC_WRITEUP.md), and REFERENCES_VERIFIED.md.
 tests/          test_rtc_smoke.py — import smoke + the no-oracle redline assertion.
-paper/          lba.tex, fig_rtc.pdf, the compiled lba.pdf, and the ALIFE style file.
+paper/          ggl.tex/ggl.pdf (journal submission), lba_g1f.tex/.pdf (ALIFE-2026 LBA),
+                figs/ + make_figs.py; lba.tex/fig_rtc/make_fig_rtc.py = frozen old "Five Walls" LBA.
+ARCHITECTURE.md file-by-file map of the substrate.
 ```
 
 ---
 
-## Honest status and limitations
+## Honest limits
 
-- **The core goal is not achieved.** A load-bearing grounded language that *grows* from
-  scratch under selection has not been demonstrated. The positives live *inside constructed
-  worlds*; g1d is *relative* (vs. degraded controls), not absolute, and inside a narrow
-  stakes window in a world built to make content matter; g1e is *adoption* of a
-  separately-trained channel, not de-novo emergence; g1f is a co-evolution null (no detectable effect, underpowered).
-- **Recurring obstacle: world design + a grounding/fidelity ceiling.** A grown channel can
-  carry information yet remain too imprecise, or too easily bypassed, to be load-bearing.
-- **Internal disagreement is documented, not hidden.** `offscreen/WALLS_VERDICT.md` is an
-  adversarial internal audit (in Chinese) arguing that several "walls" were closed
-  *prematurely* — that some failures were a handful of tried architectures plus a failure
-  mechanism, packaged as impossibility, rather than proven dead ends. The published abstract
-  uses the calibrated, defensible framing ("each wall fell to a cheap shortcut"); the raw
-  machine verdicts (which never write "CLOSED" or "THEOREM") are the source of truth, and
-  they are all included so readers can judge for themselves.
-- **Hard constraints (non-negotiable, enforced by tests):** no oracle / ground-truth leakage
-  into agent decisions; **no borrowed pretrained weights** (no LLM/Qwen — architectures and
-  methods may be borrowed, weights are trained from scratch on this world); frozen
-  pre-registration thresholds (no goalpost-moving).
-- **Scope:** small CPU experiments (single-digit-to-low-dozens of seeds, populations of
-  ~12–40). Compute was never the bottleneck; method and task design were.
+- The co-evolution headline is well powered (n=48) but the margin is **modest** and is a
+  **transient acceleration** of a clonal-descent channel, not a sustained equilibrium
+  difference; it is scoped to **this world, this architecture, and a 28-generation timescale**.
+- The cross-lineage "no public code bootstrapped" outcome is **n=8 (positive-or-inconclusive
+  tier), not a formal negative** (a formal negative would want n=16); we claim it *did not*
+  bootstrap under the regimes tested, never that it *cannot*.
+- **No-oracle redline:** the automated static scan (`_redline_scan`) covers the core
+  co-evolution runner `rtc_g1f_coevolve.py` only; the cross-lineage runners
+  (C2X/C2X2/C2X3) are enforced by construction and checked by code-grounded review, not by the
+  automated scan.
+- **Hard constraints (enforced by tests):** no oracle / ground-truth leakage into agent
+  decisions; no borrowed pretrained weights (architectures may be borrowed, weights are grown
+  from `N(0,1)`); frozen pre-registration thresholds (no goalpost-moving).
 
 ---
 
 ## AI-assisted methodology disclosure
 
-This work used **multiple AI coding agents** for implementation and an **adversarial
-multi-agent red-team** for verification — and this protocol is itself part of the
-contribution, not an incidental tool. The discipline that makes the results trustworthy is
-that no agent's claimed "win" was accepted without surviving the four-check attack-machine
-(architecture-matched null, fair baseline, ≥6 seeds with a bootstrap CI on the win-margin,
-adversarial red-team). Headline scripts were **independently rerun from a fresh clone on a
-separate machine** and produced the same verdicts, with an oracle-leakage audit. The human author (Chunxuan
-Yang) set the goals, the frozen pre-registration thresholds, and the redlines, and made the
-final claims.
+AI-based tools assisted with code implementation and manuscript drafting/editing. All
+scientific claims, data, analyses, and conclusions are the author's own and were verified by
+the author, who takes full responsibility for the content. The discipline that makes the
+results trustworthy is the bidirectional self-audit described above: no claimed "win" was
+banked without surviving an architecture-matched control, a fair baseline, ≥6-seed bootstrap-CI
+win-margins, frozen pre-registration, a no-oracle redline, and code-grounded adversarial review.
 
 ---
 
 ## License and how to cite
 
-**Code & artifacts:** released under the **MIT License** (see `LICENSE`).
-**Paper text & figures:** © 2026 Chunxuan Yang, **CC BY 4.0**.
+**Code & artifacts:** MIT License (see `LICENSE`).  **Paper text & figures:** © 2026 Chunxuan
+Yang, CC BY 4.0.
 
-```bibtex
-@inproceedings{yang2026fivewalls,
-  title     = {Five Walls on the Path to Growing a Grounded Language:
-               An Adversarial Self-Audit of Emergent Communication},
-  author    = {Yang, Chunxuan},
-  booktitle = {Proceedings of the 2026 Conference on Artificial Life (ALIFE)},
-  series    = {Late-Breaking Abstracts},
-  year      = {2026},
-  address   = {Sogang University, Seoul, Republic of Korea}
-}
+Please cite the *Artificial Life* paper (and the archived code via the Zenodo concept DOI
+**10.5281/zenodo.21074235**). A BibTeX entry will be finalized on acceptance; until then cite as:
+
 ```
-
-If you use the **self-audit protocol** (architecture-matched nulls + communication-blind
-controls + win-margin CIs + adversarial red-team), please cite the abstract above. We
-suggest emergent-communication claims be reported against architecture-matched nulls and
-communication-blind controls as standard.
+Chunxuan Yang (2026). A Decodable Signalling Code Co-evolves but Stays Private to Kin:
+Survival Selection, Clonal Descent, and Why No Public Code Bootstrapped in a Minimal World.
+Submitted to Artificial Life (MIT Press). Code: https://github.com/yangchunxuan/grown-grounded-language
+(Zenodo DOI 10.5281/zenodo.21074235).
+```
