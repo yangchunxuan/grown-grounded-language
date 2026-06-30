@@ -1,0 +1,166 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{natbib,alifeconf}  %% The order is important
+\usepackage{url,hyperref,cleveref}
+\hypersetup{hidelinks,
+  pdftitle={A Decodable Signalling Code Co-evolves but Stays Private to Kin: Survival Selection in a Minimal World},
+  pdfauthor={Chunxuan Yang}}
+\usepackage{booktabs}
+\usepackage{placeins}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\title{A Decodable Signalling Code Co-evolves but Stays Private to Kin:\\ Survival Selection in a Minimal World}
+\author{
+    Chunxuan Yang \\
+    \mbox{}\\
+    Sogang University, Seoul, Republic of Korea \\
+    yang2023@sogang.ac.kr \quad yangchunxuan1@gmail.com
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Can a decodable signalling code \emph{grow} from random weights under survival selection
+alone, with no gradient on the task, no oracle labels, and no borrowed weights, and is what
+grows public or private to kin? In a minimal hand-coded 2-D lethal-vent world, tiny tied
+code-table agents evolve a decodable channel. Decomposing the result against an
+architecture-matched random-fitness control (whose only difference is the reproduction-fitness
+signal), we find selection \emph{sharpens} rather than originates the channel: clonal descent
+alone reaches mutual intelligibility (MII) 0.1174 (${\sim}73\times$ the $1/625$ chance floor),
+and survival selection adds a paired win-margin of $+0.0548$ (95\% CI $[0.0234, 0.0849]$,
+$n{=}48$) at the pre-registered gen-28 fixation point. A post-hoc probe shows this margin is a
+\emph{transient acceleration} that decays as the control's own clonal fixation catches up. The
+code stays private to kin (dominant-lineage share 99.1\%, $N_{\rm eff}$ 1.02); even when
+diversity is actively sustained, and even when survival is made to depend on decoding non-kin,
+no public cross-lineage code bootstraps, a \emph{pressure-vs-survival tension}. We also
+contribute a bidirectional self-audit that catches deflation as readily as inflation.
+\end{abstract}
+
+Submission type: \textbf{Late Breaking Abstracts}\\
+
+Code \& verdict artifacts: \url{https://github.com/yangchunxuan/grown-grounded-language}; every result regenerates from committed, seeded verdict JSONs.\\
+\blfootnote{\textcopyright{} 2026 Chunxuan Yang. Published under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.}
+
+\section{The question and the world}
+Where does a shared signalling code come from? Most computational accounts \emph{train} a
+channel in (gradient descent on a task with a differentiable channel; \citealp{foerster2016,
+lazaridou2017}) or \emph{design} one in (an imposed iterated-learning transmission bottleneck;
+\citealp{kirby2008, ren2020}). We take up the prior question: can a decodable code \emph{grow}
+from random weights under \textbf{survival selection alone}, and if it does, is it a
+\textbf{public} code or a code private to \textbf{kin}?
+
+The substrate is deliberately minimal and entirely hand-coded: a $48\times48$ lethal-vent
+world in which agents metabolise, can die, and reproduce, and in which a single tied
+\texttt{UnifiedIO} code-table ($4\times5\times6$, $\mathcal{N}(0,1)$ init) is the only
+communicative apparatus. There is no gradient on communication, no oracle (agents never read
+world truth), and no borrowed weights. We measure mutual intelligibility (MII) behaviourally:
+route a referent through one agent's \texttt{emit} into another's \texttt{decode} and score
+exact-tuple recovery against a chance floor of $1/625 \approx 0.0016$. Within-founder (WF) and
+cross-founder (CF) MII separate a \emph{private kin code} (WF high, CF at chance) from a
+\emph{public} one (CF also above chance).
+
+\section{Co-evolution is real, but decomposes and stays kin-private}
+The control is not communication-ablated: both arms carry the full code-table and run the
+identical loop, and the only manipulated variable is the reproduction-fitness signal (survival
+vs.\ uniform-random, with the reproduction RNG byte-matched). This isolates selection from
+\emph{clonal descent-convergence}. The random-fitness arm also fixates to ${\sim}$one lineage,
+so its MII of \textbf{0.1174} (${\sim}73\times$ floor) is the descent baseline, not zero. At
+gen 28 the survival arm reaches \textbf{0.17219}, a paired win-margin of \textbf{$+0.0548$,
+95\% CI $[0.0234, 0.0849]$} ($n{=}48$; \Cref{fig:headline}). Selection therefore \emph{sharpens}
+a largely descent-determined channel rather than originating it.
+
+A post-hoc transient probe ($n{=}24$; gen 28/56/100/150) shows this margin is a \emph{transient
+acceleration}: the survival-arm MII stays ${\sim}0.16$--$0.17$ while the control's MII rises
+($0.117 \to 0.138$) as clonal fixation accumulates cross-agent decodability. The paired margin
+decays from $+0.0569$ at gen 28 (CI excludes zero) to $+0.0249$ at gen 150, with the CI
+including zero from gen 100 onward. The headline is therefore scoped to 28 generations.
+
+The code is \emph{not public}. The survival arm fixates to a single founder lineage
+(dominant-lineage share \textbf{99.1\%}, $N_{\rm eff}$ \textbf{1.02}, 47/48 seeds
+single-lineage), so WF runs ${\approx}0.16$ (${\sim}100\times$ chance) while CF sits at the
+floor.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figs/f_headline.pdf}
+\caption{Co-evolution headline ($n{=}48$, gen 28): per-seed survival vs.\ random-fitness MII
+(left) and the paired win-margin $+0.0548$, 95\% CI $[0.0234, 0.0849]$, which excludes zero
+(right). Source: committed verdict JSON.}
+\label{fig:headline}
+\end{figure}
+
+\section{The wall: no public code bootstraps}
+Is kin-privacy merely an artifact of fast founder collapse? We sustained genuine multi-lineage
+coexistence by niching (tournament selection plus lineage fitness-sharing) at pop=96: the
+soft96 cell holds $N_{\rm eff}$ 4.10 over 20+ coexisting generations, yet CF stays at the floor
+(CF $0.00153$ vs.\ floor $0.0016$; the CF$-$floor CI straddles zero). Maintaining diversity is
+\emph{necessary but not sufficient}.
+
+Making survival itself depend on decoding non-kin does not help either. Across three
+heterogeneous interventions (\Cref{tab:wall}), CF never rose above chance; where the pressure
+bit, it crashed survival. Non-kin codes are mutually undecodable, so forced cross-listening is
+acting on noise, which starves foraging: a \emph{pressure-vs-survival tension}. All
+cross-lineage arms are $n{=}8$ (positive-or-inconclusive tier), so we report that a public code
+\emph{did not} bootstrap under the regimes tested, never that none \emph{can}.
+
+\begin{table}[ht]
+\footnotesize
+\centering
+\caption{Cross-lineage interventions ($n{=}8$ each): CF stays at or below the chance floor
+(${\approx}0.0016$); where pressure bites, survival crashes.}
+\label{tab:wall}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Intervention & frac.\ alive & CF \\
+\midrule
+C2X2 (0.25 non-kin, viable) & 0.157 & 0.00156 \\
+C2X3 (0.5 non-kin, quota) & 0.100 & 0.00192 \\
+C2X (100\% non-kin, cold) & 0.046 & 0.00166 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{A bidirectional self-audit}
+Each claim must survive an architecture-matched control, a fair baseline, $\geq$6-seed
+bootstrap-CI win-margins, frozen pre-registration, a no-oracle redline, and code-grounded
+adversarial review. The audit's single methodological claim is \emph{bidirectionality}: it is
+built to catch deflation as readily as inflation. Two in-scope catches illustrate this. (1) A
+pilot/formal false \emph{negative}: a formal treatment arm had been compared against a pilot
+control, burying a real effect; the load-bearing knob was generation count. (2) An RNG-offset
+bug in the headline control, whose fix left the conclusion intact and slightly
+\emph{strengthened} the margin ($+0.045 \to +0.0548$). Catching a deflation is the direction
+conventional self-checking rarely covers.
+
+\section{Contribution and scope}
+A decodable code grows from scratch under survival selection but stays kin-private; selection
+\emph{accelerates} a clonal-descent channel rather than originating a public one; and no public
+code bootstraps even under sustained diversity and direct cross-lineage pressure. The results
+are scoped to one hand-coded world, one architecture, and per-stage timescales (28--48
+generations). We read the wall as motivating a richer world and a consequence-driven learner
+rather than more selection pressure. All code and seeded verdict JSONs are committed and
+reproducible.
+
+\FloatBarrier
+\footnotesize
+\begin{thebibliography}{9}
+\setlength{\itemsep}{0pt}
+\bibitem[Cangelosi and Parisi(2002)]{cangelosi2002} Cangelosi, A., and Parisi, D. (2002). \emph{Simulating the Evolution of Language}. Springer.
+\bibitem[Chaabouni et al.(2020)]{chaabouni2020} Chaabouni, R., et al. (2020). Compositionality and generalization in emergent languages. \emph{ACL}.
+\bibitem[Flint Ashery et al.(2025)]{ashery2025} Flint Ashery, A., Aiello, L. M., and Baronchelli, A. (2025). Emergent social conventions and collective bias in LLM populations. \emph{Science Advances}, 11(20).
+\bibitem[Foerster et al.(2016)]{foerster2016} Foerster, J., et al. (2016). Learning to communicate with deep multi-agent reinforcement learning. \emph{NeurIPS}.
+\bibitem[Hamilton(1964)]{hamilton1964} Hamilton, W. D. (1964). The genetical evolution of social behaviour. \emph{J. Theor. Biol.}, 7(1).
+\bibitem[Kirby et al.(2008)]{kirby2008} Kirby, S., Cornish, H., and Smith, K. (2008). Cumulative cultural evolution in the laboratory. \emph{PNAS}, 105(31).
+\bibitem[Lazaridou et al.(2017)]{lazaridou2017} Lazaridou, A., Peysakhovich, A., and Baroni, M. (2017). Multi-agent cooperation and the emergence of (natural) language. \emph{ICLR}.
+\bibitem[Ren et al.(2020)]{ren2020} Ren, Y., et al. (2020). Compositional languages emerge in a neural iterated learning model. \emph{ICLR}.
+\bibitem[Skyrms(2010)]{skyrms2010} Skyrms, B. (2010). \emph{Signals: Evolution, Learning, and Information}. Oxford University Press.
+\bibitem[Steels(2003)]{steels2003} Steels, L. (2003). Evolving grounded communication for robots. \emph{Trends Cogn. Sci.}, 7(7).
+\end{thebibliography}
+
+\end{document}

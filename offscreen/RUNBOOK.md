@@ -19,14 +19,20 @@ THAT result was produced). Run all commands from the repo root.
 
 ### g1f — survival-selected channel (5 arms) [PREDATES this RUNBOOK; multi-step — verify vs git history]
 ```
-RTC_G1F_FORMAL=1 RTC_G1F_COMMBLIND_SEEDS=48 python -m offscreen.rtc_g1f_commblind_control
+RTC_G1F_FORMAL=1 RTC_TOXIC_DEATH=-0.9 RTC_G1F_COMMBLIND_SEEDS=48 python -m offscreen.rtc_g1f_commblind_control
 ```
-→ writes `rtc_g1f_commblind_verdict.json`. ⚠️ The single command above does NOT directly write all the
-banked g1f artifacts. The banked `rtc_g1f_commblind_verdict_formal48.json`, `rtc_g1f_reconciled_verdict.json`,
-and `rtc_g1f_power_analysis.json` are DERIVED from the n=48 commblind run via the helper scripts
-`offscreen/rtc_g1f_reconcile.py` and `offscreen/rtc_g1f_power_analysis.py`. This stage predates the clean
-RUNBOOK/provenance discipline, so: run the n=48 control, then the reconcile + power scripts, and cross-check
-against the CLAIM_LEDGER g1f row + `git log` of those files. Result: channel co-evolves, kin-scoped.
+→ writes `rtc_g1f_commblind_verdict.json`, banked as **`rtc_g1f_commblind_verdict_formal48_rngfix.json`** — the
+RNG-FIXED random-fitness control (fake fitness drawn from an independent generator so the reproduction RNG is
+byte-matched between arms). **This rngfix verdict is the SOLE headline source:** survival-arm MII 0.17219 vs
+random-fitness 0.1174, paired margin **+0.0548, 95% CI [0.0234, 0.0849]**, n=48. The pre-rngfix
+`rtc_g1f_commblind_verdict_formal48.json` and the derived `rtc_g1f_reconciled_verdict.json` /
+`rtc_g1f_power_analysis.json` (via `rtc_g1f_reconcile.py` / `rtc_g1f_power_analysis.py`) hold the OLD +0.045 /
+control-0.1271 and are **superseded legacy**. Result: channel co-evolves (RNG-matched control), kin-scoped.
+
+**Lineage share (n=48):** `RTC_G1F_FORMAL=1 RTC_TOXIC_DEATH=-0.9 RTC_G1F_LINEAGE_SEEDS=48 python -m offscreen.rtc_g1f_lineage_share`
+→ `rtc_g1f_lineage_share_verdict.json` (dominant-share 99.1%, N_eff 1.02, 47/48 single-lineage).
+**Transient probe (secondary, to gen 150, n=24):** `RTC_G1F_FORMAL=1 RTC_TOXIC_DEATH=-0.9 RTC_G1F_TRANSIENT_SEEDS=24 RTC_G1F_TRANSIENT_CKPTS=28,56,100,150 python -m offscreen.rtc_g1f_transient_probe`
+→ `rtc_g1f_transient_probe_verdict.json` (margin decays +0.0569 → +0.0249 across gen 28/56/100/150).
 
 ### kin-only diagnostic — why kin-only?
 ```

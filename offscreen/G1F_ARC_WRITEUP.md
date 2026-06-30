@@ -30,14 +30,12 @@ of referents through emit→decode and score exact-tuple recovery; chance = 1/N_
 
 ## Step 1 — g1f: co-evolution is real within-kin (n=48 formal), but kin-only (a corrected false-negative)
 **Claim (scoped POSITIVE):** under FORMAL settings, survival selection co-evolves a decodable channel
-that beats an architecture-matched comm-blind control: survival 0.172 vs comm-blind 0.127, **margin
-+0.045, 95% CI [0.020, 0.070]** at n=48 (`rtc_g1f_commblind_verdict_formal48.json`,
-`rtc_g1f_reconciled_verdict.json`). MII is semantic (referent→emit→decode→exact-tuple), not weight
-similarity; survives a separate-fitness-RNG control (+0.057 [0.029, 0.085]); no-oracle test passes; no
+that beats an architecture-matched comm-blind control: the survival-fitness arm reaches MII 0.172 vs the RNG-fixed random-fitness control's 0.1174, **paired margin
++0.0548, 95% CI [0.0234, 0.0849]** at n=48 (`rtc_g1f_commblind_verdict_formal48_rngfix.json`; old formal48/reconciled are pre-rngfix legacy). MII is semantic (referent→emit→decode→exact-tuple), not weight
+similarity; the matched control is the RNG-fixed random-fitness control (isolating communication-selection from clonal descent — the unsupported +0.057 separate-RNG figure is retracted); no-oracle test passes; no
 borrowed weights.
 
-**Scope (load-bearing):** the population **collapses to ~1 founder lineage** (formal n=48: ~98%
-single-lineage), so the co-evolved channel is **kin-lineage decodability, NOT a public cross-lineage
+**Scope (load-bearing):** the population **collapses to ~1 founder lineage** (formal n=48, measured: dominant-lineage share 99.1%, N_eff 1.02, 47/48 seeds single-lineage), so the co-evolved channel is **kin-lineage decodability, NOT a public cross-lineage
 shared language**.
 
 **Methodology note (the rig is bidirectional):** the earlier "g1f clean negative" was a FALSE
@@ -60,7 +58,7 @@ code-grounded review rounds (spec v4.1 LOCKED, commit 67ce59b).
 **Verdict (formal n=16): `INCONCLUSIVE_NO_WINDOW`** — only 5/16 seeds hit the frozen ≥2-coexisting-gens
 gate (founder collapse too fast). The frozen gate held; not relabeled.
 **Direction (strong, unanimous): C.** within-founder MII 0.159 (≈100× chance) vs cross-founder MII
-0.00086 (≈ chance ≈ frozen-mixed floor), CF/WF = 0.5%; 10/10 measurable seeds same form
+0.00086 (≈ chance ≈ frozen-mixed floor), CF/WF = 0.5%; 5/5 measurable (windowed) seeds same form
 (`rtc_g1f_kinonly_diagnostic_verdict.json`).
 **Sentinels pass:** lineage-shuffle (CF 0.0009 → 0.065 on label-shuffle = the metric truly keys on
 lineage); gate-0 (open 0.31 vs mute 0.03 / scramble 0.05; open−mute CI [0.20, 0.37], open−scramble CI
