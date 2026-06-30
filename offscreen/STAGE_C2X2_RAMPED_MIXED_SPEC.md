@@ -10,8 +10,9 @@ catches crashes but not under-powering); (2) the ramp gives BOTH a viable start 
 AND strong final pressure (0.75); (3) Codex's **non-kin-only final evaluation** (test the evolved pop under
 100% non-kin) is the decisive feature that proves any emergent code is genuinely cross-lineage, not
 kin-survival in disguise — closing the exact loophole stationary mix is most exposed to. This file is
-Claude's canonical version of Codex's design + Gemini's absolute viability floor. To be reviewed
-code-grounded (route to Gemini to defend stationary or concede) before lock.
+Claude's canonical version of Codex's ramped design + Gemini's absolute viability floor, AND it keeps
+Gemini's stationary-25% as a matched PRIMARY comparison arm (§3) so the run settles ramp-vs-stationary
+with DATA, not adjudication. To be reviewed code-grounded before lock.
 
 ## 0. Question
 After C1 (kin-only = private codes, A refuted) and C2X (cold-start forced non-kin = non-viable), the
@@ -43,9 +44,16 @@ both empty: mute. The rule may read only `(seed,gen,round,i,j)` + current lineag
 never reward, decode success, true edibility, world patches, target codes, or founder-id-as-policy-input.
 
 ## 3. Arms
-**Primary:** `C2X2_RAMP_OPEN` (ramped rule, real msgs, survival fitness) · `C1_KIN_ONLY` (kin, real,
-survival) · `C2X2_RAMP_COMMBLIND` (ramped, real, RANDOM fitness) · `C2X2_RAMP_RANDOM_TOK` (ramped, iid
-tokens) · `C2X2_RAMP_SCRAMBLE` (ramped, permuted-real) · `C2X2_RAMP_MUTE` (ramped, mute).
+**Primary:** `C2X2_RAMP_OPEN` (ramped rule, real msgs, survival fitness) · `C2X2_STAT025_OPEN`
+(**stationary mixed: fixed 25% non-kin / 75% kin throughout**, real msgs, survival fitness — Gemini's
+design, included as a matched comparison so the run SETTLES ramp-vs-stationary empirically instead of by
+adjudication) · `C1_KIN_ONLY` (kin, real, survival) · `C2X2_RAMP_COMMBLIND` (ramped, real, RANDOM fitness)
+· `C2X2_RAMP_RANDOM_TOK` (ramped, iid tokens) · `C2X2_RAMP_SCRAMBLE` (ramped, permuted-real) ·
+`C2X2_RAMP_MUTE` (ramped, mute).
+The viability guard, non-kin-only final eval, success gate, and labels (§5–§6) are evaluated SEPARATELY
+for each treatment (`C2X2_RAMP_OPEN` and `C2X2_STAT025_OPEN`), against the SAME shared baselines; report
+both. Comparison readout: does either reach `C2X2_PUBLIC_CODE_EMERGES`? does ramp beat stationary on
+CF_margin / viability / final-eval (i.e., is the schedule load-bearing)?
 **Diagnostic (not subtracted from CF):** `C2X_COLD100_OPEN` (100% non-kin from gen0 — reproduces the C2X
 crash as a contrast) · `FROZEN_MIXED_FLOOR` (frozen unrelated pop96 = CF floor) · `LINEAGE_SHUFFLE` (CF
 lineage-invariance diagnostic).
@@ -103,9 +111,11 @@ Anti-painted guards reject single-teacher dominance, diversity collapse, and CF-
 ## 9. Alternatives considered
 - **Seeding from C1-evolved pops**: rejected as primary (they hold diverged private kin codes → switching
   to non-kin reproduces the C2X crash). Keep as a later diagnostic.
-- **Stationary fixed mix (Gemini)**: cleaner (no schedule params) but either risks a second cold-start
-  crash or applies weak cross-lineage pressure forever (under-powered false-negative). Ramp + the non-kin-
-  only final eval dominate it on the convergence question. (A stationary-high arm could be added later if
-  the ramp's schedule is contested.)
+- **Stationary fixed mix (Gemini)**: cleaner (no schedule params); "25% gives a continuous gradient" is a
+  legitimate hypothesis, not obviously wrong. Whether fixed-25% is enough pressure vs under-powered is
+  EMPIRICAL — so rather than adjudicate it, `C2X2_STAT025_OPEN` is now a matched PRIMARY arm (§3) and the
+  run decides ramp-vs-stationary with data. Claude's prior on ramp: it gives convergence its strongest
+  fair shot (reaches 0.75) so a ramp-negative is more bulletproof, and the ramp is a built-in dose-response
+  in time (covers 0→0.75) where stationary samples one point — but the data settles it.
 - **Rich-world grounding**: the larger next program (next paper); C2X2 is the cheap test of whether the
   current g1f optimizer can bridge private kin dialects under a fair, viable cross-lineage regime first.
