@@ -207,8 +207,12 @@ def _run_episode(seed: int, pop: list[Agent], mode: str = "open", arm: str = "",
             else:
                 scores = []
                 for j, post in enumerate(posts):
-                    # Per-agent message; shared_weights_kin assimilates by lineage; C2X forces non-kin.
-                    speaker = _speaker_for(pop, i, j, gen_round, arm, speaker_rule)
+                    # Per-agent message; kin assimilates by lineage; C2X forces non-kin; C2X2 passes a
+                    # CALLABLE speaker_rule(pop,i,j,gen_round) for mixed/ramped routing (additive).
+                    if callable(speaker_rule):
+                        speaker = speaker_rule(pop, i, j, gen_round)
+                    else:
+                        speaker = _speaker_for(pop, i, j, gen_round, arm, speaker_rule)
                     msg = _message_for(speaker, world, post, rng, mode) if speaker is not None else None
                     scores.append(_decoded_score(pop[i], msg, weights))
                 pick = int(np.argmax(scores))
