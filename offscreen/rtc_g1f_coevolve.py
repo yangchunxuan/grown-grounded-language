@@ -349,6 +349,46 @@ def _select_next_soft(seed: int, gen: int, pop: list[Agent], fitness, rng):
     return new_pop[: n]
 
 
+def _select_next_quota(seed: int, gen: int, pop: list[Agent], fitness, rng, K: int = 0, m: int = 0):
+    """C2X3 niching QUOTA (additive). Reserve m offspring for each of the top-K LARGEST lineages
+    (ties -> lowest lineage-index); AUGMENT — the rest fill by tournament-k2 on shared fitness, and
+    protected lineages may ALSO win those. preserve_lineage. K=0 (or m=0) -> byte-identical to
+    _select_next_soft (the no-reservation degenerate path is verbatim soft's procedure)."""
+    fitness = np.asarray(fitness, float)
+    n = len(pop)
+    lin = [int(a.lineage) for a in pop]
+    counts: dict[int, int] = {}
+    for L in lin:
+        counts[L] = counts.get(L, 0) + 1
+    shared = np.asarray([fitness[i] / counts[lin[i]] for i in range(n)], float)
+    new_pop: list[Agent] = []
+    if K > 0 and m > 0:  # reserve m children per protected lineage (best shared-fitness members, tie->index)
+        protected = sorted(counts.keys(), key=lambda L: (-counts[L], L))[:K]
+        for L in protected:
+            members = sorted([i for i in range(n) if lin[i] == L], key=lambda i: (-shared[i], i))
+            for k in range(m):
+                if len(new_pop) >= n:
+                    break
+                cs = seed * 100_003 + gen * 1009 + len(new_pop)
+                new_pop.append(_mutate(pop[members[k % len(members)]], cs, rng, preserve_lineage=True))
+    # remaining slots = EXACTLY _select_next_soft's procedure (so K=0/m=0 is byte-identical to soft)
+    n_parents = max(2, n // 2)
+    parents = []
+    for _ in range(n_parents):
+        a = int(rng.integers(0, n))
+        b = int(rng.integers(0, n))
+        parents.append(pop[a] if shared[a] >= shared[b] else pop[b])
+    for p in parents:
+        if len(new_pop) >= n:
+            break
+        new_pop.append(copy.deepcopy(p))
+    while len(new_pop) < n:
+        p = parents[int(rng.integers(0, len(parents)))]
+        cs = seed * 100_003 + gen * 1009 + len(new_pop)
+        new_pop.append(_mutate(p, cs, rng, preserve_lineage=True))
+    return new_pop[: n]
+
+
 def _run_arm(seed: int, arm: str):
     rng = np.random.default_rng(seed * 17 + len(arm))
     pop = _initial_pop_for(seed * 11 + len(arm), arm)
