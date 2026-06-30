@@ -74,12 +74,17 @@ classify against frozen pre-registered rules; write verdict JSON with full confi
   (MII fast==loop; quota K=0==soft; speaker_rule=None==original; seed-parallel==serial). This is the main
   defense against silent AI-introduced behavior drift.
 - **Provenance**: every verdict JSON records env/seeds/formal/commit so treatment and controls are provably
-  the same config (the g1f false-negative lesson). Reviews are code-grounded + adversarial.
+  the same config (the g1f false-negative lesson). Reviews are code-grounded + adversarial. **Note:** the
+  public git history was normalized to a single author, so any historical commit hash (in these docs or in a
+  verdict's embedded `provenance.git_commit`) is **NOT reachable** in the current public repo — anchor each
+  result by its **verdict filename**, present in the repository, the archived `v2.0-g1f` release, and the
+  Zenodo deposit (DOI `10.5281/zenodo.21074235`).
 - **Reproducibility system (fresh-agent-proof)**: `RUNBOOK.md` = exact command per stage (heavy runs can't
   be CI'd, but the recipes are version-controlled); new verdicts embed a `provenance` block
   (`rtc_g1f_common.make_provenance` → command + env + git_commit); `CLAIM_LEDGER.md` indexes each claim to
-  `verdict-file @ commit` (git = the immutable evidence vault — re-runs overwrite the working file, the
-  banked version stays frozen at its commit). Fast invariants run in CI (`.github/workflows/ci.yml`).
+  its **verdict filename** (the banked JSON is the immutable evidence — re-runs overwrite the working file,
+  but the durable identifier is the filename + JSON contents, archived in the `v2.0-g1f` release / Zenodo
+  deposit above, not a commit hash). Fast invariants run in CI (`.github/workflows/ci.yml`).
 
 ## KNOWN DEBT (fix in the "consolidation" pass, AFTER the active run; safety net = verdict reproduction)
 1. **Helper duplication** — PARTIALLY ADDRESSED. `offscreen/rtc_g1f_common.py` is now the CANONICAL home
