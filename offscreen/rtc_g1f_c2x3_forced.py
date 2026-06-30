@@ -294,7 +294,11 @@ def main():
                   "C2X3",
                   "RTC_G1F_FORMAL=1 C2X3_POP=96 C2X3_GENS=48 C2X3_SEEDS=8 C2X3_K=4 C2X3_M=4 "
                   "C2X3_WORKERS=6 python -m offscreen.rtc_g1f_c2x3_forced",
-                  ["RTC_G1F_FORMAL", "C2X3_POP", "C2X3_GENS", "C2X3_SEEDS", "C2X3_K", "C2X3_M", "C2X3_WORKERS"]),
+                  ["RTC_G1F_FORMAL", "RTC_TOXIC_DEATH", "C2X3_POP", "C2X3_GENS", "C2X3_SEEDS",
+                   "C2X3_K", "C2X3_M", "C2X3_WORKERS"],
+                  effective_config={"POP": POP, "GENS": GENS, "N": N, "K": K_QUOTA, "m": M_QUOTA,
+                                    "WORKERS": WORKERS, "G1F_MII_SAMPLE": g1f.G1F_MII_SAMPLE,
+                                    "P_NONKIN": P_NONKIN, "NEFF_MIN": NEFF_MIN}),
               "tier": f"n={N}" + (" (POSITIVE-or-INCONCLUSIVE only)" if N <= 8 else ""),
               "FLOOR": round(FLOOR, 5), "SESOI": SESOI, "K": K_QUOTA, "m": M_QUOTA,
               "FORCED_verdict": v_forced, "FORCED_detail": d_forced,

@@ -17,12 +17,16 @@ THAT result was produced). Run all commands from the repo root.
 
 ## Stages (the g1f arc, in order)
 
-### g1f — survival-selected channel (5 arms)
+### g1f — survival-selected channel (5 arms) [PREDATES this RUNBOOK; multi-step — verify vs git history]
 ```
 RTC_G1F_FORMAL=1 RTC_G1F_COMMBLIND_SEEDS=48 python -m offscreen.rtc_g1f_commblind_control
 ```
-→ `rtc_g1f_commblind_verdict_formal48.json`, `rtc_g1f_reconciled_verdict.json`. (Canonical g1f command;
-see CLAIM_LEDGER g1f row.) Result: channel co-evolves, kin-scoped.
+→ writes `rtc_g1f_commblind_verdict.json`. ⚠️ The single command above does NOT directly write all the
+banked g1f artifacts. The banked `rtc_g1f_commblind_verdict_formal48.json`, `rtc_g1f_reconciled_verdict.json`,
+and `rtc_g1f_power_analysis.json` are DERIVED from the n=48 commblind run via the helper scripts
+`offscreen/rtc_g1f_reconcile.py` and `offscreen/rtc_g1f_power_analysis.py`. This stage predates the clean
+RUNBOOK/provenance discipline, so: run the n=48 control, then the reconcile + power scripts, and cross-check
+against the CLAIM_LEDGER g1f row + `git log` of those files. Result: channel co-evolves, kin-scoped.
 
 ### kin-only diagnostic — why kin-only?
 ```

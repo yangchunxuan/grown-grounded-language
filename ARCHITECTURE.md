@@ -89,7 +89,11 @@ classify against frozen pre-registered rules; write verdict JSON with full confi
    FROZEN inline copies alongside their already-banked verdicts — refactor-on-next-touch, NOT now (their
    results are git-frozen; touching them = risk without scientific reward). New runners import common.
    Still-duplicated runner-specific bits (`make_route`, `paired_eval`, `classify`) can move to common when
-   a second runner needs them.
+   a second runner needs them. **Documented divergence (not a bug):** the kin-only DIAGNOSTIC's `is_coexist`
+   is the OLDER SINGLE gate (≥2 lineages each ≥3 living, NO N_eff term) — it predates the dual gate added in
+   C1; common's `is_coexist` is the DUAL gate (+N_eff≥2.0). The diagnostic's gate is frozen + correct for
+   its banked verdict; do NOT retrofit it (would change a banked result). So `common` matches C1/C2X/C2X2/C2X3,
+   NOT the diagnostic.
 2. **Three `_select_next*` variants** with overlapping logic → fold into one parameterized selector.
 3. **Equivalence tests live inside each runner's `equivalence_test()` (run at startup)** → migrate to
    `tests/` + enforce in CI (see `.github/workflows/ci.yml`).

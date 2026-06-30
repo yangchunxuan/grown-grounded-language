@@ -110,8 +110,10 @@ def test_common_helpers_correct():
 
 
 def test_make_provenance_structure():
-    """make_provenance produces a self-describing record for verdict JSONs."""
+    """make_provenance produces a self-describing record (command_hint + git_commit/dirty + effective_config)."""
     from offscreen import rtc_g1f_common as cm
-    p = cm.make_provenance("TESTSTAGE", "python -m foo", ["RTC_G1F_FORMAL"])
-    assert p["stage"] == "TESTSTAGE" and p["command"] == "python -m foo"
-    assert "git_commit" in p and "RTC_G1F_FORMAL" in p["env"] and p["runbook"].endswith("RUNBOOK.md")
+    p = cm.make_provenance("TESTSTAGE", "python -m foo", ["RTC_G1F_FORMAL"], effective_config={"POP": 96})
+    assert p["stage"] == "TESTSTAGE" and p["command_hint"] == "python -m foo"
+    assert "git_commit" in p and "git_dirty" in p
+    assert "RTC_G1F_FORMAL" in p["env"] and p["effective_config"] == {"POP": 96}
+    assert p["runbook"].endswith("RUNBOOK.md")

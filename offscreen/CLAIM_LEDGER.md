@@ -3,9 +3,11 @@
 **Evidence & reproducibility (the durable triple — chat/commit-messages are ephemeral, do NOT rely on them).**
 Each banked verdict is an immutable, self-describing evidence object **frozen in git**; cite it as
 `verdict-file @ commit`. `offscreen/RUNBOOK.md` = the exact command to regenerate any stage (can't be
-CI-automated — heavy runs). New verdicts embed a `provenance` block (command + env + git_commit) via
-`rtc_g1f_common.make_provenance` (so the result self-describes). `ARCHITECTURE.md` = the code map. A fresh
-agent reads {ARCHITECTURE + RUNBOOK + this ledger + verdict.provenance} and can reproduce everything.
+CI-automated — heavy runs). Runners updated with `rtc_g1f_common.make_provenance` embed a `provenance`
+block (command_hint + env + effective_config + git_commit + git_dirty) in NEW verdicts; the banked g1f-arc
+verdicts below PREDATE this feature and are reproducible via RUNBOOK + the ledger@commit citations (NOT via
+an embedded provenance block). `ARCHITECTURE.md` = the code map. A fresh agent reads {ARCHITECTURE + RUNBOOK
++ this ledger + (for new verdicts) provenance} and can reproduce everything.
 **Banked g1f-arc verdict commits:** diagnostic `@6aaefe2`, C1 `@21dc0f3`, C2X `@1c1a27d`, C2X2 `@07624b4`,
 C2X3 `@c9c749e` (g1f formal48 predates this session's commit-tracking — see git log of the verdict file).
 
