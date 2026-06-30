@@ -1,0 +1,94 @@
+{
+  "kind": "rtc_g1f_transient_probe",
+  "claim": "Whether the survival-vs-random-fitness cross-agent MII margin persists past the gen-28 fixation point, or is a transient. Trajectory of the paired margin at generation checkpoints.",
+  "arm": "shared_weights_kin",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "checkpoints": [
+    28,
+    56,
+    100,
+    150
+  ],
+  "trajectory": {
+    "28": {
+      "survival_mii": 0.17415,
+      "random_mii": 0.11725,
+      "margin": 0.0569,
+      "margin_ci": [
+        0.0162,
+        0.1021
+      ]
+    },
+    "56": {
+      "survival_mii": 0.16856,
+      "random_mii": 0.11964,
+      "margin": 0.04892,
+      "margin_ci": [
+        0.0151,
+        0.0821
+      ]
+    },
+    "100": {
+      "survival_mii": 0.1619,
+      "random_mii": 0.12898,
+      "margin": 0.03292,
+      "margin_ci": [
+        -0.0014,
+        0.0687
+      ]
+    },
+    "150": {
+      "survival_mii": 0.16292,
+      "random_mii": 0.13805,
+      "margin": 0.02487,
+      "margin_ci": [
+        -0.0072,
+        0.0571
+      ]
+    }
+  },
+  "provenance": {
+    "stage": "g1f-transient-probe",
+    "command_hint": "RTC_G1F_FORMAL=1 RTC_TOXIC_DEATH=-0.9 RTC_G1F_TRANSIENT_SEEDS=24 python -m offscreen.rtc_g1f_transient_probe",
+    "git_commit": "5a6885af38c8",
+    "git_dirty": true,
+    "env": {
+      "RTC_G1F_FORMAL": "1",
+      "RTC_TOXIC_DEATH": "-0.9",
+      "RTC_G1F_TRANSIENT_SEEDS": "24",
+      "RTC_G1F_TRANSIENT_CKPTS": "28,56,100,150"
+    },
+    "effective_config": {
+      "POP": 16,
+      "ROUNDS": 55,
+      "max_gen": 150,
+      "n_seeds": 24
+    },
+    "runbook": "offscreen/RUNBOOK.md"
+  }
+}
