@@ -69,54 +69,10 @@ def make_route(s, p_nonkin, counters):
     return route
 
 
-def cf_wf(matrix, lineages):
-    n = len(lineages)
-    cross, within = [], []
-    for i in range(n):
-        for j in range(n):
-            if i == j:
-                continue
-            (cross if lineages[i] != lineages[j] else within).append(matrix[i][j])
-    return (float(np.mean(cross)) if cross else float("nan"),
-            float(np.mean(within)) if within else float("nan"))
-
-
-def neff(counts):
-    tot = sum(counts)
-    return float(1.0 / sum((c / tot) ** 2 for c in counts)) if tot else 0.0
-
-
-def living_by_lineage(pop, alive):
-    c = Counter()
-    for a, al in zip(pop, alive):
-        if al:
-            c[int(a.lineage)] += 1
-    return c
-
-
-def is_coexist(comp):
-    return sum(1 for v in comp.values() if v >= COEX_MIN_PER) >= 2 and neff(list(comp.values())) >= NEFF_MIN
-
-
-def boot_ci(xs, reps=2000, seed=7):
-    xs = [x for x in xs if x == x]
-    if len(xs) < 2:
-        return [float("nan"), float("nan")]
-    r = np.random.default_rng(seed)
-    a = np.asarray(xs, float)
-    bs = [float(np.mean(r.choice(a, len(a), replace=True))) for _ in range(reps)]
-    return [round(float(np.percentile(bs, 2.5)), 5), round(float(np.percentile(bs, 97.5)), 5)]
-
-
-def mean_nan(xs):
-    xs = [x for x in xs if x == x]
-    return float(np.mean(xs)) if xs else float("nan")
-
-
-def med_l2(ts):
-    if len(ts) < 2:
-        return float("nan")
-    return float(np.median([float(np.linalg.norm(ts[i] - ts[j])) for i in range(len(ts)) for j in range(i + 1, len(ts))]))
+# Shared metric/stats helpers are now canonical in rtc_g1f_common (de-duplicated). is_coexist there uses
+# the same defaults (min_per=3, neff_min=2.0) as this runner's COEX_MIN_PER/NEFF_MIN -> byte-identical.
+from offscreen.rtc_g1f_common import (  # noqa: E402
+    cf_wf, neff, living_by_lineage, is_coexist, boot_ci, mean_nan, med_l2, make_provenance)
 
 
 def equivalence_test():
@@ -334,6 +290,11 @@ def main():
     v_noq, d_noq = classify(NOQUOTA, C1, QK, FLOOR, base_cf, N)
 
     result = {"spec": "STAGE_C2X3_FORCED_DIVERSITY_SPEC.md (LOCKED c91d822)",
+              "provenance": make_provenance(
+                  "C2X3",
+                  "RTC_G1F_FORMAL=1 C2X3_POP=96 C2X3_GENS=48 C2X3_SEEDS=8 C2X3_K=4 C2X3_M=4 "
+                  "C2X3_WORKERS=6 python -m offscreen.rtc_g1f_c2x3_forced",
+                  ["RTC_G1F_FORMAL", "C2X3_POP", "C2X3_GENS", "C2X3_SEEDS", "C2X3_K", "C2X3_M", "C2X3_WORKERS"]),
               "tier": f"n={N}" + (" (POSITIVE-or-INCONCLUSIVE only)" if N <= 8 else ""),
               "FLOOR": round(FLOOR, 5), "SESOI": SESOI, "K": K_QUOTA, "m": M_QUOTA,
               "FORCED_verdict": v_forced, "FORCED_detail": d_forced,

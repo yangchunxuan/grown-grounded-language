@@ -1,5 +1,14 @@
 # CLAIM LEDGER — per-claim epistemic re-labeling (post g1f-flip + Codex audit)
 
+**Evidence & reproducibility (the durable triple — chat/commit-messages are ephemeral, do NOT rely on them).**
+Each banked verdict is an immutable, self-describing evidence object **frozen in git**; cite it as
+`verdict-file @ commit`. `offscreen/RUNBOOK.md` = the exact command to regenerate any stage (can't be
+CI-automated — heavy runs). New verdicts embed a `provenance` block (command + env + git_commit) via
+`rtc_g1f_common.make_provenance` (so the result self-describes). `ARCHITECTURE.md` = the code map. A fresh
+agent reads {ARCHITECTURE + RUNBOOK + this ledger + verdict.provenance} and can reproduce everything.
+**Banked g1f-arc verdict commits:** diagnostic `@6aaefe2`, C1 `@21dc0f3`, C2X `@1c1a27d`, C2X2 `@07624b4`,
+C2X3 `@c9c749e` (g1f formal48 predates this session's commit-tracking — see git log of the verdict file).
+
 **Purpose.** Every headline claim is decomposed into: corrected claim · evidence category · provenance (artifact / command+env / seeds / pilot-or-formal / is the control the SAME config as the treatment) · priority. Built after the g1f pilot/formal false-negative was caught, the 7-agent re-audit, and an independent Codex audit that (correctly) reined in two over-reaches in the re-audit.
 
 **The systematic problem is NOT "all negatives are false."** It is two things:

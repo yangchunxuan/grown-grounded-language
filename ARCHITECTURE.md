@@ -75,12 +75,21 @@ classify against frozen pre-registered rules; write verdict JSON with full confi
   defense against silent AI-introduced behavior drift.
 - **Provenance**: every verdict JSON records env/seeds/formal/commit so treatment and controls are provably
   the same config (the g1f false-negative lesson). Reviews are code-grounded + adversarial.
+- **Reproducibility system (fresh-agent-proof)**: `RUNBOOK.md` = exact command per stage (heavy runs can't
+  be CI'd, but the recipes are version-controlled); new verdicts embed a `provenance` block
+  (`rtc_g1f_common.make_provenance` → command + env + git_commit); `CLAIM_LEDGER.md` indexes each claim to
+  `verdict-file @ commit` (git = the immutable evidence vault — re-runs overwrite the working file, the
+  banked version stays frozen at its commit). Fast invariants run in CI (`.github/workflows/ci.yml`).
 
 ## KNOWN DEBT (fix in the "consolidation" pass, AFTER the active run; safety net = verdict reproduction)
-1. **Helper duplication across the 5 runners** (`cf_wf, neff, living_by_lineage, is_coexist, boot_ci,
-   mean_nan, med_l2, make_route, paired_eval, classify`) — each runner re-defines them; they have started
-   to drift. → extract `offscreen/rtc_g1f_common.py`, import everywhere, re-run each runner and assert its
-   verdict reproduces byte-identical.
+1. **Helper duplication** — PARTIALLY ADDRESSED. `offscreen/rtc_g1f_common.py` is now the CANONICAL home
+   for the shared metric/stats helpers (`cf_wf, neff, living_by_lineage, is_coexist, boot_ci, mean_nan,
+   med_l2`) + `make_provenance`. `rtc_g1f_c2x3_forced.py` imports them (verified byte-identical: a small
+   serial run pre/post-refactor diffed clean). The 4 older runners (diagnostic / c1 / c2x / c2x2) keep
+   FROZEN inline copies alongside their already-banked verdicts — refactor-on-next-touch, NOT now (their
+   results are git-frozen; touching them = risk without scientific reward). New runners import common.
+   Still-duplicated runner-specific bits (`make_route`, `paired_eval`, `classify`) can move to common when
+   a second runner needs them.
 2. **Three `_select_next*` variants** with overlapping logic → fold into one parameterized selector.
 3. **Equivalence tests live inside each runner's `equivalence_test()` (run at startup)** → migrate to
    `tests/` + enforce in CI (see `.github/workflows/ci.yml`).

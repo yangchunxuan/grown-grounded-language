@@ -94,3 +94,24 @@ def test_run_episode_returns_per_agent_alive():
     pop = _unified_pop(seed=55)
     ep = g1f._run_episode(777, pop, "open", ARM)
     assert "alive_per_agent" in ep and len(ep["alive_per_agent"]) == len(pop)
+
+
+def test_common_helpers_correct():
+    """Canonical shared helpers (rtc_g1f_common) behave as the runners expect."""
+    from offscreen import rtc_g1f_common as cm
+    # cf_wf on a tiny matrix: lineages [0,0,1]; cross pairs = (0,2),(1,2),(2,0),(2,1); within = (0,1),(1,0)
+    M = [[1.0, 0.2, 0.8], [0.2, 1.0, 0.4], [0.8, 0.4, 1.0]]
+    cf, wf = cm.cf_wf(M, [0, 0, 1])
+    assert abs(cf - np.mean([0.8, 0.4, 0.8, 0.4])) < 1e-12
+    assert abs(wf - np.mean([0.2, 0.2])) < 1e-12
+    assert abs(cm.neff([4, 4]) - 2.0) < 1e-9 and cm.neff([10, 0, 0]) == 1.0
+    assert cm.is_coexist({0: 3, 1: 3}) and not cm.is_coexist({0: 9, 1: 1})  # dual gate (>=3 each AND N_eff>=2)
+    assert cm.mean_nan([1.0, float("nan"), 3.0]) == 2.0
+
+
+def test_make_provenance_structure():
+    """make_provenance produces a self-describing record for verdict JSONs."""
+    from offscreen import rtc_g1f_common as cm
+    p = cm.make_provenance("TESTSTAGE", "python -m foo", ["RTC_G1F_FORMAL"])
+    assert p["stage"] == "TESTSTAGE" and p["command"] == "python -m foo"
+    assert "git_commit" in p and "RTC_G1F_FORMAL" in p["env"] and p["runbook"].endswith("RUNBOOK.md")
