@@ -1,13 +1,15 @@
 # G1F ARC — does a decodable channel co-evolve from survival selection, and is it shared?
 
-**Status: scoped sub-arc, paused at a clean checkpoint, 2026-06-30** (not "closed" — the CLOSED/THEOREM
-label is banned; this is a scoped positive with a scoped within-world conclusion). Consolidation of the
-g1f line: a survival-selected communication channel CO-EVOLVES from random weights (kin scope, n=48),
-but it is a **private kin dialect** — and within the sustained-diversity condition tested (soft96, n=8)
-that kin-only-ness is **genuine private-code divergence (C), not a collapse artifact (A)**. In g1f,
-maintaining lineage diversity is necessary-but-insufficient for cross-lineage (public) language. This document is
-the truth-calibrated narrative for the paper; numbers are anchored to the verdict JSONs below.
-CLAIM_LEDGER.md remains the per-claim ledger; README/older paper drafts are OLD-FRAMED.
+**Status: complete scoped arc (g1f → C2X3), 2026-06-30** (not "closed/theorem" — that label is banned;
+scoped within-world findings). The full g1f line in one place: a survival-selected channel CO-EVOLVES from
+random weights (kin scope, n=48) but is a **private kin dialect**; maintaining diversity is
+necessary-but-insufficient (C1: A refuted, C supported, n=8); and direct cross-lineage selection across a
+swept pressure range (C2X/C2X2/C2X3) does NOT bootstrap a public code — there is a **pressure-vs-survival
+tension** (forced non-kin listening kills foraging because non-kin codes are mutually undecodable). So in
+g1f, grounded language is kin-scoped and a public cross-lineage code does not bootstrap; obtaining one
+plausibly needs a **richer world** (the next paper). This document is the truth-calibrated narrative/spine
+for the paper; numbers are anchored to the verdict JSONs (Provenance table). CLAIM_LEDGER.md is the
+per-claim ledger; RUNBOOK.md regenerates any stage; README/older drafts (incl. the frozen LBA) are OLD-FRAMED.
 
 ---
 
@@ -95,6 +97,39 @@ final-share Spearman low (0.03–0.20, so collapse is NOT lucky-start — it is 
 
 ---
 
+## Step 4 — C2X / C2X2 / C2X3: cross-lineage selection, and the pressure-vs-survival tension
+C1 left A-refuted / C-supported but raised the obvious next question: **if survival is made to depend on
+decoding NON-kin, does a shared cross-founder code emerge?** Three pre-registered intervention probes
+(each LOCKED only after code-grounded adversarial review) attacked it; together they form a de-facto sweep
+over how hard cross-lineage listening is pushed.
+
+- **C2X — forced 100% non-kin, cold start.** Survival crashed: mean alive **0.045** vs C1-kin 0.272 — the
+  population dies before selection can act on communication. (The auto-label `CONTENT_FREE_SHORTCUT` was a
+  MISLABEL: at ~0.045 survival the content gate is uninformative; the real outcome is a **viability crash**.)
+  Convergence UNANSWERED.
+- **C2X2 — ramped + stationary scaffold.** Kept the population alive (~0.15) but cross-founder MII stayed
+  at floor; a 3-analyst review judged this a **FALSE-NEGATIVE RISK**: strong non-kin pressure and lineage
+  diversity never COINCIDED (the ramp's 0.75 plateau arrives after diversity collapsed; the stationary 0.25
+  pressure was sub-threshold), and per-gen dynamics weren't logged — so it could not separate "timing
+  accident" from a real tension.
+- **C2X3 — diversity QUOTA + constant 0.5 non-kin, per-gen logged.** Built to FORCE pressure×diversity to
+  overlap and make the dynamics visible. Result (`DESIGN_FAILURE_VIABILITY_CRASH`, both arms): at 0.5
+  non-kin the population is **boom-bust** (mean alive 0.10, range 0–0.76, below the viability bar) and
+  **cross-founder MII never leaves the floor** (max 0.0058 across all seeds/gens vs chance ≈ 0.0016). The
+  per-gen trajectories show the mechanism directly: viable+diverse coexistence is transient — the system
+  cannot stay there long enough to converge.
+
+**Holistic — the de-facto pressure sweep.** Across the cross-lineage probes — non-kin fraction 0.25
+(C2X2-stationary: viable, CF floor) / 0.5 (C2X3: boom-bust, CF floor) / 0.75–1.0 (C2X, C2X2-ramp: crash,
+CF floor) — **cross-founder MII never rose above chance at ANY pressure; higher pressure only crashes
+survival harder.** Mechanism: non-kin codes are mutually undecodable, so forcing non-kin listening kills
+foraging → a **pressure-vs-survival tension** in which a viable, diverse, converging regime is never
+reached. (All n=8 = the POSITIVE-or-INCONCLUSIVE tier; the CF-at-floor null is unanimous across seeds AND
+pressure levels, so it reads as a clear null with a mechanism — not a power artifact — though banking a
+FORMAL negative would still want n=16.)
+
+---
+
 ## Scoped conclusion (calibrated — NOT a universal theorem)
 Within g1f (this world, 28-generation timescale): a survival-selected decodable channel co-evolves from
 scratch (Step 1, n=48) but is a **private kin dialect**; and under the sustained-diversity condition
@@ -104,7 +139,13 @@ each other at chance. **In g1f, maintaining lineage diversity is necessary but N
 cross-lineage (public) language.** Collapse itself: in our runs, pop=16 is fatal regardless of selection
 (small-population drift); niching (tournament + lineage-fitness-sharing) sustains diversity at pop=96 —
 where the boundary lies, and whether this holds in other worlds/architectures, is untested beyond these
-cases.
+cases. **And the cross-lineage chapter (Step 4) closes the public-language question for this world:** even
+when survival is made to depend on decoding non-kin — across a swept pressure range, with diversity propped
+up by a quota — cross-founder MII never rises above chance, because cross-lineage pressure and survival
+trade off (non-kin codes are mutually undecodable, so forced non-kin listening kills foraging). So in g1f,
+**grounded language is kin-scoped, and a public cross-lineage code does not bootstrap**; obtaining one
+plausibly needs a richer world (more niches/referents to sustain diversity under communication pressure) —
+the next program, not this one.
 
 ## Methodology shown in this arc (the contribution)
 The attack-machine operated bidirectionally and on the process itself: it caught a false NEGATIVE
@@ -114,15 +155,22 @@ window-gate), and corrected an over-coarse auto-label using a pre-logged continu
 mechanism). Throughout: same-config treatment/control, frozen pre-registration, no-oracle redline,
 no borrowed weights, recorded provenance.
 
-## Open / next: C2 (empirically motivated, not a guess)
-Within g1f (soft96, n=8, this timescale), A is refuted — so diversity-maintenance alone does not yield public language here. The next intervention is
-**C2 — put cross-lineage decoding under selection / add a shared grounding signal** (change the
-listener rule so survival depends on decoding non-kin). This is a larger mechanism change and gets its
-own pre-registration + review before running.
+## Open / next: the rich world (the cross-lineage chapter is DONE, not open)
+C2 (cross-lineage selection) was RUN — Step 4 — and answered: a public code does not bootstrap in g1f
+(the pressure-vs-survival tension). So the honest next program is **a RICHER WORLD** — more niches /
+referents / spatial structure, so lineage diversity can be sustained UNDER communication pressure and so
+there are shared referents worth a cross-lineage code for. That is a multi-week build and a SEPARATE
+paper; it is the project's real frontier bet (and the substrate the "creatures that understand they live
+in a 2D world + a user-gated window to ours" north-star would need). This arc (g1f → C2X3) is a closed,
+self-contained unit: it MOTIVATES the rich world rather than requiring it.
 
 ## Provenance
 | step | spec / commit | verdict JSON | config |
 |---|---|---|---|
 | g1f | — | `rtc_g1f_commblind_verdict_formal48.json`, `rtc_g1f_reconciled_verdict.json` | `RTC_G1F_FORMAL=1 RTC_G1F_COMMBLIND_SEEDS=48` |
-| diagnostic | `STAGE_KINONLY_DIAGNOSTIC_SPEC.md` v4.1, commit 67ce59b | `rtc_g1f_kinonly_diagnostic_verdict.json` | `RTC_G1F_FORMAL=1`, n=16 |
-| C1 probe | `STAGE_C1_COLLAPSE_PROBE_SPEC.md` v5.1 (LOCKED), commit f99ed6f | `rtc_g1f_c1_collapse_probe_verdict.json` | `RTC_G1F_FORMAL=1 C1_SEEDS16=16 C1_SEEDS96=8` |
+| diagnostic | `STAGE_KINONLY_DIAGNOSTIC_SPEC.md` v4.1 (67ce59b) | `rtc_g1f_kinonly_diagnostic_verdict.json` @6aaefe2 | `RTC_G1F_FORMAL=1 KINONLY_SEEDS=16` |
+| C1 probe | `STAGE_C1_COLLAPSE_PROBE_SPEC.md` v5.1 (f99ed6f) | `rtc_g1f_c1_collapse_probe_verdict.json` @21dc0f3 | `RTC_G1F_FORMAL=1 C1_SEEDS16=16 C1_SEEDS96=8` |
+| C2X | `STAGE_C2X_CROSSLINEAGE_SPEC.md` (LOCKED) | `rtc_g1f_c2x_crosslineage_verdict.json` @1c1a27d | `RTC_G1F_FORMAL=1 C2X_SEEDS=8` |
+| C2X2 | `STAGE_C2X2_RAMPED_MIXED_SPEC.md` v2.1 (LOCKED) | `rtc_g1f_c2x2_ramped_verdict.json` @07624b4 | `RTC_G1F_FORMAL=1 C2X2_POP=96 C2X2_GENS=48 C2X2_SEEDS=8` |
+| C2X3 | `STAGE_C2X3_FORCED_DIVERSITY_SPEC.md` v2.1 (c91d822) | `rtc_g1f_c2x3_forced_verdict.json` @c9c749e | `RTC_G1F_FORMAL=1 C2X3_POP=96 C2X3_GENS=48 C2X3_SEEDS=8 C2X3_K=4 C2X3_M=4 C2X3_WORKERS=6` |
+| — | full run recipes: `offscreen/RUNBOOK.md` · per-claim index: `offscreen/CLAIM_LEDGER.md` · code map: `ARCHITECTURE.md` | — | — |
