@@ -8,7 +8,15 @@ frozen / no-reproduction, so it conflates 'no selection' with 'no descent'.
 
 This control runs the IDENTICAL shared-weights reproduction (UnifiedIO + preserve
 lineage) but with COMM-BLIND random fitness instead of survival fitness. Same init,
-same rng seed -> the only difference is whether selection can 'see' communication.
+same reproduction rng -> the only difference is whether selection can 'see' communication.
+
+RNG-MATCH FIX (2026-06-30): the random fitness is drawn from an INDEPENDENT generator so the
+reproduction rng (consumed only by _select_next, exactly as in run_survival, whose _run_episode
+self-seeds and never touches the outer rng) stays byte-aligned across the two arms. Previously the
+fake fitness was drawn from the shared rng (`fake = rng.random(len(pop))`), offsetting _select_next's
+parent-sampling + _mutate noise vs the survival arm -> the arms differed in TWO things (fitness signal
++ reproduction RNG), not one. _select_next's rng consumption is fitness-INDEPENDENT (argsort uses no
+rng; the fill loop runs a fixed pop//2 iterations), so aligning the stream at gen 0 keeps it aligned.
 
   if commblind final mii ~= survival final mii (both >> frozen) -> mii-moves is a
      descent-convergence ARTIFACT (not a bootstrap escape).
@@ -19,6 +27,7 @@ import os
 import numpy as np
 
 from offscreen import rtc_g1f_coevolve as g1f
+from offscreen import rtc_g1f_common as cm
 from offscreen.rtc_g1_run import _ci
 
 ARM = "shared_weights_kin"
@@ -40,11 +49,12 @@ def run_survival(seed):
 
 
 def run_commblind(seed):
-    rng = np.random.default_rng(seed * 17 + len(ARM))
+    rng = np.random.default_rng(seed * 17 + len(ARM))  # reproduction rng — IDENTICAL stream to run_survival
+    fake_rng = np.random.default_rng(seed * 17 + len(ARM) + 9_000_000)  # independent: fake fitness only
     pop = _init(seed)
     init = g1f._mii(pop)["cross"]
     for gen in range(g1f.G1F_GENS):
-        fake = rng.random(len(pop))  # COMM-BLIND: random fitness, same reproduction
+        fake = fake_rng.random(len(pop))  # COMM-BLIND: random fitness from the INDEPENDENT generator
         pop = g1f._select_next(seed, gen, pop, fake, ARM, rng)
     return init, g1f._mii(pop)["cross"]
 
@@ -89,6 +99,14 @@ def main():
         "frozen_mean": round(float(np.mean(froz)), 5), "frozen_ci": _ci(froz, 3),
         "survival_minus_commblind_ci": _ci(d, 4),
         "mii_moves_is_descent_convergence_artifact": bool(artifact),
+        "rng_match_fixed": True,
+        "provenance": cm.make_provenance(
+            "g1f-commblind-control (rng-match-fixed)",
+            "RTC_G1F_FORMAL=1 RTC_TOXIC_DEATH=-0.9 RTC_G1F_COMMBLIND_SEEDS=48 python -m offscreen.rtc_g1f_commblind_control",
+            ["RTC_G1F_FORMAL", "RTC_TOXIC_DEATH", "RTC_G1F_COMMBLIND_SEEDS"],
+            effective_config={"POP": g1f.G1F_POP, "GENS": g1f.G1F_GENS, "ROUNDS": g1f.G1F_ROUNDS,
+                              "n_seeds": len(SEEDS), "fake_fitness_rng": "independent (offset +9e6)"},
+        ),
     }
     p = Path(__file__).resolve().parent / "rtc_g1f_commblind_verdict.json"
     p.write_text(json.dumps(out, indent=2, default=str), encoding="utf-8")
