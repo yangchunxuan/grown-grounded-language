@@ -97,10 +97,6 @@ def fig_transient():
                  fmt='o-', color='steelblue', ecolor='black', capsize=5,
                  elinewidth=1.5)
     ax2.axhline(0, color='red', lw=1.2, linestyle='--', label='0')
-    for i, g in enumerate(gens):
-        lbl = 'CI excludes 0' if lo_arr[i] > 0 else 'CI includes 0'
-        ax2.annotate(lbl, (g, marg_arr[i]), textcoords='offset points',
-                     xytext=(5, 4), fontsize=6.5, color='dimgray')
     ax2.set_xlabel('Generation')
     ax2.set_ylabel('Paired margin (survival − random)')
     ax2.set_title('Margin trajectory (n=24, 95% CI)')
@@ -142,11 +138,12 @@ def fig_wf_cf():
     ax.legend(fontsize=8)
     ax.grid(True, alpha=0.3, axis='y')
 
-    # annotate
-    ax.annotate(f'WF = {wf:.4f}\n(~{wf/floor:.0f}× chance)', (0, wf),
-                textcoords='offset points', xytext=(12, 4), fontsize=8, color='steelblue')
-    ax.annotate(f'CF = {cf:.5f}\n(≈ floor)', (1, cf),
-                textcoords='offset points', xytext=(-40, 10), fontsize=8, color='darkorange')
+    # annotate (placed in clear areas, not over the error bars)
+    ax.set_ylim(0, 0.215)
+    ax.text(0.32, 0.135, f'WF = {wf:.4f}\n(~100× chance)', fontsize=8, color='steelblue',
+            ha='left', va='center')
+    ax.text(1.0, 0.028, f'CF = {cf:.5f}\n(≈ floor)', fontsize=8, color='darkorange',
+            ha='center', va='bottom')
 
     plt.tight_layout()
     savefig('f_wf_cf.pdf')
@@ -163,15 +160,16 @@ def fig_neff():
     neff   = [cs[c]['mean_final_neff'] for c in cells]
     colors = ['steelblue', 'cornflowerblue', 'darkorange', 'tomato']
 
-    fig, ax = plt.subplots(figsize=(5.5, 3.8))
+    fig, ax = plt.subplots(figsize=(5.8, 4.0))
     bars = ax.bar(range(4), neff, color=colors, width=0.55)
+    ax.set_ylim(0, 5.0)
     ax.axhline(1, color='gray', lw=1.0, linestyle='--', label='Nₑₙₙ = 1 (monoclonal)')
-    # highlight soft96
-    ax.annotate('soft96 sustained\nNₑₙₙ ≈ 4.10', (3, neff[3]),
-                textcoords='offset points', xytext=(-40, 6), fontsize=8, color='tomato',
+    # highlight soft96 / hard96 (text in clear interior space, arrows to the bars)
+    ax.annotate('soft96 sustained\nNₑₙₙ ≈ 4.10', xy=(3, neff[3]), xytext=(2.0, 3.7),
+                fontsize=8, color='tomato', ha='center', va='center',
                 arrowprops=dict(arrowstyle='->', color='tomato', lw=1.0))
-    ax.annotate('hard96 still\ncollapsing\nNₑₙₙ ≈ 1.44', (1, neff[1]),
-                textcoords='offset points', xytext=(10, 10), fontsize=8, color='cornflowerblue',
+    ax.annotate('hard96 still\ncollapsing\nNₑₙₙ ≈ 1.44', xy=(1, neff[1]), xytext=(1.05, 2.75),
+                fontsize=8, color='cornflowerblue', ha='center', va='center',
                 arrowprops=dict(arrowstyle='->', color='cornflowerblue', lw=1.0))
     ax.set_xticks(range(4))
     ax.set_xticklabels(labels)
@@ -198,7 +196,12 @@ def fig_crosslineage():
     dc2x3 = json.load(open(os.path.join(OFFSCREEN, 'rtc_g1f_c2x3_forced_verdict.json')))
 
     floor   = 0.00159
-    labels  = ['C2X\n(100% non-kin)', 'C2X2 STAT025\n(0.25 non-kin,\nviable)', 'C2X3\n(0.5 forced-quota)']
+    alive_vals = [dc2x['arm_mean_alive']['C2X_OPEN'],
+                  dc2x2['STAT025_detail']['mean_alive'],
+                  dc2x3['FORCED_detail']['mean_alive']]
+    labels  = [f'C2X\n(100% non-kin)\nalive={alive_vals[0]:.2f}',
+               f'C2X2 STAT025\n(0.25 non-kin, viable)\nalive={alive_vals[1]:.2f}',
+               f'C2X3\n(0.5 forced-quota)\nalive={alive_vals[2]:.2f}']
     cf_vals = [
         dc2x['CF_OPEN'],
         dc2x2['STAT025_detail']['CF'],
@@ -231,13 +234,6 @@ def fig_crosslineage():
     ax.set_title('Cross-lineage CF stays at chance floor\nacross three heterogeneous interventions (n=8 each)')
     ax.legend(fontsize=8)
     ax.grid(True, alpha=0.3, axis='y')
-    # annotate alive
-    alive_vals = [dc2x['arm_mean_alive']['C2X_OPEN'],
-                  dc2x2['STAT025_detail']['mean_alive'],
-                  dc2x3['FORCED_detail']['mean_alive']]
-    for i, (a, c) in enumerate(zip(alive_vals, cf_vals)):
-        ax.annotate(f'alive={a:.2f}', (i, c),
-                    textcoords='offset points', xytext=(8, -12), fontsize=7.5, color='dimgray')
     plt.tight_layout()
     savefig('f_crosslineage.pdf')
 
@@ -246,9 +242,9 @@ def fig_crosslineage():
 # f_schematic.pdf  — simple box diagram of agent + world + evolution loop
 # ─────────────────────────────────────────────────────────────────────────────
 def fig_schematic():
-    fig, ax = plt.subplots(figsize=(9, 4.5))
-    ax.set_xlim(0, 10)
-    ax.set_ylim(0, 5)
+    fig, ax = plt.subplots(figsize=(11, 5))
+    ax.set_xlim(0, 12)
+    ax.set_ylim(0, 5.6)
     ax.axis('off')
 
     def box(x, y, w, h, label, color='lightblue', fontsize=9):
@@ -257,42 +253,40 @@ def fig_schematic():
                                        facecolor=color, edgecolor='black', linewidth=1.2)
         ax.add_patch(rect)
         ax.text(x + w/2, y + h/2, label, ha='center', va='center',
-                fontsize=fontsize, wrap=True,
-                multialignment='center')
+                fontsize=fontsize, multialignment='center')
 
-    def arrow(x1, y1, x2, y2, label='', lw=1.2):
+    def arrow(x1, y1, x2, y2, label='', label_dy=0.2, va='bottom'):
         ax.annotate('', xy=(x2, y2), xytext=(x1, y1),
-                    arrowprops=dict(arrowstyle='->', lw=lw, color='dimgray'))
+                    arrowprops=dict(arrowstyle='->', lw=1.3, color='dimgray'))
         if label:
-            mx, my = (x1+x2)/2, (y1+y2)/2
-            ax.text(mx+0.05, my+0.10, label, fontsize=7.5, color='dimgray')
+            ax.text((x1 + x2) / 2, (y1 + y2) / 2 + label_dy, label,
+                    fontsize=8, color='dimgray', ha='center', va=va,
+                    multialignment='center')
 
-    # World box
-    box(0.3, 1.5, 2.8, 2.5, '48×48 lethal-vent\nworld\n(4-channel field,\nfixed-rule physics)',
+    # boxes with WIDE gaps so arrow labels fit in the empty space between them
+    box(0.3, 1.6, 2.7, 2.4, '48×48 lethal-vent\nworld\n(4-channel field,\nfixed-rule physics)',
         color='#d4ecd4')
-    # Agent box
-    box(4.0, 1.2, 3.0, 3.2, 'Agent\nUnifiedIO code-table\nK×BANDS×VOCAB\n(4×5×6)\ninit N(0,1)\n\nEmit: argmax→symbol\nDecode: argmax→bin',
+    box(4.7, 1.2, 3.0, 3.2,
+        'Agent\nUnifiedIO code-table\nK×BANDS×VOCAB (4×5×6)\ninit N(0,1)\n\nEmit: argmax→symbol\nDecode: argmax→bin',
         color='#cce0f5')
-    # Reproduction box
-    box(7.5, 1.5, 2.2, 2.5, 'Reproduction\n(mutation + selection)\nSurvival arm:\nfit = survival\nControl arm:\nfit = random',
+    box(9.3, 1.6, 2.5, 2.4,
+        'Reproduction\n(mutation + selection)\nSurvival arm: fit = survival\nControl arm: fit = random',
         color='#f5e6cc')
 
-    # arrows world → agent
-    arrow(3.1, 3.0, 4.0, 3.0, 'lagged noisy\nsensor')
-    # agent → world
-    arrow(4.1, 2.5, 3.1, 2.5, 'messages\n(decode+use)')
-    # agent → reproduction
-    arrow(7.0, 3.0, 7.5, 3.0, 'energy\n(survival)')
-    # reproduction → agent
-    arrow(7.6, 2.0, 7.0, 2.0, 'offspring\n(mutated\ncode-table)')
-    # loop label
-    ax.text(5.0, 0.5,
+    # world ↔ agent (gap x≈3.0–4.7): top arrow label ABOVE, bottom arrow label BELOW
+    arrow(3.0, 3.5, 4.7, 3.5, 'lagged noisy\nsensor', label_dy=0.22, va='bottom')
+    arrow(4.7, 2.1, 3.0, 2.1, 'messages\n(decode+use)', label_dy=-0.22, va='top')
+    # agent ↔ reproduction (gap x≈7.7–9.3)
+    arrow(7.7, 3.5, 9.3, 3.5, 'energy\n(survival)', label_dy=0.22, va='bottom')
+    arrow(9.3, 2.1, 7.7, 2.1, 'offspring\n(mutated\ncode-table)', label_dy=-0.22, va='top')
+
+    ax.text(6.0, 0.55,
             'MII probe: sample referents → emit → decode → exact-tuple recovery (chance 1/625)',
             ha='center', fontsize=8, color='dimgray',
             bbox=dict(boxstyle='round', facecolor='#f0f0f0', alpha=0.8))
 
     ax.set_title('Substrate schematic: lethal-vent world, tied code-table agent, and evolution loop',
-                 fontsize=9.5)
+                 fontsize=10)
     plt.tight_layout()
     savefig('f_schematic.pdf')
 
