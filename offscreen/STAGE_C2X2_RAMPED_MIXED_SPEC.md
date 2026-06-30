@@ -1,4 +1,15 @@
-# STAGE: C2X2 — RAMPED MIXED NON-KIN SCAFFOLD — pre-registration **DRAFT (not locked)**
+# STAGE: C2X2 — RAMPED MIXED NON-KIN SCAFFOLD — pre-registration **LOCKED**
+
+**LOCK note.** Three independent code-grounded reviews of this merged double-PRIMARY spec (Opus 4.7,
+Gemini, DeepSeek) all returned LOCK, no blocker — including Gemini (which had proposed stationary) and on
+the version that put both scaffolds head-to-head. All confirmed: no-oracle clean (routing reads only
+(seed,gen,round,i,j)+lineage labels), the 4-condition viability guard provably catches the C2X mislabel
+(checked against C2X's real numbers), the non-kin-only final eval closes the kin-survival loophole, and
+the inherited discipline (same-config, dual gate, SESOI-before-CF, vectorized MII + byte-stability) is
+carried. Applied polish (all non-blocking): pinned p_nonkin to a deterministic hash (§2); wrote the
+STAT025 viability guard explicitly (§5); added the CF≥0.25·WF rationale (§6); added the matched-exposure
+STAT037 follow-up note (§9); added shared-baselines + byte-stability(p=0==kin) + satellite-teacher
+red-team notes (§8). LOCKED for implementation.
 
 **Provenance.** C2X (forced 100% non-kin listening, cold) suffered a **viability crash** (mean alive
 0.0455 vs C1_KIN_ONLY 0.2718) — confirmed by 3 independent code-grounded investigations (Codex, Gemini,
@@ -36,8 +47,10 @@ field truth / lineage fitness) decides whether the speaker must be kin or non-ki
 - gens 12–36: linear ramp **0.00 → 0.75** inclusive;
 - gens 37–47: **0.75** (strong, non-ignorable final pressure).
 
-For `(seed, gen, round, listener_i, post_i)`, draw non-kin with prob `p_nonkin(gen)` via an **arm-local
-RNG / deterministic hash** (NOT the main evolution stream). If non-kin: balanced round-robin over eligible
+For `(seed, gen, round, listener_i, post_i)`, draw non-kin with prob `p_nonkin(gen)` via a **deterministic
+hash** (DeepSeek: pin ONE mechanism — chosen = hash, fully reproducible, consumes NO RNG so it cannot
+perturb the evolution stream): `frac = ((seed*2654435761 + gen*40503 + round*12345 + listener_i*777 +
+post_i*31) % 1000003) / 1000003.0`; non-kin iff `frac < p_nonkin(gen)`. If non-kin: balanced round-robin over eligible
 non-self lineages then members (= the locked `cross_lineage_balanced`). If kin: original same-lineage rule.
 If the requested category is empty: fall back to the other category and **record the fallback count**; if
 both empty: mute. The rule may read only `(seed,gen,round,i,j)` + current lineage labels for routing —
@@ -73,13 +86,17 @@ A CF failure counts as "private codes persist" ONLY if the scaffold actually avo
   belt-and-suspenders, in case C1 itself is low); **AND**
 - paired `C2X2_RAMP_OPEN − C2X_COLD100_OPEN` mean-alive CI lower > 0.05; **AND**
 - `C2X2_RAMP_OPEN` beats `C2X2_RAMP_MUTE` and `C2X2_RAMP_SCRAMBLE` on survival, paired CI lower > 0.
-If these fail → `C2X2_DESIGN_FAILURE_VIABILITY_CRASH` (NOT a public-language negative).
+**The same 4-condition viability guard is applied IDENTICALLY to `C2X2_STAT025_OPEN`** (substitute
+STAT025 for RAMP throughout, against the SAME baselines). If these fail (for a given treatment) →
+`C2X2_DESIGN_FAILURE_VIABILITY_CRASH` for that treatment (NOT a public-language negative).
 
 ## 6. Success gate (FROZEN) — `C2X2_PUBLIC_CODE_EMERGES` iff ALL:
 - viability guard passes;
 - dual coexistence window in ≥6/8 seeds (n=8) or ≥12/16 (n=16);
 - `CF_margin_vs_baseline_max` bootstrap 95% CI lower > 0 AND point ≥ 0.04;
-- `CF_OPEN ≥ 0.25·WF_OPEN`;
+- `CF_OPEN ≥ 0.25·WF_OPEN` (relaxed from C1/C2X's 0.5·WF: C2X2 is the first test of whether CF can rise
+  AT ALL above C2X's ~0.014 floor; substantial partial closure toward the kin ceiling is already
+  meaningful and worth banking — not a goalpost move, set a priori here);
 - **non-kin-only final eval**: open survival beats mute, scramble, random-token (paired CI lower > 0) —
   the evolved code must be load-bearing under PURE non-kin listening;
 - painted-collapse guards: final living N_eff median ≥ 3.0 AND p25 ≥ 2.0; no speaker-source lineage > 40%
@@ -104,8 +121,16 @@ Anti-painted guards reject single-teacher dominance, diversity collapse, and CF-
 - New runner `offscreen/rtc_g1f_c2x2_ramped.py`, reusing `rtc_g1f_c2x_crosslineage.py` + the harness.
 - Add the ramped/mixed routing as a NEW `speaker_rule` variant (e.g. `mixed_ramped`) behind a parameter;
   default `_speaker_for` / g1f / C1 / C2X paths stay byte-stable (keep the byte-stability + MII-equivalence tests).
-- Arm-local RNG for the p_nonkin draw — must NOT consume the evolution stream. Record its seed + all
-  fallback counts + the full config/env/git-commit in the verdict JSON.
+- p_nonkin uses the §2 deterministic HASH (no RNG consumed → evolution stream untouched). Record all
+  fallback counts (kin-empty / nonkin-empty / both-empty-mute) + full config/env/git-commit in the JSON.
+- **Byte-stability test (extend C2X's equivalence_test):** `speaker_rule="mixed_ramped"` at `p_nonkin=0.0`
+  must be byte-identical to the kin-only path (gen-0 warm-up == C1), alongside the MII numpy-equivalence test.
+- **Shared baselines (Opus-4.7 / compute):** the 4 CF baselines (`FROZEN_MIXED_FLOOR`, `C2X2_RAMP_COMMBLIND`,
+  `C2X2_RAMP_RANDOM_TOK`, `C2X2_RAMP_SCRAMBLE`) + `C1_KIN_ONLY` are run ONCE and reused as `baseline_max`
+  for BOTH `C2X2_RAMP_OPEN` and `C2X2_STAT025_OPEN` (don't run them per-treatment).
+- **Post-run red-team note (Opus-4.7):** add a "satellite-teacher" diagnostic to the painted output (a
+  teacher lineage that is a table-L2 outlier yet stays ≤40% of speaker-source can slip the median-L2 guard);
+  flag for inspection, not a gate.
 - Do NOT modify any LOCKED spec or verdict JSON. New files only.
 
 ## 9. Alternatives considered
@@ -116,6 +141,9 @@ Anti-painted guards reject single-teacher dominance, diversity collapse, and CF-
   EMPIRICAL — so rather than adjudicate it, `C2X2_STAT025_OPEN` is now a matched PRIMARY arm (§3) and the
   run decides ramp-vs-stationary with data. Claude's prior on ramp: it gives convergence its strongest
   fair shot (reaches 0.75) so a ramp-negative is more bulletproof, and the ramp is a built-in dose-response
-  in time (covers 0→0.75) where stationary samples one point — but the data settles it.
+  in time (covers 0→0.75) where stationary samples one point — but the data settles it. NB the two arms are
+  not exposure-matched (ramp mean p_nonkin≈0.37 vs STAT025's 0.25), so this is two scaffolds head-to-head,
+  not a clean schedule-shape factorial; **future follow-up: a matched-exposure STAT037 arm if ramp wins**,
+  to isolate schedule shape from total non-kin exposure.
 - **Rich-world grounding**: the larger next program (next paper); C2X2 is the cheap test of whether the
   current g1f optimizer can bridge private kin dialects under a fair, viable cross-lineage regime first.
