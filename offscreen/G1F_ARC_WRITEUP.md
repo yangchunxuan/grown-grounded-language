@@ -165,7 +165,7 @@ self-contained unit: it MOTIVATES the rich world rather than requiring it.
 ## Provenance
 | step | spec / commit | verdict JSON | config |
 |---|---|---|---|
-| g1f | @5a6885a | `rtc_g1f_commblind_verdict_formal48_rngfix.json` (**sole headline source**) + `rtc_g1f_lineage_share_verdict.json`; legacy `..._formal48.json` / `..._reconciled_verdict.json` = **superseded** pre-rngfix | `RTC_G1F_FORMAL=1 RTC_G1F_COMMBLIND_SEEDS=48` |
+| g1f | @5a6885a (embedded base `254f3d7`, `git_dirty: true`) | `rtc_g1f_commblind_verdict_formal48_rngfix.json` (**sole headline source**) + `rtc_g1f_lineage_share_verdict.json`; legacy `..._formal48.json` / `..._reconciled_verdict.json` / `..._power_analysis.json` = **superseded** pre-rngfix | `RTC_G1F_FORMAL=1 RTC_G1F_COMMBLIND_SEEDS=48` |
 | diagnostic | `STAGE_KINONLY_DIAGNOSTIC_SPEC.md` v4.1 (67ce59b) | `rtc_g1f_kinonly_diagnostic_verdict.json` @6aaefe2 | `RTC_G1F_FORMAL=1 KINONLY_SEEDS=16` |
 | C1 probe | `STAGE_C1_COLLAPSE_PROBE_SPEC.md` v5.1 (f99ed6f) | `rtc_g1f_c1_collapse_probe_verdict.json` @21dc0f3 | `RTC_G1F_FORMAL=1 C1_SEEDS16=16 C1_SEEDS96=8` |
 | C2X | `STAGE_C2X_CROSSLINEAGE_SPEC.md` (LOCKED) | `rtc_g1f_c2x_crosslineage_verdict.json` @1c1a27d | `RTC_G1F_FORMAL=1 C2X_SEEDS=8` |

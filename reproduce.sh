@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Reproduce the g1f-arc headline behind "A Decodable Signalling Code Co-evolves but Stays
 # Private to Kin" (Artificial Life submission) + the ALIFE 2026 late-breaking abstract.
+# Papers: paper/ggl.tex (journal) and paper/lba_g1f.tex (ALIFE-2026 LBA).
+#   NOTE: paper/lba.tex is the FROZEN, superseded "Five Walls" LBA (tag v1.0-alife2026) — not current.
 # Run from the repo root. Deterministic per seed. Heavy stages are documented in
 # offscreen/RUNBOOK.md; this script runs the headline g1f arc + the invariant tests.
 set -e
