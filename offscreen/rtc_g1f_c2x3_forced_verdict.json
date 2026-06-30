@@ -1,5 +1,33 @@
 {
   "spec": "STAGE_C2X3_FORCED_DIVERSITY_SPEC.md (LOCKED c91d822)",
+  "provenance": {
+    "stage": "C2X3",
+    "command_hint": "RTC_G1F_FORMAL=1 C2X3_POP=96 C2X3_GENS=48 C2X3_SEEDS=8 C2X3_K=4 C2X3_M=4 C2X3_WORKERS=6 python -m offscreen.rtc_g1f_c2x3_forced",
+    "git_commit": "7ee70b031060",
+    "git_dirty": false,
+    "env": {
+      "RTC_G1F_FORMAL": "1",
+      "RTC_TOXIC_DEATH": "-0.9",
+      "C2X3_POP": "96",
+      "C2X3_GENS": "48",
+      "C2X3_SEEDS": "8",
+      "C2X3_K": "4",
+      "C2X3_M": "4",
+      "C2X3_WORKERS": "6"
+    },
+    "effective_config": {
+      "POP": 96,
+      "GENS": 48,
+      "N": 8,
+      "K": 4,
+      "m": 4,
+      "WORKERS": 6,
+      "G1F_MII_SAMPLE": 625,
+      "P_NONKIN": 0.5,
+      "NEFF_MIN": 2.0
+    },
+    "runbook": "offscreen/RUNBOOK.md"
+  },
   "tier": "n=8 (POSITIVE-or-INCONCLUSIVE only)",
   "FLOOR": 0.00159,
   "SESOI": 0.04,
