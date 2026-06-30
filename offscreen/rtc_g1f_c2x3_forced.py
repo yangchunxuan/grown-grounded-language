@@ -42,6 +42,7 @@ FLOOR_ARM = "shared_frozen_random"
 POP = int(os.environ.get("C2X3_POP", "96"))
 GENS = int(os.environ.get("C2X3_GENS", "48"))
 N = int(os.environ.get("C2X3_SEEDS", "8"))
+WORKERS = int(os.environ.get("C2X3_WORKERS", "1"))  # 1 = serial (byte-stable default); >1 = parallelize seeds
 K_QUOTA = int(os.environ.get("C2X3_K", "4"))
 M_QUOTA = int(os.environ.get("C2X3_M", "4"))
 P_NONKIN = 0.5
@@ -161,11 +162,12 @@ def nonkin_only_eval(pop, s):
             speaker_rule="cross_lineage_balanced")["alive"]), 4) for md in ("open", "mute", "scramble")}
 
 
-def run_arm(name, use_quota, p_nonkin, mode, commblind, n_seeds, full=False):
+def _run_one_seed(name, use_quota, p_nonkin, mode, commblind, full, s):
+    """Per-seed computation (module-level so it is picklable for multiprocessing). Identical math to the
+    serial path — only the dispatch in run_arm changes. Sets the g1f globals (workers re-import on spawn)."""
     g1f.G1F_POP = POP
     g1f.G1F_GENS = GENS
-    seeds = []
-    for s in range(n_seeds):
+    if True:
         evo_rng = np.random.default_rng(s * 17 + len(ARM))
         cb_rng = np.random.default_rng(s * 131 + 7)
         counters = {"kin": 0, "nonkin": 0, "nonkin_empty": 0, "src": Counter()}
@@ -214,9 +216,28 @@ def run_arm(name, use_quota, p_nonkin, mode, commblind, n_seeds, full=False):
             rec["gate0"] = paired_eval(pop, s * 7919 + 13, p_nonkin, s)        # content-load in THIS arm's routing
             rec["nonkin_eval"] = nonkin_only_eval(pop, s)                       # corroborating
             rec["kin_eval"] = paired_eval(pop, s * 5101 + 3, 0.0, s)            # kin-content context
-        seeds.append(rec)
-        print(f"[{name} s{s}] coex={len(coex):2d} cf={rec['cf_coex']} cf_hp={rec['cf_high_pressure_coex']} "
-              f"wf={rec['wf_coex']} alive={rec['mean_alive']} neff={rec['final_neff']} l2r={rec['l2_ratio']}", flush=True)
+        return rec
+
+
+def _run_one_seed_star(args):
+    return _run_one_seed(*args)
+
+
+def run_arm(name, use_quota, p_nonkin, mode, commblind, n_seeds, full=False):
+    g1f.G1F_POP = POP
+    g1f.G1F_GENS = GENS
+    args = [(name, use_quota, p_nonkin, mode, commblind, full, s) for s in range(n_seeds)]
+    if WORKERS > 1 and n_seeds > 1:
+        import concurrent.futures as cf
+        with cf.ProcessPoolExecutor(max_workers=min(WORKERS, n_seeds)) as ex:
+            seeds = list(ex.map(_run_one_seed_star, args))  # map preserves input (seed) order -> deterministic
+    else:
+        seeds = [_run_one_seed(*a) for a in args]
+    seeds.sort(key=lambda r: r["seed"])
+    for rec in seeds:
+        print(f"[{name} s{rec['seed']}] coex={rec['n_coexist_gens']:2d} cf={rec['cf_coex']} "
+              f"cf_hp={rec['cf_high_pressure_coex']} wf={rec['wf_coex']} alive={rec['mean_alive']} "
+              f"neff={rec['final_neff']} l2r={rec['l2_ratio']}", flush=True)
     return seeds
 
 
