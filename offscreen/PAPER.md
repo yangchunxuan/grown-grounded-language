@@ -353,7 +353,7 @@ Heavy runs cannot be CI-automated (GPU/CPU minutes-to-hours); they are version-c
 
 ### Banked verdict commits
 
-The g1f-arc evidence is frozen at: diagnostic `@6aaefe2`, C1 `@21dc0f3`, C2X `@1c1a27d`, C2X2 `@07624b4`, and C2X3 `@c9c749e`. The provenance-stamped C2X3 verdict `@254f3d7` reproduces `@c9c749e` byte-identical, demonstrating that the recipe regenerates the banked result exactly. The headline RNG-fixed control and lineage-share verdicts (`rtc_g1f_commblind_verdict_formal48_rngfix.json`, `rtc_g1f_lineage_share_verdict.json`) are banked at `@5a6885a` (their embedded provenance records the base commit `254f3d7` with `git_dirty: true` — they were generated on an uncommitted working tree and then committed at `5a6885a`); the older pre-rngfix formal-48 artifact predates this session's commit-tracking and is located via the `git log` of its verdict file.
+All g1f-arc verdict JSONs are present in the current repository and in the archived `v2.0-g1f` release (Zenodo DOI `10.5281/zenodo.21074235`); regenerate any stage via the RUNBOOK commands. The headline RNG-fixed control and lineage-share verdicts (`rtc_g1f_commblind_verdict_formal48_rngfix.json`, `rtc_g1f_lineage_share_verdict.json`) are the sole source for the headline numbers, and the provenance-stamped C2X3 re-run reproduces the banked C2X3 verdict byte-identical, demonstrating the recipe regenerates the banked result exactly. **Note on commit hashes:** the public git history was normalized to a single author, so historical commit hashes are not reachable in the current repo, and each verdict's embedded `provenance.git_commit` refers to the pre-normalization history — verify by verdict filename (repository / `v2.0-g1f` release / Zenodo DOI), not by hash.
 
 ---
 

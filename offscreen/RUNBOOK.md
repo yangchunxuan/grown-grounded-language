@@ -12,11 +12,13 @@ THAT result was produced). Run all commands from the repo root.
   negative**; bank a negative only at **n=16**.
 - **Determinism:** every run is seeded; same command+commit → byte-identical verdict. Re-running OVERWRITES
   the working verdict JSON — the banked version is preserved in git at the commit the ledger cites.
-- **Embedded vs banked provenance:** a verdict's embedded `provenance.git_commit` records the BASE commit of
-  the working tree *when the run was generated* (with `git_dirty: true` if there were uncommitted changes);
-  this can differ from the **banking commit** where the file actually lives in git (cited as `@commit` in the
-  ledger/paper). Both are intentional — cite the banking commit; the embedded base+dirty is the honest record
-  of generation. (e.g. the rngfix/lineage verdicts: embedded base `254f3d7`-dirty, banked `@5a6885a`.)
+- **Provenance anchors (READ THIS):** the public git history was normalized to a single author, so any
+  historical commit hash (`@…`) shown in these docs is **NOT reachable** in the current public repository.
+  Anchor each result by its **verdict filename**, which is present in (a) the current repo, (b) the archived
+  **`v2.0-g1f`** release, and (c) the Zenodo deposit (DOI `10.5281/zenodo.21074235`); regenerate via the
+  commands below. A verdict's embedded `provenance.git_commit` likewise refers to the pre-normalization
+  history (and may record a `git_dirty` base commit), so the durable identifier is the **filename + JSON
+  contents**, never a commit hash.
 - **Seed-parallelism (C2X3+):** `C2X3_WORKERS=N` parallelizes seeds; default `1` (serial, byte-stable).
   Cap workers (do NOT saturate): ~6 on a 16-core box. Verified byte-identical to serial (see Gate below).
 

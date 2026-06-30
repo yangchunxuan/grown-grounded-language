@@ -1,15 +1,18 @@
 # CLAIM LEDGER — per-claim epistemic re-labeling (post g1f-flip + Codex audit)
 
-**Evidence & reproducibility (the durable triple — chat/commit-messages are ephemeral, do NOT rely on them).**
-Each banked verdict is an immutable, self-describing evidence object **frozen in git**; cite it as
-`verdict-file @ commit`. `offscreen/RUNBOOK.md` = the exact command to regenerate any stage (can't be
+**Evidence & reproducibility (chat/commit-messages are ephemeral, do NOT rely on them).**
+Each banked verdict is an immutable, self-describing evidence object; cite it by its **verdict filename**
+(present in the current repo, the archived `v2.0-g1f` release, and the Zenodo deposit DOI
+`10.5281/zenodo.21074235`). `offscreen/RUNBOOK.md` = the exact command to regenerate any stage (can't be
 CI-automated — heavy runs). Runners updated with `rtc_g1f_common.make_provenance` embed a `provenance`
 block (command_hint + env + effective_config + git_commit + git_dirty) in NEW verdicts; the banked g1f-arc
 verdicts below PREDATE this feature and are reproducible via RUNBOOK + the ledger@commit citations (NOT via
 an embedded provenance block). `ARCHITECTURE.md` = the code map. A fresh agent reads {ARCHITECTURE + RUNBOOK
 + this ledger + (for new verdicts) provenance} and can reproduce everything.
-**Banked g1f-arc verdict commits:** diagnostic `@6aaefe2`, C1 `@21dc0f3`, C2X `@1c1a27d`, C2X2 `@07624b4`,
-C2X3 `@c9c749e` (g1f formal48 predates this session's commit-tracking — see git log of the verdict file).
+**Note on commit hashes:** the public git history was normalized to a single author, so any `@<hash>` shown
+in this ledger is from the pre-normalization history and is **not reachable** in the current repo. Verify each
+result by its **verdict filename** (present in the repo, the `v2.0-g1f` release, and Zenodo DOI
+`10.5281/zenodo.21074235`) and regenerate via RUNBOOK; do not rely on the hashes.
 
 **Purpose.** Every headline claim is decomposed into: corrected claim · evidence category · provenance (artifact / command+env / seeds / pilot-or-formal / is the control the SAME config as the treatment) · priority. Built after the g1f pilot/formal false-negative was caught, the 7-agent re-audit, and an independent Codex audit that (correctly) reined in two over-reaches in the re-audit.
 

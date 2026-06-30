@@ -795,11 +795,16 @@ referent.
 \appendix
 \section{Reproducibility}
 
-Every result is pinned to a durable \textbf{provenance triple}: (i) the immutable verdict
-JSON frozen in git at a named commit, holding the numbers; (ii) the claim ledger
-(\texttt{offscreen/CLAIM\_LEDGER.md}), indexing each claim to its verdict @ commit; and
+Every result is anchored to three durable, reachable handles: (i) the \textbf{verdict JSON},
+identified by filename and present both in the repository and in the archived
+\texttt{v2.0-g1f} release (Zenodo DOI \url{https://doi.org/10.5281/zenodo.21074235}); (ii) the
+claim ledger (\texttt{offscreen/CLAIM\_LEDGER.md}), mapping each claim to its verdict file; and
 (iii) the runbook (\texttt{offscreen/RUNBOOK.md}), giving the exact command, env vars, and
-effective config per stage.
+effective config per stage. The public git history was subsequently normalized to a single
+author, so historical commit hashes are not reachable in the current repository; verify each
+result by its verdict filename in the repository, the \texttt{v2.0-g1f} release, or the Zenodo
+deposit, and regenerate via the runbook. (Each verdict JSON's embedded
+\texttt{provenance.git\_commit} likewise refers to the pre-normalization history.)
 
 \subsection*{Run commands per stage}
 
@@ -810,36 +815,34 @@ every g1f harness via \texttt{os.environ.setdefault}; all banked g1f-arc runs us
 \texttt{-0.9}.
 
 \begin{itemize}
-\item \textbf{g1f (survival-selected channel; 28 generations):} predates the
-  provenance-block discipline; reproduce as a documented multi-step sequence. (1) Run the
-  $n{=}48$ RNG-fixed random-fitness control:
+\item \textbf{g1f (survival-selected channel; 28 generations):} reproduce as a documented
+  multi-step sequence. (1) Run the $n{=}48$ RNG-fixed random-fitness control:
   \texttt{RTC\_G1F\_FORMAL=1 RTC\_TOXIC\_DEATH=-0.9 RTC\_G1F\_COMMBLIND\_SEEDS=48 python -m
   offscreen.rtc\_g1f\_commblind\_control}, banked as
-  \texttt{rtc\_g1f\_commblind\_verdict\_formal48\_rngfix.json} @5a6885a (its embedded
-  provenance records base commit \texttt{254f3d7} with \texttt{git\_dirty}; it was banked at
-  \texttt{5a6885a}). This rngfix verdict is the \textbf{sole source} for every headline
-  number. (2) The legacy helpers (\texttt{..\_formal48.json}, \texttt{..\_reconciled\_verdict.json})
-  predate the RNG-fix and are \textbf{superseded}. (3) Lineage composition
+  \texttt{rtc\_g1f\_commblind\_verdict\_formal48\_rngfix.json}. This rngfix verdict is the
+  \textbf{sole source} for every headline number. (2) The legacy helpers
+  (\texttt{..\_formal48.json}, \texttt{..\_reconciled\_verdict.json}) predate the RNG-fix and
+  are \textbf{superseded}. (3) Lineage composition
   (\texttt{RTC\_G1F\_LINEAGE\_SEEDS=48 python -m offscreen.rtc\_g1f\_lineage\_share}):
-  \texttt{rtc\_g1f\_lineage\_share\_verdict.json} @5a6885a: dominant-share 99.1\%, N$_{\rm eff}$ 1.02.
+  \texttt{rtc\_g1f\_lineage\_share\_verdict.json}: dominant-share 99.1\%, N$_{\rm eff}$ 1.02.
 
 \item \textbf{g1f transient probe (secondary, post-hoc; gen 28/56/100/150, $n{=}24$):}
-  \texttt{rtc\_g1f\_transient\_probe\_verdict.json} @ddc2822.
+  \texttt{rtc\_g1f\_transient\_probe\_verdict.json}.
 
 \item \textbf{Kin-only diagnostic (28 generations):}
-  \texttt{rtc\_g1f\_kinonly\_\allowbreak diagnostic\_verdict.json} @6aaefe2.
+  \texttt{rtc\_g1f\_kinonly\_\allowbreak diagnostic\_verdict.json}.
 
 \item \textbf{C1 collapse probe (2$\times$2, 28 generations):}
-  \texttt{rtc\_g1f\_c1\_collapse\_probe\_verdict.json} @21dc0f3.
+  \texttt{rtc\_g1f\_c1\_collapse\_probe\_verdict.json}.
 
 \item \textbf{C2X (forced 100\% non-kin; 40 generations):}
-  \texttt{rtc\_g1f\_c2x\_crosslineage\_verdict.json} @1c1a27d.
+  \texttt{rtc\_g1f\_c2x\_crosslineage\_verdict.json}.
 
 \item \textbf{C2X2 (ramped + stationary scaffold; 48 generations):}
-  \texttt{rtc\_g1f\_c2x2\_ramped\_verdict.json} @07624b4.
+  \texttt{rtc\_g1f\_c2x2\_ramped\_verdict.json}.
 
 \item \textbf{C2X3 (forced-diversity quota + 0.5 non-kin, 48 generations):}
-  \texttt{rtc\_g1f\_c2x3\_forced\_verdict.json} @c9c749e.
+  \texttt{rtc\_g1f\_c2x3\_forced\_verdict.json}.
 \end{itemize}
 
 \subsection*{CI invariants}
