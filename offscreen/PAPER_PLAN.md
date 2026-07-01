@@ -1,6 +1,6 @@
 # PAPER PLAN — foundational paper (g1f arc + attack-machine methodology)
 
-> **SUPERSEDED (2026-06-30) — historical blueprint.** The live paper is `offscreen/PAPER.md` (v4) +
+> **SUPERSEDED (2026-06-30) — historical blueprint.** Any `@<hash>` citations below are pre-normalization and **NOT reachable** in the public repo — anchor by verdict filename (see `RUNBOOK.md` / Zenodo DOI `10.5281/zenodo.21074235`). The live paper is `offscreen/PAPER.md` (v4) +
 > `paper/ggl.tex`. Numbers below are PRE-rngfix draft values; the live headline is **MII 0.172 vs random-fitness
 > control 0.1174, paired margin +0.0548 [0.0234, 0.0849]**, lineage **99.1% / N_eff 1.02 / 47-of-48**,
 > diagnostic **5/5** windowed seeds, and the **+0.057 separate-RNG figure is retracted**. Kept only for the

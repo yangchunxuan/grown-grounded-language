@@ -163,17 +163,17 @@ def fig_neff():
     fig, ax = plt.subplots(figsize=(5.8, 4.0))
     bars = ax.bar(range(4), neff, color=colors, width=0.55)
     ax.set_ylim(0, 5.0)
-    ax.axhline(1, color='gray', lw=1.0, linestyle='--', label='Nₑₙₙ = 1 (monoclonal)')
+    ax.axhline(1, color='gray', lw=1.0, linestyle='--', label='$N_{\\mathrm{eff}}$ = 1 (monoclonal)')
     # highlight soft96 / hard96 (text in clear interior space, arrows to the bars)
-    ax.annotate('soft96 sustained\nNₑₙₙ ≈ 4.10', xy=(3, neff[3]), xytext=(2.0, 3.7),
+    ax.annotate('soft96 sustained\n$N_{\\mathrm{eff}}$ ≈ 4.10', xy=(3, neff[3]), xytext=(2.0, 3.7),
                 fontsize=8, color='tomato', ha='center', va='center',
                 arrowprops=dict(arrowstyle='->', color='tomato', lw=1.0))
-    ax.annotate('hard96 still\ncollapsing\nNₑₙₙ ≈ 1.44', xy=(1, neff[1]), xytext=(1.05, 2.75),
+    ax.annotate('hard96 still\ncollapsing\n$N_{\\mathrm{eff}}$ ≈ 1.44', xy=(1, neff[1]), xytext=(1.05, 2.75),
                 fontsize=8, color='cornflowerblue', ha='center', va='center',
                 arrowprops=dict(arrowstyle='->', color='cornflowerblue', lw=1.0))
     ax.set_xticks(range(4))
     ax.set_xticklabels(labels)
-    ax.set_ylabel('Final inverse-Simpson Nₑₙₙ')
+    ax.set_ylabel('Final inverse-Simpson $N_{\\mathrm{eff}}$')
     ax.set_title('Lineage diversity: population and selection interact\n(C1 collapse probe 2×2 factorial)')
     ax.legend(fontsize=8)
     ax.grid(True, alpha=0.3, axis='y')
